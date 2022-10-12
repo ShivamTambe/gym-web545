@@ -9,6 +9,7 @@ body{
     max-width: 1024px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 0 auto;
 }
 .navbtns{
