@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=DynaPuff:wght@500&family=Indie+Flower&family=Kanit:wght@500&family=Lora:ital,wght@1,500&family=Playfair+Display:wght@600&family=Quicksand&display=swap');
-
+html{
+    overflow-x: hidden;
+}
 body{
     margin: 0;
     padding: 0;
@@ -28,6 +30,7 @@ body{
 }
 .nav{
     background-color: #212529;
+    height: 15vh;
 }
 .allgyms{
     display: grid;

@@ -37,7 +37,9 @@ app.get("/",function(req,res){
 app.get("/pricing",function(req,res){
     res.render("pricing");
 })
-
+app.get("/home",function(req,res){
+    res.render("home");
+})
 app.listen(port, function(){
     console.log("server is running on prot "+ port);
 })

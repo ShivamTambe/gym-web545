@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>HOME</title>
+</head>
+<body>
+    <%- include('../partials/header.ejs'); %>
+    <div class="home">
+        <div class="homeimgs single-item homeimgs1" >
+            <!-- <img src="/imgs/second2.png" alt=""> -->
+            <div class="hometop">
+                  ONE PRICE
+            </div>
+            <div class="homebtm">
+                  GIVES YOU ACCESS TO MULTIPLE NATIONAL GYMS
+            </div>
+        </div>
+        <div class="homeimgs single-item homeimgs2">
+          <div class="hometop">
+               
+          </div>
+          <div class="homebtm">
+              Sign-up TODAY!
+            
+          </div>
+        </div>
+        <div class="homeimgs single-item homeimgs3">
+          <div class="hometop">
+            Yoga, Pilates & HIIT
+          </div>
+          <div class="homebtm">
+            Attend in-person or virtual classes
+            so you can reach your personal fitness goals
+            at your own pace
+          </div>
+        </div>
+    </div>
+
+    <%- include('../partials/fotter.ejs'); %>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+       $('.home').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  arrows: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+    </script>
+</body>
+</html>

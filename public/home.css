@@ -1,0 +1,88 @@
+html{
+    overflow: hidden;
+}
+.home{
+    display: flex;
+}
+.homeimgs img{
+    width: 100vw;
+}
+.homeimgs{
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+    text-align: center!important;
+    flex-direction: column!important;
+}
+.homeimgs1{
+    background: url(imgs/first.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
+.homeimgs2{
+    background: url(imgs/second.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
+.homeimgs3{
+    background: url(imgs/third.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
+.slick-slide {
+    height: 85vh!important;
+}
+.slick-prev {
+    left: 1vw!important;
+    z-index: 1000;
+}
+.slick-prev:before, .slick-next:before {
+    font-size: 40px!important;
+}
+.slick-next {
+    /* right: 2px; */
+    right: 3vw!important;
+    top: 48%!important;
+}
+.hometop{
+    width: 161px;
+    font-size: 36px;
+    text-transform: uppercase;
+    color: blue;
+    font-weight: 700;
+    display: block;
+}
+.homebtm{
+    font-size: 36px;
+    text-transform: uppercase;
+    color: blue;
+    font-weight: 700;
+    color: red;
+    width: 430px;
+}
+.slick-dots {
+    bottom: 20px!important;
+}
+.slick-dots li button {
+    width: 4px!important;
+    height: 20px!important;
+    border: 2px solid red!important;
+    background-color: red!important;
+    border-radius: 25px!important;
+}
+.slick-dots li button:before {
+    color: none!important;
+    opacity: 0!important;
+}
