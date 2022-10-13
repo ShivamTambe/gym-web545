@@ -34,6 +34,10 @@ app.get("/",function(req,res){
     }).catch(err => console.log(err));
 })
 
+app.get("/pricing",function(req,res){
+    res.render("pricing");
+})
+
 app.listen(port, function(){
     console.log("server is running on prot "+ port);
 })

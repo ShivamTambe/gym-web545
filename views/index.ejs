@@ -8,22 +8,7 @@
     <title>GYms</title>
 </head>
 <body>
-    <div class="fullpage">
-        <div class="nav">
-            <div class="navbar">
-                <div class="logodetails">
-                    <div class="img"><img src="/imgs/logo.png" alt=""></div>
-                </div>
-                <div class="navbtns">
-                    <div class="navbtn"><a href="/">Participting Gyms & Studios</a></div>
-                    <div class="navbtn"><a href="/">Pricing</a></div>
-                    <div class="navbtn"><a href="/">Personal Trainers</a></div>
-                    <div class="navbtn"><a href="/">Sign up</a></div>
-                    <div class="navbtn"><a href="/">Login</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%- include('../partials/header.ejs'); %>
 
     <div class="allgyms">
         <% for(var i=0; i<item.length; i++) {%>
@@ -39,5 +24,10 @@
             </div>
          <% } %>
     </div>
+
+
+
+
+    <%- include('../partials/fotter.ejs'); %>
 </body>
 </html>

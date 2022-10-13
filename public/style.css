@@ -31,7 +31,7 @@ body{
 }
 .allgyms{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 10px;
 }
 .gyminfo{
@@ -61,4 +61,38 @@ body{
 a{
     text-decoration: none;
     color: white;
+}
+.message1{
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px;
+    margin-top: 1rem;
+    color: green;
+}
+.message2{
+    color: blue;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 2rem 0px;
+    background: gray;
+}
+.fotterbtn{
+    background: lightgray;
+    text-align: center;
+    margin: 10px;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+}
+.month{
+    position: relative;
+    top: 34px;
+    color: #bababa;
+    font-size: 16px;
+    font-weight: 300;
 }
