@@ -41,6 +41,39 @@ html{
     display: flex;
     align-items: center;
 }
+.homeimgs4{
+    background: url(imgs/image4.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}.homeimgs5{
+    background: url(imgs/image5.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}.homeimgs6{
+    background: url(imgs/image6.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}.homeimgs7{
+    background: url(imgs/image8.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
 .slick-slide {
     height: 85vh!important;
 }
