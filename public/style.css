@@ -99,3 +99,48 @@ a{
     font-size: 16px;
     font-weight: 300;
 }
+
+
+.donate{
+    position: fixed;
+    height: 125px;
+    width: 211px;
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    right: 10px;
+    bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+#donateamt{
+    width: 20px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.don{
+    display: flex;
+    width: 211px;
+}
+.don label{
+    color: rgb(49, 190, 49);
+    font-size: 30px;
+}
+.don img{
+    width: 15px;
+}
+#uparrow{
+    position: relative;
+    right: 20px;
+    top: 6px;
+}
+.downarrow{
+    position: relative;
+    right: 34px;
+    top: 26px;
+
+}
+.downarrow img{
+    transform: rotate(180deg);
+}

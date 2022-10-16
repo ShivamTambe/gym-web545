@@ -1,6 +1,4 @@
-html{
-    overflow: hidden;
-}
+
 .home{
     display: flex;
 }
@@ -105,17 +103,26 @@ html{
     color: red;
     width: 430px;
 }
-.slick-dots {
+/* .slick-dots {
     bottom: 20px!important;
-}
+} */
 .slick-dots li button {
-    width: 4px!important;
+        
+    /* width: 4px!important; */
     height: 20px!important;
-    border: 2px solid red!important;
-    background-color: red!important;
-    border-radius: 25px!important;
+    border: 2px solid #ccc!important;
+
+    /* outline: 6px solid #ccc!important; */
+    background-color: gray!important;
 }
 .slick-dots li button:before {
     color: none!important;
     opacity: 0!important;
+}
+
+.slick-dots li button:hover{
+    background-color: rgb(76, 76, 76)!important;
+}
+.slick-dots li button:focus{
+    background-color: rgb(76, 76, 76)!important;
 }

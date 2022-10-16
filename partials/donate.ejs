@@ -1,0 +1,23 @@
+<div class="donate">
+    <div class="don">
+        <label>Amount: $</label>
+        <input type="number" name="donate" id="donateamt" value="10">
+        <div class="bar"></div>
+        <div id="uparrow" onclick="increase()"><img src="./img/arrow.png" alt="" srcset=""></div>
+        <div class="downarrow" onclick="decrease()"><img src="/img/arrow.png" alt="" srcset=""></div>
+    </div>
+    <div class="btns">
+        <div class="donatebtn">Pay</div>
+    </div>
+</div>
+
+<script>
+    function increase(){
+        document.getElementById("donateamt").value++;
+    }
+    function decrease(){
+        if(document.getElementById("donateamt").value >0){
+            document.getElementById("donateamt").value--;
+        }
+    }
+</script>
