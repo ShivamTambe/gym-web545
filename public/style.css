@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=DynaPuff:wght@500&family=Indie+Flower&family=Kanit:wght@500&family=Lora:ital,wght@1,500&family=Playfair+Display:wght@600&family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=DynaPuff:wght@500&family=Indie+Flower&family=Kanit:wght@500&family=Lora:ital,wght@1,500&family=Playfair+Display:wght@600&family=Quicksand&family=Roboto&display=swap');
 html{
     overflow-x: hidden;
 }
@@ -53,6 +53,7 @@ body{
     color: black;
     font-size: 50px;
     margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
 }
 .gymbio{
     color: blue;
@@ -111,21 +112,23 @@ a{
     right: 10px;
     bottom: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #donateamt{
-    width: 20px;
-    background: transparent;
+    width: 50px;
+    background: yellow;
     display: flex;
     justify-content: center;
+    font-size: 1.1rem;
     align-items: center;
 }
 .don{
     display: flex;
-    width: 211px;
 }
 .don label{
-    color: rgb(49, 190, 49);
-    font-size: 30px;
+    font-size: 1.3rem;
 }
 .don img{
     width: 15px;
@@ -143,4 +146,28 @@ a{
 }
 .downarrow img{
     transform: rotate(180deg);
+}
+.title{
+    text-align: center;
+    font-size: 1.4rem;
+}
+.don input{
+    background: yellow;
+    border-bottom: 1px solid #c6c6c6;
+    border-top: 0px ;
+    border-left: 0px;
+    border-right: 0px;
+}
+.donatebtn{
+    overflow: hidden;
+    border-radius: 3px;
+    background-color: #E9AB17;
+    background-color: green;
+    transition: .2s ease-in-out;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    padding: 6px 14px;
+    font-size: .9em;
+    margin-top: 12px;
 }
