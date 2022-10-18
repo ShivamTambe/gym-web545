@@ -82,7 +82,16 @@
 .sign{
     font-size: 20px;
 }
-
+.pay{
+    margin-top: 20px;
+}
+.pay:hover{
+    cursor: pointer;
+}
+.promocode{
+    cursor: pointer;
+    margin-top: 20px;
+}
 
 .pricing1:hover{
     transform: scale(1.1);
@@ -91,4 +100,15 @@
 .pricing2:hover{
     transform: scale(1.1);
     z-index: 1000;
+}
+.promo{
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+    display: none;
+}
+.promo input{
+    width: 50%;
+    border: 1px solid red;
+    height: 30px;
 }
