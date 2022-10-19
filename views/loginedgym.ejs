@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/loginedhome.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>GYms</title>
+</head>
+<body>
+    <%- include('../partials/donate.ejs'); %>
+    <%- include('../partials/loginedheader.ejs'); %>
+
+    <div class="allgyms">
+        <% for(var i=0; i<item.length; i++) {%>
+            <% let idd = "gym"+i;   %>
+            <div class="gyminfo" onclick="select(event)" id="jhhjh">
+                <div class="profileimg"><img src="/imgs/gymlogo1.png" alt="" class="img"></div>
+                <div class="gymname"><%= item[i].gymname%></div>
+                <div class="gymname"><%= item[i].name%></div>
+                <div class="otherinfo">
+                    <div class="gymbio"><%= item[i].gymbio %></div>
+                    <div class="state"><%= item[i].city %>,<%= item[i].state %></div>
+                    <div class="city"><%= item[i].discountprice %> </div>
+                </div>
+            </div>
+         <% } %>
+    </div>
+
+    <%- include('../partials/fotter.ejs'); %>
+
+    <script>
+        function select(e){
+            let id = e.target.id;
+            console.log(e);
+            console.log(id);
+            // let promobtn = document.getElementById(`${id}`);
+            // let filteroptions = document.getElementById(`${id}`);
+            // const element = document.getElementById(`${id}`)
+            // const style = getComputedStyle(element);
+            // console.log(style.border);
+            // if(style.border == "1px solid"){
+            //     filteroptions.style.border = "2px solid red;";
+            // }
+            // else{
+            //     filteroptions.style.border = "2px solid red;";
+            // }
+        }
+    </script>
+</body>
+</html>

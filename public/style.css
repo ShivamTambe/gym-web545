@@ -171,3 +171,6 @@ a{
     font-size: .9em;
     margin-top: 12px;
 }
+.gyminfo:focus{
+    border: 2px solid red;
+}
