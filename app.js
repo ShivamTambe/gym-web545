@@ -37,15 +37,22 @@ const userSchema ={
     number: String,
     servicee: String
 };
-
+const personalSchema={
+    trainername: String,
+    trainerbio: String,
+    location: String
+}
 const promoSchema={
     promocode: String,
     value: Number
-}
+};
+
 
 const GymInfo = mongoose.model("GymInfo", gymSchema);
 const UserInfo = mongoose.model("UserInfo", userSchema);
 const PromoInfo = mongoose.model("PromoInfo",promoSchema);
+const PersonalTrainer = mongoose.model("PersonalTrainer",personalSchema);
+
 
 
 
@@ -73,7 +80,19 @@ app.post("/loginedgym",function(req,res){
         }
     }
 })
-app.get("/",function(req,res){
+
+
+app.get("/personaltrainer",function(req,res){
+    let users;
+    PersonalTrainer.find().then(result =>{
+        console.log(result);
+        UserInfo.find().then(resultt =>{
+            console.log(resultt);
+            res.render('personaltrainer',{ item : result, item1: resultt});
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
+app.get("/gyms",function(req,res){
     GymInfo.find().then(result =>{
         // console.log(result);
         res.render('index',{ item : result});
@@ -84,6 +103,9 @@ app.get("/pricing",function(req,res){
     res.render("pricing");
 })
 app.get("/home",function(req,res){
+    res.render("home");
+})
+app.get("/",function(req,res){
     res.render("home");
 })
 app.get("/login",function(req,res){

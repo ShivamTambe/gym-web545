@@ -1,128 +1,267 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+@media (min-width: 1024px){
+    .lg\:hidden {
+        display: block;
+    }
+}
 
+body{
+    background-color: black!important;
+}
 .home{
     display: flex;
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
 }
-.homeimgs img{
+.slides{
+    background: url(imgs/first.jpg);
     width: 100vw;
-}
-.homeimgs{
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
     display: flex!important;
     justify-content: center;
     align-items: center;
-    text-align: center!important;
-    flex-direction: column!important;
+    text-align: justify;
 }
-.homeimgs1{
-    background: url(imgs/first.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-}
-.homeimgs2{
+.slide2{
     background: url(imgs/second.jpg);
+    width: 100vw;
+    height: 100vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 85vh;
-    display: flex;
+    color: white;
+    display: flex!important;
+    justify-content: center;
     align-items: center;
+    text-align: justify;
 }
-.homeimgs3{
+.slide3{
     background: url(imgs/third.jpg);
+    width: 100vw;
+    height: 100vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 85vh;
+    color: white;
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}
+.midtitle{
+    font-size: 3rem;
+    width: 434px;
+}
+.dis{
+    text-align: center;
+}
+.btns{
     display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.btn{
+    border-radius: 25px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #89cff0;
+    border-color: #46b5e8;
+    padding: 2px 15px;
+}
+.btn2{
+    border-radius: 25px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e46050;
+    border-color: #d64230;
+    padding: 2px 15px;
+}
+.midsec{
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
-.homeimgs4{
-    background: url(imgs/image4.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-}.homeimgs5{
-    background: url(imgs/image5.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-}.homeimgs6{
-    background: url(imgs/image6.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-}.homeimgs7{
-    background: url(imgs/image8.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 85vh;
-    display: flex;
-    align-items: center;
+
+.slick-dots {
+    bottom: 10px;
 }
-.slick-slide {
-    height: 85vh!important;
+.slick-dots li button:before
+    {
+        font-size:13px;
+        line-height: 20px;
+        opacity: 0.8;
+        color: white;
+    }
+    .slick-dots li.slick-active button:before {
+        color: red;
+    }
+.slick-next {
+    right: 3px;
 }
 .slick-prev {
-    left: 1vw!important;
-    z-index: 1000;
+    left: 0;
+    z-index: 2000;
 }
-.slick-prev:before, .slick-next:before {
-    font-size: 40px!important;
+
+
+
+
+.gym1{
+    background: url(imgs/gymlogo2.png);
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 18vh;
+    margin: 0 20px;
 }
-.slick-next {
-    /* right: 2px; */
-    right: 3vw!important;
-    top: 48%!important;
+.more{
+    color: white;
 }
-.hometop{
-    width: 161px;
-    font-size: 36px;
-    text-transform: uppercase;
-    color: blue;
-    font-weight: 700;
-    display: block;
+.gymsectitle{
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 10px;
 }
-.homebtm{
-    font-size: 36px;
-    text-transform: uppercase;
-    color: blue;
-    font-weight: 700;
-    color: red;
-    width: 430px;
+.gymsec{
+    width: 96vw;
+    margin: 0 auto;
 }
-/* .slick-dots {
-    bottom: 20px!important;
+.info{
+    border: 1px solid;
+    border-radius: 6px;
+    margin: 0 10px;
+    padding: 20px 10px;
+}
+.moreinfos{
+    color: white;
+}
+.infosec{
+    width: 96vw;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.infot{
+    font-size: 1.2rem;
+}
+.infodis{
+    color: #494F55;
+}
+
+
+.footer{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 150px;
+    margin-bottom: 20px;
+    background-color: #494F55;
+    padding-bottom:30px ;
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.footerimg img{
+    width: 200px;
+}
+.footerinfos{
+    display: flex;
+    gap: 20px;
+}
+.foottitle{
+    margin-bottom: 10px;
+}
+
+.donate{
+    border-radius: 25px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #00ff00;
+    border-color: rgb(49, 190, 49);
+    padding: 0px 15px;
+    display: flex;
+    width: 200px;
+    position: fixed;
+    bottom: 12vh;
+    right: 20px;
+    z-index: 3000;
+    flex-direction: row;
+    color: white;
+}
+.dbtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.value{
+    width: 70px;
+    border: 1px solid white;
+    border-radius: 100%;
+    padding: 20px;
+    position: relative;
+    left: -17px;
+    background-color: #00ff00;
+}
+/* .main{
+    background-color: #1a202c;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
 } */
-.slick-dots li button {
-        
-    /* width: 4px!important; */
-    height: 20px!important;
-    border: 2px solid #ccc!important;
-
-    /* outline: 6px solid #ccc!important; */
-    background-color: gray!important;
+.gyminfo {
+    background-color: white;
+    padding: 0!important;
+    height: 450px;
+    border-radius: 0px;
 }
-.slick-dots li button:before {
-    color: none!important;
-    opacity: 0!important;
+.profileimg{
+    background: url(/imgs/image4.jpg);
+    height: 60%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
 }
-
-.slick-dots li button:hover{
-    background-color: rgb(76, 76, 76)!important;
+.gymname {
+    font-size: 25px!important;
 }
-.slick-dots li button:focus{
-    background-color: rgb(76, 76, 76)!important;
+.profileimg img {
+    width: auto; 
+    height: auto;
+}
+.allgyms {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.star img{
+    width: 20px;
+}
+.stars{
+    display: flex;
+    justify-content: center;
+}
+.gymtitle{
+    font-size: 30px;
+    margin: 10px auto;
+    color: white;
+    display: flex;
+    justify-content: center;
 }

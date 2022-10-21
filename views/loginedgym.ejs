@@ -16,7 +16,7 @@
         <% for(var i=0; i<item.length; i++) {%>
             <% let idd = item[i].gymname  %>
             <% console.log(idd)  %>
-            <div class="gyminfo" onclick="select(event)" id=idd>
+            <div class="gyminfo" onclick=select(event) id= `<% item[i].gymname  %>` >
                 <div class="profileimg"><img src="/imgs/gymlogo1.png" alt="" class="img"></div>
                 <div class="gymname"><%= item[i].gymname%></div>
                 <div class="gymname"><%= item[i].name%></div>
@@ -32,20 +32,20 @@
 
     <script>
         function select(e){
-            let id = e.target.id;
+            let id = e.target.className;
             console.log(e);
             console.log(id);
-            // let promobtn = document.getElementById(`${id}`);
-            // let filteroptions = document.getElementById(`${id}`);
-            // const element = document.getElementById(`${id}`)
-            // const style = getComputedStyle(element);
-            // console.log(style.border);
-            // if(style.border == "1px solid"){
-            //     filteroptions.style.border = "2px solid red;";
-            // }
-            // else{
-            //     filteroptions.style.border = "2px solid red;";
-            // }
+            let promobtn = document.getElementById(`${id}`);
+            let filteroptions = document.getElementById(`${id}`);
+            const element = document.getElementById(`${id}`)
+            const style = getComputedStyle(element);
+            console.log(style.border);
+            if(style.border == "1px solid"){
+                filteroptions.style.border = "2px solid red;";
+            }
+            else{
+                filteroptions.style.border = "2px solid red;";
+            }
         }
     </script>
 </body>

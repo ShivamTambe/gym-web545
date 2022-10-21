@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/home.css">
-    <title>GYms</title>
+    <link rel="stylesheet" href="/personal.css">
+    <title>Personal Trainer</title>
 </head>
 <body>
-    
     <div class="donate">
         <div class="dbtn">
           <div class="value">
@@ -34,11 +34,11 @@
               <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+                  <a href="/home" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
       
-                  <a href="/gyms" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Gyms</a>
+                  <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Gyms</a>
       
-                  <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Personal Trainer</a>
+                  <a href="/personaltrainer" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Personal Trainer</a>
       
                   <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
     
@@ -54,9 +54,9 @@
         <div class="sm:hidden" id="mobile-menu">
           <div class="space-y-1 px-2 pt-2 pb-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/home" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
+            <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
       
-            <a href="/gyms" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Gyms</a>
+            <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Gyms</a>
       
             <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Personal Trainer</a>
       
@@ -67,7 +67,8 @@
         </div>
       </nav>
 
-    <div class="gymtitle">GYMS</div>
+
+    <div class="gymtitle">Trainers</div>
     <div class="allgyms">
         <% for(var i=0; i<4; i++) {%>
             <div class="gyminfo">
@@ -81,11 +82,9 @@
                     <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                     <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                 </div>
-                <div class="gymname"><%= item[i].gymname%></div>
-                <div class="gymname"><%= item[i].name%></div>
+                <div class="gymname"><%= item[i].trainername %></div>
                 <div class="otherinfo">
-                    <div class="gymbio"><%= item[i].gymbio %></div>
-                    <div class="state"><%= item[i].city %>,<%= item[i].state %></div>
+                    <div class="gymbio"><%= item[i].trainerbio %></div>
                     <div class="city"> </div>
                 </div>
             </div>
@@ -94,6 +93,38 @@
     <div class="btns">
         <div class="btn btn2">Show More</div>
       </div>
-    <%- include('../partials/fotter.ejs'); %>
+
+
+
+
+
+      <div class="usersec">
+        <div class="gymtitle">Users</div>
+        <div class="allgyms">
+            <% for(var i=0; i<4; i++) {%>
+                <div class="gyminfo">
+                    <div class="profileimg">
+                        <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
+                    </div>
+                    <div class="stars">
+                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
+                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
+                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
+                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
+                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
+                    </div>
+                    <div class="gymname"><%= item1[i].name %></div>
+                    <div class="otherinfo">
+                        <div class="gymbio"><%= item1[i].servicee %></div>
+                        <div class="city"> </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        <div class="btns">
+            <div class="btn btn2">Show More</div>
+        </div>
+    </div>
+
 </body>
 </html>
