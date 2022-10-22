@@ -17,9 +17,9 @@
     <div class="donate">
         <div class="dbtn">
           <div class="value">
-            <div class="leftarr"></div>
-            <div class="amt">$10</div>
-            <div class="rightarr"></div>
+            <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
+            <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
+            <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
           </div>
           <div class="submit">Donate</div>
         </div>
@@ -95,5 +95,22 @@
         <div class="btn btn2">Show More</div>
       </div>
     <%- include('../partials/fotter.ejs'); %>
+
+
+
+    <script>
+      function incerease(){
+         let value = document.getElementById("amtv").innerText;
+         console.log("HELLO");
+         document.getElementById("amtv").innerText++;
+      }
+
+      function decrease(){
+         let value = document.getElementById("amtv").innerText;
+         if(value >1){
+          document.getElementById("amtv").innerText--;
+         }
+      }
+  </script>
 </body>
 </html>

@@ -1,16 +1,21 @@
+body{
+    background-color: black;
+    columns: white;
+}
 .pricing{
     padding: 40px 20px;
-    background: #fff;
     text-align: center;
     box-shadow: 0px 0 30px rgb(1 41 112 / 8%);
     border-radius: 4px;
     position: relative;
     overflow: hidden;
     transition: 0.3s;
+    border: 1px solid;
 }
 .price{
     display: flex;
     justify-content: center;
+    color: white;
 }
 .value{
     font-size: 3rem;
@@ -72,10 +77,10 @@
     justify-content: center;
 }
 .pricesec{
-    max-width: 1024px;
+    padding: 0 20px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
     margin: 100px auto;
 }
@@ -93,14 +98,14 @@
     margin-top: 20px;
 }
 
-.pricing1:hover{
+/* .pricing1:hover{
     transform: scale(1.1);
     z-index: 1000;
 }
 .pricing2:hover{
     transform: scale(1.1);
     z-index: 1000;
-}
+} */
 .promo{
     margin-top: 10px;
     display: flex;
@@ -111,4 +116,105 @@
     width: 50%;
     border: 1px solid red;
     height: 30px;
+}
+@media (min-width: 1024px){
+.lg\:hidden {
+    display: block;
+}
+}
+
+
+.donatee{
+    border-radius: 25px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #00ff00;
+    border-color: rgb(49, 190, 49);
+    padding: 0px 15px;
+    display: flex;
+    width: 200px;
+    position: fixed;
+    bottom: 12vh;
+    right: 20px;
+    z-index: 3000;
+    flex-direction: row;
+    color: white;
+}
+.dbtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.valuee{
+    width: 70px;
+    border: 1px solid white;
+    border-radius: 100%;
+    padding: 20px;
+    position: relative;
+    left: -17px;
+    display: flex;
+    background-color: #00ff00;
+}
+.amt{
+    display: flex;
+    
+    position: relative;
+    left: -19px;
+
+}
+.leftarr img{
+    width: 20px;
+    transform: rotate(180deg);
+    max-width: 20px;
+    
+    position: relative;
+    left: -19px;
+    top: 3px;
+
+}
+.rightarr img{
+    width: 20px;
+    max-width: 20px;
+    
+    position: relative;
+    left: -19px;
+    top: 3px;
+
+}
+.pricebtns{
+    margin-bottom: 10px;
+}
+.promocode {
+    cursor: pointer;
+    margin-top: 10px;
+}
+.container{
+    color: gray;
+}
+.btn{
+    color: white;
+}
+.footer{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 150px;
+    margin-bottom: 20px;
+    background-color: #494F55;
+    padding-bottom:30px ;
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.footerimg img{
+    width: 200px;
+}
+.footerinfos{
+    display: flex;
+    gap: 20px;
+}
+.foottitle{
+    margin-bottom: 10px;
 }

@@ -11,16 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/home.css">
     <link rel="stylesheet" href="/personal.css">
+    <link rel="stylesheet" href="/twopricing.css">
     <title>Personal Trainer</title>
 </head>
 <body>
     <div class="donate">
         <div class="dbtn">
-          <div class="value">
-            <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
-            <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
-            <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
-          </div>
+            <div class="value">
+                <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
+                <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
+                <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
+            </div>
           <div class="submit">Donate</div>
         </div>
       </div>
@@ -68,80 +69,68 @@
       </nav>
 
 
-    <div class="gymtitle">Trainers</div>
-    <div class="allgyms">
-        <% for(var i=0; i<4; i++) {%>
-            <div class="gyminfo">
-                <div class="profileimg">
-                    <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
+      <div class="pricingdis">
+            <div class="pricingt">Purchase a minimum of <span id="pricemonth" id="monthval">4</span></div>
+            <div class="pricingbtns">
+                <div class="btns">
+                    <div class="btn btn1 btn2">Back</div>
                 </div>
-                <div class="stars">
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                </div>
-                <div class="gymname"><%= item[i].trainername %></div>
-                <div class="otherinfo">
-                    <div class="gymbio"><%= item[i].trainerbio %></div>
-                    <div class="city"> </div>
+                <div class="btns">
+                    <div class="btn btn2">Let's Do It</div>
                 </div>
             </div>
-         <% } %>
-    </div>
-    <div class="btns">
-        <div class="btn btn2">Show More</div>
       </div>
 
-
-
-
-
-      <div class="usersec">
-        <div class="gymtitle">Users</div>
-        <div class="allgyms">
-            <% for(var i=0; i<4; i++) {%>
-                <div class="gyminfo">
-                    <div class="profileimg">
-                        <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
-                    </div>
-                    <div class="stars">
-                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    </div>
-                    <div class="gymname"><%= item1[i].name %></div>
-                    <div class="otherinfo">
-                        <div class="gymbio"><%= item1[i].servicee %></div>
-                        <div class="city"> </div>
-                    </div>
-                </div>
-            <% } %>
+      <div class="monthprice">
+        <div class="pricee">
+            <div class="signn">$</div>
+            <div class="valuee"><span id="monthval">499</span>.99</div>
+            <div class="monthh"><span id="monthno">4 </span> /month</div>
+            <div class="arr">
+                <div class="uparr"><img src="/imgs/uparrow.jpg" onclick="incre()" alt=""></div>
+                <div class="downarr"><img src="/imgs/uparrow.jpg" onclick="decre()" alt=""></div>
+            </div>
         </div>
-        <div class="btns">
-            <div class="btn btn2">Show More</div>
+        <div class="pricee">
+            <div class="signn">$</div>
+            <div class="valuee"><span class="yearval">2399.99</span></div>
+            <div class="monthh"><span id="no"> 4 </span> /Yearly</div>
         </div>
-    </div>
+      </div>
+    
+      <%- include('../partials/fotter.ejs'); %>
+      <script>
+        function incre(){
+           let value = document.getElementById("monthval").innerText;
+           console.log(value);
+           document.getElementById("monthval").innerText=parseInt(50, 10)+parseInt(document.getElementById("monthval").innerText, 10);
+           document.getElementById("monthno").innerText++;
+           document.getElementById("pricemonth").innerText++;
+        }
+  
+        function decre(){
+           let value = document.getElementById("monthval").innerText;
+           if(value >4){
+                document.getElementById("monthval").innerText-=50;
+                document.getElementById("monthno").innerText--;
+                document.getElementById("pricemonth").innerText--;
+           }
+        }
+    </script>
 
-    <%- include('../partials/fotter.ejs'); %>
 
 
-    <script>
-      function incerease(){
-         let value = document.getElementById("amtv").innerText;
-         console.log("HELLO");
-         document.getElementById("amtv").innerText++;
-      }
-
-      function decrease(){
-         let value = document.getElementById("amtv").innerText;
-         if(value >1){
-          document.getElementById("amtv").innerText--;
-         }
-      }
-  </script>
+<script>
+    function increase(){
+        let value = document.getElementById("amtv").innerText;
+        console.log("HELLO");
+        document.getElementById("amtv").innerText++;
+    }
+    function decrease(){
+        let value = document.getElementById("amtv").innerText;
+        console.log("HELLO");
+        document.getElementById("amtv").innerText++;
+    }
+</script>
 </body>
 </html>

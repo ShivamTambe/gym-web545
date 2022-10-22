@@ -1,0 +1,57 @@
+.pricingbtns{
+    display: flex;
+    gap: 20px;
+}
+.pricingdis{
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    color: white;
+    align-items: center;
+}
+.pricingt{
+    font-size: 2rem;
+}
+.btn1{
+    background-color: transparent;
+    padding: 2px 66px;
+    border: 1px solid;
+}
+.btn2{
+    padding: 2px 66px;
+}
+.monthprice{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 100px;
+}
+.pricee{
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 30px 25px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.monthh{
+    color: gray;
+    margin-left: 10px;
+}
+.arr img{
+    width: 20px;
+    filter: hue-rotate(90deg);
+}
+.arr{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 10px;
+}
+.downarr img{
+    transform: rotate(180deg);
+}
+.signn,.valuee,.monthh{
+    display: flex;
+    align-items: center;
+}

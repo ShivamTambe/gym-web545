@@ -99,6 +99,12 @@ app.get("/gyms",function(req,res){
     }).catch(err => console.log(err));
 })
 
+app.get("/twopricing",function(req,res){
+    res.render("twopricing");
+})
+app.get("/normaltrainer",function(req,res){
+    res.render("normaltrainer");
+})
 app.get("/pricing",function(req,res){
     res.render("pricing");
 })

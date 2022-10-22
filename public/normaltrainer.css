@@ -1,0 +1,33 @@
+.ntrainersec{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 100px;
+}
+.first,.second{
+    display: flex;
+    gap: 20px;
+    color: white;
+    width: 67vw;
+    margin: 0 auto;
+}
+
+.firstsec{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 512px;
+    padding: 5px 15px;
+}
+.ftitle{
+    font-size: 2rem;
+}
+.fimage img{
+    width: 24vw;
+}
+.second img{
+    width: 24vw;
+}
+.btns{
+    margin-top: 0px;
+}

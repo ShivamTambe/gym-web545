@@ -11,16 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/home.css">
     <link rel="stylesheet" href="/personal.css">
+    <link rel="stylesheet" href="/normaltrainer.css">
     <title>Personal Trainer</title>
 </head>
 <body>
     <div class="donate">
         <div class="dbtn">
-          <div class="value">
-            <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
-            <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
-            <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
-          </div>
+            <div class="value">
+                <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
+                <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
+                <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
+              </div>
           <div class="submit">Donate</div>
         </div>
       </div>
@@ -68,80 +69,47 @@
       </nav>
 
 
-    <div class="gymtitle">Trainers</div>
-    <div class="allgyms">
-        <% for(var i=0; i<4; i++) {%>
-            <div class="gyminfo">
-                <div class="profileimg">
-                    <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
-                </div>
-                <div class="stars">
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                </div>
-                <div class="gymname"><%= item[i].trainername %></div>
-                <div class="otherinfo">
-                    <div class="gymbio"><%= item[i].trainerbio %></div>
-                    <div class="city"> </div>
+    <div class="ntrainersec">
+        <div class="first">
+            <div class="fimage"><img src="/imgs/image4.jpg" alt=""></div>
+            <div class="firstsec">
+                <div class="ftitle">Why should personal traienr Sign-up</div>
+                <div class="fdis">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit consequuntur perspiciatis praesentium accusamus vel est, ducimus quia, modi ut laborum itaque architecto repellat voluptatibus fuga velit quas sit, nisi id?
+                Facere pariatur cum reprehenderit saepe error repellendus, veritatis ea iusto illum similique nisi amet in, perferendis nostrum hic quia a voluptatum mollitia aut adipisci, corporis id iure! Sint, ullam praesentium? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore unde, sit atque fugit modi facilis nam adipisci nulla aspernatur ducimus iure animi cum ab deserunt sapiente eligendi corrupti! Expedita, earum.</div>
+                <div class="btns">
+                    <div class="btn btn2">Register Now</div>
+                  </div>
+            </div>
+        </div>
+        <div class="second">
+            <div class="firstsec">
+                <div class="ftitle">Why should personal traienr Sign-up</div>
+                <div class="fdis">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque ullam consequuntur repellat provident quam, alias aspernatur blanditiis quasi eaque aut accusamus et ex cupiditate dolore assumenda quibusdam eius inventore nulla?
+                Dolores eaque eveniet animi quia quod corrupti asperiores non alias, hic, voluptates quis illo ipsa. Aliquid quibusdam accusantium, quas voluptates recusandae consequuntur dolorem hic earum, minima dolores esse expedita sed. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore unde, sit atque fugit modi facilis nam adipisci nulla aspernatur ducimus iure animi cum ab deserunt sapiente eligendi corrupti! Expedita, earum.</div>
+                <div class="btns">
+                    <div class="btn btn2">Register Now</div>
                 </div>
             </div>
-         <% } %>
-    </div>
-    <div class="btns">
-        <div class="btn btn2">Show More</div>
-      </div>
-
-
-
-
-
-      <div class="usersec">
-        <div class="gymtitle">Users</div>
-        <div class="allgyms">
-            <% for(var i=0; i<4; i++) {%>
-                <div class="gyminfo">
-                    <div class="profileimg">
-                        <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
-                    </div>
-                    <div class="stars">
-                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                        <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    </div>
-                    <div class="gymname"><%= item1[i].name %></div>
-                    <div class="otherinfo">
-                        <div class="gymbio"><%= item1[i].servicee %></div>
-                        <div class="city"> </div>
-                    </div>
-                </div>
-            <% } %>
-        </div>
-        <div class="btns">
-            <div class="btn btn2">Show More</div>
+            <div class="fimage"><img src="/imgs/image4.jpg" alt=""></div>
+            
         </div>
     </div>
 
-    <%- include('../partials/fotter.ejs'); %>
 
 
     <script>
-      function incerease(){
-         let value = document.getElementById("amtv").innerText;
-         console.log("HELLO");
-         document.getElementById("amtv").innerText++;
-      }
-
-      function decrease(){
-         let value = document.getElementById("amtv").innerText;
-         if(value >1){
-          document.getElementById("amtv").innerText--;
-         }
-      }
-  </script>
+        function incerease(){
+           let value = document.getElementById("amtv").innerText;
+           console.log("HELLO");
+           document.getElementById("amtv").innerText++;
+        }
+  
+        function decrease(){
+           let value = document.getElementById("amtv").innerText;
+           if(value >1){
+            document.getElementById("amtv").innerText--;
+           }
+        }
+    </script>
 </body>
 </html>
