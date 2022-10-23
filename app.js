@@ -98,7 +98,9 @@ app.get("/gyms",function(req,res){
         res.render('index',{ item : result});
     }).catch(err => console.log(err));
 })
-
+app.get("/signin",function(req,res){
+    res.render("signup");
+})
 app.get("/twopricing",function(req,res){
     res.render("twopricing");
 })
@@ -114,7 +116,7 @@ app.get("/home",function(req,res){
 app.get("/",function(req,res){
     res.render("home");
 })
-app.get("/login",function(req,res){
+app.get("/signup",function(req,res){
     res.render("login");
 })
 

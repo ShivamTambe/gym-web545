@@ -2,33 +2,35 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: #212529;
+    color: white;
 }
 .img img{
-    width: 70px;
+    width: 30vw;
     margin-top: 20px;
     margin-bottom: 30px;
 }
 .form{
-    width: 390px;
-    background: #fff;
     border-radius: 10px;
     overflow: hidden;
     padding: 77px 0px 33px;
     margin: auto;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    justify-content: center;
+    gap: 20px;
+    color: white;
 }
 .inputs{
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
+
 }
 .top{
     display: block;
     font-family: Poppins-Bold;
     font-size: 30px;
-    color: #333;
     line-height: 1.2;
     text-align: center;
 }
@@ -50,10 +52,11 @@ input{
     background: 0 0;
     padding: 0 5px;
     outline: none;
-    border: none;
-    border-bottom: 2px solid #adadad;
+    border: 2px solid #adadad;
     margin-bottom: 37px;
-    width: 250px;
+    width: 30vw;
+    border-radius: 25px;
+    background-color: white;
 }
 button{
     display: flex;
@@ -78,4 +81,42 @@ button{
     padding-top: 115px;
     text-align: center;
     color: #212529;
+}
+label{
+    margin-bottom: 5px;
+}
+.last{
+    color: white;
+}
+.forgottern{
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: underline;
+    margin-top: 3px;
+}
+.create{
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    height: 50px;
+    align-items: center;
+    color: white;
+    border: 1px solid;
+    padding: 0px 2px;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.create a{
+    text-decoration: none;
+    color: white;
+}
+.ortxt{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.twobtns{
+    display: flex;
+    gap: 20px;
 }

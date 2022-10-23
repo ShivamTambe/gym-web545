@@ -9,20 +9,30 @@
     <title>Admin Panel Sign Up</title>
 </head>
 <body>
-    <div class="form">
-        <div class="top">WELCOME</div>
+    <div class="form"> 
         <div class="img">
-            <img src="/imgs/th.jpg" alt="">
+            <img src="/imgs/image4.jpg" alt="">
         </div>
-        <form action="/signup" method="post">
-            <div class="inputs">
-                <input type="text" placeholder="Email" name="email">
-                <input type="text" placeholder="Password" name="password">
+        <div class="formsec">
+            <div class="top">Sign In</div>
+            <form action="/signup" method="post">
+                <div class="inputs">
+                    <label for="Email">Email</label>
+                    <input type="text" placeholder="Email" name="email">
+                    <label for="">Password</label>
+                    <input type="text" placeholder="Password" name="password">
+                </div>
+    
+                <button type="submit">Submit</button>
+                <div class="forgottern">Forget Password</div>
+            </form>
+            <div class="create"><a href="/signin">Create a new account</a></div>
+            <div class="ortxt">OR</div>
+            <div class="twobtns">
+                <div class="create"><a href="/signup">Create a new account</a></div>
+                <div class="create"><a href="/signup">Create a new account</a></div>
             </div>
-
-            <button type="submit">Submit</button>
-        </form>
-        <div class="last">Don't have an account? <a href="/signup">Sign Up</a> </div>
+        </div>
     </div>
 
 </body>
