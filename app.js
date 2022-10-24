@@ -135,6 +135,7 @@ app.post("/signup",function(req,res){
                     console.log(servicee);
                     console.log(result[i].number);
                     GymInfo.find().then(resultt =>{
+                        // res.render('loginedhome',{ no : num, s: servicee});
                         res.render('loginedhome',{ no : num, s: servicee});
                     }).catch(err => console.log(err));
                     a++;
@@ -169,6 +170,87 @@ app.post("/promo2",function(req,res){
         res.render('promoprice',{ value1 : result[0].value});
     }).catch(err => console.log(err));
 })
+
+
+app.post("/searchbyname",function(req,res){
+    let name = req.body.username;
+    PersonalTrainer.find({trainername:`${name}`}).then(result =>{
+        console.log(result[0].trainername);
+        UserInfo.find().then(resultt =>{
+            // console.log(resultt);
+            res.render('personaltrainer',{ item : result, item1: resultt});
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
+app.post("/searchbycity",function(req,res){
+    let name = req.body.usercity;
+    PersonalTrainer.find({city:`${name}`}).then(result =>{
+        UserInfo.find().then(resultt =>{
+            console.log(resultt);
+            res.render('personaltrainer',{ item : result, item1: resultt});
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
+app.post("/searchbystate",function(req,res){
+    let name = req.body.userstate;
+    PersonalTrainer.find({state:`${name}`}).then(result =>{
+        UserInfo.find().then(resultt =>{
+            console.log(resultt);
+            res.render('personaltrainer',{ item : result, item1: resultt});
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
+app.post("/searchbyzip",function(req,res){
+    let name = req.body.userzip;
+    PersonalTrainer.find({zipcode:`${name}`}).then(result =>{
+        UserInfo.find().then(resultt =>{
+            console.log(resultt);
+            res.render('personaltrainer',{ item : result, item1: resultt});
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
+
+
+app.post("/searchbynamee",function(req,res){
+    let name = req.body.username;
+    console.log(name);
+    UserInfo.find({name:`${name}`}).then(result =>{
+        console.log(result);
+        PersonalTrainer.find().then(resultt =>{
+            console.log(resultt);
+            res.render('personaltrainer',{ item : resultt, item1: result});
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
+app.post("/searchbycityy",function(req,res){
+    let name = req.body.usercity;
+    UserInfo.find({city:`${name}`}).then(result =>{
+        PersonalTrainer.find().then(resultt =>{
+            console.log(resultt);
+            res.render('personaltrainer',{ item: result, item1: resultt});
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
+app.post("/searchbystatee",function(req,res){
+    let name = req.body.userstate;
+    UserInfo.find({state:`${name}`}).then(result =>{
+        PersonalTrainer.find().then(resultt =>{
+            console.log(resultt);
+            res.render('personaltrainer',{ item : result, item1: resultt});
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
+app.post("/searchbyzipp",function(req,res){
+    let name = req.body.userzip;
+    UserInfo.find({zipcode:`${name}`}).then(result =>{
+        PersonalTrainer.find().then(resultt =>{
+            console.log(resultt);
+            res.render('personaltrainer',{ item : result, item1: resultt});
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
+
+
 
 
 app.listen(port, function(){

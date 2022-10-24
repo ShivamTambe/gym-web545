@@ -38,7 +38,7 @@
       
                   <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Gyms</a>
       
-                  <a href="/personaltrainer" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Personal Trainer</a>
+                  <a href="/personaltrainer" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Personal Trainers</a>
       
                   <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
     
@@ -58,7 +58,7 @@
       
             <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Gyms</a>
       
-            <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Personal Trainer</a>
+            <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Personal Trainers</a>
       
             <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Pricing</a>
     
@@ -68,9 +68,57 @@
       </nav>
 
 
-    <div class="gymtitle">Trainers</div>
-    <div class="allgyms">
-        <% for(var i=0; i<4; i++) {%>
+    <div class="gymtitle">
+      <div class="gymt">Personal Trainers</div>
+      <div class="searchuser">
+        <div class="searchspace">
+            <label for="" onclick="searchoption()" class="serachicon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.111 20.058l-4.977-4.977c.965-1.52 1.523-3.322 1.523-5.251 0-5.42-4.409-9.83-9.829-9.83-5.42 0-9.828 4.41-9.828 9.83s4.408 9.83 9.829 9.83c1.834 0 3.552-.505 5.022-1.383l5.021 5.021c2.144 2.141 5.384-1.096 3.239-3.24zm-20.064-10.228c0-3.739 3.043-6.782 6.782-6.782s6.782 3.042 6.782 6.782-3.043 6.782-6.782 6.782-6.782-3.043-6.782-6.782zm2.01-1.764c1.984-4.599 8.664-4.066 9.922.749-2.534-2.974-6.993-3.294-9.922-.749z"/></svg>
+            </label>
+        </div>
+      </div>
+    </div>
+    <div id="options">
+      <div class="display">
+          <div class="name btna" onclick="names()">By Name</div>
+          <div class="city btna" onclick="city()">By City</div>
+          <div class="state btna" onclick="state()">By State</div>
+          <div class="zip btna" onclick="zip()">By Zip Code</div>
+      </div>
+    </div>
+    <form action="/searchbyname" method="post" id="searchbyname">
+      <div class="byname">
+          <label for="">Enter Name : </label>
+          <input type="text" name="username">
+      </div>
+      <button type="submit" class="btna">Submit</button>
+  </form>
+  <form action="/searchbycity" method="post" id="searchbycity">
+      <div class="bycity">
+          <label for="">Enter city : </label>
+          <input type="text" name="usercity">
+      </div>
+      <button type="submit" class="btna">Submit</button>
+  </form>
+  <form action="/searchbystate" method="post" id="searchbystate">
+      <div class="bystate">
+          <label for="">Enter State : </label>
+          <input type="text" name="userstate">
+      </div>
+      <button type="submit" class="btna">Submit</button>
+  </form>
+  <form action="/searchbyzip" method="post" id="searchbyzip">
+      <div class="byzip" name="userzip">
+          <label for="">Enter Zip Code : </label>
+          <input type="number">
+      </div>
+      <button type="submit" class="btna">Submit</button>
+  </form>
+    <div class="allgyms" id="allg">
+      <% let size = Object.keys(item).length; %>
+      <% if(size > 4){size=4}else{size=Object.keys(item).length} %>
+      <% console.log(size) %>
+        <% for(var i=0; i<size; i++) {%>
             <div class="gyminfo">
                 <div class="profileimg">
                     <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
@@ -82,10 +130,10 @@
                     <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                     <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                 </div>
-                <div class="gymname"><%= item[i].trainername %></div>
+                <div class="gymname"></div>
                 <div class="otherinfo">
-                    <div class="gymbio"><%= item[i].trainerbio %></div>
-                    <div class="city"> </div>
+                    <div class="gymbio"><%= item[i].trainername %></div>
+                    <div class="city"><%= item[i].trainerbio %></div>
                 </div>
             </div>
          <% } %>
@@ -99,9 +147,56 @@
 
 
       <div class="usersec">
-        <div class="gymtitle">Users</div>
-        <div class="allgyms">
-            <% for(var i=0; i<4; i++) {%>
+        <div class="gymtitle">Clients</div>
+        <div class="searchuser">
+          <div class="searchspace">
+              <label for="" onclick="searchoptionn()" class="serachicon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.111 20.058l-4.977-4.977c.965-1.52 1.523-3.322 1.523-5.251 0-5.42-4.409-9.83-9.829-9.83-5.42 0-9.828 4.41-9.828 9.83s4.408 9.83 9.829 9.83c1.834 0 3.552-.505 5.022-1.383l5.021 5.021c2.144 2.141 5.384-1.096 3.239-3.24zm-20.064-10.228c0-3.739 3.043-6.782 6.782-6.782s6.782 3.042 6.782 6.782-3.043 6.782-6.782 6.782-6.782-3.043-6.782-6.782zm2.01-1.764c1.984-4.599 8.664-4.066 9.922.749-2.534-2.974-6.993-3.294-9.922-.749z"/></svg>
+              </label>
+          </div>
+        </div>
+      </div>
+        <div id="optionss">
+          <div class="display">
+              <div class="name btna" onclick="namess()">By Name</div>
+              <div class="city btna" onclick="cityy()">By City</div>
+              <div class="state btna" onclick="statee()">By State</div>
+              <div class="zip btna" onclick="zipp()">By Zip Code</div>
+          </div>
+        </div>
+        <form action="/searchbynamee" method="post" id="searchbynamee">
+          <div class="byname">
+              <label for="">Enter Name : </label>
+              <input type="text" name="username">
+          </div>
+          <button type="submit" class="btna">Submit</button>
+      </form>
+      <form action="/searchbycityy" method="post" id="searchbycityy">
+          <div class="bycity">
+              <label for="">Enter city : </label>
+              <input type="text" name="usercity">
+          </div>
+          <button type="submit" class="btna">Submit</button>
+      </form>
+      <form action="/searchbystatee" method="post" id="searchbystatee">
+          <div class="bystate">
+              <label for="">Enter State : </label>
+              <input type="text" name="userstate">
+          </div>
+          <button type="submit" class="btna">Submit</button>
+      </form>
+      <form action="/searchbyzipp" method="post" id="searchbyzipp">
+          <div class="byzip" name="userzip">
+              <label for="">Enter Zip Code : </label>
+              <input type="number">
+          </div>
+          <button type="submit" class="btna">Submit</button>
+      </form>
+        <div class="allgyms" id="allusers">
+          <% let sizee = Object.keys(item1).length; %>
+          <% if(sizee > 4){sizee=4}else{size=Object.keys(item).length} %>
+          <% console.log(sizee)%>
+            <% for(var i=0; i<sizee; i++) {%>
                 <div class="gyminfo">
                     <div class="profileimg">
                         <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
@@ -124,7 +219,6 @@
         <div class="btns">
             <div class="btn btn2">Show More</div>
         </div>
-    </div>
 
     <%- include('../partials/fotter.ejs'); %>
 
@@ -143,5 +237,220 @@
          }
       }
   </script>
+
+
+<script>
+function searchoption(){
+  console.log("hellooo");
+  let options = document.getElementById("options");
+  const element = document.querySelector('#options');
+  const element1 = document.querySelector('#allg');
+  const style = getComputedStyle(element);
+
+  const style1 = getComputedStyle(element1);
+  let searchbyname = document.getElementById("searchbyname");
+  let searchbycity = document.getElementById("searchbycity");
+  let searchbystate = document.getElementById("searchbystate");
+  let searchbyzip = document.getElementById("searchbyzip");
+  console.log(style.display);
+  if(style.display == "none"){
+      options.style.display = "block";
+      element1.style.margin = "-54px 0 0 0";
+  }
+  else{
+      options.style.display = "none";
+      searchbyname.style.display = "none";
+      searchbycity.style.display = "none";
+      searchbystate.style.display = "none";
+      searchbyzip.style.display = "none";
+      element1.style.margin = "0 0 0 0";
+  }
+}
+
+function names(){
+  let searchbyname = document.getElementById("searchbyname");
+  let searchbycity = document.getElementById("searchbycity");
+  let searchbystate = document.getElementById("searchbystate");
+  let searchbyzip = document.getElementById("searchbyzip");
+  const element = document.querySelector('#searchbyname');
+  const element1 = document.querySelector('#allg');
+  const stylename = getComputedStyle(element);
+  if(stylename.display == "none"){
+      element1.style.margin = "-122px 0 0 0";
+      searchbyname.style.display = "block";
+      searchbycity.style.display = "none";
+      searchbystate.style.display = "none";
+      searchbyzip.style.display = "none";
+  }
+  else{
+      searchbyname.style.display = "none";
+      element1.style.margin = "0 0 0 0";
+  }
+}
+
+function city(){
+  let searchbyname = document.getElementById("searchbyname");
+  let searchbycity = document.getElementById("searchbycity");
+  let searchbystate = document.getElementById("searchbystate");
+  let searchbyzip = document.getElementById("searchbyzip");
+  const element = document.querySelector('#searchbycity');
+  const stylename = getComputedStyle(element);
+  if(stylename.display == "none"){
+      searchbyname.style.display = "none";
+      searchbycity.style.display = "block";
+      searchbystate.style.display = "none";
+      searchbyzip.style.display = "none";
+  }
+  else{
+      searchbyname.style.display = "none";
+  }
+}
+
+function state(){
+  let searchbyname = document.getElementById("searchbyname");
+  let searchbycity = document.getElementById("searchbycity");
+  let searchbystate = document.getElementById("searchbystate");
+  let searchbyzip = document.getElementById("searchbyzip");
+  const element = document.querySelector('#searchbystate');
+  const stylename = getComputedStyle(element);
+  if(stylename.display == "none"){
+      searchbyname.style.display = "none";
+      searchbycity.style.display = "none";
+      searchbystate.style.display = "block";
+      searchbyzip.style.display = "none";
+  }
+  else{
+      searchbyname.style.display = "none";
+  }
+}
+
+function zip(){
+  let searchbyname = document.getElementById("searchbyname");
+  let searchbycity = document.getElementById("searchbycity");
+  let searchbystate = document.getElementById("searchbystate");
+  let searchbyzip = document.getElementById("searchbyzip");
+  const element = document.querySelector('#searchbyzip');
+  const stylename = getComputedStyle(element);
+  if(stylename.display == "none"){
+      searchbyname.style.display = "none";
+      searchbycity.style.display = "none";
+      searchbystate.style.display = "none";
+      searchbyzip.style.display = "block";
+  }
+  else{
+      searchbyname.style.display = "none";
+  }
+}
+
+
+
+
+
+
+
+
+
+function searchoptionn(){
+  console.log("hellojdjdjoo");
+  let options = document.getElementById("optionss");
+  const element = document.querySelector('#optionss');
+  const element1 = document.querySelector('#allusers');
+  const style = getComputedStyle(element);
+
+  const style1 = getComputedStyle(element1);
+  let searchbyname = document.getElementById("searchbynamee");
+  let searchbycity = document.getElementById("searchbycityy");
+  let searchbystate = document.getElementById("searchbystatee");
+  let searchbyzip = document.getElementById("searchbyzipp");
+  console.log(style.display);
+  if(style.display == "none"){
+      options.style.display = "block";
+      element1.style.margin = "-54px 0 0 0";
+  }
+  else{
+      options.style.display = "none";
+      searchbynamee.style.display = "none";
+      searchbycityy.style.display = "none";
+      searchbystatee.style.display = "none";
+      searchbyzipp.style.display = "none";
+      element1.style.margin = "0 0 0 0";
+  }
+}
+
+function namess(){
+  let searchbyname = document.getElementById("searchbynamee");
+  let searchbycity = document.getElementById("searchbycityy");
+  let searchbystate = document.getElementById("searchbystatee");
+  let searchbyzip = document.getElementById("searchbyzipp");
+  const element = document.querySelector('#searchbynamee');
+  const element1 = document.querySelector('#allusers');
+  const stylename = getComputedStyle(element);
+  if(stylename.display == "none"){
+      element1.style.margin = "-122px 0 0 0";
+      searchbyname.style.display = "block";
+      searchbycity.style.display = "none";
+      searchbystate.style.display = "none";
+      searchbyzip.style.display = "none";
+  }
+  else{
+      searchbyname.style.display = "none";
+      element1.style.margin = "0 0 0 0";
+  }
+}
+
+function cityy(){
+  let searchbyname = document.getElementById("searchbynamee");
+  let searchbycity = document.getElementById("searchbycityy");
+  let searchbystate = document.getElementById("searchbystatee");
+  let searchbyzip = document.getElementById("searchbyzipp");
+  const element = document.querySelector('#searchbycityy');
+  const stylename = getComputedStyle(element);
+  if(stylename.display == "none"){
+      searchbyname.style.display = "none";
+      searchbycity.style.display = "block";
+      searchbystate.style.display = "none";
+      searchbyzip.style.display = "none";
+  }
+  else{
+      searchbyname.style.display = "none";
+  }
+}
+
+function statee(){
+  let searchbyname = document.getElementById("searchbynamee");
+  let searchbycity = document.getElementById("searchbycityy");
+  let searchbystate = document.getElementById("searchbystatee");
+  let searchbyzip = document.getElementById("searchbyzipp");
+  const element = document.querySelector('#searchbystatee');
+  const stylename = getComputedStyle(element);
+  if(stylename.display == "none"){
+      searchbyname.style.display = "none";
+      searchbycity.style.display = "none";
+      searchbystate.style.display = "block";
+      searchbyzip.style.display = "none";
+  }
+  else{
+      searchbyname.style.display = "none";
+  }
+}
+
+function zipp(){
+  let searchbyname = document.getElementById("searchbyname");
+  let searchbycity = document.getElementById("searchbycity");
+  let searchbystate = document.getElementById("searchbystate");
+  let searchbyzip = document.getElementById("searchbyzip");
+  const element = document.querySelector('#searchbyzip');
+  const stylename = getComputedStyle(element);
+  if(stylename.display == "none"){
+      searchbyname.style.display = "none";
+      searchbycity.style.display = "none";
+      searchbystate.style.display = "none";
+      searchbyzip.style.display = "block";
+  }
+  else{
+      searchbyname.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>

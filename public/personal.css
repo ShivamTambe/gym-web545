@@ -1,3 +1,66 @@
 .usersec{
     margin-top: 40px;
 }
+.gymtitle{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.display{
+    justify-content: center;
+}
+.allg{
+    margin-top: 0px;
+}
+.btna{
+    z-index: 10;
+}
+#searchbyname,#searchbycity,#searchbystate,#searchbyzip{
+    z-index: 10;
+    background-color: white;
+    color: black;
+    margin: 0 auto;
+        width: 367px;
+    margin-top: 20px;
+    padding: 20px 22px;
+    border-radius: 10px;
+}
+.gyminfo{
+    z-index: -1;
+}
+form{
+    color: white;
+}
+.byname{
+    display: flex;
+    gap: 20px;
+}
+form input{
+    border: 2px solid black;
+}
+.usersec{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    margin: 0;
+}
+.gymtitle{
+    margin: 10px 0;
+}
+form{
+    display: none;
+}
+#optionss{
+    display: none;
+}
+#searchbynamee, #searchbycityy, #searchbystatee, #searchbyzipp{
+    z-index: 10;
+    background-color: white;
+    color: black;
+    margin: 0 auto;
+    width: 367px;
+    margin-top: 20px;
+    padding: 20px 22px;
+    border-radius: 10px;
+}
