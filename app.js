@@ -98,6 +98,20 @@ app.get("/gyms",function(req,res){
         res.render('index',{ item : result});
     }).catch(err => console.log(err));
 })
+
+
+app.get("/loginedhome",function(req,res){
+    res.render("loginedhome");
+})
+app.get("/loginedpricing",function(req,res){
+    res.render("loginedpricing");
+})
+app.get("/loginedgyms",function(req,res){
+    GymInfo.find().then(result =>{
+        // console.log(result);
+        res.render('loginedgym',{ item : result});
+    }).catch(err => console.log(err));
+})
 app.get("/signin",function(req,res){
     res.render("signup");
 })

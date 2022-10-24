@@ -417,3 +417,9 @@ svg path{
 #searchbyname, #searchbycity, #searchbystate, #searchbyzip{
     width: 367px;
 }
+.red{
+    background-color: red;
+}
+.font-medium:hover{
+    background-color: red;
+}

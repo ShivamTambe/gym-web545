@@ -120,3 +120,6 @@ label{
     display: flex;
     gap: 20px;
 }
+.sub:hover{
+    cursor: pointer;
+}

@@ -218,3 +218,9 @@ body{
 .foottitle{
     margin-bottom: 10px;
 }
+.red{
+    background-color: red;
+}
+.font-medium:hover{
+    background-color: red;
+}
