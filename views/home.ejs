@@ -70,13 +70,19 @@
   </nav>
 
   <div class="home">
+    <% items.forEach(function(image) { %>
       <div class="slides slide1">
+        <img src="data:image/<%=image.img.contentType%>;base64,
+            <%=image.img.data.toString('base64')%>">
         <div class="midsec">
             <div class="midtitle">
-              Make the most of the your workout.
+              <%= image.firsttitle %>
             </div>
             <div class="dis">
-              One price gives you access to multiple national gyms
+              <%= image.secondtitle %>
+            </div>
+            <div class="dis">
+              <%= image.thirdtitle%>
             </div>
             <div class="btns">
               <div class="btn">Learn More</div>
@@ -84,57 +90,16 @@
             </div>
         </div>
       </div>
-      <div class="slides slide2">
-        <div class="midsec">
-            <div class="midtitle">
-              Make the most of the your workout.
-            </div>
-            <div class="dis">
-              One price gives you access to multiple national gyms
-            </div>
-            <div class="btns">
-              <div class="btn">Learn More</div>
-              <div class="btn btn2">Join Now!</div>
-            </div>
-        </div>
-      </div>
-      <div class="slides slide3">
-        <div class="midsec">
-            <div class="midtitle">
-              Make the most of the your workout.
-            </div>
-            <div class="dis">
-              One price gives you access to multiple national gyms
-            </div>
-            <div class="btns">
-              <div class="btn">Learn More</div>
-              <div class="btn btn2">Join Now!</div>
-            </div>
-        </div>
-      </div>
-      <div class="rightarrow">
-        <span><i class="fa-solid fa-angle-right"></i></span>
-      </div>
+    <% }) %>
   </div>
 
 <div class="gymsec">
   <div class="gymsectitle">Participating Gyms and Studios</div>
   <div class="gyms">
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
-    <div class="gym gym1"></div>
+    <% itemm.forEach(function(image) { %>
+    <img src="data:image/<%=image.img.contentType%>;base64,
+            <%=image.img.data.toString('base64')%>">
+    <% }) %>
   </div>
 
   <div class="btns">
@@ -144,39 +109,20 @@
 
 <div class="infosec">
     <div class="moreinfos">
-      <div class="info">
-          <div class="infot">Free Personal Training</div>
-          <div class="infodis">Sign-up today to get free personal training session</div>
-      </div>
+        <% let sizee = Object.keys(item).length; %>
+        <% if(sizee > 4){sizee=4}else{size=Object.keys(item).length} %>
+        <% console.log(sizee)%>
+        <% for(var i=0; i<sizee; i++) {%>
+          <div class="info">
+            <div class="infot"><%= item[i].title%></div>
+            <div class="infodis"><%= item[i].dis %></div>
+          </div>
+        <% } %>
       <div class="info">
         <div class="infot">Free Personal Training</div>
         <div class="infodis">Sign-up today to get free personal training session</div>
+      </div>
     </div>
-    <div class="info">
-      <div class="infot">Free Personal Training</div>
-      <div class="infodis">Sign-up today to get free personal training session</div>
-    </div>
-    <div class="info">
-      <div class="infot">Free Personal Training</div>
-      <div class="infodis">Sign-up today to get free personal training session</div>
-    </div>
-    <div class="info">
-      <div class="infot">Free Personal Training</div>
-      <div class="infodis">Sign-up today to get free personal training session</div>
-    </div>
-    <div class="info">
-      <div class="infot">Free Personal Training</div>
-      <div class="infodis">Sign-up today to get free personal training session</div>
-    </div>
-    <div class="info">
-      <div class="infot">Free Personal Training</div>
-      <div class="infodis">Sign-up today to get free personal training session</div>
-    </div>
-    <div class="info">
-      <div class="infot">Free Personal Training</div>
-      <div class="infodis">Sign-up today to get free personal training session</div>
-    </div>
-  </div>
 </div>
 
 

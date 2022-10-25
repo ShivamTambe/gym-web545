@@ -4,6 +4,7 @@ const ejs = require("ejs");
 const app = express();
 const bodyparser = require('body-parser');
 const mongoose = require("mongoose");
+var multer = require('multer');
 
 const port = process.env.PORT || 5000;
 app.use(express.static(path.join(__dirname, 'public')));
@@ -46,15 +47,115 @@ const promoSchema={
     promocode: String,
     value: Number
 };
+const moreSchema ={
+    title : String,
+    dis : String
+};
+var imageSchema = new mongoose.Schema({
+    name: String,
+    desc: String,
+    firsttitle: String,
+    secondtitle: String,
+    img:
+    {
+        data: Buffer,
+        contentType: String
+    }
+});
+var gymlogoSchema = new mongoose.Schema({
+    img:
+    {
+        data: Buffer,
+        contentType: String
+    }
+});
+  
+
 
 
 const GymInfo = mongoose.model("GymInfo", gymSchema);
 const UserInfo = mongoose.model("UserInfo", userSchema);
 const PromoInfo = mongoose.model("PromoInfo",promoSchema);
 const PersonalTrainer = mongoose.model("PersonalTrainer",personalSchema);
+const MoreInfo = mongoose.model("MoreInfo",moreSchema);
 
 
 
+const imgModel = mongoose.model("imgModel",imageSchema);
+const gymLogo = mongoose.model("gymLogo",gymlogoSchema);
+
+
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+  
+var upload = multer({ storage: storage });
+
+
+
+
+// app.get('/upload', (req, res) => {
+//     imgModel.find({}, (err, items) => {
+//         if (err) {
+//             console.log(err);
+//             res.status(500).send('An error occurred', err);
+//         }
+//         else {
+//             res.render('imagePage', { items: items });
+//         }
+//     });
+// });
+
+// app.post('/upload', upload.single('image'), (req, res, next) => {
+  
+//     var obj = {
+//         name: req.body.name,
+//         desc: req.body.desc,
+//         firsttitle: req.body.firsttitle,
+//         secondtitle: req.body.secondtitle,
+//         img:{
+//             data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+//             contentType: 'image/png'
+//         }
+//     }
+//     imgModel.create(obj, (err, item) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else {
+//             // item.save();
+//             res.redirect('/upload');
+//         }
+//     });
+// });
+
+
+
+app.post("/moreinfo",function(req, res){
+    let name = req.body.username;
+    let password = req.body.adminpassword;
+    console.log(name);
+    console.log(password);
+    adminInfo.find().then(result =>{
+        console.log(result);
+        for(var i=0; i<1; i++) {
+                if(password == result[i].password && name == result[i].username){
+                    let newinfo = new MoreInfo({
+                        title : req.body.title,
+                        dis : req.body.dis
+                    })
+                    newinfo.save();
+            }
+            res.redirect("/moreinfo");
+        }
+    }).catch(err => console.log(err));
+})
 
 
 app.post("/loginedgym",function(req,res){
@@ -125,10 +226,35 @@ app.get("/pricing",function(req,res){
     res.render("pricing");
 })
 app.get("/home",function(req,res){
-    res.render("home");
+    MoreInfo.find().then(result =>{
+        imgModel.find({}, (err, items) => {
+            gymLogo.find({}, (err, resultt) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send('An error occurred', err);
+                }
+                else {
+                    res.render("home",{item: result,items: items, itemm:resultt });
+                }
+            });
+        }); 
+    }).catch(err => console.log(err));
+    // res.render("home");   
 })
 app.get("/",function(req,res){
-    res.render("home");
+    MoreInfo.find().then(result =>{
+        imgModel.find({}, (err, items) => {
+            gymLogo.find({}, (err, resultt) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send('An error occurred', err);
+                }
+                else {
+                    res.render("home",{item: result,items: items, itemm:resultt });
+                }
+            });
+        }); 
+    }).catch(err => console.log(err));
 })
 app.get("/signup",function(req,res){
     res.render("login");

@@ -1,0 +1,100 @@
+.block{
+    position: absolute;
+    left: 0;
+}
+.navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+}
+.formleft,.formright{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form{
+    color: white;
+    margin-top: 50px;
+    
+}
+form{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.signinsubmit{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.signinsubmit button{
+    border-radius: 25px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    border-color: #d64230;
+    padding: 20px 15px;
+    width: 100%;
+    height: 25px;
+    margin: 10px 0;
+}
+.detail{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+input,select{
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.2;
+    display: block;
+    height: 45px;
+    background: 0 0;
+    padding: 0 5px;
+    outline: none;
+    border: 2px solid #adadad;
+    width: 30vw;
+    border-radius: 25px;
+    background-color: white;
+}
+.checkboxes{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.gender input{
+    width: 15px;
+}
+.gender{
+    color: white;
+}
+.formm{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+textarea{
+    height: 135.5px;
+    color: #555;
+    border-radius: 10px;
+}
+a{
+    text-decoration: underline;
+    color: blue;
+}
+.block{
+    width: 150px;
+    height: auto;
+}
+.bg-gray-800{
+    background-color: black;
+}

@@ -17,7 +17,7 @@ body{
     /* overflow-y: hidden; */
 }
 .slides{
-    background: url(imgs/first.jpg);
+    /* background: url(imgs/first.jpg); */
     width: 100vw;
     height: 100vh;
     background-position: center;
@@ -388,13 +388,16 @@ svg path{
 }
 .gyms .slick-prev {
     left: -14px;
-    top: 47px;
+    top: 89px;
 }
 /* .gyms .slick-next:focus{
     position: relative;
     left: 95vw;
     top: -60px;
 } */
+.info{
+    height: 142.8px;
+}
 .infosec .slick-next {
     right: -16px;
 }
@@ -422,4 +425,39 @@ svg path{
 }
 .font-medium:hover{
     background-color: red;
+}
+.slides img{
+    /* position: absolute; */
+    width: 100%;
+    position: relative;
+    width: 100%;
+    left: 217px;
+    z-index: -1;
+/*     
+    width: 100vw;
+    top: 0px;
+    left: 1px; */
+
+
+}
+.midsec{
+    position: relative;
+    left: -50vw;
+    z-index: 1000;
+}
+.midtitle{
+    text-align: center;
+}
+.gyms img{
+    object-fit: cover;
+    height: 212px;
+}
+.gyms .slick-track{
+    display: flex;
+    gap: 20px;
+}
+.infosec .slick-prev {
+    left: -14px;
+    top: 62px;
+
 }
