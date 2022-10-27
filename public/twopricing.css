@@ -31,7 +31,7 @@
     justify-content: center;
     color: white;
     padding: 30px 25px;
-    border: 1px solid;
+    border: 1px solid gray;
     border-radius: 10px;
 }
 .monthh{
@@ -54,4 +54,10 @@
 .signn,.valuee,.monthh{
     display: flex;
     align-items: center;
+}
+.pricee {
+    font-size: 1.5rem;
+}
+.pricingt {
+    font-size: 1.2rem;
 }

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/home.css">
     <link rel="stylesheet" href="/personal.css">
+    <link rel="stylesheet" href="/logined.css">
     <title>Personal Trainer</title>
 </head>
 <body>
@@ -29,7 +30,7 @@
           <div class="relative flex h-16 items-center justify-between">
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
               <div class="flex flex-shrink-0 items-center">
-                <img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company">
+                <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
               </div>
               <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
@@ -121,15 +122,15 @@
         <% for(var i=0; i<size; i++) {%>
             <div class="gyminfo">
                 <div class="profileimg">
-                    <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
+                    <img src="/imgs/image4.jpg" alt="" class="img">
                 </div>
-                <div class="stars">
+                <!-- <div class="stars">
                     <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                     <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                     <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                     <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                     <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                </div>
+                </div> -->
                 <div class="gymname"></div>
                 <div class="otherinfo">
                     <div class="gymbio"><%= item[i].trainername %></div>
@@ -199,15 +200,15 @@
             <% for(var i=0; i<sizee; i++) {%>
                 <div class="gyminfo">
                     <div class="profileimg">
-                        <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
+                        <img src="/imgs/image4.jpg" alt="" class="img">
                     </div>
-                    <div class="stars">
+                    <!-- <div class="stars">
                         <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                         <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                         <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                         <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                         <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    </div>
+                    </div> -->
                     <div class="gymname"><%= item1[i].name %></div>
                     <div class="otherinfo">
                         <div class="gymbio"><%= item1[i].servicee %></div>

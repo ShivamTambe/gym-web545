@@ -32,6 +32,8 @@ body{
     height: 15vh;
 }
 .allgyms{
+    margin: 0 auto!important;
+    width: 90vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 10px;

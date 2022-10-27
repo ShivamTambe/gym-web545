@@ -30,7 +30,7 @@
           <div class="relative flex h-16 items-center justify-between">
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
               <div class="flex flex-shrink-0 items-center">
-                <img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company">
+                <a href="/home"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
               </div>
               <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
@@ -69,20 +69,9 @@
       </nav>
 
 
-      <div class="pricingdis">
-            <div class="pricingt">Purchase a minimum of <span id="pricemonth" id="monthval">4</span></div>
-            <div class="pricingbtns">
-                <div class="btns">
-                    <div class="btn btn1 btn2">Back</div>
-                </div>
-                <div class="btns">
-                    <div class="btn btn2">Let's Do It</div>
-                </div>
-            </div>
-      </div>
 
       <div class="monthprice">
-        <div class="pricee">
+        <div class="pricee" id="price1" onclick="option1()">
             <div class="signn">$</div>
             <div class="valuee"><span id="monthval">499</span>.99</div>
             <div class="monthh"><span id="monthno">4 </span> /month</div>
@@ -91,25 +80,98 @@
                 <div class="downarr"><img src="/imgs/uparrow.jpg" onclick="decre()" alt=""></div>
             </div>
         </div>
-        <div class="pricee">
+        <div class="pricee" id="price2" onclick="option2()">
             <div class="signn">$</div>
             <div class="valuee"><span class="yearval">2399.99</span></div>
             <div class="monthh"><span id="no"> 4 </span> /Yearly</div>
         </div>
       </div>
+      <div class="pricingdis">
+            <div class="pricingt">Purchase a minimum of <span id="pricemonth" id="monthval">4</span> Months</div>
+            <div class="pricingbtns">
+                <div class="btns">
+                    <div class="btn btn1 btn2">Back</div>
+                </div>
+                <div class="btns">
+                    <div class="btn btn2" onclick="pay()">Sign Me Up</div>
+                </div>
+            </div>
+      </div>
     
       <%- include('../partials/fotter.ejs'); %>
       <script>
+
+        function pay(){
+            console.log("pay");
+            let price1 = document.getElementById("price1");
+            let price2 = document.getElementById("price2");
+            let month = document.getElementById("no");
+
+            if(price1.style.border == "1px solid white"){
+                if(no == 4){
+                   window.location = "https://buy.stripe.com/test_5kAeUUb7ff0TfUQaEG";  
+                }
+                if(no == 5){
+                  window.location = "https://buy.stripe.com/test_14k9AAa3b9Gz8so7sv";  
+                }
+                if( no = 6){
+                  window.location = "https://buy.stripe.com/test_cN26oo3EN7yr7ok8wA";  
+                }
+                if(no == 7){
+                  window.location = "https://buy.stripe.com/test_6oEdQQ2AJg4X4c85kp";  
+                }
+                if(no == 8){
+                  window.location = "https://buy.stripe.com/test_8wM6oo7V35qj240006";  
+                }
+                if( no = 9){
+                  window.location = "https://buy.stripe.com/test_8wM6oo7V35qj240006";  
+                }
+                if(no == 10){
+                  window.location = "https://buy.stripe.com/test_8wM6oo7V35qj240006";  
+                }
+                if(no == 11){
+                  window.location = "https://buy.stripe.com/test_8wM6oo7V35qj240006";  
+                }
+                if( no = 12){
+                  window.location = "https://buy.stripe.com/test_8wM6oo7V35qj240006";  
+                }
+            }
+            else{
+              if(price2.style.border == "1px solid white"){
+                window.location = "https://buy.stripe.com/test_9AQ8wwa3bf0T6kg8wD";
+              }
+            }
+        }
+
+
+        function option1(){
+            console.log("clicked1");
+            let price1 = document.getElementById("price1");
+            let price2 = document.getElementById("price2");
+            price2.style.border = "1px solid gray";
+            price1.style.border = "1px solid white";
+        }
+        function option2(){
+            console.log("clicked2");
+            let price1 = document.getElementById("price1");
+            let price2 = document.getElementById("price2");
+            price1.style.border = "1px solid gray";
+            price2.style.border = "1px solid white";
+        }
+
+
         function incre(){
-           let value = document.getElementById("monthval").innerText;
+           let value = document.getElementById("monthno").innerText;
            console.log(value);
+           if(value <12){
            document.getElementById("monthval").innerText=parseInt(50, 10)+parseInt(document.getElementById("monthval").innerText, 10);
            document.getElementById("monthno").innerText++;
            document.getElementById("pricemonth").innerText++;
+           }
         }
   
         function decre(){
-           let value = document.getElementById("monthval").innerText;
+           let value = document.getElementById("monthno").innerText;
            if(value >4){
                 document.getElementById("monthval").innerText-=50;
                 document.getElementById("monthno").innerText--;

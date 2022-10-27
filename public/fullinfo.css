@@ -1,0 +1,10 @@
+.gymdetail{
+    display: flex;
+    justify-content: center;
+}
+.profileimg{
+    justify-content: center;
+}
+.gyminfo{
+    width: 80vw;
+}

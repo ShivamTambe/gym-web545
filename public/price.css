@@ -37,6 +37,9 @@ body{
     margin-left: auto;
     box-sizing: border-box;
     margin: 0 auto;
+    min-height: 168px;
+    display: flex;
+    flex-direction: column;
 }
 .row {
     --bs-gutter-x: 1.5rem;
@@ -223,4 +226,89 @@ body{
 }
 .font-medium:hover{
     background-color: red;
+}
+.premimum{
+    background-color: #14273C;
+    border: 1px solid #14273C;
+}
+.economical{
+    background-color: #89cff0;
+    border-color: #46b5e8;
+}
+.container1 {
+    color: gray;
+    height: 168px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.top{
+    opacity: 0;
+}
+.topp{
+    opacity: 1;
+    color: gray;
+    font-size: 14px;
+}
+.amt {
+    display: flex;
+    position: relative;
+    left: -10px;
+    font-size: 25px;
+}
+.value {
+    width: 80px;
+    border: 1px solid white;
+    border-radius: 100%;
+    padding: 20px;
+    position: relative;
+    left: -17px;
+    display: flex;
+    background-color: green;
+}
+.leftarr img {
+    width: 10px;
+    transform: rotate(180deg);
+    max-width: 20px;
+    position: relative;
+    left: -19px;
+    top: 11px;
+}
+.rightarr img {
+    width: 10px;
+    max-width: 20px;
+    position: relative;
+    left: -1px;
+    top: 11px;
+}
+.donatee{
+    background-color: green;
+    border-color: rgb(49, 190, 49);
+}
+.valueee{
+    font-size: 3rem;
+}
+.valuee {
+    width: 80px;
+    background-color: green;
+}
+.pricetopp{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    color: wheat;
+}
+.pricesec{
+    margin-top: 0;
+}
+.footer{
+    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+nav{
+    background-color: black!important;
 }

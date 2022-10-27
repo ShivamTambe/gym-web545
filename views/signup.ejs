@@ -19,15 +19,15 @@
       <div class="relative flex h-16 items-center justify-between">
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
           <div class="flex flex-shrink-0 items-center">
-            <img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company">
+           <a href="/home" class="singimg"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
           </div>
           <div class="signtitle">Sign-Up Now</div>
         </div>
       </div>
     </div>
   </nav>
-  <div class="form">
-    <form action="/signindetails" method="post">
+  <div >
+    <form action="/signindetails" method="post" class="form">
     <div class="formm">
       <div class="formleft">
         <div class="detail">
@@ -81,10 +81,18 @@
           <input type="text" name="phoneno" placeholder="Phone No">
         </div>
         <div class="detail">
-          <label for="">Package</label>
+          <label for="">Plan</label>
           <select>  
+            <option value = "less">$49.99/month</option> 
             <option value = "less">$149.99/month</option>  
             <option value = "large">$499.99/month</option> 
+          </select>  
+        </div>
+        <div class="detail">
+          <label for="">Feature</label>
+          <select>  
+            <option value = "less">Economical</option> 
+            <option value = "less">Premimum</option>  
           </select>  
         </div>
         <div class="detail">
@@ -116,7 +124,8 @@
     </div>
     <div class="signinsubmit">
       <div class="warn">By Clicking Sign-up, you agree to VE's <a href="">Terms and Conditions of Use</a></div>
-      <button type="submit">Submit</button>
+      <!-- <button type="submit">Submit</button> -->
+      <button onclick="pay()"><a href="/https://buy.stripe.com/test_aEU288ejr3ibgYUcMN" id="pay">Submit</a></button>
       <div class="login">Have a account? <a href="/signup">Log-in</a></div>
     </div>
     </form>
@@ -127,6 +136,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  
+  <script>
+//     const form = document.querySelector(".form");
+//       form.addEventListener("submit", event => {
+//       event.preventDefault();
+// });
+
+    function pay(){
+      // document.getElementById("pay").click();
+      window.location = "/https://buy.stripe.com/test_aEU288ejr3ibgYUcMN";  
+    }
+  </script>
 </body>
 </html>

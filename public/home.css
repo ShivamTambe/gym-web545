@@ -137,9 +137,9 @@ body{
     color: white;
     margin-bottom: 10px;
 }
-.gymsec{
+.gymsec {
     width: 96vw;
-    margin: 0 auto;
+    margin: 80px auto;
 }
 .info{
     border: 1px solid;
@@ -173,8 +173,8 @@ body{
     background-color: #494F55;
     padding-bottom:30px ;
     padding-top: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 .footerimg img{
     width: 200px;
@@ -192,7 +192,7 @@ body{
     height: 50px;
     display: flex;
     align-items: center;
-    background-color: #00ff00;
+    background-color: green;
     border-color: rgb(49, 190, 49);
     padding: 0px 15px;
     display: flex;
@@ -211,19 +211,20 @@ body{
     align-items: center;
 }
 .value{
-    width: 70px;
+    width: 80px;
     border: 1px solid white;
     border-radius: 100%;
     padding: 20px;
     position: relative;
     left: -17px;
     display: flex;
-    background-color: #00ff00;
+    background-color: green;
 }
 .amt{
     display: flex;
     position: relative;
-    left: -9px;
+    left: -10px;
+    font-size: 25px;
 }
 .leftarr img{
     width: 10px;
@@ -231,8 +232,8 @@ body{
     max-width: 20px;
     
     position: relative;
-    left: -13px;
-    top: 5px;
+    left: -19px;
+    top: 11px;
 
 }
 .rightarr img{
@@ -240,8 +241,8 @@ body{
     max-width: 20px;
     
     position: relative;
-    left: -4px;
-    top: 5px;
+    left: -1px;
+    top: 11px;
 
 }
 /* .main{
@@ -254,16 +255,18 @@ body{
 .gyminfo {
     background-color: white;
     padding: 0!important;
-    height: 450px;
+    height: 590px;
     border-radius: 0px;
 }
 .profileimg{
-    background: url(/imgs/image4.jpg);
     height: 60%;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .gymname {
     font-size: 25px!important;
@@ -388,7 +391,8 @@ svg path{
 }
 .gyms .slick-prev {
     left: -14px;
-    top: 89px;
+    top: 73px;
+
 }
 /* .gyms .slick-next:focus{
     position: relative;
@@ -396,15 +400,12 @@ svg path{
     top: -60px;
 } */
 .info{
-    height: 142.8px;
+    height: 210.8px;
 }
 .infosec .slick-next {
     right: -16px;
 }
-.infosec .slick-prev {
-    left: -14px;
-    top: 47px;
-}
+
 .infosec .slick-next:focus,.slick-prev:focus {
     background: url(/imgs/right-arrow.png);
     width: 27px;
@@ -431,7 +432,7 @@ svg path{
     width: 100%;
     position: relative;
     width: 100%;
-    left: 217px;
+    left: 500px;
     z-index: -1;
 /*     
     width: 100vw;
@@ -447,17 +448,56 @@ svg path{
 }
 .midtitle{
     text-align: center;
+    width: 1000px;
 }
-.gyms img{
+/* .gyms img{
     object-fit: cover;
     height: 212px;
-}
+} */
 .gyms .slick-track{
     display: flex;
-    gap: 20px;
+    gap: 1px;
 }
+/* .home:hover{
+    cursor: pointer;
+} */
+
 .infosec .slick-prev {
     left: -14px;
-    top: 62px;
+    top: 86px;
+}
+nav{
+    background-color: black!important;
+}
 
+.infosec .slick-initialized .slick-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.midtitle,.dis{
+    font-size: 2rem;
+    width: 1000px;
+}
+.line2{
+    color: blue;
+}
+.line3{
+    color: green;
+}
+.disss{
+    display: block!important;
+}
+.iddd input,.idd button{
+    display: none!important;
+}
+.gyms .btnsubbb{
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    top: 10px;
+}
+.gyms img{
+    width: 100%!important;
 }

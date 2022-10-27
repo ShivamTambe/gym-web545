@@ -29,7 +29,7 @@
           <div class="relative flex h-16 items-center justify-between">
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
               <div class="flex flex-shrink-0 items-center">
-                <img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company">
+                <a href="/home"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
               </div>
               <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
@@ -69,27 +69,20 @@
 
     <div class="gymtitle">GYMS</div>
     <div class="allgyms">
-        <% for(var i=0; i<4; i++) {%>
+      <% item.forEach(function(image) { %>
             <div class="gyminfo">
                 <div class="profileimg">
-                    <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
+                  <img src="data:image/<%=image.img.contentType%>;base64,
+                  <%=image.img.data.toString('base64')%>">
                 </div>
-                <div class="stars">
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                    <div class="star"><img src="/imgs/star.jpg" alt=""></div>
-                </div>
-                <div class="gymname"><%= item[i].gymname%></div>
-                <div class="gymname"><%= item[i].name%></div>
+                <div class="gymname"><%= image.title1 %></div>
                 <div class="otherinfo">
-                    <div class="gymbio"><%= item[i].gymbio %></div>
-                    <div class="state"><%= item[i].city %>,<%= item[i].state %></div>
-                    <div class="city"> </div>
+                    <div class="gymbio line2"><%= image.title2 %></div>
+                    <div class="gymbio line3"><%= image.title3 %></div>
+                    <div class="gymbio line3"><%= image.title4 %></div>
                 </div>
             </div>
-         <% } %>
+         <% }) %>
     </div>
     <div class="btns">
         <div class="btn btn2">Show More</div>

@@ -1,0 +1,49 @@
+.athet{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.amid{
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    gap: 50px;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.lt{
+    font-size: 1.8rem;
+    color: white;
+    text-align: justify;
+}
+.ld{
+    text-align: justify;
+    color: gray;
+}
+.image{
+    width: 200px;
+    height: 70px;
+    border-radius: 15px;
+    border: 1px solid;
+}
+.ab{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+.title{
+        text-align: center;
+        font-size: 1.8rem;
+        color: white;
+    
+}
+.stitle{
+    color: brown;
+    font-size: 1.3rem;
+}

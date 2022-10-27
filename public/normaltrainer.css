@@ -12,15 +12,16 @@
     margin: 0 auto;
 }
 
-.firstsec{
+.firstsec {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 512px;
+    width: 746px;
     padding: 5px 15px;
 }
 .ftitle{
     font-size: 2rem;
+    color: red;
 }
 .fimage img{
     width: 24vw;
@@ -30,4 +31,7 @@
 }
 .btns{
     margin-top: 0px;
+}
+.fimage img {
+    width: 27vw;
 }

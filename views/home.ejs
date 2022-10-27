@@ -30,7 +30,7 @@
       <div class="relative flex h-16 items-center justify-between">
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
           <div class="flex flex-shrink-0 items-center">
-            <img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company">
+            <a href="/home"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
           </div>
           
           <div class="hidden sm:ml-6 sm:block">
@@ -69,20 +69,25 @@
     </div>
   </nav>
 
+  
   <div class="home">
     <% items.forEach(function(image) { %>
       <div class="slides slide1">
         <img src="data:image/<%=image.img.contentType%>;base64,
             <%=image.img.data.toString('base64')%>">
+            <% let color1 = 'red' %>
         <div class="midsec">
-            <div class="midtitle">
+            <div class="midtitle title1">
               <%= image.firsttitle %>
             </div>
-            <div class="dis">
+            <div class="dis title2">
               <%= image.secondtitle %>
             </div>
-            <div class="dis">
+            <div class="dis title3">
               <%= image.thirdtitle%>
+            </div> 
+            <div class="dis title4">
+              <%= image.fourthtitle%>
             </div>
             <div class="btns">
               <div class="btn">Learn More</div>
@@ -96,32 +101,44 @@
 <div class="gymsec">
   <div class="gymsectitle">Participating Gyms and Studios</div>
   <div class="gyms">
-    <% itemm.forEach(function(image) { %>
-    <img src="data:image/<%=image.img.contentType%>;base64,
-            <%=image.img.data.toString('base64')%>">
-    <% }) %>
+      <% itemm.forEach(function(image) { %>
+        <form action="/gymfullinfo" method="post" class="gyms">
+          <div class="gymbio line2 iddd">
+            <input type="text" value='<%= image._id %>' name="idd">
+          </div>
+
+          <img src="data:image/<%=image.img.contentType%>;base64,
+                  <%=image.img.data.toString('base64')%>" onclick="submit()" class="disss">
+
+          <button id="subbtn" class="iddd btnsubbb" type="submit">Submit</button>
+        </form>
+        <% }) %>
   </div>
 
   <div class="btns">
-    <div class="btn btn2 more">More Gyms</div>
+    <a href="/gyms"><div class="btn btn2 more">More Gyms</div></a>
   </div>
 </div>
 
 <div class="infosec">
     <div class="moreinfos">
         <% let sizee = Object.keys(item).length; %>
-        <% if(sizee > 4){sizee=4}else{size=Object.keys(item).length} %>
-        <% console.log(sizee)%>
+        <!-- <% if(sizee < 4){size=Object.keys(item).length}else{size=Object.keys(item).length} %>
+        <% console.log(sizee)%> -->
         <% for(var i=0; i<sizee; i++) {%>
           <div class="info">
             <div class="infot"><%= item[i].title%></div>
-            <div class="infodis"><%= item[i].dis %></div>
+            <div class="infodis"><%= item[i].title1%></div>
+            <!-- <div class="infodis"><%= item[i].dis %></div> -->
+            <div class="infodis"><%= item[i].title2%></div>
+            <div class="infodis"><%= item[i].title3%></div>
+            <div class="infodis"><%= item[i].title4%></div>
           </div>
         <% } %>
-      <div class="info">
+      <!-- <div class="info">
         <div class="infot">Free Personal Training</div>
         <div class="infodis">Sign-up today to get free personal training session</div>
-      </div>
+      </div> -->
     </div>
 </div>
 
@@ -135,6 +152,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
+
+
+  <script>
+  </script>
   <script>
       function incerease(){
          let value = document.getElementById("amtv").innerText;
@@ -147,6 +168,10 @@
          if(value >1){
           document.getElementById("amtv").innerText--;
          }
+      }
+
+      function submit(){
+        document.getElementById('subbtn').click();
       }
   </script>
 

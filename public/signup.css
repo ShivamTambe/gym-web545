@@ -94,6 +94,7 @@ a{
 .block{
     width: 150px;
     height: auto;
+    margin-top :-30px;
 }
 .bg-gray-800{
     background-color: black;

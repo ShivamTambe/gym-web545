@@ -17,13 +17,22 @@ app.use(bodyparser.urlencoded({extended:false}))
 app.use(express.json());
 
 const gymSchema ={
+    title1:String,
+    title2:String,
+    title3:String,
+    title4:String,
     gymname : String,
     price : Number,
     gymbio: String,
     discountprice:Number,
     state: String,
     city : String,
-    zipcode:Number
+    zipcode:Number,
+    img:
+    {
+        data: Buffer,
+        contentType: String
+    }
 };
 
 const userSchema ={
@@ -48,21 +57,36 @@ const promoSchema={
     value: Number
 };
 const moreSchema ={
-    title : String,
-    dis : String
+    title: String,
+    title1 : String,
+    title2 : String,
+    title3 : String,
+    title4 : String,
 };
 var imageSchema = new mongoose.Schema({
     name: String,
     desc: String,
     firsttitle: String,
     secondtitle: String,
+    thirdtitle: String,
+    fourthtitle: String,
     img:
     {
         data: Buffer,
         contentType: String
     }
 });
+var colorSchema = new mongoose.Schema({
+    color1: String,
+    color2: String,
+    color3: String,
+    color4: String
+});
 var gymlogoSchema = new mongoose.Schema({
+    firsttitle: String,
+    secondtitle: String,
+    thirdtitle:String,
+    fourthtitle:String,
     img:
     {
         data: Buffer,
@@ -73,16 +97,18 @@ var gymlogoSchema = new mongoose.Schema({
 
 
 
-const GymInfo = mongoose.model("GymInfo", gymSchema);
+
 const UserInfo = mongoose.model("UserInfo", userSchema);
 const PromoInfo = mongoose.model("PromoInfo",promoSchema);
 const PersonalTrainer = mongoose.model("PersonalTrainer",personalSchema);
 const MoreInfo = mongoose.model("MoreInfo",moreSchema);
+const color = mongoose.model("color",colorSchema);
 
 
 
 const imgModel = mongoose.model("imgModel",imageSchema);
 const gymLogo = mongoose.model("gymLogo",gymlogoSchema);
+const GymInfo = mongoose.model("GymInfo", gymSchema);
 
 
 
@@ -99,7 +125,9 @@ var upload = multer({ storage: storage });
 
 
 
-
+app.post("/signindetails",function(req,res){
+    res.redirect("https://buy.stripe.com/test_aEU288ejr3ibgYUcMN");
+})
 // app.get('/upload', (req, res) => {
 //     imgModel.find({}, (err, items) => {
 //         if (err) {
@@ -137,25 +165,25 @@ var upload = multer({ storage: storage });
 
 
 
-app.post("/moreinfo",function(req, res){
-    let name = req.body.username;
-    let password = req.body.adminpassword;
-    console.log(name);
-    console.log(password);
-    adminInfo.find().then(result =>{
-        console.log(result);
-        for(var i=0; i<1; i++) {
-                if(password == result[i].password && name == result[i].username){
-                    let newinfo = new MoreInfo({
-                        title : req.body.title,
-                        dis : req.body.dis
-                    })
-                    newinfo.save();
-            }
-            res.redirect("/moreinfo");
-        }
-    }).catch(err => console.log(err));
-})
+// app.post("/moreinfo",function(req, res){
+//     let name = req.body.username;
+//     let password = req.body.adminpassword;
+//     console.log(name);
+//     console.log(password);
+//     adminInfo.find().then(result =>{
+//         console.log(result);
+//         for(var i=0; i<1; i++) {
+//                 if(password == result[i].password && name == result[i].username){
+//                     let newinfo = new MoreInfo({
+//                         title : req.body.title,
+//                         dis : req.body.dis
+//                     })
+//                     newinfo.save();
+//             }
+//             res.redirect("/moreinfo");
+//         }
+//     }).catch(err => console.log(err));
+// })
 
 
 app.post("/loginedgym",function(req,res){
@@ -195,14 +223,33 @@ app.get("/personaltrainer",function(req,res){
 })
 app.get("/gyms",function(req,res){
     GymInfo.find().then(result =>{
-        // console.log(result);
         res.render('index',{ item : result});
     }).catch(err => console.log(err));
 })
 
 
+app.post("/gymfullinfo",function(req,res){
+    let id = req.body.idd;
+    GymInfo.find({ _id: id}).then(result =>{
+        res.render('fullinfo',{ items : result});
+    }).catch(err => console.log(err));
+})
 app.get("/loginedhome",function(req,res){
-    res.render("loginedhome");
+    MoreInfo.find().then(result =>{
+        imgModel.find({}, (err, items) => {
+            gymLogo.find({}, (err, resultt) => {
+                color.find({}, (err, color) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send('An error occurred', err);
+                    }
+                    else {
+                        res.render("loginedhome",{item: result,items: items, itemm:resultt, imagee: color });
+                    }
+                });
+            });
+        }); 
+    }).catch(err => console.log(err));
 })
 app.get("/loginedpricing",function(req,res){
     res.render("loginedpricing");
@@ -229,13 +276,15 @@ app.get("/home",function(req,res){
     MoreInfo.find().then(result =>{
         imgModel.find({}, (err, items) => {
             gymLogo.find({}, (err, resultt) => {
-                if (err) {
-                    console.log(err);
-                    res.status(500).send('An error occurred', err);
-                }
-                else {
-                    res.render("home",{item: result,items: items, itemm:resultt });
-                }
+                color.find({}, (err, color) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send('An error occurred', err);
+                    }
+                    else {
+                        res.render("home",{item: result,items: items, itemm:resultt, imagee: color });
+                    }
+                });
             });
         }); 
     }).catch(err => console.log(err));
@@ -244,14 +293,17 @@ app.get("/home",function(req,res){
 app.get("/",function(req,res){
     MoreInfo.find().then(result =>{
         imgModel.find({}, (err, items) => {
-            gymLogo.find({}, (err, resultt) => {
-                if (err) {
-                    console.log(err);
-                    res.status(500).send('An error occurred', err);
-                }
-                else {
-                    res.render("home",{item: result,items: items, itemm:resultt });
-                }
+            GymInfo.find({}, (err, resultt) => {
+                color.find({}, (err, color) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send('An error occurred', err);
+                    }
+                    else {
+                        let obj = [];
+                        res.render("home",{item: result,items: items, itemm:resultt, imagee: color });
+                    }
+                });
             });
         }); 
     }).catch(err => console.log(err));
@@ -274,12 +326,22 @@ app.post("/signup",function(req,res){
                     let servicee = result[i].servicee;
                     console.log(servicee);
                     console.log(result[i].number);
-                    GymInfo.find().then(resultt =>{
-                        // res.render('loginedhome',{ no : num, s: servicee});
-                        res.render('loginedhome',{ no : num, s: servicee});
+                    MoreInfo.find().then(result =>{
+                        imgModel.find({}, (err, items) => {
+                            GymInfo.find({}, (err, resultt) => {
+                                color.find({}, (err, color) => {
+                                    if (err) {
+                                        console.log(err);
+                                        res.status(500).send('An error occurred', err);
+                                    }
+                                    else {
+                                        let obj = [];
+                                        res.render("loginedhome",{item: result,items: items, itemm:resultt, imagee: color });
+                                    }
+                                });
+                            });
+                        }); 
                     }).catch(err => console.log(err));
-                    a++;
-                    console.log(a);
             }
         }
     }).catch(err => console.log(err));
@@ -389,7 +451,9 @@ app.post("/searchbyzipp",function(req,res){
         }).catch(err => console.log(err));
     }).catch(err => console.log(err));
 })
-
+app.get("/payallathe",function(req,res){
+    res.render("payallathe");
+})
 
 
 
