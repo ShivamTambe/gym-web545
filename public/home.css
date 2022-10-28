@@ -108,10 +108,10 @@ body{
         color: red;
     }
 .slick-next {
-    right: 3px;
+    right: 20px;
 }
 .slick-prev {
-    left: 0;
+    left: 17px;
     z-index: 2000;
 }
 
@@ -158,9 +158,11 @@ body{
 }
 .infot{
     font-size: 1.2rem;
+    color: blue;
 }
 .infodis{
     color: #494F55;
+    color: white;
 }
 
 
@@ -173,8 +175,9 @@ body{
     background-color: #494F55;
     padding-bottom:30px ;
     padding-top: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+
 }
 .footerimg img{
     width: 200px;
@@ -232,8 +235,8 @@ body{
     max-width: 20px;
     
     position: relative;
-    left: -19px;
-    top: 11px;
+    left: -14px;
+    top: 12px;
 
 }
 .rightarr img{
@@ -241,8 +244,8 @@ body{
     max-width: 20px;
     
     position: relative;
-    left: -1px;
-    top: 11px;
+    left: -6px;
+    top: 12px;
 
 }
 /* .main{
@@ -387,10 +390,10 @@ svg path{
     background-repeat: no-repeat;
 }
 .gyms .slick-next {
-    right: -16px;
+    right: -5px;
 }
 .gyms .slick-prev {
-    left: -14px;
+    left: -7px;
     top: 73px;
 
 }
@@ -403,7 +406,7 @@ svg path{
     height: 210.8px;
 }
 .infosec .slick-next {
-    right: -16px;
+    right: -5px;
 }
 
 .infosec .slick-next:focus,.slick-prev:focus {
@@ -458,12 +461,12 @@ svg path{
     display: flex;
     gap: 1px;
 }
-/* .home:hover{
+/* .home:hover
     cursor: pointer;
 } */
 
 .infosec .slick-prev {
-    left: -14px;
+    left: -7px;
     top: 86px;
 }
 nav{
@@ -500,4 +503,12 @@ nav{
 }
 .gyms img{
     width: 100%!important;
+}
+.logo img{
+    position: relative;
+    left: 50px;
+}
+.space-x-4{
+    right: 50px;
+    position: relative;
 }

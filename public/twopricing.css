@@ -24,7 +24,7 @@
     display: flex;
     gap: 20px;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 23px;
 }
 .pricee{
     display: flex;
@@ -60,4 +60,22 @@
 }
 .pricingt {
     font-size: 1.2rem;
+}
+.footer{
+    width: 100vw;
+}
+.signbtna{
+    background-color: darkgreen;
+    border: 2px solid darkgreen;
+}
+.txt{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.btmtxt{
+    text-align: end;
+    font-size: 10px;
+    font-family: cursive;
+    margin-top: 10px;
 }

@@ -248,7 +248,7 @@ body{
 }
 .topp{
     opacity: 1;
-    color: gray;
+    color: white;
     font-size: 14px;
 }
 .amt {
@@ -311,4 +311,22 @@ body{
 }
 nav{
     background-color: black!important;
+}
+.pricetopp{
+    color: white;
+}
+.premimum{
+    background-color:  #00008b;
+}
+.col{
+    color: white;
+}
+.message1{
+    color: darkgreen;
+}
+.message2{
+    color: blue;
+}
+.message3{
+    color: darkgreen;
 }
