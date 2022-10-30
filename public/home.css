@@ -159,6 +159,7 @@ body{
 .infot{
     font-size: 1.2rem;
     color: blue;
+    margin-bottom: 10px;
 }
 .infodis{
     color: #494F55;
@@ -172,7 +173,7 @@ body{
     justify-content: space-between;
     margin-top: 150px;
     margin-bottom: 20px;
-    background-color: #494F55;
+    background-color: #1e2022;
     padding-bottom:30px ;
     padding-top: 20px;
     padding-left: 50px;

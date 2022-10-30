@@ -22,7 +22,7 @@
         <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
         <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
       </div>
-      <div class="submit">Donate</div>
+      <div class="submit" onclick="donate()">Donate</div>
     </div>
   </div>
   <nav class="bg-gray-800">
@@ -90,8 +90,8 @@
               <%= image.fourthtitle%>
             </div>
             <div class="btns">
-              <div class="btn">Learn More</div>
-              <div class="btn btn2">Join Now!</div>
+              <a href="/pricing"><div class="btn">Learn More</div></a>
+              <a href="/pricing"><div class="btn btn2">Join Now!</div></a>
             </div>
         </div>
       </div>
@@ -155,6 +155,9 @@
 
 
   <script>
+      function donate(){
+        window.location = "https://buy.stripe.com/test_fZe0000sBbOH0ZWdQY";  
+      }
   </script>
   <script>
       function incerease(){

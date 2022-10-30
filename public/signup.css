@@ -99,3 +99,6 @@ a{
 .bg-gray-800{
     background-color: black;
 }
+.logo img{
+   position: absolute;
+}

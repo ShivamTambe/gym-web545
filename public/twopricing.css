@@ -5,7 +5,7 @@
 .pricingdis{
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 50px;
     color: white;
     align-items: center;
 }
@@ -24,7 +24,7 @@
     display: flex;
     gap: 20px;
     justify-content: center;
-    margin-top: 23px;
+    margin-top: 50px;
 }
 .pricee{
     display: flex;
@@ -41,6 +41,7 @@
 .arr img{
     width: 20px;
     filter: hue-rotate(90deg);
+    transform: rotate(-90deg)
 }
 .arr{
     display: flex;
@@ -49,7 +50,8 @@
     margin-left: 10px;
 }
 .downarr img{
-    transform: rotate(180deg);
+    /* transform: rotate(180deg); */
+    transform: rotate(90deg)
 }
 .signn,.valuee,.monthh{
     display: flex;
@@ -76,6 +78,5 @@
 .btmtxt{
     text-align: end;
     font-size: 10px;
-    font-family: cursive;
     margin-top: 10px;
 }

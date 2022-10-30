@@ -61,7 +61,8 @@ body{
     margin-top: var(--bs-gutter-y);
 }
 .pricebtn{
-    display: inline-block;
+    /* display: inline-block; */
+    display: none;
     padding: 8px 40px 10px 40px;
     border-radius: 50px;
     background: #e32a2a;
@@ -250,6 +251,7 @@ body{
     opacity: 1;
     color: white;
     font-size: 14px;
+    display: none;
 }
 .amt {
     display: flex;
@@ -319,7 +321,7 @@ nav{
     background-color:  #00008b;
 }
 .col{
-    color: white;
+    color: #229d22;
 }
 .message1{
     color: darkgreen;
