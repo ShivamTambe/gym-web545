@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 
-mongoose.connect("mongodb+srv://shivam:Shivam123@cluster0.gcp5u27.mongodb.net/GYMlistDB?ssl=true",{useNewUrlParser: true});
+mongoose.connect("MONGODBLINK");
 
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(express.json());
