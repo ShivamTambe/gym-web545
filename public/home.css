@@ -513,3 +513,149 @@ nav{
     right: 50px;
     position: relative;
 }
+.profileimggg img{
+    width: 40px;
+    height: 40px;
+    border-radius: 60%;
+    border: 1px solid white;
+}
+.hidden{
+    display: flex;
+    justify-content: space-between;
+}
+.profileimggg{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: white;
+    gap: 10px;
+}
+.profileinfo{
+    display: none;
+    position: absolute;
+    border: 1px solid gray;
+    right: 46px;
+    width: 300px;
+    z-index: 2;
+    color: white;
+    top: 47px;
+    background-color: black;
+    padding-top: 0px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.ni{
+    display: flex;
+    background-color: gray;
+    padding: 15px;
+    align-items: center;
+}
+.dd{
+    display: flex;
+    flex-direction: column;
+}
+.oinfo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    color: gray;
+}
+.ll img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.namee{
+    font-size: 20px;
+}
+.emaill{
+    font-size: 14px;
+}
+.lid{
+    position: absolute;
+    opacity: 1;
+}
+.userinfo{
+    display: flex;
+    flex-direction: column;
+}
+.usertop{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.identity{
+    font-size: 15px;
+    margin: 0 auto;
+    color: gray;
+}
+.name{
+    font-size: 25px;
+    margin: 0 auto;
+}
+.userinfo{
+    color: white;
+    margin: 50px auto;
+}
+.userinfo img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.userinfo .img{
+    display: flex;
+    justify-content: center;
+}
+.editinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ebtn{
+    width: 500px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 25px;
+}
+input{
+    width: 500px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 25px;
+    background: transparent;
+}
+.elabel{
+    display: flex;
+    flex-direction: column;
+}
+.edd{
+    display: flex;
+    justify-content: center;
+}
+textarea{
+    width: 500px;
+    height: 200px;
+    background: transparent;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+.lid input{
+    display: none;
+}
+.applybtn{
+    margin: 10px auto;
+
+}
+.applyform{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.sendreq{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    color: white;
+    margin-top: 50px;
+}

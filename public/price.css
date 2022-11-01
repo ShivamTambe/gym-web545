@@ -61,8 +61,8 @@ body{
     margin-top: var(--bs-gutter-y);
 }
 .pricebtn{
-    /* display: inline-block; */
-    display: none;
+    display: inline-block;
+    /* display: none; */
     padding: 8px 40px 10px 40px;
     border-radius: 50px;
     background: #e32a2a;

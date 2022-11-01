@@ -5,13 +5,14 @@ const app = express();
 const bodyparser = require('body-parser');
 const mongoose = require("mongoose");
 var multer = require('multer');
+const { userInfo } = require("os");
 
 const port = process.env.PORT || 5000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 
-mongoose.connect("MONGODBLINK");
+mongoose.connect("mongodb+srv://shivam:Shivam123@cluster0.gcp5u27.mongodb.net/GYMlistDB?ssl=true",{useNewUrlParser: true});
 
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(express.json());
@@ -28,6 +29,7 @@ const gymSchema ={
     state: String,
     city : String,
     zipcode:Number,
+    plan:String,
     img:
     {
         data: Buffer,
@@ -45,7 +47,9 @@ const userSchema ={
     email : String,
     password : String,
     number: String,
-    servicee: String
+    servicee: String,
+    plan:String,
+    identity: String
 };
 const personalSchema={
     trainername: String,
@@ -234,23 +238,27 @@ app.post("/gymfullinfo",function(req,res){
         res.render('fullinfo',{ items : result});
     }).catch(err => console.log(err));
 })
+
 app.get("/loginedhome",function(req,res){
     MoreInfo.find().then(result =>{
         imgModel.find({}, (err, items) => {
             gymLogo.find({}, (err, resultt) => {
                 color.find({}, (err, color) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).send('An error occurred', err);
-                    }
-                    else {
-                        res.render("loginedhome",{item: result,items: items, itemm:resultt, imagee: color });
-                    }
+                    userInfo.find().then(user=>{
+                        if (err) {
+                            console.log(err);
+                            res.status(500).send('An error occurred', err);
+                        }
+                        else {
+                            res.render("loginedhome",{item: result,items: items, itemm:resultt, imagee: color, user: user });
+                        }
+                    });
                 });
             });
         }); 
     }).catch(err => console.log(err));
 })
+
 app.get("/loginedpricing",function(req,res){
     res.render("loginedpricing");
 })
@@ -321,7 +329,10 @@ app.post("/signup",function(req,res){
         var count= Object.keys(result).length;
         for(var i=0; i<count; i++) {
                 if(password == result[i].password && email == result[i].email){
+                    let emaill = email;
                     console.log(result[i]._id);
+                    let name = result[i].name;
+                    let id = result[i]._id;
                     let num = result[i].number;
                     let servicee = result[i].servicee;
                     console.log(servicee);
@@ -336,7 +347,7 @@ app.post("/signup",function(req,res){
                                     }
                                     else {
                                         let obj = [];
-                                        res.render("loginedhome",{item: result,items: items, itemm:resultt, imagee: color });
+                                        res.render("loginedhome",{item: result,items: items, itemm:resultt, imagee: color , name:name, email:emaill, id:id});
                                     }
                                 });
                             });
@@ -456,6 +467,68 @@ app.get("/payallathe",function(req,res){
 })
 
 
+
+
+app.post("/services",function(req,res){
+    let id = req.body.idb;
+    console.log(id);
+    UserInfo.find({_id:`${id}`}).then(result =>{
+        console.log(result);
+        console.log(result[0].name);
+        let name = result[0].name;
+        let email = result[0].email;
+        let identity = result[0].identity;
+        res.render("servics",{name :name, email:email, identity:identity, result: result[0]});
+    });
+})
+
+
+app.post("/edited", function(req,res){
+    let first = req.body.first;
+    let last = req.body.last;
+    let bio = req.body.bio;
+    let email = req.body.email;
+
+    UserInfo.updateOne({$set:{name:`${first}`,bio:`${bio}`}}).then(result =>{
+        res.redirect("/signup");
+    });
+})
+
+app.post("/editp",function(req,res){
+    id = req.body.ida;
+    console.log(id);
+    UserInfo.find({_id:`${id}`}).then(result =>{
+        console.log(result[0].name);
+        let name = result[0].name;
+        let email = result[0].email;
+        let identity = result[0].identity;
+        res.render("profiledit",{name :name, email:email, identity:identity, result: result[0]});
+    });
+})
+
+
+
+
+app.post("/setting",function(req,res){
+    id = req.body.ida;
+    console.log(id);
+    UserInfo.find({_id:`${id}`}).then(result =>{
+        console.log(result);
+        console.log(result[0].name);
+        let name = result[0].name;
+        let email = result[0].email;
+        let identity = result[0].identity;
+        res.render("setting",{name :name, email:email, identity:identity, result: result[0]});
+    });
+})
+app.get("/setting",function(req,res){
+    id = req.body.ida;
+    console.log(id);
+    // UserInfo.find({_id:`${id}`}).then(result =>{
+        
+    // })
+    res.render("setting");
+})
 
 app.listen(port, function(){
     console.log("server is running on prot "+ port);
