@@ -85,7 +85,7 @@
         </div>
 
         <div class="editinfo">
-          <div class="ebtn edd"><button type="submit">Edit</button></div>
+          <div class="ebtn edd" id="ddd" onclick="editt()"><button type="submit"><span id="dda">Edit</span></button></div>
           <div class="elabel">
             <label for="">First Name</label>
             <input type="text" value=<%= result.name %> readonly>
@@ -119,6 +119,11 @@
 
   <script>
 
+
+    function editt(){
+      console.log("clicked");
+        document.getElementById("dda").click();
+    }
       function setting(){
             
       }

@@ -281,6 +281,7 @@ app.get("/pricing",function(req,res){
     res.render("pricing");
 })
 app.get("/home",function(req,res){
+
     MoreInfo.find().then(result =>{
         imgModel.find({}, (err, items) => {
             gymLogo.find({}, (err, resultt) => {

@@ -158,8 +158,8 @@ body{
 }
 .infot{
     font-size: 1.2rem;
-    color: blue;
-    margin-bottom: 10px;
+    color: #89cff0;
+    margin-bottom: 20px;
 }
 .infodis{
     color: #494F55;
@@ -190,7 +190,32 @@ body{
 .foottitle{
     margin-bottom: 10px;
 }
-
+.dva{
+    position: fixed;
+    bottom: 10vh;
+    right: 136px;
+    z-index: 5;
+}
+.donatee {
+    border-radius: 25px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #00ff00;
+    border-color: rgb(49, 190, 49);
+    padding: 0px 15px;
+    display: flex;
+    width: 200px;
+    position: fixed;
+    justify-content: space-evenly;
+    bottom: 12vh;
+    right: 20px;
+    z-index: 1;
+    flex-direction: row;
+    color: white;
+    background-color: green;
+    border-color: rgb(49, 190, 49);
+}
 .donate{
     border-radius: 25px;
     height: 50px;
@@ -590,7 +615,7 @@ nav{
     color: gray;
 }
 .name{
-    font-size: 25px;
+    font-size: 18px;
     margin: 0 auto;
 }
 .userinfo{
@@ -658,4 +683,26 @@ textarea{
     gap: 40px;
     color: white;
     margin-top: 50px;
+}
+.profileimggg img:hover{
+    cursor: pointer;
+}
+#ddd:hover{
+    cursor: pointer;
+}
+.footlables img{
+    width: 25px;
+}
+.footlabel{
+    display: flex;
+    gap: 10px;
+}
+.facebook{
+    filter: grayscale(1) invert(1); 
+}
+.pin{
+    filter: grayscale(1) invert(1);
+}
+.f{
+    margin: 5px 0;
 }

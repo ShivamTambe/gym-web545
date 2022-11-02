@@ -127,7 +127,16 @@ body{
 }
 }
 
-
+.submit{
+    left: 6px;
+    position: relative;
+}
+.dva{
+    position: fixed;
+    bottom: 10vh;
+    right: 136px;
+    z-index: 5;
+}
 .donatee{
     border-radius: 25px;
     height: 50px;
@@ -139,9 +148,10 @@ body{
     display: flex;
     width: 200px;
     position: fixed;
+    justify-content: space-evenly;
     bottom: 12vh;
     right: 20px;
-    z-index: 3000;
+    z-index: 1;
     flex-direction: row;
     color: white;
 }
@@ -196,6 +206,7 @@ body{
 }
 .container{
     color: gray;
+    font-size: 15px;
 }
 .btn{
     color: white;
@@ -321,14 +332,20 @@ nav{
     background-color:  #00008b;
 }
 .col{
-    color: #229d22;
+    color: white;
 }
 .message1{
-    color: darkgreen;
+    color: #62ee62;
+    font-size: 15px;
 }
 .message2{
-    color: blue;
+    color: #62ee62;
+    font-size: 15px;
 }
 .message3{
-    color: darkgreen;
+    color: #62ee62;
+    font-size: 15px;
+}
+.container1 .col{
+    color: white;
 }

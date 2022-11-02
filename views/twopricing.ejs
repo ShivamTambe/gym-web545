@@ -15,16 +15,18 @@
     <title>Personal Trainer</title>
 </head>
 <body>
-    <div class="donate">
-        <div class="dbtn">
-            <div class="value">
-                <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
-                <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
-                <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
-            </div>
-          <div class="submit">Donate</div>
-        </div>
-      </div>
+  <div class="dva">
+    <div class="value">
+        <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
+        <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
+        <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
+    </div>
+</div>
+<div class="donatee" onclick="donate()">
+    <div class="dbtn">
+      <div class="submit">Donate</div>
+    </div>
+</div>
       <nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div class="relative flex h-16 items-center justify-between">
@@ -69,14 +71,15 @@
       </nav>
 
       <div class="pricingdis">
-        <div class="pricingt">Purchase a minimum of <span id="pricemonth" id="monthval">4</span> Months
+        <div class="pricingt">Purchase a minimum of 4 Months
+          <!-- <span id="pricemonth" id="monthval">4</span> -->
       </div>
       <div class="txt">
         <div class="monthprice">
           <div class="pricee" id="price1" onclick="option1()">
               <div class="signn">$</div>
               <div class="valuee"><span id="monthval">499</span>.99</div>
-              <div class="monthh"><span id="monthno">4 </span> /month</div>
+              <div class="monthh"><span id="monthno">4 </span> /months</div>
               <div class="arr">
                   <div class="uparr"><img src="/imgs/right-arrow.png" onclick="incre()" alt=""></div>
                   <div class="downarr"><img src="/imgs/right-arrow.png" onclick="decre()" alt=""></div>
@@ -152,14 +155,14 @@
             let price1 = document.getElementById("price1");
             let price2 = document.getElementById("price2");
             price2.style.border = "1px solid gray";
-            price1.style.border = "1px solid white";
+            price1.style.border = "1px solid darkgreen";
         }
         function option2(){
             console.log("clicked2");
             let price1 = document.getElementById("price1");
             let price2 = document.getElementById("price2");
             price1.style.border = "1px solid gray";
-            price2.style.border = "1px solid white";
+            price2.style.border = "1px solid darkgreen";
         }
 
 
