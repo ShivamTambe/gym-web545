@@ -185,10 +185,18 @@ body{
 }
 .footerinfos{
     display: flex;
-    gap: 20px;
+    gap: 40px;
+    left: -162px;
+    position: relative;
 }
 .foottitle{
     margin-bottom: 10px;
+}
+.foottitle:hover{
+    cursor: pointer;
+}
+.footlabel:hover{
+    cursor: pointer;
 }
 .dva{
     position: fixed;
@@ -240,6 +248,7 @@ body{
     align-items: center;
 }
 .value{
+    color: white;
     width: 80px;
     border: 1px solid white;
     border-radius: 100%;
@@ -705,4 +714,10 @@ textarea{
 }
 .f{
     margin: 5px 0;
+}
+.gyms form{
+    height: 150px;
+    display: flex;
+    justify-content: center!important;
+    align-items: center!important;
 }

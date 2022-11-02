@@ -19,6 +19,7 @@ body{
 }
 .value{
     font-size: 3rem;
+    color: white;
 }
 .pricedis{
     display: flex;
@@ -304,6 +305,7 @@ body{
 }
 .valuee {
     width: 80px;
+    color: white;
     background-color: green;
 }
 .pricetopp{
