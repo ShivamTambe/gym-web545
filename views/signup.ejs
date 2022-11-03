@@ -33,40 +33,40 @@
       <div class="formleft">
         <div class="detail">
           <label for="">First Name</label>
-          <input type="text" name="firstname" placeholder="First name" hh>
+          <input type="text" name="firstname" placeholder="First name" required>
         </div>
         <div class="detail">
           <label for="">Email</label>
-          <input type="text" name="email" placeholder="Email" hh>
+          <input type="text" name="email" placeholder="Email" required>
         </div>
         <div class="detail">
           <label for="">Register as</label>
           <!-- <input type="text" name="registeras" placeholder=""> -->
-          <select hh name="userrr" id="users" onclick="user()">  
+          <select required name="userrr" id="users" onclick="user()">  
             <option value = "personaltrainer">Personal Trainer</option>  
-            <option value = "user" >User</option> 
+            <option value = "user" >User</option>
           </select>  
           <input type="text" id="usertag" name="usertag">
         </div>
         <div class="detail">
           <label for="">Address</label>
-          <input type="text" name="address" placeholder="address" hh>
+          <input type="text" name="address" placeholder="address" required>
         </div>
         <div class="detail">
           <label for="">City-State-Zip Code</label>
-          <input type="text" name="city" placeholder="City/State" hh>
+          <input type="text" name="city" placeholder="City/State" required>
         </div>
         <div class="detail">
           <label for="">Apt/Suite/Unite(optional)</label>
-          <input type="text" name="apt" hh>
+          <input type="text" name="apt" required>
         </div>
         <div class="detail">
           <label for="">Password</label>
-          <input type="password" name="password" placeholder="************" hh>
+          <input type="password" name="password" placeholder="************" required>
         </div>
         <div class="detail">
           <label for="">Confirm Password</label>
-          <input type="password" name="confirmpassword" placeholder="*************" hh>
+          <input type="password" name="confirmpassword" placeholder="*************" required>
         </div>
         <div class="detail">
           <label for="">Show your profile to logged-in users</label>
@@ -79,18 +79,18 @@
       <div class="formright">
         <div class="detail">
           <label for="">Last Name</label>
-          <input type="text" name="lastname" placeholder="Last name" hh>
+          <input type="text" name="lastname" placeholder="Last name" required>
         </div>
         <div class="detail">
           <label for="">Phone No</label>
-          <input type="text" onkeydown="phoneNumberFormatter()" name="phoneno" id="phone-number" placeholder="Phone No" hh>
+          <input type="text" onkeydown="phoneNumberFormatter()" name="phoneno" id="phone-number" placeholder="Phone No" required>
         </div>
         <div class="detail">
           <label for="">Plan</label>
-          <select hh id="select1" onclick="getOption()">  
-            <option value = "">PERSONAL TRAINERS - $49.99/MONTH</option> 
-            <option value = "less">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
-            <option value = "large">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
+          <select required id="select1" onclick="getOption()">  
+            <option value = "" id="pt">PERSONAL TRAINERS - $49.99/MONTH</option> 
+            <option value = "less" id="a5">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
+            <option value = "large" id="a15">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
           </select>  
           <div class="economical" id="eco">
                 <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
@@ -116,7 +116,7 @@
         </div> -->
         <div class="detail">
           <label for="">Date Of Birth</label>
-          <input type="date" name="city" placeholder="City/State" hh>
+          <input type="date" name="city" placeholder="City/State" required>
         </div>
         <div class="detail gender">
           <label for="">Gender</label>
@@ -129,15 +129,15 @@
         </div>
         <div class="detail">
           <label for="">Emergency Contact Name</label>
-          <input type="text" name="emergencyname" hh>
+          <input type="text" name="emergencyname" required>
         </div>
         <div class="detail">
           <label for="">Emergency Contact Phone Number</label>
-          <input type="number" name="emergency" placeholder="Emergency Contact Phone Number" hh>
+          <input type="number" name="emergency" placeholder="Emergency Contact Phone Number" required>
         </div>
         <div class="detail">
           <label for="">Emergency Contact Email</label>
-          <input type="text" name="emergencyemail" placeholder="Emergency Contact Phone Number" hh>
+          <input type="text" name="emergencyemail" placeholder="Emergency Contact Phone Number" required>
         </div>
         <div class="detail">
           <label for="">Bio</label>
@@ -169,10 +169,16 @@
             var output = selectElement.value;
             console.log(output);  
             if(output == "user"){
-                document.getElementById("usertag").value = "user";
+                // document.getElementById("usertag").value = "user";
+                document.getElementById("pt").style.display = "none";
+                document.getElementById("a5").style.display = "block";
+                document.getElementById("a15").style.display = "block";
             }
             else{
-              document.getElementById("usertag").value = "personal";
+              // document.getElementById("usertag").value = "personal";
+              document.getElementById("a5").style.display = "none";
+              document.getElementById("pt").style.display = "block";
+              document.getElementById("a15").style.display = "none";
             }
         }
         function getOption() {
