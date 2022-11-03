@@ -186,7 +186,7 @@ body{
 .footerinfos{
     display: flex;
     gap: 40px;
-    left: -162px;
+    left: -115px;
     position: relative;
 }
 .foottitle{
@@ -717,7 +717,7 @@ textarea{
 }
 .gyms form{
     height: 150px;
-    display: flex;
+    display: flex!important;
     justify-content: center!important;
     align-items: center!important;
 }

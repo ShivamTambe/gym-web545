@@ -130,6 +130,17 @@ var upload = multer({ storage: storage });
 
 
 app.post("/signindetails",function(req,res){
+
+    // let user = req.body.usertag;
+    // console.log(user);
+    // if(user == "user"){
+    //     console.log("helo");
+    // }else{
+    //     res.render("pricing")
+    // }
+
+    // let user = req.name.personaltrainer;
+    // console.log(user.value);
     res.redirect("https://buy.stripe.com/test_aEU288ejr3ibgYUcMN");
 })
 // app.get('/upload', (req, res) => {

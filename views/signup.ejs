@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/home.css">
-  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="/signup.css">
+  <script type="text/javascript" src="jquery-3.5.1.min.js"> </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOME</title>
 </head>
@@ -32,89 +33,111 @@
       <div class="formleft">
         <div class="detail">
           <label for="">First Name</label>
-          <input type="text" name="firstname" placeholder="First name">
+          <input type="text" name="firstname" placeholder="First name" hh>
         </div>
         <div class="detail">
           <label for="">Email</label>
-          <input type="text" name="email" placeholder="Email">
+          <input type="text" name="email" placeholder="Email" hh>
         </div>
         <div class="detail">
           <label for="">Register as</label>
           <!-- <input type="text" name="registeras" placeholder=""> -->
-          <select>  
-            <option value = "PersonalTrainer">Personal Trainer</option>  
-            <option value = "User">User</option> 
+          <select hh name="userrr" id="users" onclick="user()">  
+            <option value = "personaltrainer">Personal Trainer</option>  
+            <option value = "user" >User</option> 
           </select>  
-        </div>
-        <div class="detail">
-          <label for="">City/State</label>
-          <input type="text" name="city" placeholder="City/State">
+          <input type="text" id="usertag" name="usertag">
         </div>
         <div class="detail">
           <label for="">Address</label>
-          <input type="text" name="address" placeholder="address">
+          <input type="text" name="address" placeholder="address" hh>
+        </div>
+        <div class="detail">
+          <label for="">City-State-Zip Code</label>
+          <input type="text" name="city" placeholder="City/State" hh>
         </div>
         <div class="detail">
           <label for="">Apt/Suite/Unite(optional)</label>
-          <input type="text" name="apt">
-        </div>
-        <div class="detail">
-          <label for="">Emergency Contact Phone Number</label>
-          <input type="number" name="emergency" placeholder="Emergency Contact Phone Number">
+          <input type="text" name="apt" hh>
         </div>
         <div class="detail">
           <label for="">Password</label>
-          <input type="password" name="password" placeholder="************">
+          <input type="password" name="password" placeholder="************" hh>
         </div>
         <div class="detail">
           <label for="">Confirm Password</label>
-          <input type="password" name="confirmpassword" placeholder="*************">
+          <input type="password" name="confirmpassword" placeholder="*************" hh>
+        </div>
+        <div class="detail">
+          <label for="">Show your profile to logged-in users</label>
+          <div class="checkboxes bet">
+            <div><input type="checkbox" name="yes" id="private" class="social"><Label class="checkw">Private</Label></div>
+            <div><input type="checkbox" name="no" id="public" class="social"><Label class="checkw">Public</Label></div>
+          </div>
         </div>
       </div>
       <div class="formright">
         <div class="detail">
           <label for="">Last Name</label>
-          <input type="text" name="lastname" placeholder="Last name">
+          <input type="text" name="lastname" placeholder="Last name" hh>
         </div>
         <div class="detail">
           <label for="">Phone No</label>
-          <input type="text" name="phoneno" placeholder="Phone No">
+          <input type="text" onkeydown="phoneNumberFormatter()" name="phoneno" id="phone-number" placeholder="Phone No" hh>
         </div>
         <div class="detail">
           <label for="">Plan</label>
-          <select>  
-            <option value = "less">PERSONAL TRAINERS - $49.99/MONTH</option> 
+          <select hh id="select1" onclick="getOption()">  
+            <option value = "">PERSONAL TRAINERS - $49.99/MONTH</option> 
             <option value = "less">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
             <option value = "large">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
           </select>  
+          <div class="economical" id="eco">
+                <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
+                <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
+                <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
+                <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
+                <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
+          </div>
+          <div class="premimum" id="pre">
+            <div class="gyms"><input type="checkbox" name="" id=""> Premimum Gym</div>
+            <div class="gyms"><input type="checkbox" name="" id=""> Premimum Gym</div>
+            <div class="gyms"><input type="checkbox" name="" id=""> Premimum Gym</div>
+            <div class="gyms"><input type="checkbox" name="" id=""> Premimum Gym</div>
+            <div class="gyms"><input type="checkbox" name="" id=""> Premimum Gym</div>
+      </div>
         </div>
-        <div class="detail">
+        <!-- <div class="detail">
           <label for="">Feature</label>
           <select>  
             <option value = "less">Economical</option> 
             <option value = "less">Premimum</option>  
           </select>  
-        </div>
+        </div> -->
         <div class="detail">
           <label for="">Date Of Birth</label>
-          <input type="date" name="city" placeholder="City/State">
+          <input type="date" name="city" placeholder="City/State" hh>
         </div>
         <div class="detail gender">
           <label for="">Gender</label>
-          <div class="checkboxes">
-            <input type="checkbox" name="male" id=""><Label>Male</Label>
-            <input type="checkbox" name="female" id=""><Label>Female</Label>
-            <input type="checkbox" name="other" id=""><Label>Other</Label>
-            <input type="checkbox" name="prefer" id=""><Label>Prefer not to say</Label>
+          <div class="checkboxes" onclick="check()">
+            <input type="checkbox" name="male" id="male" ><Label class="checkw">Male</Label>
+            <input type="checkbox" name="female" id="female" ><Label class="checkw">Female</Label>
+            <input type="checkbox" name="other" id="other"><Label class="checkw">Other</Label>
+            <input type="checkbox" name="prefer" id="prefer" ><Label class="checkw checkl">Prefer not to say</Label>
           </div>
         </div>
         <div class="detail">
           <label for="">Emergency Contact Name</label>
-          <input type="text" name="emergencyname">
+          <input type="text" name="emergencyname" hh>
+        </div>
+        <div class="detail">
+          <label for="">Emergency Contact Phone Number</label>
+          <input type="number" name="emergency" placeholder="Emergency Contact Phone Number" hh>
         </div>
         <div class="detail">
           <label for="">Emergency Contact Email</label>
-          <input type="text" name="emergencyemail" placeholder="Emergency Contact Phone Number">
+          <input type="text" name="emergencyemail" placeholder="Emergency Contact Phone Number" hh>
         </div>
         <div class="detail">
           <label for="">Bio</label>
@@ -123,9 +146,9 @@
       </div>
     </div>
     <div class="signinsubmit">
-      <div class="warn">By Clicking Sign-up, you agree to VE's <a href="">Terms and Conditions of Use</a></div>
+      <div class="warn"><input type="checkbox" name="agree" id=""> By Clicking Sign-up, you agree to VE's <a href="">Terms and Conditions of Use</a></div>
       <!-- <button type="submit">Submit</button> -->
-      <button onclick="pay()"><a href="/https://buy.stripe.com/test_aEU288ejr3ibgYUcMN" id="pay">Submit</a></button>
+      <button onclick="pay()">Submit</button>
       <div class="login">Have a account? <a href="/signup">Log-in</a></div>
     </div>
     </form>
@@ -133,9 +156,67 @@
   <%- include('../partials/fotter.ejs'); %>
 
 
+  <script src="./slick.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+
+  <script>
+
+
+        function user(){
+            var selectElement = document.querySelector('#usertag');
+            var output = selectElement.value;
+            console.log(output);  
+            if(output == "user"){
+                document.getElementById("usertag").value = "user";
+            }
+            else{
+              document.getElementById("usertag").value = "personal";
+            }
+        }
+        function getOption() {
+            var selectElement = document.querySelector('#select1');
+            var output = selectElement.value;
+            console.log(output);
+
+            if(output == "less"){
+                document.getElementById("eco").style.display = "grid";
+                document.getElementById("pre").style.display = "none";
+            }
+            else{
+              if(output == "large"){
+                document.getElementById("pre").style.display = "grid";
+                document.getElementById("eco").style.display = "none";
+              }
+              else{
+                document.getElementById("pre").style.display = "none";
+                document.getElementById("eco").style.display = "none";
+              }
+            }
+        }
+      function formatPhoneNumber(value){
+          if(!value) return value;
+
+          const phoneNumber = value.replace(/[^\d]/g, '');
+          const phoneNumberLength = phoneNumber.length;
+          if(phoneNumberLength<4) return phoneNumber;
+          if(phoneNumberLength < 7){
+            return `(${phoneNumber.slice(0,3)}) ${phoneNumber.slice(3)}`;
+          }
+          return `(${phoneNumber.slice(0,3)}) ${phoneNumber.slice(
+            3,
+            6,
+          )}-${phoneNumber.slice(6,9)}`;
+      }
+
+      function phoneNumberFormatter(){
+        const inputField = document.getElementById('phone-number');
+        const formattedInputValue = formatPhoneNumber(inputField.value);
+        inputField.value = formattedInputValue;
+      }
+
+  </script>
   <script>
 //     const form = document.querySelector(".form");
 //       form.addEventListener("submit", event => {
@@ -147,5 +228,56 @@
       window.location = "https://buy.stripe.com/test_aEU288ejr3ibgYUcMN";  
     }
   </script>
+
+
+<script>
+    function check(){
+      console.log("jjdjj");
+      let male = document.getElementById("male").checked;
+      let female = document.getElementById("female").checked;
+      let other = document.getElementById("other").checked;
+      let prefer = document.getElementById("prefer").checked;
+      console.log(male);
+
+      if(male == true){
+        document.getElementById("female").checked = false;
+        document.getElementById("other").checked = false;
+        document.getElementById("prefer").checked = false;
+      }
+      if(female == true){
+        document.getElementById("male").checked = false;
+        document.getElementById("other").checked = false;
+        document.getElementById("prefer").checked = false;
+      }
+      if(other == true){
+        document.getElementById("female").checked = false;
+        document.getElementById("male").checked = false;
+        document.getElementById("prefer").checked = false;
+      }
+      if(prefer == true){
+        document.getElementById("female").checked = false;
+        document.getElementById("other").checked = false;
+        document.getElementById("male").checked = false;
+      }
+      // document.getElementById("female").click();
+      // document.getElementById("other").click();
+      // document.getElementById("prefer").click();
+    }
+    // function female(){
+    //   document.getElementById("male").click();
+    //   document.getElementById("other").click();
+    //   document.getElementById("prefer").click();
+    // }
+    // function other(){
+    //   document.getElementById("female").click();
+    //   document.getElementById("male").click();
+    //   document.getElementById("prefer").click();
+    // }
+    // function prefer(){
+    //   document.getElementById("female").click();
+    //   document.getElementById("other").click();
+    //   document.getElementById("male").click();
+    // }
+</script>
 </body>
 </html>

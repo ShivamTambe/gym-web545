@@ -337,17 +337,54 @@ nav{
     color: white;
 }
 .message1{
-    color: #62ee62;
+    color: white;
     font-size: 15px;
 }
 .message2{
-    color: #62ee62;
+    color: white;
     font-size: 15px;
 }
 .message3{
-    color: #62ee62;
+    color: white;
     font-size: 15px;
 }
 .container1 .col{
     color: white;
+}
+.facebook{
+    filter: grayscale(1) invert(1); 
+}
+.pin{
+    filter: grayscale(1) invert(1);
+}
+.f{
+    margin: 5px 0;
+}
+.footlables img{
+    width: 25px;
+}
+.footlabel{
+    display: flex;
+    gap: 10px;
+}
+#ddd:hover{
+    cursor: pointer;
+}
+.foottitle{
+    cursor: pointer;
+}
+.footlabel{
+    cursor: pointer;
+}
+.footerinfos {
+    display: flex;
+    gap: 40px;
+    left: -115px;
+    position: relative;
+}
+.white{
+    color: white;
+}
+.green{
+    color: #00ff00;
 }
