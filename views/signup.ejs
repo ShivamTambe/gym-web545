@@ -92,19 +92,26 @@
             <option value = "less" id="a5">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
             <option value = "large" id="a15">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
           </select>  
+          <select required id="select2" onclick="getOption()">
+            <option value = "less" id="a5">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
+            <option value = "large" id="a15">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
+          </select>  
+          <select required id="select3" onclick="getOption()">  
+            <option value = "" id="pt">PERSONAL TRAINERS - $49.99/MONTH</option>
+          </select>  
           <div class="economical" id="eco">
-                <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
-                <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
-                <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
-                <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
-                <div class="gyms"><input type="checkbox" name="" id=""> Economical Gym</div>
+                <div class="gyms"><input type="checkbox" name=""  > Economical Gym</div>
+                <div class="gyms"><input type="checkbox" name=""  > Economical Gym</div>
+                <div class="gyms"><input type="checkbox" name=""  > Economical Gym</div>
+                <div class="gyms"><input type="checkbox" name=""  > Economical Gym</div>
+                <div class="gyms"><input type="checkbox" name=""  > Economical Gym</div>
           </div>
           <div class="premimum" id="pre">
-            <div class="gyms"><input type="checkbox" name="" id=""> Premimum Gym</div>
-            <div class="gyms"><input type="checkbox" name="" id=""> Premimum Gym</div>
-            <div class="gyms"><input type="checkbox" name="" id=""> Premimum Gym</div>
-            <div class="gyms"><input type="checkbox" name="" id=""> Premimum Gym</div>
-            <div class="gyms"><input type="checkbox" name="" id=""> Premimum Gym</div>
+            <div class="gyms"><input type="checkbox" name=""  > Premimum Gym</div>
+            <div class="gyms"><input type="checkbox" name=""  > Premimum Gym</div>
+            <div class="gyms"><input type="checkbox" name=""  > Premimum Gym</div>
+            <div class="gyms"><input type="checkbox" name=""  > Premimum Gym</div>
+            <div class="gyms"><input type="checkbox" name=""  > Premimum Gym</div>
       </div>
         </div>
         <!-- <div class="detail">
@@ -146,7 +153,7 @@
       </div>
     </div>
     <div class="signinsubmit">
-      <div class="warn"><input type="checkbox" name="agree" id=""> By Clicking Sign-up, you agree to VE's <a href="">Terms and Conditions of Use</a></div>
+      <div class="warn"><input type="checkbox" name="agree"  > By Clicking Sign-up, you agree to VE's <a href="">Terms and Conditions of Use</a></div>
       <!-- <button type="submit">Submit</button> -->
       <button onclick="pay()">Submit</button>
       <div class="login">Have a account? <a href="/signup">Log-in</a></div>
@@ -165,20 +172,25 @@
 
 
         function user(){
-            var selectElement = document.querySelector('#usertag');
+            var selectElement = document.querySelector('#select1');
             var output = selectElement.value;
             console.log(output);  
             if(output == "user"){
                 // document.getElementById("usertag").value = "user";
-                document.getElementById("pt").style.display = "none";
-                document.getElementById("a5").style.display = "block";
-                document.getElementById("a15").style.display = "block";
+                document.getElementById("select1").style.display = "none";
+                document.getElementById("select2").style.display = "block";
+                document.getElementById("select3").style.display = "none";
+                document.getElementById("eco").style.display = "none";
+                document.getElementById("pre").style.display = "none";
             }
             else{
+              if(output == "personal")
               // document.getElementById("usertag").value = "personal";
-              document.getElementById("a5").style.display = "none";
-              document.getElementById("pt").style.display = "block";
-              document.getElementById("a15").style.display = "none";
+                document.getElementById("select1").style.display = "none";
+                document.getElementById("select2").style.display = "none";
+                document.getElementById("select3").style.display = "block";
+                document.getElementById("eco").style.display = "none";
+                document.getElementById("pre").style.display = "none";
             }
         }
         function getOption() {

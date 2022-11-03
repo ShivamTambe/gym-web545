@@ -160,3 +160,12 @@ textarea{
 #usertag{
     display: none;
 }
+#pt, #a5, #a15{
+    display: block;
+}
+#pt{
+    display: none;
+}
+#select2, #select3{
+    display: none;
+}
