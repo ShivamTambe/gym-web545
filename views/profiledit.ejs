@@ -9,106 +9,130 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/slick.css">
   <link rel="stylesheet" href="/home.css">
+  <link rel="stylesheet" href="/profiledit.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOME</title>
 </head>
 <body>
     <form action="/editp" method="post">
-  <div class="lid">
-    <input type="text" value= <%= id %>>
-  </div>
-  <div class="profileinfo" id="pinfo">
-    <div class="pemail">
-      <div class="ni">
-        <div class="ll"><img src="/imgs/image4.jpg" alt=""></div>
-        <div class="dd">
-          <h5 class="namee"><%= name %></h5>
-          <p class="emaill"><%= email %></p>
-        </div>
-      </div>
-      <div class="oinfo">
-        <form action="setting" method="get">
-            <div class="setting" id="sett">Setting</div>
-            <div class="serv">Services</div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <nav class="bg-gray-800">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
-          <div class="flex flex-shrink-0 items-center logo">
-            <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
+        <!-- <div class="lid">
+          <input type="text" value= <%= id %>>
+        </div> -->
+        <div class="profileinfo" id="pinfo">
+          <div class="pemail">
+            <div class="ni">
+              <div class="ll"><img src="/imgs/image4.jpg" alt=""></div>
+              <div class="dd">
+                <h5 class="namee"><%= name %></h5>
+                <p class="emaill"><%= email %></p>
+              </div>
+            </div>
+            <div class="oinfo">
+              <form action="setting" method="get">
+                  <div class="setting" id="sett">Setting</div>
+                  <div class="serv">Services</div>
+              </form>
+            </div>
           </div>
-          
-          <div class="hidden sm:ml-6 sm:block">
-            <div class="flex space-x-4">
+        </div>
+        <nav class="bg-gray-800">
+          <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+              <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
+                <div class="flex flex-shrink-0 items-center logo">
+                  <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
+                </div>
+                
+                <div class="hidden sm:ml-6 sm:block">
+                  <div class="flex space-x-4">
+                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                    <a href="/loginedhome" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red" aria-current="page">Home</a>
+        
+                    <a href="/loginedgyms" class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Gyms</a>
+        
+                    <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal Trainers</a>
+        
+                    <a href="/loginedpricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a>
+      </div>
+                  <div class="profileimggg">
+                    <div class="name"><%= name %></div>
+                    <img src="/imgs/image4.jpg" alt="" onclick="profile()">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Mobile menu, show/hide based on menu state. -->
+          <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pt-2 pb-3">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/loginedhome" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red" aria-current="page">Home</a>
-  
-              <a href="/loginedgyms" class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Gyms</a>
-  
-              <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal Trainers</a>
-  
-              <a href="/loginedpricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a>
-</div>
-            <div class="profileimggg">
-              <div class="name"><%= name %></div>
-              <img src="/imgs/image4.jpg" alt="" onclick="profile()">
+              <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns" aria-current="page">Home</a>
+        
+              <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Gyms</a>
+        
+              <a href="/normaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal Trainers</a>
+        
+              <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
+
+              <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pt-2 pb-3">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns" aria-current="page">Home</a>
-  
-        <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Gyms</a>
-  
-        <a href="/normaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal Trainers</a>
-  
-        <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
+        </nav>
 
-        <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
-      </div>
-    </div>
-  </nav>
+        <div class="userinfo">
+              <div class="usertop">
+                  <!-- <div class="img"><img src="/imgs/image4.jpg" alt=""></div> -->
+                  <% items.forEach(function(image) { %>
+                      <div class="imgdetails">
+                        <img src="data:image/<%=image.img.contentType%>;base64,
+                          <%=image.img.data.toString('base64')%>">
+                      </div>
+                  <% }) %>
+                  <div class="name"><%= name %></div>
+              </div>
+                  <div class="editinfo">
+                      <div class="ebtn edd"><button type="submit">Edit</button></div>
+                      
+                      <form action="/edited" method="post" class="applyform" enctype="multipart/form-data"> 
+                          <div class="lid">
+                            <input type="text" name="ida" value= <%= id %>>
+                          </div>
+                          <div>
+                            <label for="image">Upload Image: </label>
+                            <input type="file" id="image"
+                              name="image" value="" required class="uploadimg">
+                          </div>
+                          <div class="elabel">
+                              <label for="">First Name</label>
+                              <input type="text" name="first" placeholder="Enter First Name">
+                          </div>
+                          <div class="elabel">
+                              <label for="">Last Name</label>
+                              <input type="text" name="last" placeholder="Enter Last Name">
+                          </div>
+                          <div class="elabel">
+                              <label for="">Email</label>
+                              <input type="text" name="email" placeholder="Enter Email Name">
+                          </div>
+                          <div class="elabel">
+                              <label for="">Bio</label>
+                              <textarea type="text" name="bio" placeholder="Enter Bio"></textarea>
+                          </div>
+                          <div class="detail">
+                            <label for="">Show your profile to logged-in users</label>
+                            <div class="checkboxes bet">
+                              <div onclick="click1()"><input type="checkbox" name="yes" id="private" class="social"><Label class="checkw">Private</Label></div>
+                              <div onclick="click2()"><input type="checkbox" name="no" id="public" class="social"><Label class="checkw">Public</Label></div>
+                            </div>
+                            <input type="text" id="pros" name="status" value="hh">
+                          </div>
 
-  <div class="userinfo">
-        <div class="usertop">
-            <div class="img"><img src="/imgs/image4.jpg" alt=""></div>
-            <div class="name"><%= name %></div>
-        </div>
-            <div class="editinfo">
-                <div class="ebtn edd"><button type="submit">Edit</button></div>
-                <form action="/edited" method="post" class="applyform">
-                    <div class="elabel">
-                        <label for="">First Name</label>
-                        <input type="text" name="first" placeholder="Enter First Name">
-                    </div>
-                    <div class="elabel">
-                        <label for="">Last Name</label>
-                        <input type="text" name="last" placeholder="Enter Last Name">
-                    </div>
-                    <div class="elabel">
-                        <label for="">Email</label>
-                        <input type="text" name="email" placeholder="Enter Email Name">
-                    </div>
-                    <div class="elabel">
-                        <label for="">Bio</label>
-                        <textarea type="text" name="bio" placeholder="Enter Bio"></textarea>
-                    </div>
-
-                    <button type="submit">
-                        <div class="btn applybtn">APPLY</div>
-                    </button>
-                </form>
-            </div>
+                          <button type="submit">
+                              <div class="btn applybtn">APPLY</div>
+                          </button>
+                      </form>
+                  </div>
         </form>
   </div>
   
@@ -124,6 +148,17 @@
 
 
   <script>
+
+      function click1(){
+        document.getElementById("private").checked = true;
+        document.getElementById("public").checked = false;
+        document.getElementById("pros").value = "Private";
+      }
+      function click2(){
+        document.getElementById("private").checked = false;
+        document.getElementById("public").checked = true;
+        document.getElementById("pros").value = "Public";
+      }
 
       function setting(){
             

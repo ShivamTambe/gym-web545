@@ -62,8 +62,12 @@
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a href="/loginedhome" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red" aria-current="page">Home</a>
-  
-              <a href="/loginedgyms" class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Gyms</a>
+              <form action="/loginedgyms" method="post">
+                  <div class="lid">
+                    <input name="ida" type="text" value= <%= id %> >
+                  </div>
+                  <span class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns"><button type="submit">Gyms</button></span>
+              </form>
   
               <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal Trainers</a>
   

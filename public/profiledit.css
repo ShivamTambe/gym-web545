@@ -1,0 +1,30 @@
+.bet{
+    display: flex;
+    justify-content: space-between;
+}
+.bet div{
+    display: flex;
+    gap: 10px;
+    width: 260px;
+}
+.bet input{
+    width: 15px;
+}
+.uploadimg{
+    width: 300px;
+    margin-left: 20px;
+}
+.edd{
+    margin-bottom: 20px;
+}
+.lid input{
+    display: none;
+}
+.lid{
+    position: relative;
+    top: 100px;
+}
+.imgdetails{
+    display: flex;
+    justify-content: center;
+}

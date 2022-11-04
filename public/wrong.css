@@ -1,0 +1,27 @@
+.wrong{
+    height: 500px;
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-bottom: -100px;
+}
+.sign{
+    width: 980px;
+    margin: 0 auto;
+    display: flex;
+    background-color: white;
+    justify-content: end;
+    margin-bottom: -79px;
+}
+.relative{
+    margin-bottom: 50px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}

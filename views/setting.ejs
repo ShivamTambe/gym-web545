@@ -79,11 +79,16 @@
 
   <div class="userinfo">
         <div class="usertop">
-            <div class="img"><img src="/imgs/image4.jpg" alt=""></div>
+          <% items.forEach(function(image) { %>
+            <div class="imgdetails">
+              <img src="data:image/<%=image.img.contentType%>;base64,
+                <%=image.img.data.toString('base64')%>">
+            </div>
+        <% }) %>
             <div class="name"><%= name %></div>
             <div class="identity"><%= identity %></div>
         </div>
-
+         
         <div class="editinfo">
           <div class="ebtn edd" id="ddd" onclick="editt()"><button type="submit"><span id="dda">Edit</span></button></div>
           <div class="elabel">

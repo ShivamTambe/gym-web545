@@ -5,6 +5,7 @@ const app = express();
 const bodyparser = require('body-parser');
 const mongoose = require("mongoose");
 var multer = require('multer');
+var fs = require('fs');
 const { userInfo } = require("os");
 
 const port = process.env.PORT || 5000;
@@ -49,7 +50,13 @@ const userSchema ={
     number: String,
     servicee: String,
     plan:String,
-    identity: String
+    identity: String,
+    img:
+    {
+        data: Buffer,
+        contentType: String
+    },
+    status: String
 };
 const personalSchema={
     trainername: String,
@@ -130,18 +137,20 @@ var upload = multer({ storage: storage });
 
 
 app.post("/signindetails",function(req,res){
-
-    // let user = req.body.usertag;
-    // console.log(user);
-    // if(user == "user"){
-    //     console.log("helo");
-    // }else{
-    //     res.render("pricing")
-    // }
-
-    // let user = req.name.personaltrainer;
-    // console.log(user.value);
-    res.redirect("https://buy.stripe.com/test_aEU288ejr3ibgYUcMN");
+    let user = req.body.usertag;
+    let value = req.body.ecoprice;
+    console.log(user);
+    console.log(value);
+    if(user == "Personal"){
+        res.redirect("https://buy.stripe.com/test_14k5kkcbjbOH6kg5kt");
+    }else{
+        if(parseInt(value) == -1){
+            res.render("wrong");
+        }
+        else{
+            res.redirect("https://buy.stripe.com/test_dR6dQQejrbOHbEA14e");
+        }
+    }
 })
 // app.get('/upload', (req, res) => {
 //     imgModel.find({}, (err, items) => {
@@ -230,7 +239,7 @@ app.get("/personaltrainer",function(req,res){
     let users;
     PersonalTrainer.find().then(result =>{
         console.log(result);
-        UserInfo.find().then(resultt =>{
+        UserInfo.find({status:"Public"}).then(resultt =>{
             console.log(resultt);
             res.render('personaltrainer',{ item : result, item1: resultt});
         }).catch(err => console.log(err));
@@ -273,6 +282,16 @@ app.get("/loginedhome",function(req,res){
 app.get("/loginedpricing",function(req,res){
     res.render("loginedpricing");
 })
+app.post("/loginedgyms",function(req,res){
+    let id = req.body.ida;
+    GymInfo.find().then(result =>{
+        UserInfo.find({_id:`${id}`}).then(result =>{
+            let emaill = result[0].email;
+            let name = result[0].name;
+            res.render('loginedgym',{ item : result, name : name, email: emaill});
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
 app.get("/loginedgyms",function(req,res){
     GymInfo.find().then(result =>{
         // console.log(result);
@@ -280,7 +299,10 @@ app.get("/loginedgyms",function(req,res){
     }).catch(err => console.log(err));
 })
 app.get("/signin",function(req,res){
-    res.render("signup");
+    GymInfo.find().then(result =>{
+        // console.log(result);
+        res.render('signup',{ item : result});
+    }).catch(err => console.log(err));
 })
 app.get("/twopricing",function(req,res){
     res.render("twopricing");
@@ -495,14 +517,43 @@ app.post("/services",function(req,res){
 })
 
 
-app.post("/edited", function(req,res){
+app.post("/edited", upload.single('image'), (req, res, next) => {
+    // console.log("jello");
+    // console.log(req.file);
     let first = req.body.first;
     let last = req.body.last;
     let bio = req.body.bio;
     let email = req.body.email;
+    let id = req.body.ida;
+    let sta = req.body.status;
+    console.log(id);
 
-    UserInfo.updateOne({$set:{name:`${first}`,bio:`${bio}`}}).then(result =>{
-        res.redirect("/signup");
+    var obj = {
+        first: req.body.first,
+        last: req.body.last,
+        bio: req.body.bio,
+        email: req.body.email,
+        img:{
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    UserInfo.updateOne({_id:`${id}`},{$set:{
+        name:`${first}`,
+        img: {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        },
+        status:sta
+    }
+    }).then(resultt =>{
+        UserInfo.find({_id:`${id}`}).then(result =>{
+            console.log(result[0].name);
+            let name = result[0].name;
+            let email = result[0].email;
+            let identity = result[0].identity;
+            res.render("profiledit",{name :name, email:email, identity:identity, result: result[0],items:result},);
+        });
     });
 })
 
@@ -514,11 +565,9 @@ app.post("/editp",function(req,res){
         let name = result[0].name;
         let email = result[0].email;
         let identity = result[0].identity;
-        res.render("profiledit",{name :name, email:email, identity:identity, result: result[0]});
+        res.render("profiledit",{name :name, email:email, identity:identity, result: result[0],items:result});
     });
 })
-
-
 
 
 app.post("/setting",function(req,res){
@@ -530,9 +579,10 @@ app.post("/setting",function(req,res){
         let name = result[0].name;
         let email = result[0].email;
         let identity = result[0].identity;
-        res.render("setting",{name :name, email:email, identity:identity, result: result[0]});
+        res.render("setting",{name :name, email:email, identity:identity, result: result[0],items:result});
     });
 })
+
 app.get("/setting",function(req,res){
     id = req.body.ida;
     console.log(id);

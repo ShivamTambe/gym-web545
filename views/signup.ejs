@@ -28,21 +28,21 @@
     </div>
   </nav>
   <div >
-    <form action="/signindetails" method="post" class="form">
+  <form action="/signindetails" method="post" class="form">
     <div class="formm">
       <div class="formleft">
         <div class="detail">
           <label for="">First Name</label>
-          <input type="text" name="firstname" placeholder="First name" required>
+          <input type="text" name="firstname" placeholder="First name" hh>
         </div>
         <div class="detail">
           <label for="">Email</label>
-          <input type="text" name="email" placeholder="Email" required>
+          <input type="text" name="email" placeholder="Email" hh>
         </div>
         <div class="detail">
           <label for="">Register as</label>
           <!-- <input type="text" name="registeras" placeholder=""> -->
-          <select required name="userrr" id="users" onclick="user()">  
+          <select hh name="userrr" id="users" onclick="user()">  
             <option value = "personaltrainer">Personal Trainer</option>  
             <option value = "user" >User</option>
           </select>  
@@ -50,23 +50,23 @@
         </div>
         <div class="detail">
           <label for="">Address</label>
-          <input type="text" name="address" placeholder="address" required>
+          <input type="text" name="address" placeholder="address" hh>
         </div>
         <div class="detail">
           <label for="">City-State-Zip Code</label>
-          <input type="text" name="city" placeholder="City/State" required>
+          <input type="text" name="city" placeholder="City/State" hh>
         </div>
         <div class="detail">
           <label for="">Apt/Suite/Unite(optional)</label>
-          <input type="text" name="apt" required>
+          <input type="text" name="apt" hh>
         </div>
         <div class="detail">
           <label for="">Password</label>
-          <input type="password" name="password" placeholder="************" required>
+          <input type="password" name="password" placeholder="************" hh>
         </div>
         <div class="detail">
           <label for="">Confirm Password</label>
-          <input type="password" name="confirmpassword" placeholder="*************" required>
+          <input type="password" name="confirmpassword" placeholder="*************" hh>
         </div>
         <div class="detail">
           <label for="">Show your profile to logged-in users</label>
@@ -79,72 +79,66 @@
       <div class="formright">
         <div class="detail">
           <label for="">Last Name</label>
-          <input type="text" name="lastname" placeholder="Last name" required>
+          <input type="text" name="lastname" placeholder="Last name" hh>
         </div>
         <div class="detail">
           <label for="">Phone No</label>
-          <input type="text" onkeydown="phoneNumberFormatter()" name="phoneno" id="phone-number" placeholder="Phone No" required>
+          <input type="text" onkeydown="phoneNumberFormatter()" name="phoneno" id="phone-number" placeholder="Phone No" hh>
         </div>
         <div class="detail">
           <label for="">Plan</label>
-          <select required id="select1" onclick="getOption()">  
+          <select hh id="select1" onclick="getOption()">  
             <option value = "" id="pt">PERSONAL TRAINERS - $49.99/MONTH</option> 
             <option value = "less" id="a5">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
             <option value = "large" id="a15">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
           </select>  
-          <select required id="select2" onclick="getOption()">
-            <option value = "less" id="a5">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
-            <option value = "large" id="a15">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
+          <select hh id="select2" onclick="getOption1()">
+            <option value = "less" id="a51">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
+            <option value = "large" id="a151">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
           </select>  
-          <select required id="select3" onclick="getOption()">  
-            <option value = "" id="pt">PERSONAL TRAINERS - $49.99/MONTH</option>
+          <select hh id="select3" onclick="getOption2()">  
+            <option value = "" id="pt2">PERSONAL TRAINERS - $49.99/MONTH</option>
           </select>  
-          <div class="economical" id="eco">
-                <div class="gyms"><input type="checkbox" name=""  > Economical Gym</div>
-                <div class="gyms"><input type="checkbox" name=""  > Economical Gym</div>
-                <div class="gyms"><input type="checkbox" name=""  > Economical Gym</div>
-                <div class="gyms"><input type="checkbox" name=""  > Economical Gym</div>
-                <div class="gyms"><input type="checkbox" name=""  > Economical Gym</div>
+          <div class="economical" id="eco" onclick="ecoprice()">
+              <% let size = Object.keys(item).length; %>
+              <% for(var i=0; i<size/2; i++) {%>
+                <div class="gyms"><input type="checkbox" name="" class="ecopricee"><%= item[i].title1 %></div>
+                <input type="text" name="" class="ecoinput"  value="<%= item[i].title1 %>">
+              <% } %>
           </div>
+          <input type="text" id="ecoprice" value="price" name="ecoprice">
           <div class="premimum" id="pre">
-            <div class="gyms"><input type="checkbox" name=""  > Premimum Gym</div>
-            <div class="gyms"><input type="checkbox" name=""  > Premimum Gym</div>
-            <div class="gyms"><input type="checkbox" name=""  > Premimum Gym</div>
-            <div class="gyms"><input type="checkbox" name=""  > Premimum Gym</div>
-            <div class="gyms"><input type="checkbox" name=""  > Premimum Gym</div>
+            <% let sizee = Object.keys(item).length; %>
+              <% for(var i=10; i<sizee-1; i++) {%>
+                <div class="gyms"><input type="checkbox" name=""><%= item[i].title1 %></div>
+              <% } %>
       </div>
         </div>
-        <!-- <div class="detail">
-          <label for="">Feature</label>
-          <select>  
-            <option value = "less">Economical</option> 
-            <option value = "less">Premimum</option>  
-          </select>  
-        </div> -->
         <div class="detail">
           <label for="">Date Of Birth</label>
-          <input type="date" name="city" placeholder="City/State" required>
+          <input type="date" name="city" placeholder="City/State" hh>
         </div>
         <div class="detail gender">
           <label for="">Gender</label>
-          <div class="checkboxes" onclick="check()">
-            <input type="checkbox" name="male" id="male" ><Label class="checkw">Male</Label>
-            <input type="checkbox" name="female" id="female" ><Label class="checkw">Female</Label>
-            <input type="checkbox" name="other" id="other"><Label class="checkw">Other</Label>
-            <input type="checkbox" name="prefer" id="prefer" ><Label class="checkw checkl">Prefer not to say</Label>
+          <div class="checkboxes">
+            <div onclick="gender1()"><input type="checkbox" name="male" id="male" ><Label class="checkw">Male</Label></div>
+            <div onclick="gender2()"><input type="checkbox" name="female" id="female" ><Label class="checkw">Female</Label></div>
+            <div onclick="gender3()"><input type="checkbox" name="other" id="other"><Label class="checkw">Other</Label></div>
+            <div onclick="gender4()"><input type="checkbox" name="prefer" id="prefer" ><Label class="checkw checkl">Prefer not to say</Label></div>
           </div>
         </div>
+        <input type="text" id="gender" name="gender">
         <div class="detail">
           <label for="">Emergency Contact Name</label>
-          <input type="text" name="emergencyname" required>
+          <input type="text" name="emergencyname" hh>
         </div>
         <div class="detail">
           <label for="">Emergency Contact Phone Number</label>
-          <input type="number" name="emergency" placeholder="Emergency Contact Phone Number" required>
+          <input type="number" name="emergency" placeholder="Emergency Contact Phone Number" hh>
         </div>
         <div class="detail">
           <label for="">Emergency Contact Email</label>
-          <input type="text" name="emergencyemail" placeholder="Emergency Contact Phone Number" required>
+          <input type="text" name="emergencyemail" placeholder="Emergency Contact Phone Number" hh>
         </div>
         <div class="detail">
           <label for="">Bio</label>
@@ -154,11 +148,10 @@
     </div>
     <div class="signinsubmit">
       <div class="warn"><input type="checkbox" name="agree"  > By Clicking Sign-up, you agree to VE's <a href="">Terms and Conditions of Use</a></div>
-      <!-- <button type="submit">Submit</button> -->
       <button onclick="pay()">Submit</button>
       <div class="login">Have a account? <a href="/signup">Log-in</a></div>
     </div>
-    </form>
+  </form>
   </div>
   <%- include('../partials/fotter.ejs'); %>
 
@@ -171,26 +164,43 @@
   <script>
 
 
+        function ecoprice(){
+          let value =0;
+          for(var i=0;i<25;i++){
+            console.log(document.getElementsByClassName("ecopricee")[i]);
+              if(document.getElementsByClassName("ecopricee")[i].checked == true){
+                value++;
+              }
+              console.log("="+value);
+              if(parseInt(value) > 5){
+                console.log("greate");
+                document.getElementById("ecoprice").value = -1;
+              }
+              else{
+                document.getElementById("ecoprice").value = value;
+              }
+          }
+        }
         function user(){
-            var selectElement = document.querySelector('#select1');
+            var selectElement = document.querySelector('#users');
             var output = selectElement.value;
-            console.log(output);  
+            console.log(output)
             if(output == "user"){
-                // document.getElementById("usertag").value = "user";
                 document.getElementById("select1").style.display = "none";
                 document.getElementById("select2").style.display = "block";
                 document.getElementById("select3").style.display = "none";
                 document.getElementById("eco").style.display = "none";
                 document.getElementById("pre").style.display = "none";
+                document.querySelector('#usertag').value = "User";
             }
             else{
               if(output == "personal")
-              // document.getElementById("usertag").value = "personal";
                 document.getElementById("select1").style.display = "none";
                 document.getElementById("select2").style.display = "none";
                 document.getElementById("select3").style.display = "block";
                 document.getElementById("eco").style.display = "none";
                 document.getElementById("pre").style.display = "none";
+                document.querySelector('#usertag').value = "Personal";
             }
         }
         function getOption() {
@@ -213,6 +223,49 @@
               }
             }
         }
+
+        function getOption1() {
+            var selectElement = document.querySelector('#select2');
+            var output = selectElement.value;
+            console.log(output);
+
+            if(output == "less"){
+                document.getElementById("eco").style.display = "grid";
+                document.getElementById("pre").style.display = "none";
+            }
+            else{
+              if(output == "large"){
+                document.getElementById("pre").style.display = "grid";
+                document.getElementById("eco").style.display = "none";
+              }
+              else{
+                document.getElementById("pre").style.display = "none";
+                document.getElementById("eco").style.display = "none";
+              }
+            }
+        }
+
+        function getOption2() {
+            var selectElement = document.querySelector('#select3');
+            var output = selectElement.value;
+            console.log(output);
+
+            if(output == "less"){
+                document.getElementById("eco").style.display = "grid";
+                document.getElementById("pre").style.display = "none";
+            }
+            else{
+              if(output == "large"){
+                document.getElementById("pre").style.display = "grid";
+                document.getElementById("eco").style.display = "none";
+              }
+              else{
+                document.getElementById("pre").style.display = "none";
+                document.getElementById("eco").style.display = "none";
+              }
+            }
+        }
+
       function formatPhoneNumber(value){
           if(!value) return value;
 
@@ -234,53 +287,68 @@
         inputField.value = formattedInputValue;
       }
 
-  </script>
-  <script>
-//     const form = document.querySelector(".form");
-//       form.addEventListener("submit", event => {
-//       event.preventDefault();
-// });
-
     function pay(){
-      // document.getElementById("pay").click();
-      window.location = "https://buy.stripe.com/test_aEU288ejr3ibgYUcMN";  
     }
   </script>
 
 
 <script>
-    function check(){
-      console.log("jjdjj");
-      let male = document.getElementById("male").checked;
-      let female = document.getElementById("female").checked;
-      let other = document.getElementById("other").checked;
-      let prefer = document.getElementById("prefer").checked;
-      console.log(male);
+  function gender1(){
+      document.getElementById("gender").value = "Male"; 
+      document.getElementById("female").checked = false;
+      document.getElementById("other").checked = false;
+      document.getElementById("prefer").checked = false;
+  }
+  function gender2(){
+    document.getElementById("gender").value = "Female";
+      document.getElementById("male").checked = false;
+      document.getElementById("other").checked = false;
+      document.getElementById("prefer").checked = false;
+  }
+  function gender3(){
+    document.getElementById("gender").value = "Other";
+      document.getElementById("female").checked = false;
+      document.getElementById("male").checked = false;
+      document.getElementById("prefer").checked = false;
+  }
+  function gender4(){
+    document.getElementById("gender").value = "Prefer Not to Say";
+      document.getElementById("female").checked = false;
+      document.getElementById("other").checked = false;
+      document.getElementById("male").checked = false;
+  }
+    // function check(){
+    //   console.log("jjdjj");
+    //   let male = document.getElementById("male").checked;
+    //   let female = document.getElementById("female").checked;
+    //   let other = document.getElementById("other").checked;
+    //   let prefer = document.getElementById("prefer").checked;
+    //   console.log(male);
 
-      if(male == true){
-        document.getElementById("female").checked = false;
-        document.getElementById("other").checked = false;
-        document.getElementById("prefer").checked = false;
-      }
-      if(female == true){
-        document.getElementById("male").checked = false;
-        document.getElementById("other").checked = false;
-        document.getElementById("prefer").checked = false;
-      }
-      if(other == true){
-        document.getElementById("female").checked = false;
-        document.getElementById("male").checked = false;
-        document.getElementById("prefer").checked = false;
-      }
-      if(prefer == true){
-        document.getElementById("female").checked = false;
-        document.getElementById("other").checked = false;
-        document.getElementById("male").checked = false;
-      }
+    //   if(male == true){
+    //     document.getElementById("female").checked = false;
+    //     document.getElementById("other").checked = false;
+    //     document.getElementById("prefer").checked = false;
+    //   }
+    //   if(female == true){
+    //     document.getElementById("male").checked = false;
+    //     document.getElementById("other").checked = false;
+    //     document.getElementById("prefer").checked = false;
+    //   }
+    //   if(other == true){
+    //     document.getElementById("female").checked = false;
+    //     document.getElementById("male").checked = false;
+    //     document.getElementById("prefer").checked = false;
+    //   }
+    //   if(prefer == true){
+    //     document.getElementById("female").checked = false;
+    //     document.getElementById("other").checked = false;
+    //     document.getElementById("male").checked = false;
+    //   }
       // document.getElementById("female").click();
       // document.getElementById("other").click();
       // document.getElementById("prefer").click();
-    }
+    // }
     // function female(){
     //   document.getElementById("male").click();
     //   document.getElementById("other").click();

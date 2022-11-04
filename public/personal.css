@@ -64,3 +64,11 @@ form{
     padding: 20px 22px;
     border-radius: 10px;
 }
+.client{
+    height: 400px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-direction: column;
+    justify-content: center;
+}

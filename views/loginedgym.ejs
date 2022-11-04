@@ -13,14 +13,38 @@
     <title>GYms</title>
 </head>
 <body>
-    
+  <form action="setting" method="post">
+    <div class="lid">
+      <input name="ida" type="text" value= <%= id %> >
+    </div>
+    <div class="profileinfo" id="pinfo">
+      <div class="pemail">
+        <div class="ni">
+          <div class="ll"><img src="/imgs/image4.jpg" alt="" class="proimga"></div>
+          <div class="dd">
+            <h5 class="namee"><%= name %></h5>
+            <p class="emaill"><%= email %></p>
+          </div>
+        </div>
+        <div class="oinfo">
+            <div class="setting" id="sett"><button type="submit">Setting</button></div>
+</form>
+            <form action="/services" method="post">
+              <div class="lid">
+                <input name="idb" type="text" value= <%= id %> >
+              </div>
+              <div class="serv"><button type="submit">Services</button></div>
+            </form>
+        </div>
+      </div>
+    </div>
   <div class="dva">
     <div class="value">
         <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
         <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
         <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
     </div>
-</div>
+  </div>
 <div class="donatee" onclick="donate()">
     <div class="dbtn">
       <div class="submit">Donate</div>
@@ -45,8 +69,10 @@
         
                     <a href="/loginedpricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a>
       
-                    <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Login/Register</a>
-      
+                    <div class="profileimggg">
+                      <div class="name"><%= name %></div>
+                      <img src="/imgs/image4.jpg" alt="" onclick="profile()">
+                    </div>
   </div>
             </div>
           </div>

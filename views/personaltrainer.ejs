@@ -200,9 +200,11 @@
           <% if(sizee > 4){sizee=4}else{size=Object.keys(item).length} %>
           <% console.log(sizee)%>
             <% for(var i=0; i<sizee; i++) {%>
-                <div class="gyminfo">
+                <div class="gyminfo client">
                     <div class="profileimg">
-                        <img src="/imgs/image4.jpg" alt="" class="img">
+                        <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
+                        <img src="data:image/<%=item1[i].img.contentType%>;base64,
+                          <%=item1[i].img.data.toString('base64')%>">
                     </div>
                     <!-- <div class="stars">
                         <div class="star"><img src="/imgs/star.jpg" alt=""></div>
@@ -211,11 +213,14 @@
                         <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                         <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                     </div> -->
-                    <div class="gymname"><%= item1[i].name %></div>
-                    <div class="otherinfo">
-                        <div class="gymbio"><%= item1[i].servicee %></div>
-                        <div class="city"> </div>
+                    <div class="clientinfo">
+                      <div class="gymname"><%= item1[i].name %></div>
+                      <div class="otherinfo">
+                          <div class="gymbio"><%= item1[i].servicee %></div>
+                          <div class="city"> </div>
+                      </div>
                     </div>
+                    
                 </div>
             <% } %>
         </div>

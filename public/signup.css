@@ -158,7 +158,7 @@ textarea{
     gap: 10px;
 }
 #usertag{
-    display: none;
+    display: display;
 }
 #pt, #a5, #a15{
     display: block;
@@ -167,5 +167,16 @@ textarea{
     display: none;
 }
 #select2, #select3{
+    display: none;
+}
+#gender{
+    display: none;
+}
+.checkboxes div{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.ecoinput{
     display: none;
 }
