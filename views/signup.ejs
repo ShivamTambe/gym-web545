@@ -153,7 +153,6 @@
     </div>
   </form>
   </div>
-  <%- include('../partials/fotter.ejs'); %>
 
 
   <script src="./slick.min.js"></script>
@@ -161,11 +160,30 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
+
+  <script>
+          // const sgMail = require('@sendgrid/mail')
+          // sgMail.setApiKey("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")
+          // const msg = {
+          //   to: 'shivamtambe545@gmail.com', // Change to your recipient
+          //   from: 'shivamtambe545@gmail.com', // Change to your verified sender
+          //   subject: 'Sending with SendGrid is Fun',
+          //   text: 'and easy to do anywhere, even with Node.js',
+          //   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+          // }
+          // sgMail
+          //   .send(msg)
+          //   .then(() => {
+          //     console.log('Email sent')
+          //   })
+          //   .catch((error) => {
+          //     console.error(error)
+          //   })
+  </script>
   <script>
 
-
         function ecoprice(){
-          let value =0;
+          let value = 0;
           for(var i=0;i<25;i++){
             console.log(document.getElementsByClassName("ecopricee")[i]);
               if(document.getElementsByClassName("ecopricee")[i].checked == true){

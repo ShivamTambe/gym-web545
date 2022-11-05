@@ -7,6 +7,10 @@ const mongoose = require("mongoose");
 var multer = require('multer');
 var fs = require('fs');
 const { userInfo } = require("os");
+const sgMail = require('@sendgrid/mail')
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const port = process.env.PORT || 5000;
 app.use(express.static(path.join(__dirname, 'public')));
@@ -18,6 +22,35 @@ mongoose.connect("mongodb+srv://shivam:Shivam123@cluster0.gcp5u27.mongodb.net/GY
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(express.json());
 
+
+
+
+const massageSchema ={
+    massage : String
+};
+const emailSchema ={
+    email : String
+};
+const socialSchema ={
+     facebook : String,
+     instagram : String,
+     twitter : String,
+     pintrest : String
+};
+const otherSchema ={
+    payall : String,
+    app : String
+};
+const fitnessSchema ={
+    why : String,
+    training : String,
+    tip : String
+};
+const affilateSchema ={
+    top1 : String,
+    top2 : String,
+    top3 : String
+};
 const gymSchema ={
     title1:String,
     title2:String,
@@ -107,8 +140,13 @@ var gymlogoSchema = new mongoose.Schema({
   
 
 
+const MassageInfo = mongoose.model("MassageInfo", massageSchema);
+const EmailInfo = mongoose.model("EmailInfo", emailSchema);
+const OtherInfo = mongoose.model("OtherInfo", otherSchema);
+const FitnessInfo = mongoose.model("FitnessInfo", fitnessSchema);
+const AffilateInfo = mongoose.model("AffilateInfo", affilateSchema);
 
-
+const SocialInfo = mongoose.model("SocialInfo", socialSchema);
 const UserInfo = mongoose.model("UserInfo", userSchema);
 const PromoInfo = mongoose.model("PromoInfo",promoSchema);
 const PersonalTrainer = mongoose.model("PersonalTrainer",personalSchema);
@@ -139,6 +177,32 @@ var upload = multer({ storage: storage });
 app.post("/signindetails",function(req,res){
     let user = req.body.usertag;
     let value = req.body.ecoprice;
+    EmailInfo.find().then(result => {
+        MassageInfo.find().then(resultt =>{
+            let message = resultt[0].message;
+            let emaill = result[0].email;
+            let shivemail = 'shivamtambe545@gmail.com';
+            sgMail.setApiKey(process.env.Sendkey)
+            const msg = {
+                to:[shivemail,emaill,'shivamstambe20222@gmail.com','empiregaming545@gmail.com'],
+                from:{
+                    name:"Vonelijah",
+                    email:'shivamtambe545@gmail.com'
+                },
+                subject: 'Sending with SendGrid is Fun',
+                text: `${message}`,
+                html: `<h1>${message}</h1>`,
+            }
+            sgMail
+                .send(msg)
+                .then(() => {
+                console.log('Email sent')
+                })
+                .catch((error) => {
+                console.error(error)
+                })
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
     console.log(user);
     console.log(value);
     if(user == "Personal"){
@@ -247,7 +311,26 @@ app.get("/personaltrainer",function(req,res){
 })
 app.get("/gyms",function(req,res){
     GymInfo.find().then(result =>{
-        res.render('index',{ item : result});
+        SocialInfo.find().then(resulta =>{
+            let facebook = resulta[0].facebook;
+            let instagram = resulta[0].instagram;
+            let twitter = resulta[0].twitter;
+            let pintrest = resulta[0].pintrest;
+            AffilateInfo.find().then(result1 =>{
+                FitnessInfo.find().then(result2 =>{
+                    MoreInfo.find().then(result3 =>{
+                        let app = result3[0].app;
+                        let why = result2[0].why;
+                        let training = result2[0].training;
+                        let tip= result2[0].tip;
+                        let top1 = result1[0].top1;
+                        let top2 = result1[0].top2;
+                        let top3 = result1[0].top3;
+                        res.render("index",{facebook: facebook,instagram: instagram,twitter: twitter,pintrest: pintrest,app: app, why : why ,training:training, tip :tip, top1:top1,top2: top2,top3:top3,item : result})
+                    }).catch(err => console.log(err));
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
     }).catch(err => console.log(err));
 })
 
@@ -299,6 +382,29 @@ app.get("/loginedgyms",function(req,res){
     }).catch(err => console.log(err));
 })
 app.get("/signin",function(req,res){
+    console.log("hhhh");
+    let shivemail = 'shivamtambe545@gmail.com';
+    sgMail.setApiKey(process.env.Sendkey)
+    const msg = {
+        // to: 'shivamtambe545@gmail.com', // Change to your recipient
+        to:[shivemail,'shivamstambe20222@gmail.com','empiregaming545@gmail.com'],
+        // from: 'shivamtambe545@gmail.com', // Change to your verified sender
+        from:{
+            name:"Vonelijah",
+            email:'shivamtambe545@gmail.com'
+        },
+        subject: 'Sending with SendGrid is Fun',
+        text: 'and easy to do anywhere, even with Node.js',
+        html: '<h1>Another Mail</h1>',
+      }
+      sgMail
+        .send(msg)
+        .then(() => {
+          console.log('Email sent')
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     GymInfo.find().then(result =>{
         // console.log(result);
         res.render('signup',{ item : result});
@@ -311,8 +417,45 @@ app.get("/normaltrainer",function(req,res){
     res.render("normaltrainer");
 })
 app.get("/pricing",function(req,res){
-    res.render("pricing");
+
+    // let affi = new AffilateInfo({
+    //     top1:"https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642",
+    //     top2:"https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642",
+    //     top3:"https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642"
+    // })
+    // affi.save();
+    // let fit = new FitnessInfo({
+    //     why: "https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642",
+    //     training:"https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642",
+    //     tip: "https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642"
+    // })
+    // fit.save();
+    // let other = new OtherInfo({
+    //     app:"https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642"
+    // })
+    // other.save();
+    SocialInfo.find().then(result =>{
+        let facebook = result[0].facebook;
+        let instagram = result[0].instagram;
+        let twitter = result[0].twitter;
+        let pintrest = result[0].pintrest;
+        AffilateInfo.find().then(result1 =>{
+            FitnessInfo.find().then(result2 =>{
+                MoreInfo.find().then(result3 =>{
+                    let app = result3[0].app;
+                    let why = result2[0].why;
+                    let training = result2[0].training;
+                    let tip= result2[0].tip;
+                    let top1 = result1[0].top1;
+                    let top2 = result1[0].top2;
+                    let top3 = result1[0].top3;
+                    res.render("pricing",{facebook: facebook,instagram: instagram,twitter: twitter,pintrest: pintrest,app: app, why : why ,training:training, tip :tip, top1:top1,top2: top2,top3:top3})
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
 })
+
 app.get("/home",function(req,res){
 
     MoreInfo.find().then(result =>{
@@ -324,7 +467,26 @@ app.get("/home",function(req,res){
                         res.status(500).send('An error occurred', err);
                     }
                     else {
-                        res.render("home",{item: result,items: items, itemm:resultt, imagee: color });
+                        SocialInfo.find().then(result =>{
+                            let facebook = result[0].facebook;
+                            let instagram = result[0].instagram;
+                            let twitter = result[0].twitter;
+                            let pintrest = result[0].pintrest;
+                            AffilateInfo.find().then(result1 =>{
+                                FitnessInfo.find().then(result2 =>{
+                                    MoreInfo.find().then(result3 =>{
+                                        let app = result3[0].app;
+                                        let why = result2[0].why;
+                                        let training = result2[0].training;
+                                        let tip= result2[0].tip;
+                                        let top1 = result1[0].top1;
+                                        let top2 = result1[0].top2;
+                                        let top3 = result1[0].top3;
+                                        res.render("home",{facebook: facebook,instagram: instagram,twitter: twitter,pintrest: pintrest,app: app, why : why ,training:training, tip :tip, top1:top1,top2: top2,top3:top3,item: result,items: items, itemm:resultt, imagee: color})
+                                    }).catch(err => console.log(err));
+                                }).catch(err => console.log(err));
+                            }).catch(err => console.log(err));
+                        }).catch(err => console.log(err));
                     }
                 });
             });
@@ -342,8 +504,26 @@ app.get("/",function(req,res){
                         res.status(500).send('An error occurred', err);
                     }
                     else {
-                        let obj = [];
-                        res.render("home",{item: result,items: items, itemm:resultt, imagee: color });
+                        SocialInfo.find().then(resulta =>{
+                            let facebook = resulta[0].facebook;
+                            let instagram = resulta[0].instagram;
+                            let twitter = resulta[0].twitter;
+                            let pintrest = resulta[0].pintrest;
+                            AffilateInfo.find().then(result1 =>{
+                                FitnessInfo.find().then(result2 =>{
+                                    MoreInfo.find().then(result3 =>{
+                                        let app = result3[0].app;
+                                        let why = result2[0].why;
+                                        let training = result2[0].training;
+                                        let tip= result2[0].tip;
+                                        let top1 = result1[0].top1;
+                                        let top2 = result1[0].top2;
+                                        let top3 = result1[0].top3;
+                                        res.render("home",{facebook: facebook,instagram: instagram,twitter: twitter,pintrest: pintrest,app: app, why : why ,training:training, tip :tip, top1:top1,top2: top2,top3:top3,item: result,items: items, itemm:resultt, imagee: color})
+                                    }).catch(err => console.log(err));
+                                }).catch(err => console.log(err));
+                            }).catch(err => console.log(err));
+                        }).catch(err => console.log(err));
                     }
                 });
             });
@@ -358,7 +538,6 @@ app.post("/signup",function(req,res){
     let email = req.body.email;
     let password = req.body.password;
     console.log(email);
-    let a=0;
     UserInfo.find().then(result =>{
         var count= Object.keys(result).length;
         for(var i=0; i<count; i++) {
@@ -381,7 +560,26 @@ app.post("/signup",function(req,res){
                                     }
                                     else {
                                         let obj = [];
-                                        res.render("loginedhome",{item: result,items: items, itemm:resultt, imagee: color , name:name, email:emaill, id:id});
+                                        SocialInfo.find().then(result =>{
+                                            let facebook = result[0].facebook;
+                                            let instagram = result[0].instagram;
+                                            let twitter = result[0].twitter;
+                                            let pintrest = result[0].pintrest;
+                                            AffilateInfo.find().then(result1 =>{
+                                                FitnessInfo.find().then(result2 =>{
+                                                    MoreInfo.find().then(result3 =>{
+                                                        let app = result3[0].app;
+                                                        let why = result2[0].why;
+                                                        let training = result2[0].training;
+                                                        let tip= result2[0].tip;
+                                                        let top1 = result1[0].top1;
+                                                        let top2 = result1[0].top2;
+                                                        let top3 = result1[0].top3;
+                                                        res.render("loginedhome",{facebook: facebook,instagram: instagram,twitter: twitter,pintrest: pintrest,app: app, why : why ,training:training, tip :tip, top1:top1,top2: top2,top3:top3,item: result,items: items, itemm:resultt, imagee: color , name:name, email:emaill, id:id})
+                                                    }).catch(err => console.log(err));
+                                                }).catch(err => console.log(err));
+                                            }).catch(err => console.log(err));
+                                        }).catch(err => console.log(err));
                                     }
                                 });
                             });
@@ -565,7 +763,27 @@ app.post("/editp",function(req,res){
         let name = result[0].name;
         let email = result[0].email;
         let identity = result[0].identity;
-        res.render("profiledit",{name :name, email:email, identity:identity, result: result[0],items:result});
+
+        SocialInfo.find().then(resulta =>{
+            let facebook = resulta[0].facebook;
+            let instagram = resulta[0].instagram;
+            let twitter = resulta[0].twitter;
+            let pintrest = resulta[0].pintrest;
+            AffilateInfo.find().then(result1 =>{
+                FitnessInfo.find().then(result2 =>{
+                    MoreInfo.find().then(result3 =>{
+                        let app = result3[0].app;
+                        let why = result2[0].why;
+                        let training = result2[0].training;
+                        let tip= result2[0].tip;
+                        let top1 = result1[0].top1;
+                        let top2 = result1[0].top2;
+                        let top3 = result1[0].top3;
+                        res.render("profiledit",{name :name, email:email, identity:identity, result: result[0],items:result,facebook: facebook,instagram: instagram,twitter: twitter,pintrest: pintrest,app: app, why : why ,training:training, tip :tip, top1:top1,top2: top2,top3:top3,item: result,imagee: color});
+                    }).catch(err => console.log(err));
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
     });
 })
 
@@ -579,7 +797,26 @@ app.post("/setting",function(req,res){
         let name = result[0].name;
         let email = result[0].email;
         let identity = result[0].identity;
-        res.render("setting",{name :name, email:email, identity:identity, result: result[0],items:result});
+        SocialInfo.find().then(resulta =>{
+            let facebook = resulta[0].facebook;
+            let instagram = resulta[0].instagram;
+            let twitter = resulta[0].twitter;
+            let pintrest = resulta[0].pintrest;
+            AffilateInfo.find().then(result1 =>{
+                FitnessInfo.find().then(result2 =>{
+                    MoreInfo.find().then(result3 =>{
+                        let app = result3[0].app;
+                        let why = result2[0].why;
+                        let training = result2[0].training;
+                        let tip= result2[0].tip;
+                        let top1 = result1[0].top1;
+                        let top2 = result1[0].top2;
+                        let top3 = result1[0].top3;
+                        res.render("setting",{name :name, email:email, identity:identity, result: result[0],items:result,facebook: facebook,instagram: instagram,twitter: twitter,pintrest: pintrest,app: app, why : why ,training:training, tip :tip, top1:top1,top2: top2,top3:top3});
+                    }).catch(err => console.log(err));
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
     });
 })
 
