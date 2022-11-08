@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/home.css">
   <link rel="stylesheet" href="/signup.css">
   <script type="text/javascript" src="jquery-3.5.1.min.js"> </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOME</title>
 </head>
+
 <body>
 
   <nav class="bg-gray-800">
@@ -20,321 +26,375 @@
       <div class="relative flex h-16 items-center justify-between">
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
           <div class="flex flex-shrink-0 items-center logo">
-           <a href="/home" class="singimg"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
+            <a href="/home" class="singimg"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png"
+                alt="Your Company"></a>
           </div>
           <div class="signtitle">Sign-Up Now</div>
         </div>
       </div>
     </div>
   </nav>
-  <div >
-  <form action="/signindetails" method="post" class="form">
-    <div class="formm">
-      <div class="formleft">
-        <div class="detail">
-          <label for="">First Name</label>
-          <input type="text" name="firstname" placeholder="First name" hh>
-        </div>
-        <div class="detail">
-          <label for="">Email</label>
-          <input type="text" name="email" placeholder="Email" hh>
-        </div>
-        <div class="detail">
+  <div>
+    <form action="/signindetails" method="post" class="form">
+      <div class="formm">
+        <div class="formleft">
+          <div class="detail">
+            <label for="">First Name</label>
+            <input type="text" name="firstname" placeholder="First name" required>
+          </div>
+          <div class="detail">
+            <label for="">Email</label>
+            <input type="text" name="email" placeholder="Email" required>
+          </div>
+          <!-- <div class="detail">
           <label for="">Register as</label>
-          <!-- <input type="text" name="registeras" placeholder=""> -->
-          <select hh name="userrr" id="users" onclick="user()">  
+          <select required name="userrr" id="users" onclick="user()">  
             <option value = "personaltrainer">Personal Trainer</option>  
             <option value = "user" >User</option>
-          </select>  
-          <input type="text" id="usertag" name="usertag">
+          </select>   -->
+          <!-- <input type="text" id="usertag" name="usertag"> -->
+          <div class="detail">
+            <label for="">Address</label>
+            <input type="text" name="address" placeholder="address" required>
+          </div>
+          <div class="detail">
+            <label for="">State</label>
+            <input type="text" name="state" placeholder="State" required>
+          </div>
+          <div class="detail">
+            <label for="">City</label>
+            <input type="text" name="city" placeholder="City" required>
+          </div>
+          <div class="detail">
+            <label for="">Zip Code</label>
+            <input type="text" name="zipcode" placeholder="89760" required>
+          </div>
+          <div class="detail">
+            <label for="">Apt/Suite/Unite(optional)</label>
+            <input type="text" name="apt" required>
+          </div>
+          <div class="detail">
+            <label for="">Password</label>
+            <input type="password" name="password" placeholder="************" required>
+          </div>
+          <div class="detail">
+            <label for="">Confirm Password</label>
+            <input type="password" name="confirmpassword" placeholder="*************" required>
+          </div>
         </div>
-        <div class="detail">
-          <label for="">Address</label>
-          <input type="text" name="address" placeholder="address" hh>
-        </div>
-        <div class="detail">
-          <label for="">City-State-Zip Code</label>
-          <input type="text" name="city" placeholder="City/State" hh>
-        </div>
-        <div class="detail">
-          <label for="">Apt/Suite/Unite(optional)</label>
-          <input type="text" name="apt" hh>
-        </div>
-        <div class="detail">
-          <label for="">Password</label>
-          <input type="password" name="password" placeholder="************" hh>
-        </div>
-        <div class="detail">
-          <label for="">Confirm Password</label>
-          <input type="password" name="confirmpassword" placeholder="*************" hh>
-        </div>
-        <div class="detail">
+        <!-- <div class="detail">
           <label for="">Show your profile to logged-in users</label>
           <div class="checkboxes bet">
             <div><input type="checkbox" name="yes" id="private" class="social"><Label class="checkw">Private</Label></div>
             <div><input type="checkbox" name="no" id="public" class="social"><Label class="checkw">Public</Label></div>
           </div>
-        </div>
-      </div>
-      <div class="formright">
-        <div class="detail">
-          <label for="">Last Name</label>
-          <input type="text" name="lastname" placeholder="Last name" hh>
-        </div>
-        <div class="detail">
-          <label for="">Phone No</label>
-          <input type="text" onkeydown="phoneNumberFormatter()" name="phoneno" id="phone-number" placeholder="Phone No" hh>
-        </div>
-        <div class="detail">
-          <label for="">Plan</label>
-          <select hh id="select1" onclick="getOption()">  
-            <option value = "" id="pt">PERSONAL TRAINERS - $49.99/MONTH</option> 
-            <option value = "less" id="a5">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
-            <option value = "large" id="a15">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
-          </select>  
-          <select hh id="select2" onclick="getOption1()">
-            <option value = "less" id="a51">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
-            <option value = "large" id="a151">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
-          </select>  
-          <select hh id="select3" onclick="getOption2()">  
-            <option value = "" id="pt2">PERSONAL TRAINERS - $49.99/MONTH</option>
-          </select>  
-          <div class="economical" id="eco" onclick="ecoprice()">
-              <% let size = Object.keys(item).length; %>
-              <% for(var i=0; i<size/2; i++) {%>
-                <div class="gyms"><input type="checkbox" name="" class="ecopricee"><%= item[i].title1 %></div>
-                <input type="text" name="" class="ecoinput"  value="<%= item[i].title1 %>">
-              <% } %>
+        </div> -->
+        <div class="formright">
+          <div class="detail">
+            <label for="">Last Name</label>
+            <input type="text" name="lastname" placeholder="Last name" required>
           </div>
-          <input type="text" id="ecoprice" value="price" name="ecoprice">
-          <div class="premimum" id="pre">
-            <% let sizee = Object.keys(item).length; %>
-              <% for(var i=10; i<sizee-1; i++) {%>
-                <div class="gyms"><input type="checkbox" name=""><%= item[i].title1 %></div>
-              <% } %>
-      </div>
-        </div>
-        <div class="detail">
-          <label for="">Date Of Birth</label>
-          <input type="date" name="city" placeholder="City/State" hh>
-        </div>
-        <div class="detail gender">
-          <label for="">Gender</label>
-          <div class="checkboxes">
-            <div onclick="gender1()"><input type="checkbox" name="male" id="male" ><Label class="checkw">Male</Label></div>
-            <div onclick="gender2()"><input type="checkbox" name="female" id="female" ><Label class="checkw">Female</Label></div>
-            <div onclick="gender3()"><input type="checkbox" name="other" id="other"><Label class="checkw">Other</Label></div>
-            <div onclick="gender4()"><input type="checkbox" name="prefer" id="prefer" ><Label class="checkw checkl">Prefer not to say</Label></div>
+          <div class="detail">
+            <label for="">Phone No</label>
+            <input type="text" onkeydown="phoneNumberFormatter()" name="phoneno" id="phone-number"
+              placeholder="Phone No" required>
+          </div>
+          <!-- <div class="detail">
+            <label for="">Plan</label>
+            <select required id="select1" onclick="getOption()">  
+              <option value = "" id="pt">PERSONAL TRAINERS - $49.99/MONTH</option> 
+              <option value = "less" id="a5">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
+              <option value = "large" id="a15">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
+            </select>  
+            <select required id="select2" onclick="getOption1()">
+              <option value = "less" id="a51">ACCESS UP TO 5 GYMS - $149.99/MONTH</option>  
+              <option value = "large" id="a151">ACCESS UP TO 15 GYMS - $499.99/MONTH</option> 
+            </select>  
+            <select required id="select3" onclick="getOption2()">  
+              <option value = "" id="pt2">PERSONAL TRAINERS - $49.99/MONTH</option>
+            </select>  
+            <div class="economical" id="eco" onclick="ecoprice()">
+                <% let size = Object.keys(item).length; %>
+                <% for(var i=0; i<1; i++) {%>
+                  <div class="gyms"><input type="checkbox" name="" class="ecopricee"><%= item[i].title1 %></div>
+                  <input type="text" name="" class="ecoinput"  value="<%= item[i].title1 %>">
+                  <input type="text" name="" class="ecoinputemail"  value="<%= item[i].email %>">
+                <% } %>
+            </div>
+            <input type="text" id="ecoprice" value="price" name="ecoprice">
+            <input type="text" id="emails" value="Emails" name="ecoemails">
+            <div class="premimum" id="pre" onclick="preprice()">
+              <% let sizee = Object.keys(item).length; %>
+                <% for(var i=0; i<1; i++) {%>
+                  <div class="gyms"><input type="checkbox" name=""><%= item[i].title1 %></div>
+                  <input type="text" name="" class="preinput"  value="<%= item[i].title1 %>">
+                  <input type="text" name="" class="preinputemail"  value="<%= item[i].email %>">
+                <% } %>
+            </div> -->
+          <!-- </div> -->
+          <div class="detail">
+            <label for="">Date Of Birth</label>
+            <input type="date" name="city" placeholder="City/State" required>
+          </div>
+          <div class="detail gender">
+            <label for="">Gender</label>
+            <div class="checkboxes">
+              <div onclick="gender1()"><input type="checkbox" name="male" id="male"><Label class="checkw">Male</Label>
+              </div>
+              <div onclick="gender2()"><input type="checkbox" name="female" id="female"><Label
+                  class="checkw">Female</Label></div>
+              <div onclick="gender3()"><input type="checkbox" name="other" id="other"><Label
+                  class="checkw">Other</Label>
+              </div>
+              <div onclick="gender4()"><input type="checkbox" name="prefer" id="prefer"><Label
+                  class="checkw checkl">Prefer not to say</Label></div>
+            </div>
+          </div>
+          <input type="text" id="gender" name="gender">
+          <div class="detail">
+            <label for="">Emergency Contact Name</label>
+            <input type="text" name="emergencyname" required>
+          </div>
+          <div class="detail">
+            <label for="">Emergency Contact Phone Number</label>
+            <input type="number" name="emergency" placeholder="Emergency Contact Phone Number" required>
+          </div>
+          <div class="detail">
+            <label for="">Emergency Contact Email</label>
+            <input type="text" name="emergencyemail" placeholder="Emergency Contact Phone Number" required>
+          </div>
+          <div class="detail">
+            <label for="">Bio</label>
+            <textarea type="text" name="bio" placeholder="Discription............"></textarea>
           </div>
         </div>
-        <input type="text" id="gender" name="gender">
-        <div class="detail">
-          <label for="">Emergency Contact Name</label>
-          <input type="text" name="emergencyname" hh>
-        </div>
-        <div class="detail">
-          <label for="">Emergency Contact Phone Number</label>
-          <input type="number" name="emergency" placeholder="Emergency Contact Phone Number" hh>
-        </div>
-        <div class="detail">
-          <label for="">Emergency Contact Email</label>
-          <input type="text" name="emergencyemail" placeholder="Emergency Contact Phone Number" hh>
-        </div>
-        <div class="detail">
-          <label for="">Bio</label>
-          <textarea type="text" name="bio" placeholder="Discription............"></textarea>
-        </div>
       </div>
-    </div>
-    <div class="signinsubmit">
-      <div class="warn"><input type="checkbox" name="agree"  > By Clicking Sign-up, you agree to VE's <a href="">Terms and Conditions of Use</a></div>
-      <button onclick="pay()">Submit</button>
-      <div class="login">Have a account? <a href="/signup">Log-in</a></div>
-    </div>
+  <div class="signinsubmit">
+    <div class="warn"><input type="checkbox" name="agree"> By Clicking Sign-up, you agree to VE's <a href="">Terms and
+        Conditions of Use</a></div>
+    <button onclick="pay()">Submit</button>
+    <div class="login">Have a account? <a href="/signup">Log-in</a></div>
+  </div>
   </form>
   </div>
 
 
   <script src="./slick.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
   <script>
-          // const sgMail = require('@sendgrid/mail')
-          // sgMail.setApiKey("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")
-          // const msg = {
-          //   to: 'shivamtambe545@gmail.com', // Change to your recipient
-          //   from: 'shivamtambe545@gmail.com', // Change to your verified sender
-          //   subject: 'Sending with SendGrid is Fun',
-          //   text: 'and easy to do anywhere, even with Node.js',
-          //   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-          // }
-          // sgMail
-          //   .send(msg)
-          //   .then(() => {
-          //     console.log('Email sent')
-          //   })
-          //   .catch((error) => {
-          //     console.error(error)
-          //   })
-  </script>
-  <script>
 
-        function ecoprice(){
-          let value = 0;
-          for(var i=0;i<25;i++){
-            console.log(document.getElementsByClassName("ecopricee")[i]);
-              if(document.getElementsByClassName("ecopricee")[i].checked == true){
-                value++;
-              }
-              console.log("="+value);
-              if(parseInt(value) > 5){
-                console.log("greate");
-                document.getElementById("ecoprice").value = -1;
-              }
-              else{
-                document.getElementById("ecoprice").value = value;
-              }
-          }
-        }
-        function user(){
-            var selectElement = document.querySelector('#users');
-            var output = selectElement.value;
-            console.log(output)
-            if(output == "user"){
-                document.getElementById("select1").style.display = "none";
-                document.getElementById("select2").style.display = "block";
-                document.getElementById("select3").style.display = "none";
-                document.getElementById("eco").style.display = "none";
-                document.getElementById("pre").style.display = "none";
-                document.querySelector('#usertag').value = "User";
-            }
-            else{
-              if(output == "personal")
-                document.getElementById("select1").style.display = "none";
-                document.getElementById("select2").style.display = "none";
-                document.getElementById("select3").style.display = "block";
-                document.getElementById("eco").style.display = "none";
-                document.getElementById("pre").style.display = "none";
-                document.querySelector('#usertag').value = "Personal";
-            }
-        }
-        function getOption() {
-            var selectElement = document.querySelector('#select1');
-            var output = selectElement.value;
-            console.log(output);
 
-            if(output == "less"){
-                document.getElementById("eco").style.display = "grid";
-                document.getElementById("pre").style.display = "none";
-            }
-            else{
-              if(output == "large"){
-                document.getElementById("pre").style.display = "grid";
-                document.getElementById("eco").style.display = "none";
-              }
-              else{
-                document.getElementById("pre").style.display = "none";
-                document.getElementById("eco").style.display = "none";
-              }
-            }
-        }
 
-        function getOption1() {
-            var selectElement = document.querySelector('#select2');
-            var output = selectElement.value;
-            console.log(output);
 
-            if(output == "less"){
-                document.getElementById("eco").style.display = "grid";
-                document.getElementById("pre").style.display = "none";
-            }
-            else{
-              if(output == "large"){
-                document.getElementById("pre").style.display = "grid";
-                document.getElementById("eco").style.display = "none";
-              }
-              else{
-                document.getElementById("pre").style.display = "none";
-                document.getElementById("eco").style.display = "none";
-              }
-            }
-        }
+    // function preprice(){
+    //   console.log("pre clickd");
+    //   let value = 0;
+    //   let array = [];
+    //   let select1 = document.getElementById("select1").value;
+    //   let select2 = document.getElementById("select2").value;
+    //   let select3 = document.getElementById("select3").value;
+    //   console.log(document.getElementById("select1").value);
+    //   if(select1 == "large" || select2 == "large" || select3 == "large"){
+    //     console.log("pre clickd");
+    //     array = [];
+    //     for(var i=0;i<25;i++){
+    //       if(document.getElementsByClassName("prepricee")[i].checked == true){
+    //         value++;
+    //         array=[document.getElementsByClassName("preinputemail")[i].value, ...array];
+    //         let modifiedArr = array.map(function(element){
+    //             return element;
+    //         });
+    //           document.getElementById("pemails").value = "";
+    //           for(var i=0;i<=modifiedArr.length;i++){
+    //             document.getElementById("pemails").value += document.getElementById("pemails").value +","+ modifiedArr[i];
+    //           }
+    //       }
+    //       if(parseInt(value) > 5){
+    //         console.log("greater");
+    //         document.getElementById("preprice").value = -1;
+    //       }
+    //       else{
+    //         document.getElementById("preprice").value = value;
+    //       }
+    //       console.log(1);
+    //     }     
+    //   }
+    // }
+    // function ecoprice(){
+    //   console.log("clicked");
+    //   let value = 0;
+    //   let array = [];
+    //   let select1 = document.getElementById("select1").value;
+    //   let select2 = document.getElementById("select2").value;
+    //   let select3 = document.getElementById("select3").value;
+    //   console.log(document.getElementById("select1").value);
+    //   if(select1 == "less" || select2 == "less" || select3 == "less"){
+    //     array = [];
+    //     for(var i=0;i<25;i++){
+    //       if(document.getElementsByClassName("ecopricee")[i].checked == true){
+    //         value++;
+    //         array=[document.getElementsByClassName("ecoinputemail")[i].value, ...array];
+    //         let modifiedArr = array.map(function(element){
+    //             return element;
+    //         });
+    //           document.getElementById("emails").value = "";
+    //           for(var i=0;i<=modifiedArr.length;i++){
+    //             document.getElementById("emails").value += document.getElementById("emails").value +","+ modifiedArr[i];
+    //           }
+    //       }
+    //       if(parseInt(value) > 5){
+    //         console.log("greater");
+    //         document.getElementById("ecoprice").value = -1;
+    //       }
+    //       else{
+    //         document.getElementById("ecoprice").value = value;
+    //       }
+    //       console.log(1);
+    //     }     
+    //   }
+    // }
+    // function user(){
+    //     var selectElement = document.querySelector('#users');
+    //     var output = selectElement.value;
+    //     console.log(output)
+    //     if(output == "user"){
+    //         document.getElementById("select1").style.display = "none";
+    //         document.getElementById("select2").style.display = "block";
+    //         document.getElementById("select3").style.display = "none";
+    //         document.getElementById("eco").style.display = "none";
+    //         document.getElementById("pre").style.display = "none";
+    //         document.querySelector('#usertag').value = "User";
+    //     }
+    //     else{
+    //       if(output == "personal")
+    //         document.getElementById("select1").style.display = "none";
+    //         document.getElementById("select2").style.display = "none";
+    //         document.getElementById("select3").style.display = "block";
+    //         document.getElementById("eco").style.display = "none";
+    //         document.getElementById("pre").style.display = "none";
+    //         document.querySelector('#usertag').value = "Personal";
+    //     }
+    // }
+    // function getOption() {
+    //     var selectElement = document.querySelector('#select1');
+    //     var output = selectElement.value;
+    //     console.log(output);
 
-        function getOption2() {
-            var selectElement = document.querySelector('#select3');
-            var output = selectElement.value;
-            console.log(output);
+    //     if(output == "less"){
+    //         document.getElementById("eco").style.display = "grid";
+    //         document.getElementById("pre").style.display = "none";
+    //     }
+    //     else{
+    //       if(output == "large"){
+    //         document.getElementById("pre").style.display = "grid";
+    //         document.getElementById("eco").style.display = "none";
+    //       }
+    //       else{
+    //         document.getElementById("pre").style.display = "none";
+    //         document.getElementById("eco").style.display = "none";
+    //       }
+    //     }
+    // }
 
-            if(output == "less"){
-                document.getElementById("eco").style.display = "grid";
-                document.getElementById("pre").style.display = "none";
-            }
-            else{
-              if(output == "large"){
-                document.getElementById("pre").style.display = "grid";
-                document.getElementById("eco").style.display = "none";
-              }
-              else{
-                document.getElementById("pre").style.display = "none";
-                document.getElementById("eco").style.display = "none";
-              }
-            }
-        }
+    // function getOption1() {
+    //     var selectElement = document.querySelector('#select2');
+    //     var output = selectElement.value;
+    //     console.log(output);
 
-      function formatPhoneNumber(value){
-          if(!value) return value;
+    //     if(output == "less"){
+    //         document.getElementById("eco").style.display = "grid";
+    //         document.getElementById("pre").style.display = "none";
+    //     }
+    //     else{
+    //       if(output == "large"){
+    //         document.getElementById("pre").style.display = "grid";
+    //         document.getElementById("eco").style.display = "none";
+    //       }
+    //       else{
+    //         document.getElementById("pre").style.display = "none";
+    //         document.getElementById("eco").style.display = "none";
+    //       }
+    //     }
+    // }
 
-          const phoneNumber = value.replace(/[^\d]/g, '');
-          const phoneNumberLength = phoneNumber.length;
-          if(phoneNumberLength<4) return phoneNumber;
-          if(phoneNumberLength < 7){
-            return `(${phoneNumber.slice(0,3)}) ${phoneNumber.slice(3)}`;
-          }
-          return `(${phoneNumber.slice(0,3)}) ${phoneNumber.slice(
-            3,
-            6,
-          )}-${phoneNumber.slice(6,9)}`;
+    // function getOption2() {
+    //     var selectElement = document.querySelector('#select3');
+    //     var output = selectElement.value;
+    //     console.log(output);
+
+    //     if(output == "less"){
+    //         document.getElementById("eco").style.display = "grid";
+    //         document.getElementById("pre").style.display = "none";
+    //     }
+    //     else{
+    //       if(output == "large"){
+    //         document.getElementById("pre").style.display = "grid";
+    //         document.getElementById("eco").style.display = "none";
+    //       }
+    //       else{
+    //         document.getElementById("pre").style.display = "none";
+    //         document.getElementById("eco").style.display = "none";
+    //       }
+    //     }
+    // }
+
+    function formatPhoneNumber(value) {
+      if (!value) return value;
+
+      const phoneNumber = value.replace(/[^\d]/g, '');
+      const phoneNumberLength = phoneNumber.length;
+      if (phoneNumberLength < 4) return phoneNumber;
+      if (phoneNumberLength < 7) {
+        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
       }
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+        3,
+        6,
+      )}-${phoneNumber.slice(6, 9)}`;
+    }
 
-      function phoneNumberFormatter(){
-        const inputField = document.getElementById('phone-number');
-        const formattedInputValue = formatPhoneNumber(inputField.value);
-        inputField.value = formattedInputValue;
-      }
+    function phoneNumberFormatter() {
+      const inputField = document.getElementById('phone-number');
+      const formattedInputValue = formatPhoneNumber(inputField.value);
+      inputField.value = formattedInputValue;
+    }
 
-    function pay(){
+    function pay() {
     }
   </script>
 
 
-<script>
-  function gender1(){
-      document.getElementById("gender").value = "Male"; 
+  <script>
+    function gender1() {
+      document.getElementById("gender").value = "Male";
       document.getElementById("female").checked = false;
       document.getElementById("other").checked = false;
       document.getElementById("prefer").checked = false;
-  }
-  function gender2(){
-    document.getElementById("gender").value = "Female";
+    }
+    function gender2() {
+      document.getElementById("gender").value = "Female";
       document.getElementById("male").checked = false;
       document.getElementById("other").checked = false;
       document.getElementById("prefer").checked = false;
-  }
-  function gender3(){
-    document.getElementById("gender").value = "Other";
+    }
+    function gender3() {
+      document.getElementById("gender").value = "Other";
       document.getElementById("female").checked = false;
       document.getElementById("male").checked = false;
       document.getElementById("prefer").checked = false;
-  }
-  function gender4(){
-    document.getElementById("gender").value = "Prefer Not to Say";
+    }
+    function gender4() {
+      document.getElementById("gender").value = "Prefer Not to Say";
       document.getElementById("female").checked = false;
       document.getElementById("other").checked = false;
       document.getElementById("male").checked = false;
-  }
+    }
     // function check(){
     //   console.log("jjdjj");
     //   let male = document.getElementById("male").checked;
@@ -382,6 +442,7 @@
     //   document.getElementById("other").click();
     //   document.getElementById("male").click();
     // }
-</script>
+  </script>
 </body>
+
 </html>

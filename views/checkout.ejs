@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/home.css">
+  <link rel="stylesheet" href="/signup.css">
+  <script type="text/javascript" src="jquery-3.5.1.min.js"> </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+</head>
+
+<body>
+
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
+          <div class="flex flex-shrink-0 items-center logo">
+            <a href="/home" class="singimg"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png"
+                alt="Your Company"></a>
+          </div>
+          <div class="signtitle">Check-Out Page</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div>
+    <form action="/checkout" method="post" class="form">
+      <div class="lid">
+        <input name="ida" type="text" value=<%= id %> >
+      </div>
+      <div class="formm">
+        <div class="formleft">
+          <div class="detail">
+            <label for="">First Name</label>
+            <input type="text" name="firstname" placeholder="First name" required>
+          </div>
+          <div class="detail">
+            <label for="">Email</label>
+            <input type="text" name="email" placeholder="Email" required>
+          </div>
+          <div class="detail">
+            <label for="">Address</label>
+            <input type="text" name="address" placeholder="address" required>
+          </div>
+          <div class="detail">
+            <label for="">City/State</label>
+            <input type="text" name="city" placeholder="City/State" required>
+          </div>
+          <div class="detail">
+            <label for="">Zip Code</label>
+            <input type="text" name="zipcode" placeholder="89760" required>
+          </div>
+          <div class="detail">
+            <label for="">Apt/Suite/Unite(optional)</label>
+            <input type="text" name="apt" required>
+          </div>
+          <div class="detail">
+            <label for="">Password</label>
+            <input type="password" name="password" placeholder="************" required>
+          </div>
+          <div class="detail">
+            <label for="">Confirm Password</label>
+            <input type="password" name="confirmpassword" placeholder="*************" required>
+          </div>
+        </div>
+        <div class="formright">
+          <div class="detail">
+            <label for="">Last Name</label>
+            <input type="text" name="lastname" placeholder="Last name" required>
+          </div>
+          <div class="detail">
+            <label for="">Phone No</label>
+            <input type="text" onkeydown="phoneNumberFormatter()" name="phoneno" id="phone-number"
+              placeholder="Phone No" required>
+          </div>
+          <div class="detail">
+            <label for="">Date Of Birth</label>
+            <input type="date" name="date" placeholder="City/State" required>
+          </div>
+          <div class="detail gender">
+            <label for="">Gender</label>
+            <div class="checkboxes">
+              <div onclick="gender1()"><input type="checkbox" name="male" id="male"><Label class="checkw">Male</Label>
+              </div>
+              <div onclick="gender2()"><input type="checkbox" name="female" id="female"><Label
+                  class="checkw">Female</Label></div>
+              <div onclick="gender3()"><input type="checkbox" name="other" id="other"><Label
+                  class="checkw">Other</Label>
+              </div>
+              <div onclick="gender4()"><input type="checkbox" name="prefer" id="prefer"><Label
+                  class="checkw checkl">Prefer not to say</Label></div>
+            </div>
+          </div>
+          <input type="text" id="gender" name="gender">
+          <div class="detail">
+            <label for="">Emergency Contact Name</label>
+            <input type="text" name="emergencyname" required>
+          </div>
+          <div class="detail">
+            <label for="">Emergency Contact Phone Number</label>
+            <input type="number" name="emergencyphoneno" placeholder="Emergency Contact Phone Number" required>
+          </div>
+          <div class="detail">
+            <label for="">Emergency Contact Email</label>
+            <input type="text" name="emergencyemail" placeholder="Emergency Contact Phone Number" required>
+          </div>
+          <div class="detail">
+            <label for="">Bio</label>
+            <textarea type="text" name="bio" placeholder="Discription............"></textarea>
+          </div>
+        </div>
+      </div>
+  <div class="signinsubmit">
+    <div class="warn"><input type="checkbox" name="agree" required> By Clicking Sign-up, you agree to VE's <a href="">Terms and
+        Conditions of Use</a></div>
+        
+    <button onclick="pay()" type="submit" >Next</button>
+    <div class="login">Have a account? <a href="/signup">Log-in</a></div>
+  </div>
+  </form>
+  </div>
+  <%- include('../partials/fotter.ejs'); %>
+
+
+  <script src="./slick.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+  <script>
+
+    function formatPhoneNumber(value) {
+      if (!value) return value;
+
+      const phoneNumber = value.replace(/[^\d]/g, '');
+      const phoneNumberLength = phoneNumber.length;
+      if (phoneNumberLength < 4) return phoneNumber;
+      if (phoneNumberLength < 7) {
+        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+      }
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+        3,
+        6,
+      )}-${phoneNumber.slice(6, 9)}`;
+    }
+
+    function phoneNumberFormatter() {
+      const inputField = document.getElementById('phone-number');
+      const formattedInputValue = formatPhoneNumber(inputField.value);
+      inputField.value = formattedInputValue;
+    }
+
+    function pay() {
+    }
+  </script>
+
+
+  <script>
+    function gender1() {
+      document.getElementById("gender").value = "Male";
+      document.getElementById("female").checked = false;
+      document.getElementById("other").checked = false;
+      document.getElementById("prefer").checked = false;
+    }
+    function gender2() {
+      document.getElementById("gender").value = "Female";
+      document.getElementById("male").checked = false;
+      document.getElementById("other").checked = false;
+      document.getElementById("prefer").checked = false;
+    }
+    function gender3() {
+      document.getElementById("gender").value = "Other";
+      document.getElementById("female").checked = false;
+      document.getElementById("male").checked = false;
+      document.getElementById("prefer").checked = false;
+    }
+    function gender4() {
+      document.getElementById("gender").value = "Prefer Not to Say";
+      document.getElementById("female").checked = false;
+      document.getElementById("other").checked = false;
+      document.getElementById("male").checked = false;
+    }
+  </script>
+</body>
+
+</html>

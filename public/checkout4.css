@@ -1,0 +1,16 @@
+form{
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    display: none;
+}
+.monthprice{
+    margin-top: 0px;
+}
+.pricingdis{
+    display: flex;
+    align-items: center;
+}

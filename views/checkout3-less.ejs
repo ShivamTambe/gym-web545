@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/personal.css">
+    <link rel="stylesheet" href="/twopricing.css">
+    <title>Checkout Page</title>
+</head>
+<body>
+  <div class="dva">
+    <div class="value">
+        <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
+        <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
+        <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
+    </div>
+</div>
+<div class="donatee" onclick="donate()">
+    <div class="dbtn">
+      <div class="submit">Donate</div>
+    </div>
+</div>
+      <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div class="relative flex h-16 items-center justify-between">
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
+              <div class="flex flex-shrink-0 items-center logo">
+                <a href="/home"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
+              </div>
+              <div class="hidden sm:ml-6 sm:block">
+                <div class="flex space-x-4">
+                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                  <a href="/home" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+      
+                  <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Gyms</a>
+      
+                  <a href="/personaltrainer" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Personal Trainers</a>
+      
+                  <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+    
+                  <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login/Register</a>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+          <div class="space-y-1 px-2 pt-2 pb-3">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
+      
+            <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Gyms</a>
+      
+            <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Personal Trainers</a>
+      
+            <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Pricing</a>
+    
+            <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Login/Register</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="pricingdis">
+        <div class="pricingt">Purchase a minimum of 4 Months
+          <!-- <span id="pricemonth" id="monthval">4</span> -->
+      </div>
+      <div class="txt">
+        <div class="monthprice">
+          <div class="pricee" id="price1" onclick="option1()">
+              <div class="signn">$</div>
+              <div class="valuee"><span id="monthval">600</span>.99</div>
+              <div class="monthh"><span id="monthno">4</span> /months</div>
+              <div class="arr">
+                  <div class="uparr"><img src="/imgs/right-arrow.png" onclick="incre()" alt=""></div>
+                  <div class="downarr"><img src="/imgs/right-arrow.png" onclick="decre()" alt=""></div>
+              </div>
+          </div>
+          <div class="pricee" id="price2" onclick="option2()">
+              <div class="signn">$</div>
+              <div class="valuee"><span class="yearval">1,800.99</span></div>
+              <div class="monthh"><span id="no"></span> /Yearly</div>
+          </div>
+        </div>
+        <div class="btmtxt">Pay for the entire year and get 16.6% off the total price</div>
+      </div>
+      <div class="pricingdis">
+            <div class="pricingbtns">
+                <div class="btns">
+                    <div class="btn btn1 btn2">Back</div>
+                </div>
+                <div class="btns">
+                    <div class="btn btn2 signbtna" onclick="pay()">Sign Me Up</div>
+                </div>
+            </div>
+      </div>
+    
+      <%- include('../partials/fotter.ejs'); %>
+      <script>
+
+
+        function option1(){
+            console.log("clicked1");
+            let price1 = document.getElementById("price1");
+            let price2 = document.getElementById("price2");
+            price2.style.border = "1px solid gray";
+            price1.style.border = "4px solid darkgreen";
+        }
+        function option2(){
+            console.log("clicked2");
+            let price1 = document.getElementById("price1");
+            let price2 = document.getElementById("price2");
+            price1.style.border = "1px solid gray";
+            price2.style.border = "4px solid darkgreen";
+        }
+
+
+        function incre(){
+           let value = document.getElementById("monthno").innerText;
+           console.log(value);
+           if(value <12){
+           document.getElementById("monthval").innerText=parseInt(50, 10)+parseInt(document.getElementById("monthval").innerText, 10);
+           document.getElementById("monthno").innerText++;
+           document.getElementById("pricemonth").innerText++;
+           }
+        }
+  
+        function decre(){
+           let value = document.getElementById("monthno").innerText;
+           if(value >4){
+                document.getElementById("monthval").innerText-=150;
+                document.getElementById("monthno").innerText--;
+                document.getElementById("pricemonth").innerText--;
+           }
+        }
+    </script>
+
+
+
+<script>
+    function increase(){
+        let value = document.getElementById("amtv").innerText;
+        console.log("HELLO");
+        document.getElementById("amtv").innerText++;
+    }
+    function decrease(){
+        let value = document.getElementById("amtv").innerText;
+        console.log("HELLO");
+        document.getElementById("amtv").innerText++;
+    }
+</script>
+</body>
+</html>

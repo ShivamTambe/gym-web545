@@ -178,7 +178,7 @@ textarea{
     align-items: center;
 }
 .ecoinput{
-    display: none;
+    display: block;
 }
 #ecoprice{
     display: none;

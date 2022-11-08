@@ -118,8 +118,8 @@
       <button type="submit" class="btna">Submit</button>
   </form>
     <div class="allgyms" id="allg">
-      <% let size = Object.keys(item).length; %>
-      <% if(size > 4){size=4}else{size=Object.keys(item).length} %>
+      <% let size = Object.keys(itemp).length; %>
+      <% if(size > 4){size=4}else{size=Object.keys(itemp).length} %>
       <% console.log(size) %>
         <% for(var i=0; i<size; i++) {%>
             <div class="gyminfo">
@@ -135,8 +135,8 @@
                 </div> -->
                 <div class="gymname"></div>
                 <div class="otherinfo">
-                    <div class="gymbio"><%= item[i].trainername %></div>
-                    <div class="city"><%= item[i].trainerbio %></div>
+                    <div class="gymbio"><%= itemp[i].trainername %></div>
+                    <div class="city"><%= itemp[i].trainerbio %></div>
                 </div>
             </div>
          <% } %>
@@ -227,10 +227,7 @@
         <div class="btns">
             <div class="btn btn2">Show More</div>
         </div>
-
-    <%- include('../partials/fotter.ejs'); %>
-
-
+        <%- include('../partials/fotter.ejs'); %>
     <script>
       function incerease(){
          let value = document.getElementById("amtv").innerText;

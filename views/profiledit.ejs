@@ -14,27 +14,26 @@
   <title>HOME</title>
 </head>
 <body>
-    <form action="/editp" method="post">
-        <!-- <div class="lid">
-          <input type="text" value= <%= id %>>
-        </div> -->
-        <div class="profileinfo" id="pinfo">
-          <div class="pemail">
-            <div class="ni">
-              <div class="ll"><img src="/imgs/image4.jpg" alt=""></div>
-              <div class="dd">
-                <h5 class="namee"><%= name %></h5>
-                <p class="emaill"><%= email %></p>
-              </div>
-            </div>
-            <div class="oinfo">
-              <form action="setting" method="get">
-                  <div class="setting" id="sett">Setting</div>
-                  <div class="serv">Services</div>
-              </form>
-            </div>
+  <form action="/setting" method="post">
+    <div class="lid">
+      <input name="ida" type="text" value=<%=id %> >
+    </div>
+    <div class="profileinfo" id="pinfo">
+      <div class="pemail">
+        <div class="ni">
+          <div class="ll"><img src="/imgs/image4.jpg" alt="" class="proimga"></div>
+          <div class="dd">
+            <h5 class="namee">
+              <%= name %>
+            </h5>
+            <p class="emaill">
+              <%= email %>
+            </p>
           </div>
         </div>
+        <div class="oinfo">
+          <div class="setting" id="sett"><button type="submit">Setting</button></div>
+  </form>
         <nav class="bg-gray-800">
           <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
@@ -91,7 +90,7 @@
                   <div class="name"><%= name %></div>
               </div>
                   <div class="editinfo">
-                      <div class="ebtn edd"><button type="submit">Edit</button></div>
+                      <!-- <div class="ebtn edd"><button type="submit">Edit</button></div> -->
                       
                       <form action="/edited" method="post" class="applyform" enctype="multipart/form-data"> 
                           <div class="lid">
@@ -132,10 +131,8 @@
                           </button>
                       </form>
                   </div>
-        </form>
   </div>
   
-<%- include('../partials/fotter.ejs'); %>
 
 
 

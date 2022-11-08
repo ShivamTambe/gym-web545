@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/home.css">
+  <link rel="stylesheet" href="/signup.css">
+  <link rel="stylesheet" href="/checkout2.css">
+  <script type="text/javascript" src="jquery-3.5.1.min.js"> </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+</head>
+
+<body>
+
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
+          <div class="flex flex-shrink-0 items-center logo">
+            <a href="/home" class="singimg"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png"
+                alt="Your Company"></a>
+          </div>
+          <div class="signtitle">Check-Out Page</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <form action="/checkout2" method="post">
+    <div class="lid">
+      <input name="ida" type="text" value=<%=id %> >
+    </div>
+    <input type="text" name="email" id="" value="<%= email %>">
+    <div class="topest">
+      <div class="top">Client</div>
+      <div class="second">
+        <div class="sfirst" id="personal" onclick="personal()">
+          <div class="st">$50</div>
+          <div class="stx">Personal Trainer</div>
+          <div class="select">Select</div>
+        </div>
+        <div class="sfirst" id="fir" onclick="first()">
+          <div class="st">$150</div>
+          <div class="stx">select up to 5 gyms to add to your cost</div>
+          <div class="select">Select</div>
+        </div>
+        <div class="ssecond" id="sec" onclick="second()">
+          <div class="st">$500</div>
+          <div class="select">Select</div>
+        </div>
+      </div>
+      <input type="text" name="plan" id="plan">
+      <div class="third">
+        <select id="ecopre">
+          <option value="economical" id="eco">Economical</option>
+          <option value="Premimum" id="pre">Premimum</option>
+        </select>
+      </div>
+
+      <div class="last" id="lastt">
+        <div class="ecogyms">
+          <div class="ltitle">Economical</div>
+          <div class="horizontal"></div>
+          <% gyms.forEach(function(image) { %>
+            <div class="details" onclick="ecogyms()">
+              <input type="checkbox" name="checkbox" id="" class="checkbox">
+              <div class="name">
+                <%= image.title1 %>
+              </div>
+              <input type="text" class="gymname" name="gymname" value="<%= image.title1 %>">
+              <input type="text" class="gymemail" name="gymemail" value="<%= image.title1 %>">
+            </div>
+            <div class="horizontal"></div>
+            <% }) %>
+              <div><input type="text" id="ecogyms" name="ecogyms"></div>
+        </div>
+        <div class="ecogyms">
+          <div class="ltitle">Premimum</div>
+          <div class="horizontal"></div>
+
+          <% gyms.forEach(function(image) { %>
+            <div class="details" onclick="pregyms()">
+              <input type="checkbox" name="checkbox" id="" class="checkbox">
+              <div class="name">
+                <%= image.title1 %>
+              </div>
+              <input type="text" class="gymname" name="gymname" value="<%= image.title1 %>">
+              <input type="text" class="gymemail" name="gymemail" value="<%= image.title1 %>">
+            </div>
+            <div class="horizontal"></div>
+            <% }) %>
+        </div>
+      </div>
+      <input type="text" name="value" id="value">
+    </div>
+    <button  class="btn" onclick="check()">Next</button>
+    <button type="submit" id="submit">Submit</button>
+  </form>
+  <%- include('../partials/fotter.ejs'); %>
+
+
+
+    
+    <script>
+      let value = 0;
+      let arr = new Set();
+      function check(){
+          for(var i=0;i<25;i++){
+              value = value + values[i];
+          }
+          document.getElementById("value").value = value;
+          document.getElementById("submit").click();
+      }
+      function ecogyms() {
+        let newarr = [];
+        console.log("clicked");
+        for (var i = 0; i < 25; i++) {
+          let check = document.getElementsByClassName("checkbox")[i].checked;
+          if (check == true) {
+            let email = document.getElementsByClassName("gymemail")[i].value;
+            arr.add(email);
+          }
+          else {
+            let emaill = document.getElementsByClassName("gymemail")[i].value;
+            arr.delete(emaill);
+          }
+          document.getElementById("ecogyms").value = "";
+          for (var i = 0; i < arr.length; i++) {
+            document.getElementById("ecogyms").value = arr[i] + document.getElementById("ecogyms").value;
+          }
+        }
+        console.log(arr);
+      }
+      function pregyms() {
+        let newarr = [];
+        console.log("clicked");
+        for (var i = 25; i < 46; i++) {
+          let check = document.getElementsByClassName("checkbox")[i].checked;
+          if (check == true) {
+            let email = document.getElementsByClassName("gymemail")[i].value;
+            arr.add(email);
+          }
+          else {
+            let emaill = document.getElementsByClassName("gymemail")[i].value;
+            arr.delete(emaill);
+          }
+        }
+        console.log(arr);
+      }
+      function first() {
+        document.getElementById("fir").style.border = "4px solid red";
+        document.getElementById("sec").style.border = "1px solid white";
+        document.getElementById("personal").style.border = "1px solid white";
+
+        document.getElementById("plan").value = "less";
+        document.getElementById("lastt").style.display= "flex";
+
+      }
+      function second() {
+        document.getElementById("sec").style.border = "4px solid red";
+        document.getElementById("fir").style.border = "1px solid white";
+        document.getElementById("personal").style.border = "1px solid white";
+        document.getElementById("plan").value = "large";
+        document.getElementById("lastt").style.display= "flex";
+      }
+      function personal() {
+        document.getElementById("sec").style.border = "1px solid white";
+        document.getElementById("fir").style.border = "1px solid white";
+        document.getElementById("personal").style.border = "4px solid red";
+        document.getElementById("plan").value = "personal";
+        document.getElementById("lastt").style.display= "none";
+      }
+    </script>
+
+    <script src="./slick.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+      integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+</body>
+
+</html>

@@ -13,25 +13,26 @@
   <title>EDIT</title>
 </head>
 <body>
-<form action="/editp" method="post">
-  <div class="lid">
-    <input type="text" name="ida" value= <%= id %>>
-  </div>
-  <div class="profileinfo" id="pinfo">
-    <div class="pemail">
-      <div class="ni">
-        <div class="ll"><img src="/imgs/image4.jpg" alt=""></div>
-        <div class="dd">
-          <h5 class="namee"><%= name %></h5>
-          <p class="emaill"><%= email %></p>
-        </div>
-      </div>
-      <div class="oinfo">
-            <div class="setting" id="sett">Setting</div>
-            <div class="serv">Services</div>
-      </div>
+  <form action="/setting" method="post">
+    <div class="lid">
+      <input name="ida" type="text" value=<%=id %> >
     </div>
-  </div>
+    <div class="profileinfo" id="pinfo">
+      <div class="pemail">
+        <div class="ni">
+          <div class="ll"><img src="/imgs/image4.jpg" alt="" class="proimga"></div>
+          <div class="dd">
+            <h5 class="namee">
+              <%= name %>
+            </h5>
+            <p class="emaill">
+              <%= email %>
+            </p>
+          </div>
+        </div>
+        <div class="oinfo">
+          <div class="setting" id="sett"><button type="submit">Setting</button></div>
+  </form>
   <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
@@ -76,7 +77,10 @@
       </div>
     </div>
   </nav>
-
+<form action="/editedsetting" method="post">
+  <div class="lid">
+    <input name="ida" type="text" value=<%=id %> >
+  </div>
   <div class="userinfo">
         <div class="usertop">
           <% items.forEach(function(image) { %>
@@ -90,10 +94,10 @@
         </div>
          
         <div class="editinfo">
-          <div class="ebtn edd" id="ddd" onclick="editt()"><button type="submit"><span id="dda">Edit</span></button></div>
+          <div class="ebtn edd" id="ddd" onclick="editt()"><button type="submit" id="dda"><Edit</button></div>
           <div class="elabel">
             <label for="">First Name</label>
-            <input type="text" value=<%= result.name %> readonly>
+            <input type="text" value="<%= result.name %>" readonly>
           </div>
           <div class="elabel">
             <label for="">Last Name</label>
@@ -110,7 +114,6 @@
         </div>
   </div>
 </form>
-  
 <%- include('../partials/fotter.ejs'); %>
 
 
@@ -118,9 +121,6 @@
   <script src="./slick.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
-
 
   <script>
 

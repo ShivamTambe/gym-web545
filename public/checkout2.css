@@ -1,0 +1,90 @@
+body{
+    color: white;
+}
+.topest{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+.top{
+    margin: 0 auto;
+    border: 1px solid;
+    margin-bottom: 40px;
+    padding: 10px;
+    width: 500px;
+}
+.second{
+    display: flex;
+    gap: 50px;
+}
+.sfirst,.ssecond{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid gray;
+    border-radius: 15px;
+    gap: 20px;
+    width: 300px;
+    padding: 15px;
+}
+.ssecond{
+    justify-content: space-between;
+}
+#plan{
+    display: block;
+}
+.select{
+    padding: 20px 40px;
+    background-color: red;
+    border-radius: 50px;
+}
+.third{
+    margin: 20px auto;
+}
+.last{
+    display: flex;
+    width: 80vw;
+    justify-content: space-around;
+}
+.horizontal{
+    height: 2px;
+    width: 40vw;
+    background-color: antiquewhite;
+}
+.ltitle{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.st{
+    font-size: 25px;
+}
+.stx{
+    text-align: center;
+}
+.details{
+    display: flex;
+    gap: 10px;
+}
+.gymname{
+    display: none;
+}
+.checkbox {
+    width: 15px;
+    position: relative;
+    left: 140px;
+}
+.name{
+    display: flex;
+    align-items: center;
+}
+.eco{
+    display: flex;
+    flex-direction: column;
+}
+.btn{
+    padding: 20px 40px;
+    background-color: red;
+    border-radius: 25px;
+}
