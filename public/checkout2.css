@@ -68,7 +68,7 @@ body{
     gap: 10px;
 }
 .gymname{
-    display: none;
+    display: block;
 }
 .checkbox {
     width: 15px;
@@ -87,4 +87,10 @@ body{
     padding: 20px 40px;
     background-color: red;
     border-radius: 25px;
+}
+#submit{
+    display: none;
+}
+.gymeprice{
+    display: block;
 }

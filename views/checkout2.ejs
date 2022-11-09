@@ -79,7 +79,8 @@
                 <%= image.title1 %>
               </div>
               <input type="text" class="gymname" name="gymname" value="<%= image.title1 %>">
-              <input type="text" class="gymemail" name="gymemail" value="<%= image.title1 %>">
+              <input type="text" class="gymemail" name="gymemail" value="<%= image.email %>">
+              <input type="number" class="gymprice" name="gymprice" value="<%= image.price %>">
             </div>
             <div class="horizontal"></div>
             <% }) %>
@@ -96,16 +97,20 @@
                 <%= image.title1 %>
               </div>
               <input type="text" class="gymname" name="gymname" value="<%= image.title1 %>">
-              <input type="text" class="gymemail" name="gymemail" value="<%= image.title1 %>">
+              <input type="text" class="gymemail" name="gymemail" value="<%= image.email %>">
+              <input type="number" class="gymprice" name="gymprice" value="<%= image.price %>">
             </div>
             <div class="horizontal"></div>
             <% }) %>
         </div>
       </div>
+      <input type="text" name="names" id="names">
+      <input type="text" name="emails" id="emails">
       <input type="text" name="value" id="value">
     </div>
-    <button  class="btn" onclick="check()">Next</button>
-    <button type="submit" id="submit">Submit</button>
+    <!-- <button type="submit" id="submit">Submit</button> -->
+    <div class="btn" onclick="check()">Next</div>
+    <button  class="btn" id="butto" onclick="check()">New</button>
   </form>
   <%- include('../partials/fotter.ejs'); %>
 
@@ -113,27 +118,71 @@
 
     
     <script>
-      let value = 0;
+      let namearr = new Set();
+      window.namearr = [];
+      let valuee= 0;
+      window.valuee = 0;
       let arr = new Set();
+      window.arr = [];
+
+
       function check(){
-          for(var i=0;i<25;i++){
-              value = value + values[i];
-          }
-          document.getElementById("value").value = value;
-          document.getElementById("submit").click();
+        let val = 0;
+        let newa = [];
+        let emails = [];
+        localStorage.setItem("users", 'JSON.stringify(users)');
+        // console.log(document.getElementsByClassName("gymprice")[0].value);
+        l=0;
+        // console.log(document.getElementsByClassName("checkbox"));
+        let checks = [...document.getElementsByClassName("checkbox")]
+        console.log(document.getElementsByClassName("gymprice"));
+          checks.forEach(function(image){ 
+              if(image.checked == true){
+                console.log(l + "inseide");
+                val = val + parseInt(document.getElementsByClassName("gymprice")[l].value);
+              }
+              l++;
+          })
+          document.getElementById("value").value = val;
+          console.log(namearr);
+          console.log(arr);
+
+          console.log(arr);
+          localStorage.setItem('emails',JSON.stringify(namearr));
+          let j=0;
+          let k=0;
+          arr.forEach(function(image){ 
+            emails[k] = image;
+                k++;
+          })
+          namearr.forEach(function(image){ 
+                newa[j] = image;
+                j++;
+          })
+          console.log(newa);
+          localStorage.setItem('names',JSON.stringify(newa));
+          localStorage.setItem('emails',JSON.stringify(emails));
+          console.log(JSON.stringify(newa));
+          console.log(JSON.stringify(emails));
+          document.getElementById("names").value = JSON.stringify(newa);
+          document.getElementById("emails").value = JSON.stringify(emails);
+          document.getElementById("butto").click();
       }
       function ecogyms() {
-        let newarr = [];
         console.log("clicked");
         for (var i = 0; i < 25; i++) {
           let check = document.getElementsByClassName("checkbox")[i].checked;
           if (check == true) {
             let email = document.getElementsByClassName("gymemail")[i].value;
+            let name = document.getElementsByClassName("gymname")[i].value;
             arr.add(email);
+            namearr.add(email);
           }
           else {
             let emaill = document.getElementsByClassName("gymemail")[i].value;
+            let name = document.getElementsByClassName("gymname")[i].value;
             arr.delete(emaill);
+            namearr.delete(email);
           }
           document.getElementById("ecogyms").value = "";
           for (var i = 0; i < arr.length; i++) {
@@ -141,6 +190,7 @@
           }
         }
         console.log(arr);
+        console.log(namear);
       }
       function pregyms() {
         let newarr = [];
@@ -149,14 +199,20 @@
           let check = document.getElementsByClassName("checkbox")[i].checked;
           if (check == true) {
             let email = document.getElementsByClassName("gymemail")[i].value;
+            let name = document.getElementsByClassName("gymname")[i].value;
             arr.add(email);
+            namearr.add(name);
           }
           else {
             let emaill = document.getElementsByClassName("gymemail")[i].value;
+            let name = document.getElementsByClassName("gymname")[i].value;
             arr.delete(emaill);
+            namearr.delete(name);
           }
         }
         console.log(arr);
+        console.log(namearr);
+        console.log(namearr.size);
       }
       function first() {
         document.getElementById("fir").style.border = "4px solid red";

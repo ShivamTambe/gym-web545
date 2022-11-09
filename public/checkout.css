@@ -1,3 +1,10 @@
 form{
     display: block;
 }
+.lid{
+    display: block;
+
+}
+.lid input{
+    display: block;
+}

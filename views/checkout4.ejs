@@ -93,10 +93,13 @@
 <form action="/checkout4" method="post">
     <div class="lid">
         <input name="ida" type="text" value=<%=id %> >
+        <input type="text" name="plan" value="<%= plan %>">
+        <input type="text" id="num" name="no">
+        <input type="text" name="names" value="<%= names %>">
+        <input type="text" name="emails" value="<%= emails %>">
     </div>
     <div class="lid">
         <input name="email" type="text" value=<%= email %> >
-        <input type="text" name="plan" id="" value="<%= plan %>">
         <input type="text" name="no" id="no" value="<%=no%>">
     </div>
     <div class="pricingdis">
@@ -106,7 +109,7 @@
         <div class="txt">
             <div class="monthprice">
                 <input type="text" value="<%= finalprice %>" name="finalprice">
-                <div class="pricingt"><%= finalprice %></div>
+                <div class="pricingt">$<%= finalprice %></div>
             </div>
         </div>
         <div class="pricingdis">

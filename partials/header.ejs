@@ -1,16 +1,41 @@
-<div class="fullpage">
-    <div class="nav">
-        <div class="navbar">
-            <div class="logodetails">
-                <div class="img"><a href="/home"><img src="/imgs/logo.png" alt=""></a></div>
-            </div>
-            <div class="navbtns">
-                <div class="navbtn"><a href="/">Gyms</a></div>
-                <div class="navbtn"><a href="/pricing">Pricing</a></div>
-                <div class="navbtn"><a href="/">Personal Trainers</a></div>
-                <div class="navbtn"><a href="/sign">Sign up</a></div>
-                <div class="navbtn"><a href="/login">Login</a></div>
-            </div>
-        </div>
+<div class="donate">
+    <div class="dbtn">
+      <div class="value">
+        <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
+                <div class=" amt">$ <span class="amtvalue" id="amtv">10</span></div>
+        <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
+      </div>
+      <div class="submit">Donate</div>
     </div>
-</div>
+  </div>
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
+          <div class="flex flex-shrink-0 items-center logo">
+            <a href="/home"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a href="/home"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                aria-current="page">Home</a>
+
+              <a href="/gyms"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Gyms</a>
+
+              <a href="/personaltrainer"
+                class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Personal Trainers</a>
+
+              <a href="/pricing"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+
+              <a href="/signup"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login/Register</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

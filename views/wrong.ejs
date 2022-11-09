@@ -64,12 +64,16 @@
       </div>
     </div>
 
-    <div class="sign"><a href="/signin">X</a></div>
+    <div class="sign"><span onclick="back()" class="back">X</span></div>
     <div class="wrong">
         This gym does not fit.Select a different gym.
     </div>
-    <%- include('../partials/fotter.ejs'); %>
 
+    <script>
+        function back(){
+          history.back();
+        }
+    </script>
 </body>
 
 </html>

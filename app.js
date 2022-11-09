@@ -40,21 +40,86 @@ paypal.configure(config.api);
 
 // Page will display after payment has beed transfered successfully
 app.get('/success', function (req, res) {
+    var namelist = names.replace(/^\[|\]$/g, "").split(", ");
+    var gymsemailslist = emails.replace(/^\[|\]$/g, "").split(", ");
+    let gymsemails =req.query.emails;
     let paiduser = new PaidInfo({
-        email: req.query.email,
-        id: req.query.id,
-        finalprice: req.query.amount,
+        names : req.query.names,
+        gymsemails : req.query.emails,
+        email:req.query.email,
+        id:req.query.id,
+        finalprice: req.query.finalprice,
         amount: req.query.amount,
-        no: req.query.no,
+        no:req.query.no,
         plan: req.query.plan,
         paymentId: req.query.paymentId,
-        token: req.query.token,
-        PayerID: req.query.PayerID
+        token:req.query.token,
+        PayerID:req.query.PayerID
     })
     paiduser.save();
+     let shivemail = 'shivamtambe545@gmail.com';
+    sgMail.setApiKey(process.env.Sendkey)
+    const msg = {
+        to:gymsemails,
+        from:{
+            name:"Vonelijah",
+            email:'shivamtambe545@gmail.com'
+        },
+        subject: 'New User Join Your Gym',
+        text: 'New User Join Your Gym',
+        html: `<h1> New User Join Your Gym</h1>`,
+      }
+      sgMail
+        .send(msg)
+        .then(() => {
+          console.log('Email sent')
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     console.log(req.query);
-    res.send("Payment transfered successfully.");
+    SocialInfo.find().then(result => {
+        let facebook = result[0].facebook;
+        let instagram = result[0].instagram;
+        let twitter = result[0].twitter;
+        let pintrest = result[0].pintrest;
+        AffilateInfo.find().then(result1 => {
+            FitnessInfo.find().then(result2 => {
+                MoreInfo.find().then(result3 => {
+                    let app = result3[0].app;
+                    let why = result2[0].why;
+                    let training = result2[0].training;
+                    let tip = result2[0].tip;
+                    let top1 = result1[0].top1;
+                    let top2 = result1[0].top2;
+                    let top3 = result1[0].top3;
+                    GymInfo.find().then(resultg => {
+                        TaxInfo.find().then(result => {
+                            finalprice = parseFloat(amount) + parseFloat(amount * result[0].tax / 100);
+                            res.render("acheckout", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan })
+                        }).catch(err => console.log(err));
+                    }).catch(err => console.log(err));
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+
+    // res.send("Payment transfered successfully.");
 });
+app.post("/last",function(req,res){
+    let paiduser = new PaidInfo({
+        email: req.body.email,
+        id: req.body.id,
+        finalprice: req.body.amount,
+        amount: req.body.amount,
+        no: req.body.no,
+        plan: req.body.plan,
+        paymentId: req.body.paymentID,
+        token: req.body.token,
+        PayerID: req.body.PayerID
+    })
+    paiduser.save();
+})
 
 // Page will display when you canceled the transaction 
 app.get('/cancel', function (req, res) {
@@ -105,6 +170,8 @@ app.post('/paynow', function (req, res) {
 
 
 const paidSchema = {
+    names:String,
+    gymsemails:String,
     email: String,
     id: String,
     finalprice: String,
@@ -317,8 +384,11 @@ var upload = multer({ storage: storage });
 
 
 
-
 app.post("/checkout4", function (req, res) {
+    let users = req.body.users;
+    let names = req.body.names;
+    let emails = req.body.emails;
+    let gymsemails = req.body.emails;
     id = req.body.ida;
     email = req.body.email;
     finalprice = req.body.finalprice;
@@ -332,7 +402,7 @@ app.post("/checkout4", function (req, res) {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": app.locals.baseurl + `/success?email=${email}&id=${id}&finalprice=${finalprice}&amount=${amount}&no=${no}&plan=${plan}`,
+            "return_url": app.locals.baseurl + `/success?email=${email}&id=${id}&finalprice=${finalprice}&amount=${amount}&no=${no}&plan=${plan}&names:${names}&emails:${emails}`,
             "cancel_url": app.locals.baseurl + "/cancel"
         },
         "transactions": [{
@@ -394,12 +464,147 @@ app.post("/forcheckout", function (req, res) {
         }).catch(err => console.log(err))
     }).catch(err => console.log(err));
 })
+
+
+
+app.post("/checkout3-large", function (req, res) {
+    let email = req.body.email;
+    let id = req.body.ida;
+    let total = req.body.total;
+    let no = req.body.mno;
+    let plan = req.body.plan;
+    console.log(no);
+    console.log(total);
+    let amount;
+    if (parseInt(no) == 4) {
+        amount = 1999.99;
+    }
+    if (parseInt(no) == 5) {
+        amount = 2499.99;
+    }
+    if (parseInt(no) == 6) {
+        amount = 2999.99;
+    }
+    if (parseInt(no) == 7) {
+        amount = 3499.99;
+    }
+    if (parseInt(no) == 8) {
+        amount = 3999.99;
+    }
+    if (parseInt(no) == 9) {
+        amount = 4499.99;
+    }
+    if (parseInt(no) == 10) {
+        amount = 4999.99;
+    }
+    if (parseInt(no) == 11) {
+        amount = 5499.99;
+    }
+    if (parseInt(no) == 12) {
+        amount = 5999.99;
+    }
+    let finalprice;
+    SocialInfo.find().then(result => {
+        let facebook = result[0].facebook;
+        let instagram = result[0].instagram;
+        let twitter = result[0].twitter;
+        let pintrest = result[0].pintrest;
+        AffilateInfo.find().then(result1 => {
+            FitnessInfo.find().then(result2 => {
+                MoreInfo.find().then(result3 => {
+                    let app = result3[0].app;
+                    let why = result2[0].why;
+                    let training = result2[0].training;
+                    let tip = result2[0].tip;
+                    let top1 = result1[0].top1;
+                    let top2 = result1[0].top2;
+                    let top3 = result1[0].top3;
+                    GymInfo.find().then(resultg => {
+                        TaxInfo.find().then(result => {
+                            finalprice = parseFloat(amount) + parseFloat(amount * result[0].tax / 100);
+                            res.render("checkout4", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan })
+                        }).catch(err => console.log(err));
+                    }).catch(err => console.log(err));
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+})
+
+app.post("/checkout3-less", function (req, res) {
+    let email = req.body.email;
+    let id = req.body.ida;
+    let total = req.body.total;
+    let no = req.body.mno;
+    let plan = req.body.plan;
+    let names = req.body.names;
+    let emails = req.body.emails;
+    console.log(no);
+    console.log(total);
+    let amount;
+    if (parseInt(no) == 4) {
+        amount = 499.99;
+    }
+    if (parseInt(no) == 5) {
+        amount = 749.99;
+    }
+    if (parseInt(no) == 6) {
+        amount = 999.99;
+    }
+    if (parseInt(no) == 7) {
+        amount = 1049.99;
+    }
+    if (parseInt(no) == 8) {
+        amount = 1199.99;
+    }
+    if (parseInt(no) == 9) {
+        amount = 1349.99;
+    }
+    if (parseInt(no) == 10) {
+        amount = 1499.99;
+    }
+    if (parseInt(no) == 11) {
+        amount = 1649.99;
+    }
+    if (parseInt(no) == 12) {
+        amount = 1799.99;
+    }
+    let finalprice;
+    SocialInfo.find().then(result => {
+        let facebook = result[0].facebook;
+        let instagram = result[0].instagram;
+        let twitter = result[0].twitter;
+        let pintrest = result[0].pintrest;
+        AffilateInfo.find().then(result1 => {
+            FitnessInfo.find().then(result2 => {
+                MoreInfo.find().then(result3 => {
+                    let app = result3[0].app;
+                    let why = result2[0].why;
+                    let training = result2[0].training;
+                    let tip = result2[0].tip;
+                    let top1 = result1[0].top1;
+                    let top2 = result1[0].top2;
+                    let top3 = result1[0].top3;
+                    GymInfo.find().then(resultg => {
+                        TaxInfo.find().then(result => {
+                            finalprice = parseFloat(amount) + parseFloat(amount * result[0].tax / 100);
+                            res.render("checkout4", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan, names:names,emails:emails })
+                        }).catch(err => console.log(err));
+                    }).catch(err => console.log(err));
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+
+})
 app.post("/checkout3-p", function (req, res) {
     let email = req.body.email;
     let id = req.body.ida;
     let total = req.body.total;
     let no = req.body.mno;
     let plan = req.body.plan;
+    let names = req.body.names;
+    let emails = req.body.emails;
     console.log(no);
     console.log(total);
     let amount;
@@ -446,7 +651,7 @@ app.post("/checkout3-p", function (req, res) {
                     GymInfo.find().then(resultg => {
                         TaxInfo.find().then(result => {
                             finalprice = parseFloat(amount) + parseFloat(amount * result[0].tax / 100);
-                            res.render("checkout4", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan })
+                            res.render("checkout4", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan, names:names,emails:emails })
                         }).catch(err => console.log(err));
                     }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
@@ -459,6 +664,8 @@ app.get("/checkout3-p", function (req, res) {
     let no = req.body.no;
     let plan = req.body.plan;
     let id = req.body.ida;
+    let names = req.body.names;
+    let emails = req.body.emails;
     SocialInfo.find().then(result => {
         let facebook = result[0].facebook;
         let instagram = result[0].instagram;
@@ -475,7 +682,7 @@ app.get("/checkout3-p", function (req, res) {
                     let top2 = result1[0].top2;
                     let top3 = result1[0].top3;
                     GymInfo.find().then(resultg => {
-                        res.render("checkout3-p", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, plan: plan, no: no })
+                        res.render("checkout3-p", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, plan: plan, no: no, names:names,emails:emails })
                     }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
             }).catch(err => console.log(err));
@@ -499,6 +706,10 @@ app.get("/payment", function (req, res) {
 })
 
 app.post("/checkout2", function (req, res) {
+    let names = req.body.names;
+    let emails = req.body.emails;
+    console.log(names);
+    console.log(emails);
     let id = req.body.ida;
     let plan = req.body.plan;
     let value = req.body.value;
@@ -522,7 +733,7 @@ app.post("/checkout2", function (req, res) {
                         let top2 = result1[0].top2;
                         let top3 = result1[0].top3;
                         GymInfo.find().then(resultg => {
-                            res.render("checkout3-p", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, email: email, id: id, plan: plan })
+                            res.render("checkout3-p", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, email: email, id: id, plan: plan, names:names, emails : emails })
                         }).catch(err => console.log(err));
                     }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
@@ -531,19 +742,82 @@ app.post("/checkout2", function (req, res) {
     }
     else {
         if (plan == "less") {
-            if (value < 150) {
-                res.render("checkout3-less");
+            if (value < 450) {
+                SocialInfo.find().then(result => {
+                    let facebook = result[0].facebook;
+                    let instagram = result[0].instagram;
+                    let twitter = result[0].twitter;
+                    let pintrest = result[0].pintrest;
+                    AffilateInfo.find().then(result1 => {
+                        FitnessInfo.find().then(result2 => {
+                            MoreInfo.find().then(result3 => {
+                                let app = result3[0].app;
+                                let why = result2[0].why;
+                                let training = result2[0].training;
+                                let tip = result2[0].tip;
+                                let top1 = result1[0].top1;
+                                let top2 = result1[0].top2;
+                                let top3 = result1[0].top3;
+                                GymInfo.find().then(resultg => {
+                                    res.render("checkout3-less", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, email: email, id: id, plan: plan , names:names, emails : emails})
+                                }).catch(err => console.log(err));
+                            }).catch(err => console.log(err));
+                        }).catch(err => console.log(err));
+                    }).catch(err => console.log(err));
+                }).catch(err => console.log(err));
             }
             else {
                 res.render("wrong");
             }
         }
         else {
-            if (value < 500) {
-                res.render("checkout4-large");
+            if (value < 1200) {
+                SocialInfo.find().then(result => {
+                    let facebook = result[0].facebook;
+                    let instagram = result[0].instagram;
+                    let twitter = result[0].twitter;
+                    let pintrest = result[0].pintrest;
+                    AffilateInfo.find().then(result1 => {
+                        FitnessInfo.find().then(result2 => {
+                            MoreInfo.find().then(result3 => {
+                                let app = result3[0].app;
+                                let why = result2[0].why;
+                                let training = result2[0].training;
+                                let tip = result2[0].tip;
+                                let top1 = result1[0].top1;
+                                let top2 = result1[0].top2;
+                                let top3 = result1[0].top3;
+                                GymInfo.find().then(resultg => {
+                                    res.render("checkout3-large", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, email: email, id: id, plan: plan, names:names, emails : emails })
+                                }).catch(err => console.log(err));
+                            }).catch(err => console.log(err));
+                        }).catch(err => console.log(err));
+                    }).catch(err => console.log(err));
+                }).catch(err => console.log(err));
             }
             else {
-                res.render("wrong");
+                SocialInfo.find().then(result => {
+                    let facebook = result[0].facebook;
+                    let instagram = result[0].instagram;
+                    let twitter = result[0].twitter;
+                    let pintrest = result[0].pintrest;
+                    AffilateInfo.find().then(result1 => {
+                        FitnessInfo.find().then(result2 => {
+                            MoreInfo.find().then(result3 => {
+                                let app = result3[0].app;
+                                let why = result2[0].why;
+                                let training = result2[0].training;
+                                let tip = result2[0].tip;
+                                let top1 = result1[0].top1;
+                                let top2 = result1[0].top2;
+                                let top3 = result1[0].top3;
+                                GymInfo.find().then(resultg => {
+                                    res.render("wrong", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, email: email, id: id, plan: plan })
+                                }).catch(err => console.log(err));
+                            }).catch(err => console.log(err));
+                        }).catch(err => console.log(err));
+                    }).catch(err => console.log(err));
+                }).catch(err => console.log(err));
             }
         }
     }
@@ -1036,9 +1310,9 @@ app.get("/signin", function (req, res) {
     }).catch(err => console.log(err));
 })
 app.get("/twopricing", function (req, res) {
-    // let newinfo = new ArrayInfo({
-    //     emails :["shivamtambe545@gmail.com","shivamstambe20222@gmail.com","empiregaming545@gmail.com"],
-    //     email  : "email@gmail.com"
+    // let newpaid = new PaidInfo({
+    //     names :"Massage Envy",
+    //     gymsemails  : "email@gmail.com"
     // })
     // newinfo.save();
     SocialInfo.find().then(result => {
@@ -1083,6 +1357,15 @@ app.get("/pricing", function (req, res) {
     //     app:"https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642"
     // })
     // other.save();
+    // PaidInfo.updateMany( {
+    //     $set:
+    //     {
+    //             names :"Massage Envy",
+    //             gymsemails  : "email@gmail.com"
+    //     }
+    // }).then(result => {
+    //     console.log(result);
+    // })
     SocialInfo.find().then(result => {
         let facebook = result[0].facebook;
         let instagram = result[0].instagram;
