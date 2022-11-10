@@ -726,3 +726,6 @@ textarea{
     display: flex;
     justify-content: center;
 }
+#donateamt{
+    display: none;
+}

@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/slick.css">
   <link rel="stylesheet" href="/home.css">
   <link rel="stylesheet" href="/profiledit.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOME</title>
 </head>
+
 <body>
   <form action="/setting" method="post">
     <div class="lid">
@@ -31,145 +37,216 @@
             </p>
           </div>
         </div>
-        <div class="oinfo">
-          <div class="setting" id="sett"><button type="submit">Setting</button></div>
+      </div>
+      <div class="oinfo">
+        <div class="setting" id="sett"><button type="submit">Setting</button></div>
+        <div class="setting" id="sett">My Gyms</div>
+        <div class="setting" id="sett">Photo</div>
+        <div class="setting" id="sett">Book Massage</div>
+        <div class="setting" id="sett">Book Physical Therapy</div>
+        <div class="setting" id="sett"><a href="/signup">Log Out</a></div>
+      </div>
+    </div>
   </form>
-        <nav class="bg-gray-800">
-          <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div class="relative flex h-16 items-center justify-between">
-              <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
-                <div class="flex flex-shrink-0 items-center logo">
-                  <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
-                </div>
-                <div class="hidden sm:ml-6 sm:block">
-                  <div class="flex space-x-4">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="/loginedhome" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red" aria-current="page">Home</a>
-        
-                    <a href="/loginedgyms" class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Gyms</a>
-        
-                    <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal Trainers</a>
-        
-                    <a href="/loginedpricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a>
-                  </div>
-                  <div class="profileimggg">
-                    <div class="name"><%= name %></div>
-                    <img src="/imgs/image4.jpg" alt="" onclick="profile()">
-                  </div>
-                </div>
-              </div>
-            </div>
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
+          <div class="flex flex-shrink-0 items-center logo">
+            <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
           </div>
-        
-          <!-- Mobile menu, show/hide based on menu state. -->
-          <div class="sm:hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pt-2 pb-3">
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns" aria-current="page">Home</a>
-        
-              <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Gyms</a>
-        
-              <a href="/normaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal Trainers</a>
-        
-              <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
+              <a href="/loginedhome" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red"
+                aria-current="page">Home</a>
 
-              <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
+              <a href="/loginedgyms"
+                class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Gyms</a>
+
+              <a href="/personaltrainer"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal
+                Trainers</a>
+
+              <a href="/loginedpricing"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a>
+            </div>
+            <div class="profileimggg">
+              <div class="name">
+                <%= name %>
+              </div>
+              <img src="/imgs/image4.jpg" alt="" onclick="profile()">
             </div>
           </div>
-        </nav>
+        </div>
+      </div>
+    </div>
 
-        <div class="userinfo">
-              <div class="usertop">
-                  <!-- <div class="img"><img src="/imgs/image4.jpg" alt=""></div> -->
-                  <% items.forEach(function(image) { %>
-                      <div class="imgdetails">
-                        <img src="data:image/<%=image.img.contentType%>;base64,
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="space-y-1 px-2 pt-2 pb-3">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns"
+          aria-current="page">Home</a>
+
+        <a href="/gyms"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Gyms</a>
+
+        <a href="/normaltrainer"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal
+          Trainers</a>
+
+        <a href="/pricing"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
+
+        <a href="/signup"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="userinfo">
+    <div class="usertop">
+      <!-- <div class="img"><img src="/imgs/image4.jpg" alt=""></div> -->
+      <% items.forEach(function(image) { %>
+        <div class="imgdetails">
+          <img src="data:image/<%=image.img.contentType%>;base64,
                           <%=image.img.data.toString('base64')%>">
-                      </div>
-                  <% }) %>
-                  <div class="name"><%= name %></div>
-              </div>
-                  <div class="editinfo">
-                      <!-- <div class="ebtn edd"><button type="submit">Edit</button></div> -->
-                      
-                      <form action="/edited" method="post" class="applyform" enctype="multipart/form-data"> 
-                          <div class="lid">
-                            <input type="text" name="ida" value= <%= id %>>
-                          </div>
-                          <div>
-                            <label for="image">Upload Image: </label>
-                            <input type="file" id="image"
-                              name="image" value="" required class="uploadimg">
-                          </div>
-                          <div class="elabel">
-                              <label for="">First Name</label>
-                              <input type="text" name="first" placeholder="Enter First Name">
-                          </div>
-                          <div class="elabel">
-                              <label for="">Last Name</label>
-                              <input type="text" name="last" placeholder="Enter Last Name">
-                          </div>
-                          <div class="elabel">
-                              <label for="">Email</label>
-                              <input type="text" name="email" placeholder="Enter Email Name">
-                          </div>
-                          <div class="elabel">
-                              <label for="">Bio</label>
-                              <textarea type="text" name="bio" placeholder="Enter Bio"></textarea>
-                          </div>
-                          <div class="detail">
-                            <label for="">Show your profile to logged-in users</label>
-                            <div class="checkboxes bet">
-                              <div onclick="click1()"><input type="checkbox" name="yes" id="private" class="social"><Label class="checkw">Private</Label></div>
-                              <div onclick="click2()"><input type="checkbox" name="no" id="public" class="social"><Label class="checkw">Public</Label></div>
-                            </div>
-                            <input type="text" id="pros" name="status" value="hh" class="sta">
-                          </div>
+        </div>
+        <% }) %>
+          <div class="name">
+            <%= name %>
+          </div>
+    </div>
+    <div class="editinfo">
+      <!-- <div class="ebtn edd"><button type="submit">Edit</button></div> -->
 
-                          <button type="submit">
-                              <div class="btn applybtn">APPLY</div>
-                          </button>
-                      </form>
-                  </div>
+      <form action="/edited" method="post" class="applyform" enctype="multipart/form-data">
+        <div class="lid">
+          <input type="text" name="ida" value="<%=id %>" required>
+        </div>
+        <div>
+          <label for="image">Upload Image: </label>
+          <input type="file" id="image" name="image" value="" required class="uploadimg" required>
+        </div>
+        <div class="elabel">
+          <label for="">First Name</label>
+          <input type="text" name="first" placeholder="Enter First Name" required>
+        </div>
+        <div class="elabel">
+          <label for="">Last Name</label>
+          <input type="text" name="last" placeholder="Enter Last Name" required>
+        </div>
+        <div class="elabel">
+          <label for="">Email</label>
+          <input type="text" name="email" placeholder="Enter Email Name" required>
+        </div>
+        <div class="elabel">
+          <label for="">Phone Number</label>
+          <input type="text" placeholder="Enter Phone No" name="phoneno" required>
+        </div>
+        <div class="elabel">
+          <label for="">Bio</label>
+          <textarea type="text" name="bio" placeholder="Enter Bio"></textarea>
+        </div>
+        <div class="elabel">
+          <label for="">Date of Birth</label>
+          <input type="date" placeholder="Enter Date of Birth" name="date" required>
+        </div>
+        <div class="elabel">
+          <label for="">Gender</label>
+          <input type="text" placeholder="Enter Gender" name="gender" required>
+        </div>
+        <div class="elabel">
+          <label for="">City</label>
+          <input type="text" placeholder="Enter City" name="city" required>
+        </div>
+        <div class="elabel">
+          <label for="">State</label>
+          <input type="text" placeholder="Enter State" name="city" required>
+        </div>
+        <div class="elabel">
+          <label for="">Zip Code</label>
+          <input type="text" placeholder="Enter Zip Code" name="zipcode" required>
+        </div>
+        <div class="elabel">
+          <label for="">Address</label>
+          <input type="text" placeholder="Enter Address" name="address" required>
+        </div>
+        <div class="elabel">
+          <label for="">Apt/ Suite/ Unite(optional)</label>
+          <input type="text" placeholder="Enter Apt/ Suite/ Unite" name="apt" required>
+        </div>
+        <div class="elabel">
+          <label for="">Emergency Contact Name</label>
+          <input type="text" placeholder="Enter Emergency Contact Name" name="ename" required>
+        </div>
+        <div class="elabel">
+          <label for="">Emergency Contact Email</label>
+          <input type="text" placeholder="Enter Emergency Contact Email" name="eemail" required>
+        </div>
+        <div class="elabel">
+          <label for="">Emergency Contact Number</label>
+          <input type="number" placeholder="Enter Emergency Contact Number" name="ephone" required>
+        </div>
+        <div class="detail">
+          <label for="">Show your profile to logged-in users</label>
+          <div class="checkboxes bet">
+            <div onclick="click1()"><input type="checkbox" name="yes" id="private" class="social"><Label
+                class="checkw">Private</Label></div>
+            <div onclick="click2()"><input type="checkbox" name="no" id="public" class="social"><Label
+                class="checkw">Public</Label></div>
+          </div>
+          <input type="text" id="pros" name="status" value="hh" class="sta" name="account">
+        </div>
+
+        <button type="submit">
+          <div class="btn applybtn">APPLY</div>
+        </button>
+      </form>
+    </div>
   </div>
-  
+
 
 
 
   <script src="./slick.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
 
   <script>
 
-      function click1(){
-        document.getElementById("private").checked = true;
-        document.getElementById("public").checked = false;
-        document.getElementById("pros").value = "Private";
-      }
-      function click2(){
-        document.getElementById("private").checked = false;
-        document.getElementById("public").checked = true;
-        document.getElementById("pros").value = "Public";
-      }
+    function click1() {
+      document.getElementById("private").checked = true;
+      document.getElementById("public").checked = false;
+      document.getElementById("pros").value = "Private";
+    }
+    function click2() {
+      document.getElementById("private").checked = false;
+      document.getElementById("public").checked = true;
+      document.getElementById("pros").value = "Public";
+    }
 
-      function setting(){
-            
+    function setting() {
+
+    }
+    function profile() {
+      let tap = document.getElementById("pinfo");
+      console.log(tap.style.display);
+      if (tap.style.display == "none") {
+        tap.style.display = "block";
       }
-      function profile(){
-        let tap = document.getElementById("pinfo");
-        console.log(tap.style.display);
-        if(tap.style.display == "none"){
-          tap.style.display = "block"; 
-        }
-        else{
-          tap.style.display = "none";
-        }
+      else {
+        tap.style.display = "none";
       }
+    }
   </script>
 
 </body>
+
 </html>

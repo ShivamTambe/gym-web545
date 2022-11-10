@@ -1,0 +1,17 @@
+#private,#public{
+    width: 25px;
+}
+.gender{
+    display: flex;
+    gap: 50px;
+}
+.account{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 500px;
+}
+.checkb{
+    display: flex;
+    gap: 20px;
+}

@@ -520,6 +520,13 @@ app.post("/checkout4", function (req, res) {
     });
 
 })
+app.post("/donatedvalue",function(req,res){
+    let donateamt = req.body.donateamt;
+    res.render("donatepay",{donateamt:donateamt})
+})
+app.get("/donatepay",function(req,res){
+    res.render("donatepay");
+})
 app.post("/forcheckout", function (req, res) {
     let id = req.body.ida;
     GymInfo.find().then(result => {
@@ -1582,7 +1589,7 @@ app.post("/signup", function (req, res) {
             if (password == result[i].password && email == result[i].email) {
                 let emaill = email;
                 console.log(result[i]._id);
-                let name = result[i].name;
+                let firstname = result[i].firstname;
                 let id = result[i]._id;
                 let num = result[i].number;
                 let servicee = result[i].servicee;
@@ -1613,7 +1620,10 @@ app.post("/signup", function (req, res) {
                                                     let top1 = result1[0].top1;
                                                     let top2 = result1[0].top2;
                                                     let top3 = result1[0].top3;
-                                                    res.render("loginedhome", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, itemm: resultt, imagee: color, name: name, email: emaill, id: id })
+                                                    UserInfo.find({_id:id}).then(userinfo => {
+                                                        console.log(firstname);
+                                                        res.render("loginedhome", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, itemm: resultt, imagee: color, name: firstname, email: emaill, id: id,userinfo:userinfo })
+                                                    }).catch(err => console.log(err));
                                                 }).catch(err => console.log(err));
                                             }).catch(err => console.log(err));
                                         }).catch(err => console.log(err));
@@ -1758,7 +1768,7 @@ app.post("/editedsetting",function(req,res){
     UserInfo.find({ _id: `${id}` }).then(result => {
         console.log(result);
         console.log(result[0].name);
-        let name = result[0].name;
+        let name = result[0].firstname;
         let email = result[0].email;
         let identity = result[0].identity;
         SocialInfo.find().then(resulta => {
@@ -1776,7 +1786,9 @@ app.post("/editedsetting",function(req,res){
                         let top1 = result1[0].top1;
                         let top2 = result1[0].top2;
                         let top3 = result1[0].top3;
-                        res.render("profiledit", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3 });
+                        UserInfo.find({ _id: `${id}` }).then(userinfo => {
+                            res.render("profiledit", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3,userinfo:userinfo });
+                         }).catch(err => console.log(err));
                     }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
             }).catch(err => console.log(err));
@@ -1865,7 +1877,7 @@ app.post("/setting", function (req, res) {
     UserInfo.find({ _id: `${id}` }).then(result => {
         console.log(result);
         console.log(result[0].name);
-        let name = result[0].name;
+        let name = result[0].firstname;
         let email = result[0].email;
         let identity = result[0].identity;
         SocialInfo.find().then(resulta => {
@@ -1883,8 +1895,10 @@ app.post("/setting", function (req, res) {
                         let top1 = result1[0].top1;
                         let top2 = result1[0].top2;
                         let top3 = result1[0].top3;
-                        res.render("setting", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3 });
-                    }).catch(err => console.log(err));
+                        UserInfo.find({ _id: `${id}` }).then(userinfo => {
+                            res.render("setting", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3,userinfo:userinfo });
+                        }).catch(err => console.log(err));
+                        }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
             }).catch(err => console.log(err));
         }).catch(err => console.log(err));

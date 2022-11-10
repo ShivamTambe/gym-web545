@@ -14,6 +14,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/slick.css">
   <link rel="stylesheet" href="/home.css">
+  <link rel="stylesheet" href="/setting.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EDIT</title>
 </head>
@@ -37,10 +38,15 @@
           </div>
         </div>
       </div>
+      <div class="oinfo">
+        <div class="setting" id="sett"><button type="submit">Setting</button></div>
+        <div class="setting" id="sett">My Gyms</div>
+        <div class="setting" id="sett">Photo</div>
+        <div class="setting" id="sett">Book Massage</div>
+        <div class="setting" id="sett">Book Physical Therapy</div>
+        <div class="setting" id="sett"><a href="/signup">Log Out</a></div>
+      </div>
     </div>
-        <div class="oinfo">
-          <div class="setting" id="sett"><button type="submit">Setting</button></div>
-        </div>
   </form>
   <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -106,7 +112,7 @@
     </div>
     <div class="userinfo">
       <div class="usertop">
-        <% items.forEach(function(image) { %>
+        <% userinfo.forEach(function(image) { %>
           <div class="imgdetails">
             <img src="data:image/<%=image.img.contentType%>;base64,
                 <%=image.img.data.toString('base64')%>">
@@ -122,23 +128,79 @@
 
       <div class="editinfo">
         <div class="ebtn edd" id="ddd" onclick="editt()"><button type="submit" id="dda">
-            <Edit< /button>
+            Edit </button>
         </div>
         <div class="elabel">
           <label for="">First Name</label>
-          <input type="text" value="<%= result.name %>" readonly>
+          <input type="text" value="<%= result.firstname %>" readonly>
         </div>
         <div class="elabel">
           <label for="">Last Name</label>
-          <input type="text" readonly>
+          <input type="text" value="<%=result.last %>" readonly>
         </div>
         <div class="elabel">
           <label for="">Email</label>
-          <input type="text" value=<%=result.email %> readonly>
+          <input type="text" value="<%=result.email %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">Phone Number</label>
+          <input type="text" value="<%=result.phoneno %>" readonly>
         </div>
         <div class="elabel">
           <label for="">Bio</label>
-          <textarea type="text" readonly></textarea>
+          <textarea type="text"  value="<%=result.bio %>" readonly></textarea>
+        </div>
+        <div class="elabel">
+          <label for="">Phone Number</label>
+          <input type="text" value="<%=result.phoneno %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">Date of Birth</label>
+          <input type="date" value="<%=result.date %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">Gender</label>
+          <input type="text" value="<%=result.gender %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">City</label>
+          <input type="text" value="<%=result.city %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">State</label>
+          <input type="text" value="<%=result.state %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">Zip Code</label>
+          <input type="text" value="<%=result.zipcode %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">Address</label>
+          <input type="text" value="<%=result.address %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">Apt/ Suite/ Unite(optional)</label>
+          <input type="text" value="<%=result.apt %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">Emergency Contact Name</label>
+          <input type="text" value="<%=result.emame %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">Emergency Contact Email</label>
+          <input type="text" value="<%=result.eemail %>" readonly>
+        </div>
+        <div class="elabel">
+          <label for="">Emergency Contact Number</label>
+          <input type="number" value="<%= result.ephone %>" readonly>
+        </div>
+        <div class="detail account">
+          <label for="">Account</label>
+          <div class="checkb">
+              <div onclick="account2()"><input type="checkbox" name="private" id="private"><Label
+                  class="checkw">Private</Label></div>
+            <div onclick="account1()"><input type="checkbox" name="public" id="public"><Label class="checkw">Public</Label></div>
+          </div>
         </div>
       </div>
     </div>
