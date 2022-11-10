@@ -86,6 +86,7 @@
       <div class="txt">
         <div class="monthprice">
           <div class="pricee" id="price1" onclick="option1()">
+            <input type="checkbox" name="less" id="lesscheck" required class="che">
               <div class="signn">$</div>
               <div class="valuee"><span id="monthval">1999</span>.99</div>
               <div class="monthh"><span id="monthno">4</span> /months</div>
@@ -95,6 +96,7 @@
               </div>
           </div>
           <div class="pricee" id="price2" onclick="option2()">
+            <input type="checkbox" name="large" id="largecheck" required class="che">
               <div class="signn">$</div>
               <div class="valuee"><span class="yearval">5,999.99</span></div>
               <div class="monthh"><span id="no"></span> /Yearly</div>
@@ -131,6 +133,10 @@
           document.getElementById("total").value = document.getElementById("monthval").innerHTML;
           document.getElementById("mno").value = document.getElementById("monthno").innerHTML;
           document.getElementById("num").value = document.getElementById("monthno").innerHTML;
+
+          document.getElementById("lesscheck").checked = true;
+        document.getElementById("lesscheck").required = true;
+        document.getElementById("largecheck").required = false;
         }
         function option2() {
           console.log("clicked2");
@@ -141,6 +147,10 @@
   
           document.getElementById("total").value = 5,999.99;
           document.getElementById("mno").value = 12;
+
+          document.getElementById("largecheck").checked = true;
+        document.getElementById("largecheck").required = true;
+        document.getElementById("lesscheck").required = false;
         }
   
   

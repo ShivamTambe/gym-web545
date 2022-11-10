@@ -1,6 +1,9 @@
 form{
     display: flex;
 }
+.che{
+    display: none;
+}
 .em{
     display: none;
 }

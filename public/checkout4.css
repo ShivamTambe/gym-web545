@@ -14,3 +14,7 @@ input{
     display: flex;
     align-items: center;
 }
+.che{
+    opacity: 0;
+    display: none;
+}

@@ -31,18 +31,74 @@ var config = {
     "api": {
         "host": "api.sandbox.paypal.com",
         "port": "",
-        "client_id": "AYmOYrtJ_b-vYowi9cZJUocPVlqm0dPAFOc6ryusGN-YB0sT4CQ1L4WRnKtqUeP5KmwFT3qWbMOOFgU6",
-        "client_secret": "EH3o2cVisQuMNAtPDs8XWBDIQRh_ht9c5BF1XXKmX4O3dDruLhdIG2FXpXS1Q7-yIi1kZCCkg_pJaqpu"
+        "client_id": "AWA4BcHiD4M0W4uwpxcVBCyRM5f_fGaZ_bNOgc_gkkXBfGYAa6q_uGxYWfokxCLvvvk_AIWTofJEbjP6",
+        "client_secret": "EDC0MB2tidwfBy7N2Wv7U8PiwAbXg-B-smYJRxyakdwts12Q9SqeC55FSrxF5BiMYhmbDNIjJ65In5go"
     }
 }
 
 paypal.configure(config.api);
 
 // Page will display after payment has beed transfered successfully
+app.post("/lasted",function(req,res){
+    let amount = req.body.amount;
+        let id = req.body.id;
+        let names = req.body.names;
+        let gymsemails =req.body.gymsemails;
+        let email=req.body.email;
+        let finalprice= req.body.finalprice;
+        let no=req.body.no;
+        let plan= req.body.plan;
+        let paymentId= req.body.paymentId;
+        let token=req.body.token;
+        let PayerID=req.body.PayerID;
+        var json = JSON.parse(gymsemails);
+    console.log(json);
+    console.log(names);
+        let shivemail = 'shivamtambe545@gmail.com';
+    let emailsarr = [];
+    for(var i=0;i<gymsemails.length;i++){
+        emailsarr[i]=gymsemails[i];
+    }
+    console.log(gymsemails);
+    sgMail.setApiKey(process.env.Sendkey)
+    const msg = {
+        to:[
+            'shivamtambe545@gmail.com'
+          ],
+        from:{
+            name:"Vonelijah",
+            email:'shivamtambe545@gmail.com'
+        },
+        subject: 'New User Join Your Gym',
+        text: `User ${email} Join Your Gym`,
+        html: `<h1>User ${email} Join Your Gym</h1>`,
+      }
+      sgMail
+        .send(msg)
+        .then(() => {
+          console.log('Email sent')
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+        res.redirect("/signup")
+})
 app.get('/success', function (req, res) {
-    var namelist = names.replace(/^\[|\]$/g, "").split(", ");
-    var gymsemailslist = emails.replace(/^\[|\]$/g, "").split(", ");
-    let gymsemails =req.query.emails;
+    // var namelist = names.replace(/^\[|\]$/g, "").split(", ");
+    // var gymsemailslist = emails.replace(/^\[|\]$/g, "").split(", ");
+        let amount = req.query.amount;
+        let id = req.query.id;
+        let names = req.query.names;
+        let gymsemails =req.query.emails;
+        let email=req.query.email;
+        let finalprice= req.query.finalprice;
+        let no=req.query.no;
+        let plan= req.query.plan;
+        let paymentId= req.query.paymentId;
+        let token=req.query.token;
+        let PayerID=req.query.PayerID;
+        console.log(names);
+
     let paiduser = new PaidInfo({
         names : req.query.names,
         gymsemails : req.query.emails,
@@ -57,26 +113,26 @@ app.get('/success', function (req, res) {
         PayerID:req.query.PayerID
     })
     paiduser.save();
-     let shivemail = 'shivamtambe545@gmail.com';
-    sgMail.setApiKey(process.env.Sendkey)
-    const msg = {
-        to:gymsemails,
-        from:{
-            name:"Vonelijah",
-            email:'shivamtambe545@gmail.com'
-        },
-        subject: 'New User Join Your Gym',
-        text: 'New User Join Your Gym',
-        html: `<h1> New User Join Your Gym</h1>`,
-      }
-      sgMail
-        .send(msg)
-        .then(() => {
-          console.log('Email sent')
-        })
-        .catch((error) => {
-          console.error(error)
-        })
+    //  let shivemail = 'shivamtambe545@gmail.com';
+    // sgMail.setApiKey(process.env.Sendkey)
+    // const msg = {
+    //     to:'shivamtambe545@gmail.com',
+    //     from:{
+    //         name:"Vonelijah",
+    //         email:'shivamtambe545@gmail.com'
+    //     },
+    //     subject: 'New User Join Your Gym',
+    //     text: 'New User Join Your Gym',
+    //     html: `<h1> New User Join Your Gym</h1>`,
+    //   }
+    //   sgMail
+    //     .send(msg)
+    //     .then(() => {
+    //       console.log('Email sent')
+    //     })
+    //     .catch((error) => {
+    //       console.error(error)
+    //     })
     console.log(req.query);
     SocialInfo.find().then(result => {
         let facebook = result[0].facebook;
@@ -96,7 +152,7 @@ app.get('/success', function (req, res) {
                     GymInfo.find().then(resultg => {
                         TaxInfo.find().then(result => {
                             finalprice = parseFloat(amount) + parseFloat(amount * result[0].tax / 100);
-                            res.render("acheckout", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan })
+                            res.render("final", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan, names:names,emails : gymsemails,amount:amount,paymentId:PayerID ,token:token,PayerID:PayerID})
                         }).catch(err => console.log(err));
                     }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
@@ -116,9 +172,41 @@ app.post("/last",function(req,res){
         plan: req.body.plan,
         paymentId: req.body.paymentID,
         token: req.body.token,
-        PayerID: req.body.PayerID
+        PayerID: req.body.PayerID,
+        names:req.body.names,
+        gymsemails:req.body.emails
     })
     paiduser.save();
+    let emails = req.body.emails;
+    EmailInfo.find().then(result => {
+    MassageInfo.find().then(resultt =>{
+        let message = resultt[0].message;
+        let emaill = result[0].email;
+        let shivemail = 'shivamtambe545@gmail.com';
+        var json = json.parse(emails);
+        sgMail.setApiKey(process.env.Sendkey)
+        const msg = {
+            to:["shivamtambe545@gmail.com"],
+            from:{
+                name:"Vonelijah",
+                email:'shivamtambe545@gmail.com'
+            },
+            subject: 'From Vonelijah',
+            text: `${message}`,
+            html: `<h1>${message}</h1>`,
+        }
+        sgMail
+            .send(msg)
+            .then(() => {
+            console.log('Email sent');
+            console.log("up");
+            })
+            .catch((error) => {
+            console.error(error)
+            })
+    }).catch(err => console.log(err));
+            res.redirect('/signup');
+    }).catch(err => console.log(err));
 })
 
 // Page will display when you canceled the transaction 
@@ -387,22 +475,21 @@ var upload = multer({ storage: storage });
 app.post("/checkout4", function (req, res) {
     let users = req.body.users;
     let names = req.body.names;
-    let emails = req.body.emails;
     let gymsemails = req.body.emails;
     id = req.body.ida;
     email = req.body.email;
     finalprice = req.body.finalprice;
-    amount = parseInt(finalprice);
+    let  amount = parseInt(finalprice);
     plan = req.body.plan;
     no = req.body.no;
-
+    console.log(names);
     var payment = {
         "intent": "sale",
         "payer": {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": app.locals.baseurl + `/success?email=${email}&id=${id}&finalprice=${finalprice}&amount=${amount}&no=${no}&plan=${plan}&names:${names}&emails:${emails}`,
+            "return_url": app.locals.baseurl + `/success?email=${email}&id=${id}&finalprice=${finalprice}&amount=${amount}&no=${no}&plan=${plan}`,
             "cancel_url": app.locals.baseurl + "/cancel"
         },
         "transactions": [{
@@ -1238,7 +1325,7 @@ app.post("/loginedpricing", function (req, res) {
                             UserInfo.find({ _id: `${id}` }).then(resultu => {
                                 let emaill = result[0].email;
                                 let name = result[0].name;
-                                res.render("checkout", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, item: resultu, name: name, email: emaill })
+                                res.render("loginedpricing", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, item: resultu, name: name, email: emaill })
                             }).catch(err => console.log(err));
                         }).catch(err => console.log(err));
                     }).catch(err => console.log(err));
@@ -1804,14 +1891,14 @@ app.post("/setting", function (req, res) {
     });
 })
 
-app.get("/setting", function (req, res) {
-    id = req.body.ida;
-    console.log(id);
+// app.get("/setting", function (req, res) {
+//     id = req.body.ida;
+//     console.log(id);
     // UserInfo.find({_id:`${id}`}).then(result =>{
 
     // })
-    res.render("setting");
-})
+//     res.render("setting");
+// })
 
 app.listen(port, function () {
     console.log("server is running on prot " + port);
