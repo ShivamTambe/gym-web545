@@ -517,7 +517,7 @@ app.post("/checkout4", function (req, res) {
     let  amount = parseInt(finalprice);
     plan = req.body.plan;
     no = req.body.no;
-    // console.log(names);
+    console.log(app.locals.baseurl);
     var payment = {
         "intent": "sale",
         "payer": {
