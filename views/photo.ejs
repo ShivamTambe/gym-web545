@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/slick.css">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/setting.css">
+    <link rel="stylesheet" href="/photo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT Photo</title>
+</head>
+
+<body>
+    <form action="/setting" method="post">
+        <div class="lid">
+            <input name="ida" type="text" value=<%=id %> >
+        </div>
+        <div class="profileinfo" id="pinfo">
+            <div class="pemail">
+                <div class="ni">
+                    <div class="ll"><img src="/imgs/image4.jpg" alt="" class="proimga"></div>
+                    <div class="dd">
+                        <h5 class="namee">
+                            <%= name %>
+                        </h5>
+                        <p class="emaill">
+                            <%= email %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="oinfo">
+                <div class="setting" id="sett"><button type="submit">Setting</button></div>
+                <div class="setting" id="sett">My Gyms</div>
+                <div class="setting" id="sett">Photo</div>
+                <div class="setting" id="sett">Book Massage</div>
+                <div class="setting" id="sett">Book Physical Therapy</div>
+                <div class="setting" id="sett"><a href="/signup">Log Out</a></div>
+            </div>
+        </div>
+    </form>
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
+                    <div class="flex flex-shrink-0 items-center logo">
+                        <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png"
+                                alt="Your Company"></a>
+                    </div>
+
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="/loginedhome"
+                                class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red"
+                                aria-current="page">Home</a>
+
+                            <a href="/loginedgyms"
+                                class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Gyms</a>
+
+                            <a href="/personaltrainer"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal
+                                Trainers</a>
+
+                            <a href="/loginedpricing"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a>
+                        </div>
+                        <div class="profileimggg">
+                            <div class="name">
+                                <%= name %>
+                            </div>
+                            <img src="/imgs/image4.jpg" alt="" onclick="profile()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pt-2 pb-3">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns"
+                    aria-current="page">Home</a>
+
+                <a href="/gyms"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Gyms</a>
+
+                <a href="/normaltrainer"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal
+                    Trainers</a>
+
+                <a href="/pricing"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
+
+                <a href="/signup"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <form action="/editedsetting" method="post">
+        <div class="lid">
+            <input name="ida" type="text" value=<%=id %> >
+        </div>
+        <div class="userinfo">
+            <div class="usertop">
+                <% userinfo.forEach(function(image) { %>
+                    <div class="imgdetails">
+                        <img src="data:image/<%=image.img.contentType%>;base64,
+                <%=image.img.data.toString('base64')%>">
+                    </div>
+                    <% }) %>
+                        <div class="name">
+                            <%= name %>
+                        </div>
+                        <div class="identity">
+                            <%= identity %>
+                        </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="editinfo">
+        <form action="/editphoto" method="post"  enctype="multipart/form-data">
+            <div class="lid">
+                <input name="ida" type="text" value=<%=id %> >
+            </div>
+            <div>
+                <label for="image">Upload Image: </label>
+                <input type="file" id="image" name="image" value="" required class="uploadimg">
+            </div>
+            <button type="submit" class="btn btna" id="photoedit">Apply</button>
+        </form>
+    </div>
+
+    <%- include('../partials/fotter.ejs'); %>
+
+
+
+        <script src="./slick.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+            integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+
+
+            function editt() {
+                console.log("clicked");
+                document.getElementById("dda").click();
+            }
+            function setting() {
+
+            }
+            function profile() {
+                let tap = document.getElementById("pinfo");
+                console.log(tap.style.display);
+                if (tap.style.display == "none") {
+                    tap.style.display = "block";
+                }
+                else {
+                    tap.style.display = "none";
+                }
+            }
+        </script>
+
+</body>
+
+</html>

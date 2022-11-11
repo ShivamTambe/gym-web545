@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/personal.css">
+    <link rel="stylesheet" href="/twopricing.css">
+    <link rel="stylesheet" href="/checkout4.css">
+    <link rel="stylesheet" href="/payforedit.css">
+    <title>Checkout</title>
+</head>
+
+<body>
+    <div class="dva">
+        <div class="value">
+            <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
+        <div class=" amt">$ <span class="amtvalue" id="amtv">10</span></div>
+            <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
+        </div>
+    </div>
+    <div class="donatee" onclick="donate()">
+        <div class="dbtn">
+            <div class="submit">Donate</div>
+        </div>
+    </div>
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
+                    <div class="flex flex-shrink-0 items-center logo">
+                        <a href="/home"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png"
+                                alt="Your Company"></a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="/home"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                aria-current="page">Home</a>
+
+                            <a href="/gyms"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Gyms</a>
+
+                            <a href="/personaltrainer"
+                                class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Personal
+                                Trainers</a>
+
+                            <a href="/pricing"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+
+                            <a href="/signup"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login/Register</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pt-2 pb-3">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+                    aria-current="page">Home</a>
+
+                <a href="/gyms"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Gyms</a>
+
+                <a href="/personaltrainer"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Personal
+                    Trainers</a>
+
+                <a href="/pricing"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Pricing</a>
+
+                <a href="/signup"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Login/Register</a>
+            </div>
+        </div>
+    </nav>
+<form action="/payingforchange" method="post">
+    <div class="lid">
+        <input name="ida" type="text" value="<%=id %>" >
+        <input type="text" name="plan" value="<%= plan %>">
+        <input type="text" name="names" value="<%= names %>">
+    </div>
+    <div class="txt">Pay $50 to Make Changes</div>
+    <div class="pricingdis">
+        <div class="pricingdis">
+            <div class="pricingbtns">
+                <div class="btns">
+                    <button type="submit" id="sub"><div class="btn btn2 signbtna">Pay</div></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+        <%- include('../partials/fotter.ejs'); %>
+</body>
+<script>
+    // document.getElementById("sub").click();
+</script>
+
+</html>

@@ -573,7 +573,7 @@ nav{
     border: 1px solid gray;
     right: 46px;
     width: 300px;
-    z-index: 2;
+    z-index: 5;
     color: white;
     top: 47px;
     background-color: black;

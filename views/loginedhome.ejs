@@ -38,12 +38,18 @@
         </div>
         <div class="oinfo">
           <div class="setting" id="sett"><button type="submit">Setting</button></div>
-          <div class="setting" id="sett">My Gyms</div>
-          <div class="setting" id="sett">Photo</div>
-          <div class="setting" id="sett">Book Massage</div>
-          <div class="setting" id="sett">Book Physical Therapy</div>
-          <div class="setting" id="sett"><a href="/signup">Log Out</a></div>
+          <div class="setting" id="gyms">My Gyms</div>
+          <div class="setting" id="pho" onclick="photo()">Photo</div>
+          <div class="setting" id="bookmsg">Book Massage</div>
+          <div class="setting" id="bookp">Book Physical Therapy</div>
+          <div class="setting" id="log"><a href="/signup">Log Out</a></div>
         </div>
+  </form>
+  <form action="/photo" method="post">
+    <div class="lid">
+      <input name="ida" type="text" value=<%=id %> >
+    </div>
+    <button type="submit" id="photo">sub</button>
   </form>
   <!-- <form action="/services" method="post">
     <div class="lid">
@@ -195,7 +201,6 @@
           <div class="gymbio line2 iddd">
             <input type="text" value='<%= image._id %>' name="idd">
           </div>
-
           <img src="data:image/<%=image.img.contentType%>;base64,
                   <%=image.img.data.toString('base64')%>" onclick="submit()" class="disss">
 
@@ -256,7 +261,12 @@
 
 
 
-
+    <script>
+        function photo(){
+          console.log("clicked");
+          document.getElementById("photo").click();
+        }
+    </script>
     <script>
       function donate(){
         document.getElementById("donateamt").value = document.getElementById("amtv").innerHTML;

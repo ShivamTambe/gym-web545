@@ -196,3 +196,7 @@ textarea{
 .login a{
     color: green;
 }
+.signtitle{
+    margin: 0 auto;
+    margin-top: 20px;
+}

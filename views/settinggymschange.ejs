@@ -37,18 +37,9 @@
         token=req.query.token;
         PayerID=req.query.PayerID; -->
 
-    <form action="/lasted" method="post">
-        <input type="text" name="amount" value="<%= amount %>">
-        <input type="text" name="id" value="<%= id %>">
+    <form action="/settinggymschange" method="post">
         <input type="text" name="names" id="names">
-        <input type="text" name="gymsemails" id="emails">
-        <input type="text" name="email" value="<%= email %>">
-        <input type="text" name="finalprice" value="<%= finalprice %>">
-        <input type="text" name="no" value="<%= no %>">
-        <input type="text" name="paymentId" value="<%= paymentId %>">
-        <input type="text" name="token" value="<%= token %>">
-        <input type="text" name="PayerID" value="<%= PayerID %>">
-
+        <input type="text" name="id" id="id" value="<%= id %>">
         <button type="submit" id="login">Submit</button>
     </form>
     <!-- <script>
@@ -58,9 +49,7 @@
     </script> -->
 </body>
 <script>
-    console.log(localStorage.getItem("names"));
    document.getElementById("names").value= localStorage.getItem("names");
-   document.getElementById("emails").value= localStorage.getItem("emails");
    document.getElementById("login").click();
 </script>
 
