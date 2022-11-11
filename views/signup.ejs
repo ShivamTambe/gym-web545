@@ -21,7 +21,7 @@
 
 <body>
 
-  <nav class="bg-gray-800">
+  <!-- <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
@@ -34,7 +34,8 @@
       </div>
     </div>
   </nav>
-  <div>
+  <div> -->
+    <%- include('../partials/header.ejs'); %>
     <form action="/signindetails" method="post" class="form">
       <div class="formm">
         <div class="formleft">
@@ -71,7 +72,7 @@
           </div>
           <div class="detail">
             <label for="">Apt/Suite/Unite(optional)</label>
-            <input type="text" name="apt" required>
+            <input type="text" name="apt">
           </div>
           <div class="detail">
             <label for="">Password</label>
@@ -178,7 +179,7 @@
   </form>
   </div>
 
-
+  <%- include('../partials/fotter.ejs'); %>
   <script src="./slick.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"

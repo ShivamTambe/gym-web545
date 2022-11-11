@@ -14,21 +14,20 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/home.css">
   <link rel="stylesheet" href="/signup.css">
+  <link rel="stylesheet" href="/checkout.css">
+  <link rel="stylesheet" href="/newcheck.css">
+  <link rel="stylesheet" href="/cc.css">
   <script type="text/javascript" src="jquery-3.5.1.min.js"> </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout</title>
+  <title>CheckOut</title>
 </head>
 
 <body>
-
+  <%- include('../partials/loginedheader.ejs'); %>
   <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
-          <div class="flex flex-shrink-0 items-center logo">
-            <a href="/home" class="singimg"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png"
-                alt="Your Company"></a>
-          </div>
           <div class="signtitle">Check-Out Page</div>
         </div>
       </div>
@@ -63,7 +62,7 @@
           </div>
           <div class="detail">
             <label for="">Apt/Suite/Unite(optional)</label>
-            <input type="text" name="apt" required>
+            <input type="text" name="apt" >
           </div>
           <div class="detail">
             <label for="">Password</label>
@@ -195,6 +194,30 @@
       document.getElementById("male").checked = false;
     }
   </script>
+   <script>
+    function donate(){
+      document.getElementById("donateamt").value = document.getElementById("amtv").innerHTML;
+      document.getElementById('donatesubmit').click();
+    }
+</script>
+<script>
+    function incerease(){
+       let value = document.getElementById("amtv").innerText;
+       console.log("HELLO");
+       document.getElementById("amtv").innerText++;
+    }
+
+    function decrease(){
+       let value = document.getElementById("amtv").innerText;
+       if(value >1){
+        document.getElementById("amtv").innerText--;
+       }
+    }
+
+    function submit(){
+      document.getElementById('subbtn').click();
+    }
+</script>
 </body>
 
 </html>

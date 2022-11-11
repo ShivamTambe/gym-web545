@@ -186,7 +186,7 @@ body{
 .footerinfos{
     display: flex;
     gap: 40px;
-    left: -115px;
+    left: -15vw;
     position: relative;
 }
 .foottitle{
@@ -295,12 +295,14 @@ body{
     padding: 0!important;
     height: 590px;
     border-radius: 0px;
+    border: 1px solid white;
 }
 .profileimg{
     height: 60%;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: black;
     color: black;
     display: flex;
     align-items: center;
@@ -728,4 +730,7 @@ textarea{
 }
 #donateamt{
     display: none;
+}
+.hhh img{
+    width: 10rem;
 }

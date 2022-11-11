@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
     integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/price.css">
   <link rel="stylesheet" href="/home.css">
   <link rel="stylesheet" href="/signup.css">
   <link rel="stylesheet" href="/checkout2.css">
@@ -22,248 +23,291 @@
 
 <body>
 
-  <nav class="bg-gray-800">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
-          <div class="flex flex-shrink-0 items-center logo">
-            <a href="/home" class="singimg"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png"
-                alt="Your Company"></a>
+  <%- include('../partials/loginedheader.ejs'); %>
+
+
+    <form action="/checkout2" method="post">
+      <div class="lid">
+        <input name="ida" type="text" value=<%=id %> >
+      </div>
+      <input type="text" name="email" id="emmail" value="<%= email %>">
+      <div class="topest">
+        <div class="top">Client</div>
+        <div class="second">
+          <div class="sfirst" id="personal" onclick="personal()">
+            <div class="st">$49.99</div>
+            <div class="stx">Personal Trainer</div>
+            
+            <input type="checkbox" name="personalcheck" id="personalcheck" required class="che">
+            <div class="select">Select</div>
           </div>
-          <div class="signtitle">Check-Out Page</div>
-        </div>
-      </div>
-    </div>
-  </nav>
+          <div class="sfirst" id="fir" onclick="first()">
+            <div class="st">$149.99</div>
+            <div class="stx">select up to 5 gyms to add to your cost</div>
+            <div class="message1">
+              <span class="white">Schedule </span> <span class="green">1 Free Message </span><span class="white">Every 4 Month</span>
+          </div>
+          <div class="message2">
+              <span class="white">Schedule </span> <span class="green">1 Free Physical Therapy Session </span><span class="white">Every 4 Month</span>
+          </div>
+          <div class="message3">
+              <span class="white">Schedule </span> <span class="green">Free Personal Training Sessions</span><span class="white"></span>
+          </div>
+            <input type="checkbox" name="personalcheck" id="lesscheck" required class="che">
 
-
-  <form action="/checkout2" method="post">
-    <div class="lid">
-      <input name="ida" type="text" value=<%=id %> >
-    </div>
-    <input type="text" name="email" id="" value="<%= email %>">
-    <div class="topest">
-      <div class="top">Client</div>
-      <div class="second">
-        <div class="sfirst" id="personal" onclick="personal()">
-          <div class="st">$50</div>
-          <div class="stx">Personal Trainer</div>
-          <input type="checkbox" name="personalcheck" id="personalcheck" required class="che">
-          <div class="select">Select</div>
+            <div class="select">Select</div>
+          </div>
+          <div class="ssecond" id="sec" onclick="second()">
+            <div class="st">$499.99</div>
+            <div class="message1">
+              <span class="white">Schedule </span> <span class="green">1 Free Message </span><span class="white">Every Month</span>
+          </div>
+          <div class="message2">
+              <span class="white">Schedule </span> <span class="green">1 Free Physical Therapy Session </span><span class="white">Every Month</span>
+          </div>
+          <div class="message3">
+              <span class="white">Schedule </span> <span class="green">Free Personal Training Sessions</span><span class="white"></span>
+          </div>
+            <input type="checkbox" name="personalcheck" id="largecheck" required class="che">
+            <div class="select">Select</div>
+          </div>
         </div>
-        <div class="sfirst" id="fir" onclick="first()">
-          <div class="st">$150</div>
-          <div class="stx">select up to 5 gyms to add to your cost</div>
-          <input type="checkbox" name="personalcheck" id="lesscheck" required class="che">
-
-          <div class="select">Select</div>
+        <input type="text" name="plan" id="plan" class="nonen">
+        <div class="third" class="nonen">
+          <select id="ecopre">
+            <option value="economical" id="eco">Economical</option>
+            <option value="Premimum" id="pre">Premimum</option>
+          </select>
         </div>
-        <div class="ssecond" id="sec" onclick="second()">
-          <div class="st">$500</div>
-          <input type="checkbox" name="personalcheck" id="largecheck" required class="che">
-          <div class="select">Select</div>
-        </div>
-      </div>
-      <input type="text" name="plan" id="plan">
-      <div class="third">
-        <select id="ecopre">
-          <option value="economical" id="eco">Economical</option>
-          <option value="Premimum" id="pre">Premimum</option>
-        </select>
-      </div>
 
-      <div class="last" id="lastt">
-        <div class="ecogyms">
-          <div class="ltitle">Economical</div>
-          <div class="horizontal"></div>
-          <% gyms.forEach(function(image) { %>
-            <div class="details" onclick="ecogyms()">
-              <input type="checkbox" name="checkbox" id="" class="checkbox">
-              <div class="name">
-                <%= image.title1 %>
-              </div>
-              <input type="text" class="gymname" name="gymname" value="<%= image.title1 %>">
-              <input type="text" class="gymemail" name="gymemail" value="<%= image.email %>">
-              <input type="number" class="gymprice" name="gymprice" value="<%= image.price %>">
-            </div>
+        <div class="last" id="lastt">
+          <div class="ecogymss">
+            <div class="ltitle">Economical</div>
             <div class="horizontal"></div>
-            <% }) %>
-              <div><input type="text" id="ecogyms" name="ecogyms"></div>
-        </div>
-        <div class="ecogyms">
-          <div class="ltitle">Premimum</div>
-          <div class="horizontal"></div>
-
-          <% gyms.forEach(function(image) { %>
-            <div class="details" onclick="pregyms()">
-              <input type="checkbox" name="checkbox" id="" class="checkbox">
-              <div class="name">
-                <%= image.title1 %>
+            <% gyms.forEach(function(image) { %>
+              <div class="details" onclick="ecogyms()">
+                <input type="checkbox" name="checkbox" id="" class="checkbox">
+                <div class="name">
+                  <%= image.title1 %>
+                </div>
+                <input type="text" class="gymname nonen" name="gymname" value="<%= image.title1 %>">
+                <input type="text" class="gymemail nonen" name="gymemail" value="<%= image.email %>">
+                <input type="number" class="gymprice nonen" name="gymprice" value="<%= image.price %>">
               </div>
-              <input type="text" class="gymname" name="gymname" value="<%= image.title1 %>">
-              <input type="text" class="gymemail" name="gymemail" value="<%= image.email %>">
-              <input type="number" class="gymprice" name="gymprice" value="<%= image.price %>">
+              <div class="horizontal"></div>
+              <% }) %>
+                <div><input type="text" id="ecogyms" name="ecogyms"></div>
+          </div>
+          <div class="ecogyms" onclick="pregyms()">
+            <div>
+              <div class="ltitle">Economical</div>
+              <div class="horizontal"></div>
+              <% gyms.forEach(function(image) { %>
+                <div class="details" >
+                  <input type="checkbox" name="checkbox" id="" class="checkbox">
+                  <div class="name">
+                    <%= image.title1 %>
+                  </div>
+                  <input type="text" class="gymname nonen" name="gymname" value="<%= image.title1 %>">
+                  <input type="text" class="gymemail nonen" name="gymemail" value="<%= image.email %>">
+                  <input type="number" class="gymprice nonen" name="gymprice" value="<%= image.price %>">
+                </div>
+                <div class="horizontal"></div>
+                <% }) %>
             </div>
-            <div class="horizontal"></div>
-            <% }) %>
+            <div>
+              <div class="ltitle">Premimum</div>
+              <div class="horizontal"></div>
+              <% gyms.forEach(function(image) { %>
+                <div class="details" >
+                  <input type="checkbox" name="checkbox" id="" class="checkbox">
+                  <div class="name">
+                    <%= image.title1 %>
+                  </div>
+                  <input type="text" class="gymname nonen" name="gymname" value="<%= image.title1 %>">
+                  <input type="text" class="gymemail nonen" name="gymemail" value="<%= image.email %>">
+                  <input type="number" class="gymprice nonen" name="gymprice" value="<%= image.price %>">
+                </div>
+                <div class="horizontal"></div>
+                <% }) %>
+            </div>
+
+          </div>
         </div>
+        <input type="text" name="names" id="names" class="nonen">
+        <input type="text" name="emails" id="emails" class="nonen">
+        <input type="text" name="value" id="value" class="nonen">
       </div>
-      <input type="text" name="names" id="names">
-      <input type="text" name="emails" id="emails">
-      <input type="text" name="value" id="value">
-    </div>
-    <!-- <button type="submit" id="submit">Submit</button> -->
-    <div class="btn" onclick="check()">Next</div>
-    <button  class="btn" id="butto" onclick="check()">New</button>
-  </form>
-  <%- include('../partials/fotter.ejs'); %>
+      <!-- <button type="submit" id="submit">Submit</button> -->
+      <div class="btn" onclick="check()">Next</div>
+      <button class="btn nonen" id="butto" onclick="check()">New</button>
+    </form>
+    <%- include('../partials/fotter.ejs'); %>
 
 
-    
-    <script>
-      let namearr = new Set();
-      window.namearr = [];
-      let valuee= 0;
-      window.valuee = 0;
-      let arr = new Set();
-      window.arr = [];
+
+      <script>
+        let namearr = new Set();
+        window.namearr = [];
+        let valuee = 0;
+        window.valuee = 0;
+        let arr = new Set();
+        window.arr = [];
 
 
-      function check(){
-        let val = 0;
-        let newa = [];
-        let emails = [];
-        localStorage.setItem("users", 'JSON.stringify(users)');
-        // console.log(document.getElementsByClassName("gymprice")[0].value);
-        l=0;
-        // console.log(document.getElementsByClassName("checkbox"));
-        let checks = [...document.getElementsByClassName("checkbox")]
-        console.log(document.getElementsByClassName("gymprice"));
-          checks.forEach(function(image){ 
-              if(image.checked == true){
-                console.log(l + "inseide");
-                val = val + parseInt(document.getElementsByClassName("gymprice")[l].value);
-              }
-              l++;
+        function check() {
+          let val = 0;
+          let newa = [];
+          let emails = [];
+          localStorage.setItem("users", 'JSON.stringify(users)');
+          // console.log(document.getElementsByClassName("gymprice")[0].value);
+          l = 0;
+          // console.log(document.getElementsByClassName("checkbox"));
+          let checks = [...document.getElementsByClassName("checkbox")]
+          console.log(document.getElementsByClassName("gymprice"));
+          checks.forEach(function (image) {
+            if (image.checked == true) {
+              console.log(l + "inseide");
+              val = val + parseInt(document.getElementsByClassName("gymprice")[l].value);
+            }
+            l++;
           })
           document.getElementById("value").value = val;
           console.log(namearr);
           console.log(arr);
 
           console.log(arr);
-          localStorage.setItem('emails',JSON.stringify(namearr));
-          let j=0;
-          let k=0;
-          arr.forEach(function(image){ 
+          localStorage.setItem('emails', JSON.stringify(namearr));
+          let j = 0;
+          let k = 0;
+          arr.forEach(function (image) {
             emails[k] = image;
-                k++;
+            k++;
           })
-          namearr.forEach(function(image){ 
-                newa[j] = image;
-                j++;
+          namearr.forEach(function (image) {
+            newa[j] = image;
+            j++;
           })
           console.log(newa);
-          localStorage.setItem('names',JSON.stringify(newa));
-          localStorage.setItem('emails',JSON.stringify(emails));
+          localStorage.setItem('names', JSON.stringify(newa));
+          localStorage.setItem('emails', JSON.stringify(emails));
           console.log(JSON.stringify(newa));
           console.log(JSON.stringify(emails));
           document.getElementById("names").value = JSON.stringify(newa);
           document.getElementById("emails").value = JSON.stringify(emails);
           document.getElementById("butto").click();
-      }
-      function ecogyms() {
-        console.log("clicked");
-        for (var i = 0; i < 25; i++) {
-          let check = document.getElementsByClassName("checkbox")[i].checked;
-          if (check == true) {
-            let email = document.getElementsByClassName("gymemail")[i].value;
-            let name = document.getElementsByClassName("gymname")[i].value;
-            arr.add(email);
-            namearr.add(email);
+        }
+        function ecogyms() {
+          console.log("clicked");
+          for (var i = 0; i < 23; i++) {
+            let check = document.getElementsByClassName("checkbox")[i].checked;
+            if (check == true) {
+              let email = document.getElementsByClassName("gymemail")[i].value;
+              let name = document.getElementsByClassName("gymname")[i].value;
+              arr.add(email);
+              namearr.add(email);
+            }
+            else {
+              let emaill = document.getElementsByClassName("gymemail")[i].value;
+              let name = document.getElementsByClassName("gymname")[i].value;
+              arr.delete(emaill);
+              namearr.delete(emaill);
+            }
+            document.getElementById("ecogyms").value = "";
+            for (var i = 0; i < arr.length; i++) {
+              document.getElementById("ecogyms").value = arr[i] + document.getElementById("ecogyms").value;
+            }
           }
-          else {
-            let emaill = document.getElementsByClassName("gymemail")[i].value;
-            let name = document.getElementsByClassName("gymname")[i].value;
-            arr.delete(emaill);
-            namearr.delete(email);
+          console.log(arr);
+          console.log(namear);
+        }
+        function pregyms() {
+          let newarr = [];
+          console.log(document.getElementsByClassName("checkbox"));
+          for (var i = 0; i < 25; i++) {
+            let check = document.getElementsByClassName("checkbox")[i].checked;
+            if (check == true) {
+              let email = document.getElementsByClassName("gymemail")[i].value;
+              let name = document.getElementsByClassName("gymname")[i].value;
+              arr.add(email);
+              namearr.add(name);
+            }
+            else {
+              let emaill = document.getElementsByClassName("gymemail")[i].value;
+              let name = document.getElementsByClassName("gymname")[i].value;
+              arr.delete(emaill);
+              namearr.delete(name);
+            }
           }
-          document.getElementById("ecogyms").value = "";
-          for (var i = 0; i < arr.length; i++) {
-            document.getElementById("ecogyms").value = arr[i] + document.getElementById("ecogyms").value;
+          console.log(arr);
+          console.log(namearr);
+          console.log(namearr.size);
+        }
+        function first() {
+          document.getElementById("fir").style.border = "4px solid red";
+          document.getElementById("sec").style.border = "1px solid white";
+          document.getElementById("personal").style.border = "1px solid white";
+
+          document.getElementById("plan").value = "less";
+          document.getElementById("lastt").style.display = "flex";
+
+
+          document.getElementById("lesscheck").checked = true;
+          document.getElementById("lesscheck").required = true;
+          document.getElementById("personalcheck").required = false;
+          document.getElementById("largecheck").required = false;
+
+        }
+        function second() {
+          document.getElementById("sec").style.border = "4px solid red";
+          document.getElementById("fir").style.border = "1px solid white";
+          document.getElementById("personal").style.border = "1px solid white";
+          document.getElementById("plan").value = "large";
+          document.getElementById("lastt").style.display = "flex";
+
+
+          document.getElementById("largecheck").checked = true;
+          document.getElementById("largecheck").required = true;
+          document.getElementById("personalcheck").required = false;
+          document.getElementById("lesscheck").required = false;
+        }
+        function personal() {
+          document.getElementById("sec").style.border = "1px solid white";
+          document.getElementById("fir").style.border = "1px solid white";
+          document.getElementById("personal").style.border = "4px solid red";
+          document.getElementById("plan").value = "personal";
+          document.getElementById("lastt").style.display = "none";
+
+          document.getElementById("personalcheck").checked = true;
+          document.getElementById("personalcheck").required = true;
+          document.getElementById("lesscheck").required = false;
+          document.getElementById("largecheck").required = false;
+        }
+      </script>
+
+      <script>
+        function incerease() {
+          let value = document.getElementById("amtv").innerText;
+          console.log("HELLO");
+          document.getElementById("amtv").innerText++;
+        }
+
+        function decrease() {
+          let value = document.getElementById("amtv").innerText;
+          if (value > 1) {
+            document.getElementById("amtv").innerText--;
           }
         }
-        console.log(arr);
-        console.log(namear);
-      }
-      function pregyms() {
-        let newarr = [];
-        console.log("clicked");
-        for (var i = 25; i < 46; i++) {
-          let check = document.getElementsByClassName("checkbox")[i].checked;
-          if (check == true) {
-            let email = document.getElementsByClassName("gymemail")[i].value;
-            let name = document.getElementsByClassName("gymname")[i].value;
-            arr.add(email);
-            namearr.add(name);
-          }
-          else {
-            let emaill = document.getElementsByClassName("gymemail")[i].value;
-            let name = document.getElementsByClassName("gymname")[i].value;
-            arr.delete(emaill);
-            namearr.delete(name);
-          }
+
+        function submit() {
+          document.getElementById('subbtn').click();
         }
-        console.log(arr);
-        console.log(namearr);
-        console.log(namearr.size);
-      }
-      function first() {
-        document.getElementById("fir").style.border = "4px solid red";
-        document.getElementById("sec").style.border = "1px solid white";
-        document.getElementById("personal").style.border = "1px solid white";
-
-        document.getElementById("plan").value = "less";
-        document.getElementById("lastt").style.display= "flex";
-
-
-        document.getElementById("lesscheck").checked = true;
-        document.getElementById("lesscheck").required = true;
-        document.getElementById("personalcheck").required = false;
-        document.getElementById("largecheck").required = false;
-
-      }
-      function second() {
-        document.getElementById("sec").style.border = "4px solid red";
-        document.getElementById("fir").style.border = "1px solid white";
-        document.getElementById("personal").style.border = "1px solid white";
-        document.getElementById("plan").value = "large";
-        document.getElementById("lastt").style.display= "flex";
-
-
-        document.getElementById("largecheck").checked = true;
-        document.getElementById("largecheck").required = true;
-        document.getElementById("personalcheck").required = false;
-        document.getElementById("lesscheck").required = false;
-      }
-      function personal() {
-        document.getElementById("sec").style.border = "1px solid white";
-        document.getElementById("fir").style.border = "1px solid white";
-        document.getElementById("personal").style.border = "4px solid red";
-        document.getElementById("plan").value = "personal";
-        document.getElementById("lastt").style.display= "none";
-
-        document.getElementById("personalcheck").checked = true;
-        document.getElementById("personalcheck").required = true;
-        document.getElementById("lesscheck").required = false;
-        document.getElementById("largecheck").required = false;
-      }
-    </script>
-
-    <script src="./slick.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
-      integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      </script>
+      <script src="./slick.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 </body>

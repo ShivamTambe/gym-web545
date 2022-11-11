@@ -10,7 +10,6 @@ body{
 .top{
     margin: 0 auto;
     border: 1px solid;
-    margin-bottom: 40px;
     padding: 10px;
     width: 500px;
 }
@@ -28,11 +27,14 @@ body{
     width: 300px;
     padding: 15px;
 }
+.sfirst{
+    justify-content: space-around;
+}
 .ssecond{
     justify-content: space-between;
 }
 #plan{
-    display: block;
+    display: none;
 }
 .select{
     padding: 20px 40px;
@@ -96,5 +98,30 @@ body{
 }
 .che{
     opacity: 0;
+    display: none;
+}
+form{
+    margin-bottom: 0;
+}
+.ecogymss{
+    display: none;
+}
+.nonen{
+    display: none;
+}
+.ecogyms{
+    display: flex;
+    
+    margin-top: 40px;
+
+}
+.third
+{
+    display: none;
+}
+.message1,.message2,.message3{
+    text-align: center;
+}
+#emmail{
     display: none;
 }

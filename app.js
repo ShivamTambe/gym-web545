@@ -52,8 +52,24 @@ app.post("/lasted",function(req,res){
         let token=req.body.token;
         let PayerID=req.body.PayerID;
         var json = JSON.parse(gymsemails);
-    console.log(json);
-    console.log(names);
+        console.log(json);
+        console.log(names);
+        let payuser = new payInfo({
+            names : req.body.names,
+            gymsemails : req.body.gymsemails,
+            email:req.body.email,
+            id:req.body.id,
+            finalprice: req.body.finalprice,
+            amount: req.body.amount,
+            no:req.body.no,
+            plan: req.body.plan,
+            paymentId: req.body.paymentId,
+            token:req.body.token,
+            PayerID:req.body.PayerID
+        })
+        console.log(payuser);
+        payuser.save();
+        console.log("saved succesfully");
         let shivemail = 'shivamtambe545@gmail.com';
     let emailsarr = [];
     for(var i=0;i<gymsemails.length;i++){
@@ -97,7 +113,8 @@ app.get('/success', function (req, res) {
         let paymentId= req.query.paymentId;
         let token=req.query.token;
         let PayerID=req.query.PayerID;
-        console.log(names);
+        console.log("success");
+        console.log(req.body.names);
 
     let paiduser = new PaidInfo({
         names : req.query.names,
@@ -176,6 +193,7 @@ app.post("/last",function(req,res){
         names:req.body.names,
         gymsemails:req.body.emails
     })
+    
     paiduser.save();
     let emails = req.body.emails;
     EmailInfo.find().then(result => {
@@ -257,6 +275,21 @@ app.post('/paynow', function (req, res) {
 
 
 
+
+const paySchema = {
+    names:String,
+    gymsemails:String,
+    email: String,
+    id: String,
+    finalprice: String,
+    amount: String,
+    no: String,
+    plan: String,
+    paymentId: String,
+    token: String,
+    PayerID: String,
+    status:String,
+}
 const paidSchema = {
     names:String,
     gymsemails:String,
@@ -370,6 +403,8 @@ const userSchema = {
     bio: String,
     state: String,
     city: String,
+    service:String,
+    name:String,
     img:
     {
         data: Buffer,
@@ -433,7 +468,7 @@ var gymlogoSchema = new mongoose.Schema({
 
 
 
-
+const payInfo = mongoose.model("payInfo", paySchema);
 const PaidInfo = mongoose.model("PaidInfo", paidSchema);
 const TaxInfo = mongoose.model("TaxInfo", taxSchema);
 const PremumuserInfo = mongoose.model("PremumuserInfo", premimumuserSchema);
@@ -482,7 +517,7 @@ app.post("/checkout4", function (req, res) {
     let  amount = parseInt(finalprice);
     plan = req.body.plan;
     no = req.body.no;
-    console.log(names);
+    // console.log(names);
     var payment = {
         "intent": "sale",
         "payer": {
@@ -802,8 +837,8 @@ app.get("/payment", function (req, res) {
 app.post("/checkout2", function (req, res) {
     let names = req.body.names;
     let emails = req.body.emails;
-    console.log(names);
-    console.log(emails);
+    // console.log(names);
+    // console.log(emails);
     let id = req.body.ida;
     let plan = req.body.plan;
     let value = req.body.value;
@@ -1218,8 +1253,8 @@ app.post("/personaltrainer", function (req, res) {
                         let top2 = result1[0].top2;
                         let top3 = result1[0].top3;
                         PersonalTrainer.find().then(resultp => {
-                            UserInfo.find({ status: "Public" }).then(resulttp => {
-                                res.render('personaltrainer', { itemp: resultp, item1: resulttp,facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result });
+                            UserInfo.find({ status: "Public" }).then(public => {
+                                res.render('personaltrainer', { public: resultp, public: public,facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result });
                             }).catch(err => console.log(err));
                         }).catch(err => console.log(err));
                     }).catch(err => console.log(err));
@@ -1398,9 +1433,27 @@ app.get("/signin", function (req, res) {
     //     .catch((error) => {
     //       console.error(error)
     //     })
-    GymInfo.find().then(result => {
-        // console.log(result);
-        res.render('signup', { item: result });
+    SocialInfo.find().then(result => {
+        let facebook = result[0].facebook;
+        let instagram = result[0].instagram;
+        let twitter = result[0].twitter;
+        let pintrest = result[0].pintrest;
+        AffilateInfo.find().then(result1 => {
+            FitnessInfo.find().then(result2 => {
+                MoreInfo.find().then(result3 => {
+                    let app = result3[0].app;
+                    let why = result2[0].why;
+                    let training = result2[0].training;
+                    let tip = result2[0].tip;
+                    let top1 = result1[0].top1;
+                    let top2 = result1[0].top2;
+                    let top3 = result1[0].top3;
+                    GymInfo.find().then(resultgym => {
+                    res.render("signup", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: resultgym  })
+                }).catch(err => console.log(err));
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
     }).catch(err => console.log(err));
 })
 app.get("/twopricing", function (req, res) {
@@ -1431,7 +1484,26 @@ app.get("/twopricing", function (req, res) {
     }).catch(err => console.log(err));
 })
 app.get("/normaltrainer", function (req, res) {
-    res.render("normaltrainer");
+    SocialInfo.find().then(result => {
+        let facebook = result[0].facebook;
+        let instagram = result[0].instagram;
+        let twitter = result[0].twitter;
+        let pintrest = result[0].pintrest;
+        AffilateInfo.find().then(result1 => {
+            FitnessInfo.find().then(result2 => {
+                MoreInfo.find().then(result3 => {
+                    let app = result3[0].app;
+                    let why = result2[0].why;
+                    let training = result2[0].training;
+                    let tip = result2[0].tip;
+                    let top1 = result1[0].top1;
+                    let top2 = result1[0].top2;
+                    let top3 = result1[0].top3;
+                    res.render("normaltrainer", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3 })
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
 })
 app.get("/pricing", function (req, res) {
 
@@ -1451,15 +1523,14 @@ app.get("/pricing", function (req, res) {
     //     app:"https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642"
     // })
     // other.save();
-    // PaidInfo.updateMany( {
-    //     $set:
-    //     {
-    //             names :"Massage Envy",
-    //             gymsemails  : "email@gmail.com"
-    //     }
-    // }).then(result => {
-    //     console.log(result);
-    // })
+    PaidInfo.updateMany( {
+        $set:
+        {
+                status :"Public"
+        }
+    }).then(result => {
+        console.log(result);
+    })
     SocialInfo.find().then(result => {
         let facebook = result[0].facebook;
         let instagram = result[0].instagram;
@@ -1711,7 +1782,7 @@ app.post("/searchbynamee", function (req, res) {
         console.log(result);
         PersonalTrainer.find().then(resultt => {
             console.log(resultt);
-            res.render('personaltrainer', { item: resultt, item1: result });
+            res.render('personaltrainer', { item: resultt, public: result });
         }).catch(err => console.log(err));
     }).catch(err => console.log(err));
 })
@@ -1743,7 +1814,26 @@ app.post("/searchbyzipp", function (req, res) {
     }).catch(err => console.log(err));
 })
 app.get("/payallathe", function (req, res) {
-    res.render("payallathe");
+    SocialInfo.find().then(result => {
+        let facebook = result[0].facebook;
+        let instagram = result[0].instagram;
+        let twitter = result[0].twitter;
+        let pintrest = result[0].pintrest;
+        AffilateInfo.find().then(result1 => {
+            FitnessInfo.find().then(result2 => {
+                MoreInfo.find().then(result3 => {
+                    let app = result3[0].app;
+                    let why = result2[0].why;
+                    let training = result2[0].training;
+                    let tip = result2[0].tip;
+                    let top1 = result1[0].top1;
+                    let top2 = result1[0].top2;
+                    let top3 = result1[0].top3;
+                        res.render("payallathe", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, imagee: color })
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
 })
 
 

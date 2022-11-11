@@ -9,7 +9,7 @@
     width: 90vw;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 100px;
 }
 .left{

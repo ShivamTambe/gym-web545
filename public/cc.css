@@ -1,0 +1,11 @@
+.logo img {
+    top: 25px;
+}
+.red, .text-gray-300 {
+    position: initial!important;
+    top: 27px;
+}
+.navbar{
+    position: relative;
+    top: -16px;
+}

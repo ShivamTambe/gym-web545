@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/home.css">
-    <link rel="stylesheet" href="/personal.css">
     <link rel="stylesheet" href="/logined.css">
+    <link rel="stylesheet" href="/personal.css">
     <title>Personal Trainer</title>
 </head>
 <body>
@@ -83,7 +83,7 @@
     </div>
     <div id="options">
       <div class="display">
-          <div class="name btna" onclick="names()">By Name</div>
+          <div class="name btna nameeee" onclick="names()">By Name</div>
           <div class="city btna" onclick="city()">By City</div>
           <div class="state btna" onclick="state()">By State</div>
           <div class="zip btna" onclick="zip()">By Zip Code</div>
@@ -118,8 +118,8 @@
       <button type="submit" class="btna">Submit</button>
   </form>
     <div class="allgyms" id="allg">
-      <% let size = Object.keys(itemp).length; %>
-      <% if(size > 4){size=4}else{size=Object.keys(itemp).length} %>
+      <% let size = Object.keys(public).length; %>
+      <% if(size > 4){size=4}else{size=Object.keys(public).length} %>
       <% console.log(size) %>
         <% for(var i=0; i<size; i++) {%>
             <div class="gyminfo">
@@ -135,8 +135,8 @@
                 </div> -->
                 <div class="gymname"></div>
                 <div class="otherinfo">
-                    <div class="gymbio"><%= itemp[i].trainername %></div>
-                    <div class="city"><%= itemp[i].trainerbio %></div>
+                    <div class="gymbio"><%= public[i].trainername %></div>
+                    <div class="city"><%= public[i].trainerbio %></div>
                 </div>
             </div>
          <% } %>
@@ -161,7 +161,7 @@
       </div>
         <div id="optionss">
           <div class="display">
-              <div class="name btna" onclick="namess()">By Name</div>
+              <div class="name btna nameeee" onclick="namess()">By Name</div>
               <div class="city btna" onclick="cityy()">By City</div>
               <div class="state btna" onclick="statee()">By State</div>
               <div class="zip btna" onclick="zipp()">By Zip Code</div>
@@ -196,15 +196,15 @@
           <button type="submit" class="btna">Submit</button>
       </form>
         <div class="allgyms" id="allusers">
-          <% let sizee = Object.keys(item1).length; %>
+          <% let sizee = Object.keys(public).length; %>
           <% if(sizee > 4){sizee=4}else{size=Object.keys(item).length} %>
           <% console.log(sizee)%>
             <% for(var i=0; i<sizee; i++) {%>
                 <div class="gyminfo client">
-                    <div class="profileimg">
+                    <div class="profileimg hhh">
                         <!-- <img src="/imgs/image4.jpg" alt="" class="img"> -->
-                        <img src="data:image/<%=item1[i].img.contentType%>;base64,
-                          <%=item1[i].img.data.toString('base64')%>">
+                        <img src="data:image/<%=public[i].img.contentType%>;base64,
+                          <%=public[i].img.data.toString('base64')%>">
                     </div>
                     <!-- <div class="stars">
                         <div class="star"><img src="/imgs/star.jpg" alt=""></div>
@@ -214,9 +214,9 @@
                         <div class="star"><img src="/imgs/star.jpg" alt=""></div>
                     </div> -->
                     <div class="clientinfo">
-                      <div class="gymname"><%= item1[i].name %></div>
+                      <div class="gymname"><%= public[i].name %></div>
                       <div class="otherinfo">
-                          <div class="gymbio"><%= item1[i].servicee %></div>
+                          <div class="gymbio"><%= public[i].service %></div>
                           <div class="city"> </div>
                       </div>
                     </div>

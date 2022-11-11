@@ -379,7 +379,7 @@ nav{
 .footerinfos {
     display: flex;
     gap: 40px;
-    left: -115px;
+    left: -14vw;
     position: relative;
 }
 .white{
@@ -455,4 +455,12 @@ input {
     border: 1px solid gray;
     border-radius: 25px;
     background: transparent;
+}
+.footer{
+    background-color: #1e2022;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5vw;
 }

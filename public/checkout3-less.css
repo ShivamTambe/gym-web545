@@ -7,3 +7,6 @@ form{
 .em{
     display: none;
 }
+#mno, #total{
+    display: none;
+}

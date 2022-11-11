@@ -4,7 +4,7 @@
 }
 .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     color: white;
     font-size: 2rem;
 }
@@ -110,7 +110,7 @@ a{
     width: 30vw;
 }
 .checkl{
-    width: 100px!important;
+    width: 136px!important;
 }
 .detail{
     width: 30vw;
@@ -182,4 +182,17 @@ textarea{
 }
 #ecoprice{
     display: none;
+}
+.space-x-4 a{
+    text-decoration: none;
+}
+.footlabel a{
+    text-decoration: none;
+    color: white;
+}
+.detail label{
+    color: #b8eafb;
+}
+.login a{
+    color: green;
 }
