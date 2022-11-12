@@ -236,6 +236,7 @@ app.get('/cancel', function (req, res) {
 app.post('/paynow', function (req, res) {
     let email = "hello";
     let id = "2344"
+    let n = req.body.amount
     var payment = {
         "intent": "sale",
         "payer": {
@@ -597,10 +598,12 @@ app.post("/forcheckout", function (req, res) {
 
 
 app.post("/checkout3-large", function (req, res) {
+    let names = req.body.names;
     let email = req.body.email;
     let id = req.body.ida;
     let total = req.body.total;
     let no = req.body.mno;
+    let emails = req.body.emails;
     let plan = req.body.plan;
     console.log(no);
     console.log(total);
@@ -651,7 +654,7 @@ app.post("/checkout3-large", function (req, res) {
                     GymInfo.find().then(resultg => {
                         TaxInfo.find().then(result => {
                             finalprice = parseFloat(amount) + parseFloat(amount * result[0].tax / 100);
-                            res.render("checkout4", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan })
+                            res.render("checkout4", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan,names:names ,emails:emails})
                         }).catch(err => console.log(err));
                     }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
@@ -1365,6 +1368,9 @@ app.get("/settinggymschange",function(req,res){
         }).catch(err => console.log(err));
     });
 
+})
+app.get("/work",function(req,res){
+    res.render("worke");
 })
 app.get("/settinggymschange",function(req,res){
     let id = req.query.id;

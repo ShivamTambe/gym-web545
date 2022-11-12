@@ -24,3 +24,20 @@ form{
     margin-left: auto;
     margin-right: auto;
 }
+#largecheck,#lesscheck{
+    display: none;
+}
+.l input{
+    display: none;
+}
+#ema{
+    display: none;
+}
+#total,#mno{
+    display: none;
+}
+.mp{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}

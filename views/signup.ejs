@@ -91,6 +91,16 @@
             <label for="">Confirm Password</label>
             <input type="password" name="confirmpassword" placeholder="*************" required>
           </div>
+          <div class="detail">
+            <label for="">Show your profile to logged-in users</label>
+            <div class="checkboxes bet">
+              <div onclick="click1()"><input type="checkbox" name="yes" id="private" class="social" required><Label
+                  class="checkw">Private</Label></div>
+              <div onclick="click2()"><input type="checkbox" name="no" id="public" class="social" required><Label
+                  class="checkw">Public</Label></div>
+            </div>
+            <input type="text" id="pros" name="status" value="hh" class="sta" name="account">
+          </div>
         </div>
         <!-- <div class="detail">
           <label for="">Show your profile to logged-in users</label>
@@ -199,7 +209,23 @@
 
   <script>
 
+function click1() {
+      document.getElementById("private").checked = true;
+      document.getElementById("public").checked = false;
+      document.getElementById("pros").value = "Private";
+      document.getElementById("public").required = false;
+      document.getElementById("private").required = true;
 
+    }
+    function click2() {
+      document.getElementById("private").checked = false;
+      document.getElementById("public").checked = true;
+      document.getElementById("pros").value = "Public";
+      document.getElementById("private").required = false;
+      document.getElementById("public").required = ture;
+
+
+    }
 
 
     // function preprice(){

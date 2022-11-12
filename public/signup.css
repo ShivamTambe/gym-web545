@@ -200,3 +200,9 @@ textarea{
     margin: 0 auto;
     margin-top: 20px;
 }
+.checkw{
+    color: white!important;
+}
+textarea{
+    color: white;
+}

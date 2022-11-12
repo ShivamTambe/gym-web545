@@ -17,7 +17,8 @@
   <link rel="stylesheet" href="/home.css">
   <link rel="stylesheet" href="/personal.css">
   <link rel="stylesheet" href="/twopricing.css">
-  <link rel="stylesheet" href="/checkout.css">
+  <link rel="stylesheet" href="/checkoutp.css">
+  <!-- <link rel="stylesheet" href="/checkout.css"> -->
   <title>Personal Trainer</title>
 </head>
 
@@ -89,20 +90,20 @@
     </div>
   </nav>
   <form action="/checkout3-p" method="post">
-    <div class="lid">
+    <div class="lid l">
       <input name="ida" type="text" value=<%=id %> >
       <input type="text" name="plan" value="<%= plan %>">
       <input type="text" id="num" name="no">
       <input type="text" name="names" value="<%= names %>">
       <input type="text" name="emails" value="<%= emails %>">
     </div>
-    <input type="text" name="email" value="<%= email %>">
+    <input type="text" name="email" value="<%= email %>" id="ema">
     <div class="pricingdis">
       <div class="pricingt">Purchase a minimum of 4 Months
         <!-- <span id="pricemonth" id="monthval">4</span> -->
       </div>
       <div class="txt">
-        <div class="monthprice">
+        <div class="monthprice mp">
           <div class="pricee" id="price1" onclick="option1()">
             <input type="checkbox" name="less" id="lesscheck" required class="che">
             <div class="signn">$</div>
@@ -119,6 +120,8 @@
             <div class="valuee"><span class="yearval">599.99</span></div>
             <div class="monthh"><span></span> /Yearly</div>
           </div>
+          <div class="taxtitle">8.25% sales tax</div>
+          <div class="taxtitle">8.25% sales tax</div>
         </div>
         <input type="text" id="total" name="total">
         <input type="text" name="mno" id="mno">
@@ -147,8 +150,9 @@
         console.log("clicked1");
         let price1 = document.getElementById("price1");
         let price2 = document.getElementById("price2");
-        price2.style.border = "1px solid gray";
-        price1.style.border = "4px solid darkgreen";
+        console.log(price2.style.border);
+        price2.style.border = "1px solid l gray";
+        price1.style.border = "4px solid l darkgreen";
 
         document.getElementById("total").value = document.getElementById("monthval").innerHTML;
         document.getElementById("mno").value = document.getElementById("monthno").innerHTML;
@@ -162,8 +166,8 @@
         console.log("clicked2");
         let price1 = document.getElementById("price1");
         let price2 = document.getElementById("price2");
-        price1.style.border = "1px solid gray";
-        price2.style.border = "4px solid darkgreen";
+        price1.style.border = "1px solid l gray";
+        price2.style.border = "4px solid l darkgreen";
 
         document.getElementById("total").value = 599.99;
         document.getElementById("mno").value = 12;

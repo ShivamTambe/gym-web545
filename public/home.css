@@ -498,6 +498,13 @@ svg path{
     display: flex;
     gap: 1px;
 }
+.gyms .slick-track {
+    display: flex;
+    gap: 1px;
+    position: relative;
+    left: -1vw;
+    width: fit-content!important;
+}
 /* .home:hover
     cursor: pointer;
 } */
@@ -539,7 +546,7 @@ nav{
     top: 10px;
 }
 .gyms img{
-    width: 100%!important;
+    width: 80%!important;
 }
 .logo img{
     position: relative;
