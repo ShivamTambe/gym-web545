@@ -6,3 +6,21 @@ button{
     border: 1px solid red;
     background: red;
 }
+#google{
+    display: none;
+}
+.formm{
+    display: none;
+}
+.cgoogle{
+    background: url(imgs/signgoogle.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.cfacebook{
+    background: url(imgs/signfacebook.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

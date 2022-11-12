@@ -508,6 +508,277 @@ var upload = multer({ storage: storage });
 
 
 
+
+
+// const { auth } = require('express-openid-connect');
+
+// const configg = {
+//   authRequired: false,
+//   auth0Logout: true,
+//   secret: 'a long, randomly-generated string stored in env',
+//   baseURL: 'http://localhost:5000',
+//   clientID: 'g34yBfL1jzL5o0YTs9MBoOxFZTxjnund',
+//   issuerBaseURL: 'https://dev-1crzcirzhjrpysth.us.auth0.com'
+// };
+
+// // auth router attaches /login, /logout, and /callback routes to the baseURL
+// app.use(auth(configg));
+
+// // req.isAuthenticated is provided from the auth router
+// app.get('/outhlogin', (req, res) => {
+//   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+// });
+
+// const { requiresAuth } = require('express-openid-connect');
+
+// app.get('/profile', requiresAuth(), (req, res) => {
+//   res.send(JSON.stringify(req.oidc.user));
+// });
+
+
+app.post("/facebook",function(req,res){
+    let email = req.body.google;
+    let name = req.body.displayname;
+    let id;
+    console.log(email);
+    console.log(name);
+    let a = 0;
+    UserInfo.find().then(result => {
+        console.log(result[0].email);
+        console.log(email);
+        if (email == result[0].email) {
+            console.log("matched");
+            a++;
+            id = result[0]._id;
+            if (a > 0) {
+                let emaill = email;
+                console.log(result[i]._id);
+                let firstname = result[i].firstname;
+                let id = result[i]._id;
+                let num = result[i].number;
+                let servicee = result[i].servicee;
+                console.log(servicee);
+                console.log(result[i].number);
+                MoreInfo.find().then(result => {
+                    imgModel.find({}, (err, items) => {
+                        GymInfo.find({}, (err, resultt) => {
+                            color.find({}, (err, color) => {
+                                if (err) {
+                                    console.log(err);
+                                    res.status(500).send('An error occurred', err);
+                                }
+                                else {
+                                    let obj = [];
+                                    SocialInfo.find().then(result => {
+                                        let facebook = result[0].facebook;
+                                        let instagram = result[0].instagram;
+                                        let twitter = result[0].twitter;
+                                        let pintrest = result[0].pintrest;
+                                        AffilateInfo.find().then(result1 => {
+                                            FitnessInfo.find().then(result2 => {
+                                                MoreInfo.find().then(result3 => {
+                                                    let app = result3[0].app;
+                                                    let why = result2[0].why;
+                                                    let training = result2[0].training;
+                                                    let tip = result2[0].tip;
+                                                    let top1 = result1[0].top1;
+                                                    let top2 = result1[0].top2;
+                                                    let top3 = result1[0].top3;
+                                                    UserInfo.find({ _id: id }).then(userinfo => {
+                                                        console.log(firstname);
+                                                        res.render("loginedhome", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, itemm: resultt, imagee: color, name: firstname, email: emaill, id: id, userinfo: userinfo })
+                                                    }).catch(err => console.log(err));
+                                                }).catch(err => console.log(err));
+                                            }).catch(err => console.log(err));
+                                        }).catch(err => console.log(err));
+                                    }).catch(err => console.log(err));
+                                }
+                            });
+                        });
+                    });
+                }).catch(err => console.log(err));
+            }
+        }
+    }).catch(err => console.log(err));
+    if (a == 0) {
+        console.log("NOTmatched");
+        let newuser = new UserInfo({
+            firstname: name,
+            email: email
+        })
+        newuser.save()
+        UserInfo.find({ email: `${email}` }).then(result => {
+            let emaill = email;
+                console.log(result[i]._id);
+                let firstname = result[i].firstname;
+                let id = result[i]._id;
+                let num = result[i].number;
+                let servicee = result[i].servicee;
+                console.log(servicee);
+                console.log(result[i].number);
+                MoreInfo.find().then(result => {
+                    imgModel.find({}, (err, items) => {
+                        GymInfo.find({}, (err, resultt) => {
+                            color.find({}, (err, color) => {
+                                if (err) {
+                                    console.log(err);
+                                    res.status(500).send('An error occurred', err);
+                                }
+                                else {
+                                    let obj = [];
+                                    SocialInfo.find().then(result => {
+                                        let facebook = result[0].facebook;
+                                        let instagram = result[0].instagram;
+                                        let twitter = result[0].twitter;
+                                        let pintrest = result[0].pintrest;
+                                        AffilateInfo.find().then(result1 => {
+                                            FitnessInfo.find().then(result2 => {
+                                                MoreInfo.find().then(result3 => {
+                                                    let app = result3[0].app;
+                                                    let why = result2[0].why;
+                                                    let training = result2[0].training;
+                                                    let tip = result2[0].tip;
+                                                    let top1 = result1[0].top1;
+                                                    let top2 = result1[0].top2;
+                                                    let top3 = result1[0].top3;
+                                                    UserInfo.find({ _id: id }).then(userinfo => {
+                                                        console.log(firstname);
+                                                        res.render("loginedhome", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, itemm: resultt, imagee: color, name: firstname, email: emaill, id: id, userinfo: userinfo })
+                                                    }).catch(err => console.log(err));
+                                                }).catch(err => console.log(err));
+                                            }).catch(err => console.log(err));
+                                        }).catch(err => console.log(err));
+                                    }).catch(err => console.log(err));
+                                }
+                            });
+                        });
+                    });
+                }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+    }
+
+})
+app.post("/formed", function (req, res) {
+    let email = req.body.google;
+    let name = req.body.displayname;
+    let id;
+    console.log(email);
+    console.log(name);
+    let a = 0;
+    UserInfo.find().then(result => {
+        if (email == result[0].email) {
+            console.log("matched");
+            a++;
+            i=0;
+            id = result[0]._id;
+            if (a > 0) {
+                let emaill = email;
+                console.log(result[i]._id);
+                let firstname = result[i].firstname;
+                let id = result[i]._id;
+                let num = result[i].number;
+                let servicee = result[i].servicee;
+                console.log(servicee);
+                console.log(result[i].number);
+                MoreInfo.find().then(result => {
+                    imgModel.find({}, (err, items) => {
+                        GymInfo.find({}, (err, resultt) => {
+                            color.find({}, (err, color) => {
+                                if (err) {
+                                    console.log(err);
+                                    res.status(500).send('An error occurred', err);
+                                }
+                                else {
+                                    let obj = [];
+                                    SocialInfo.find().then(result => {
+                                        let facebook = result[0].facebook;
+                                        let instagram = result[0].instagram;
+                                        let twitter = result[0].twitter;
+                                        let pintrest = result[0].pintrest;
+                                        AffilateInfo.find().then(result1 => {
+                                            FitnessInfo.find().then(result2 => {
+                                                MoreInfo.find().then(result3 => {
+                                                    let app = result3[0].app;
+                                                    let why = result2[0].why;
+                                                    let training = result2[0].training;
+                                                    let tip = result2[0].tip;
+                                                    let top1 = result1[0].top1;
+                                                    let top2 = result1[0].top2;
+                                                    let top3 = result1[0].top3;
+                                                    UserInfo.find({ _id: id }).then(userinfo => {
+                                                        console.log(firstname);
+                                                        res.render("loginedhome", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, itemm: resultt, imagee: color, name: firstname, email: emaill, id: id, userinfo: userinfo })
+                                                    }).catch(err => console.log(err));
+                                                }).catch(err => console.log(err));
+                                            }).catch(err => console.log(err));
+                                        }).catch(err => console.log(err));
+                                    }).catch(err => console.log(err));
+                                }
+                            });
+                        });
+                    });
+                }).catch(err => console.log(err));
+            }
+        }
+    }).catch(err => console.log(err));
+    if (a == 0) {
+        console.log("NOTmatched");
+        let newuser = new UserInfo({
+            firstname: name,
+            email: email
+        })
+        newuser.save()
+        UserInfo.find({ email: `${email}` }).then(result => {
+            let emaill = email;
+            let i=0;
+                console.log(result[i]._id);
+                let firstname = result[i].firstname;
+                let id = result[i]._id;
+                let num = result[i].number;
+                let servicee = result[i].servicee;
+                console.log(servicee);
+                console.log(result[i].number);
+                MoreInfo.find().then(result => {
+                    imgModel.find({}, (err, items) => {
+                        GymInfo.find({}, (err, resultt) => {
+                            color.find({}, (err, color) => {
+                                if (err) {
+                                    console.log(err);
+                                    res.status(500).send('An error occurred', err);
+                                }
+                                else {
+                                    let obj = [];
+                                    SocialInfo.find().then(result => {
+                                        let facebook = result[0].facebook;
+                                        let instagram = result[0].instagram;
+                                        let twitter = result[0].twitter;
+                                        let pintrest = result[0].pintrest;
+                                        AffilateInfo.find().then(result1 => {
+                                            FitnessInfo.find().then(result2 => {
+                                                MoreInfo.find().then(result3 => {
+                                                    let app = result3[0].app;
+                                                    let why = result2[0].why;
+                                                    let training = result2[0].training;
+                                                    let tip = result2[0].tip;
+                                                    let top1 = result1[0].top1;
+                                                    let top2 = result1[0].top2;
+                                                    let top3 = result1[0].top3;
+                                                    UserInfo.find({ _id: id }).then(userinfo => {
+                                                        console.log(firstname);
+                                                        res.render("loginedhome", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, itemm: resultt, imagee: color, name: firstname, email: emaill, id: id, userinfo: userinfo })
+                                                    }).catch(err => console.log(err));
+                                                }).catch(err => console.log(err));
+                                            }).catch(err => console.log(err));
+                                        }).catch(err => console.log(err));
+                                    }).catch(err => console.log(err));
+                                }
+                            });
+                        });
+                    });
+                }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+    }
+})
 app.post("/checkout4", function (req, res) {
     let users = req.body.users;
     let names = req.body.names;
@@ -654,7 +925,7 @@ app.post("/checkout3-large", function (req, res) {
                     GymInfo.find().then(resultg => {
                         TaxInfo.find().then(result => {
                             finalprice = parseFloat(amount) + parseFloat(amount * result[0].tax / 100);
-                            res.render("checkout4", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan,names:names ,emails:emails})
+                            res.render("checkout4", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, id: id, finalprice: finalprice, email: email, no: no, plan: plan, names: names, emails: emails })
                         }).catch(err => console.log(err));
                     }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
@@ -1329,7 +1600,7 @@ app.post("/loginedhome", function (req, res) {
     id = req.body.id;
 })
 
-app.get("/settinggymschange",function(req,res){
+app.get("/settinggymschange", function (req, res) {
     let names = req.body.names;
     let id = req.body.id;
     UserInfo.find({ _id: `${id}` }).then(result => {
@@ -1359,7 +1630,7 @@ app.get("/settinggymschange",function(req,res){
                                     names: names
                                 }
                             }).then(resultt => {
-                                res.render("settinggyms", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo,plan:plan[0].plan,names:names });
+                                res.render("settinggyms", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo, plan: plan[0].plan, names: names });
                             });
                         }).catch(err => console.log(err));
                     }).catch(err => console.log(err));
@@ -1369,10 +1640,10 @@ app.get("/settinggymschange",function(req,res){
     });
 
 })
-app.get("/work",function(req,res){
+app.get("/work", function (req, res) {
     res.render("worke");
 })
-app.get("/settinggymschange",function(req,res){
+app.get("/settinggymschange", function (req, res) {
     let id = req.query.id;
     let plan = req.query.plan;
     UserInfo.find({ _id: `${id}` }).then(result => {
@@ -1398,7 +1669,7 @@ app.get("/settinggymschange",function(req,res){
                         let top3 = result1[0].top3;
                         UserInfo.find({ email: `${email}` }).then(userinfo => {
                             payInfo.find().then(plan => {
-                                res.render("settinggymschange", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo,plan:plan[0].plan,names:names });
+                                res.render("settinggymschange", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo, plan: plan[0].plan, names: names });
                             }).catch(err => console.log(err));
 
                         }).catch(err => console.log(err));
@@ -1408,7 +1679,7 @@ app.get("/settinggymschange",function(req,res){
         }).catch(err => console.log(err));
     });
 })
-app.post("/payingforchange",function(req,res){
+app.post("/payingforchange", function (req, res) {
     id = req.body.id;
     let names = req.body.names;
     let plan = req.body.plan;
@@ -1448,7 +1719,7 @@ app.post("/payingforchange",function(req,res){
         }
     });
 })
-app.post("/payforedit",function(req,res){
+app.post("/payforedit", function (req, res) {
     let value = req.body.value;
     names = req.body.gymname;
     id = req.body.ida;
@@ -1477,24 +1748,24 @@ app.post("/payforedit",function(req,res){
                         UserInfo.find({ email: `${email}` }).then(userinfo => {
                             payInfo.find({ email: `${email}` }).then(plan => {
                                 let plan1 = plan[0].plan;
-                                if(plan == "less"){
-                                    if(value<500){
-                                        res.render("payforedit", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo,plan:plan[0].plan,names:names });
+                                if (plan == "less") {
+                                    if (value < 500) {
+                                        res.render("payforedit", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo, plan: plan[0].plan, names: names });
                                     }
-                                    else{
+                                    else {
                                         res.render("wrong", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, email: email, id: id, plan: plan })
                                     }
-                                }else{
-                                    if(plan=="large"){
-                                        if(value <1500){
-                                            res.render("payforedit", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo,plan:plan[0].plan,names:names });
+                                } else {
+                                    if (plan == "large") {
+                                        if (value < 1500) {
+                                            res.render("payforedit", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo, plan: plan[0].plan, names: names });
                                         }
-                                        else{
+                                        else {
                                             res.render("wrong", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, gyms: resultg, email: email, id: id, plan: plan })
                                         }
                                     }
                                 }
-                                
+
                             }).catch(err => console.log(err));
 
                         }).catch(err => console.log(err));
@@ -1504,7 +1775,7 @@ app.post("/payforedit",function(req,res){
         }).catch(err => console.log(err));
     });
 })
-app.post("/changegyms",function(req,res){
+app.post("/changegyms", function (req, res) {
     id = req.body.ida;
     console.log(id);
     UserInfo.find({ _id: `${id}` }).then(result => {
@@ -1530,7 +1801,7 @@ app.post("/changegyms",function(req,res){
                         let top3 = result1[0].top3;
                         UserInfo.find({ _id: `${id}` }).then(userinfo => {
                             GymInfo.find().then(gyms => {
-                                res.render("changegyms", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo,gyms:gyms });
+                                res.render("changegyms", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo, gyms: gyms });
                             }).catch(err => console.log(err));
 
                         }).catch(err => console.log(err));
@@ -2313,7 +2584,9 @@ app.post("/setting", function (req, res) {
                         let top2 = result1[0].top2;
                         let top3 = result1[0].top3;
                         UserInfo.find({ _id: `${id}` }).then(userinfo => {
-                            res.render("setting", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo });
+                            let para = userinfo.img;
+                            log(para);
+                            res.render("setting", { name: name, email: email, identity: identity, result: result[0], items: result, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, userinfo: userinfo, para :para });
                         }).catch(err => console.log(err));
                     }).catch(err => console.log(err));
                 }).catch(err => console.log(err));

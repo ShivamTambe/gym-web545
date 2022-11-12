@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/slick.css">
   <link rel="stylesheet" href="/home.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOME</title>
 </head>
+
 <body>
 
 
@@ -25,11 +31,11 @@
       </div>
     </div>
     <div class="donatee" onclick="donate()">
-    <div class="dbtn">
-      <div class="submit"><button type="submit" id="donatesubmit">Donate</button></div>
+      <div class="dbtn">
+        <div class="submit"><button type="submit" id="donatesubmit">Donate</button></div>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
   <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
@@ -37,51 +43,63 @@
           <div class="flex flex-shrink-0 items-center logo">
             <a href="/home"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
           </div>
-          
+
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/home" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium red navbtns" aria-current="page">Home</a>
-  
-              <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Gyms</a>
-  
-              <a href="/normaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal Trainers</a>
-  
-              <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a>
+              <a href="/home" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium red navbtns"
+                aria-current="page">Home</a>
 
-              <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Login/Register</a>
+              <a href="/gyms"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Gyms</a>
+
+              <a href="/normaltrainer"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal
+                Trainers</a>
+
+              <a href="/pricing"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a>
+
+              <a href="/signup"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Login/Register</a>
 
             </div>
           </div>
         </div>
       </div>
     </div>
-  
+
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pt-2 pb-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns" aria-current="page">Home</a>
-  
-        <a href="/gyms" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Gyms</a>
-  
-        <a href="/normaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal Trainers</a>
-  
-        <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
+        <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns"
+          aria-current="page">Home</a>
 
-        <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
+        <a href="/gyms"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Gyms</a>
+
+        <a href="/normaltrainer"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal
+          Trainers</a>
+
+        <a href="/pricing"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
+
+        <a href="/signup"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
       </div>
     </div>
   </nav>
 
-  
+
   <div class="home">
     <% items.forEach(function(image) { %>
       <div class="slides slide1">
         <img src="data:image/<%=image.img.contentType%>;base64,
             <%=image.img.data.toString('base64')%>">
-            <% let color1 = 'red' %>
-        <div class="midsec">
+        <% let color1='red' %>
+          <div class="midsec">
             <div class="midtitle title1">
               <%= image.firsttitle %>
             </div>
@@ -90,22 +108,26 @@
             </div>
             <div class="dis title3">
               <%= image.thirdtitle%>
-            </div> 
+            </div>
             <div class="dis title4">
               <%= image.fourthtitle%>
             </div>
             <div class="btns">
-              <a href="/pricing"><div class="btn">Learn More</div></a>
-              <a href="/pricing"><div class="btn btn2">Join Now!</div></a>
+              <a href="/pricing">
+                <div class="btn">Learn More</div>
+              </a>
+              <a href="/pricing">
+                <div class="btn btn2">Join Now!</div>
+              </a>
             </div>
-        </div>
+          </div>
       </div>
-    <% }) %>
+      <% }) %>
   </div>
 
-<div class="gymsec">
-  <div class="gymsectitle">Participating Gyms and Studios</div>
-  <div class="gyms">
+  <div class="gymsec">
+    <div class="gymsectitle">Participating Gyms and Studios</div>
+    <div class="gyms">
       <% itemm.forEach(function(image) { %>
         <form action="/gymfullinfo" method="post" class="gyms">
           <div class="gymbio line2 iddd">
@@ -118,204 +140,240 @@
           <button id="subbtn" class="iddd btnsubbb" type="submit">Submit</button>
         </form>
         <% }) %>
+    </div>
+
+    <div class="btns">
+      <a href="/gyms">
+        <div class="btn btn2 more">More Gyms</div>
+      </a>
+    </div>
   </div>
 
-  <div class="btns">
-    <a href="/gyms"><div class="btn btn2 more">More Gyms</div></a>
-  </div>
-</div>
-
-<div class="infosec">
+  <div class="infosec">
     <div class="moreinfos">
-        <% let sizee = Object.keys(item).length; %>
+      <% let sizee=Object.keys(item).length; %>
         <!-- <% if(sizee < 4){size=Object.keys(item).length}else{size=Object.keys(item).length} %>
         <% console.log(sizee)%> -->
         <% for(var i=0; i<sizee; i++) {%>
           <div class="info">
-            <div class="infot"><%= item[i].title%></div>
-            <div class="infodis"><%= item[i].title1%></div>
+            <div class="infot">
+              <%= item[i].title%>
+            </div>
+            <div class="infodis">
+              <%= item[i].title1%>
+            </div>
             <!-- <div class="infodis"><%= item[i].dis %></div> -->
-            <div class="infodis"><%= item[i].title2%></div>
-            <div class="infodis"><%= item[i].title3%></div>
-            <div class="infodis"><%= item[i].title4%></div>
+            <div class="infodis">
+              <%= item[i].title2%>
+            </div>
+            <div class="infodis">
+              <%= item[i].title3%>
+            </div>
+            <div class="infodis">
+              <%= item[i].title4%>
+            </div>
           </div>
-        <% } %>
-      <!-- <div class="info">
+          <% } %>
+            <!-- <div class="info">
         <div class="infot">Free Personal Training</div>
         <div class="infodis">Sign-up today to get free personal training session</div>
       </div> -->
     </div>
-</div>
+  </div>
 
 
-<%- include('../partials/fotter.ejs'); %>
-
-
-
-  <script src="./slick.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <%- include('../partials/fotter.ejs'); %>
 
 
 
+    <script src="./slick.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+      integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script>
-      function donate(){
+
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDd-DsQ38yY83aNzmqcYdGhMsvwSKhYHIA",
+        authDomain: "gymweb-5b70c.firebaseapp.com",
+        projectId: "gymweb-5b70c",
+        storageBucket: "gymweb-5b70c.appspot.com",
+        messagingSenderId: "359101237722",
+        appId: "1:359101237722:web:4cfd10850e4b1e6e2798e3",
+        measurementId: "G-JML252RCZJ"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    <script>
+      function donate() {
         document.getElementById("donateamt").value = document.getElementById("amtv").innerHTML;
         document.getElementById('donatesubmit').click();
       }
-  </script>
-  <script>
-      function incerease(){
-         let value = document.getElementById("amtv").innerText;
-         console.log("HELLO");
-         document.getElementById("amtv").innerText++;
+    </script>
+    <script>
+      function incerease() {
+        let value = document.getElementById("amtv").innerText;
+        console.log("HELLO");
+        document.getElementById("amtv").innerText++;
       }
 
-      function decrease(){
-         let value = document.getElementById("amtv").innerText;
-         if(value >1){
+      function decrease() {
+        let value = document.getElementById("amtv").innerText;
+        if (value > 1) {
           document.getElementById("amtv").innerText--;
-         }
+        }
       }
 
-      function submit(){
+      function submit() {
         document.getElementById('subbtn').click();
       }
-  </script>
+    </script>
 
-  <script>
-    $('.home').slick({
-  dots: true,
-  infinite: false,
-  // prevArrow: 'rightarrow',
-  autoplay: true,
-  autoplaySpeed: 5000,
-  speed: 300,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
+    <script>
+      $('.home').slick({
+        dots: true,
+        infinite: false,
+        // prevArrow: 'rightarrow',
+        autoplay: true,
+        autoplaySpeed: 5000,
+        speed: 300,
         slidesToShow: 1,
         slidesToScroll: 1,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
-});
-  </script>
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+    </script>
 
 
 
 
-<script>
-  $('.moreinfos').slick({
-dots: false,
-infinite: false,
-autoplay: true,
-autoplaySpeed: 5000,
-speed: 300,
-slidesToShow: 4,
-slidesToScroll: 1,
-responsive: [
-  {
-    breakpoint: 1024,
-    settings: {
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      infinite: true,
-      dots: false
-    }
-  },
-  {
-    breakpoint: 600,
-    settings: {
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      dots: false
-    }
-  },
-  {
-    breakpoint: 480,
-    settings: {
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      dots: false
-    }
-  }
-  // You can unslick at a given breakpoint now by adding:
-  // settings: "unslick"
-  // instead of a settings object
-]
-});
-</script>
+    <script>
+      $('.moreinfos').slick({
+        dots: false,
+        infinite: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              dots: false
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+    </script>
 
 
-<script>
-  $('.gyms').slick({
-dots: false,
-infinite: false,
-// autoplay: true,
-// autoplaySpeed: 5000,
-speed: 300,
-slidesToShow: 5,
-slidesToScroll: 1,
-responsive: [
-  {
-    breakpoint: 1024,
-    settings: {
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      infinite: true,
-      dots: false
-    }
-  },
-  {
-    breakpoint: 600,
-    settings: {
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      dots: false
-    }
-  },
-  {
-    breakpoint: 480,
-    settings: {
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      dots: false
-    }
-  }
-  // You can unslick at a given breakpoint now by adding:
-  // settings: "unslick"
-  // instead of a settings object
-]
-});
-</script>
+    <script>
+      $('.gyms').slick({
+        dots: false,
+        infinite: false,
+        // autoplay: true,
+        // autoplaySpeed: 5000,
+        speed: 300,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              dots: false
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+    </script>
 
-<script>
-    
-    function searchoption(){
+    <script>
+
+      function searchoption() {
         console.log("hellooo");
         let options = document.getElementById("options");
         const element = document.querySelector('#options');
@@ -324,89 +382,90 @@ responsive: [
         let searchbycity = document.getElementById("searchbycity");
         let searchbystate = document.getElementById("searchbystate");
         let searchbyzip = document.getElementById("searchbyzip");
-        if(style.display == "none"){
-            options.style.display = "block";
+        if (style.display == "none") {
+          options.style.display = "block";
         }
-        else{
-            options.style.display = "none";
-            searchbyname.style.display = "none";
-            searchbycity.style.display = "none";
-            searchbystate.style.display = "none";
-            searchbyzip.style.display = "none";
+        else {
+          options.style.display = "none";
+          searchbyname.style.display = "none";
+          searchbycity.style.display = "none";
+          searchbystate.style.display = "none";
+          searchbyzip.style.display = "none";
         }
-    }
+      }
 
-    function names(){
+      function names() {
         let searchbyname = document.getElementById("searchbyname");
         let searchbycity = document.getElementById("searchbycity");
         let searchbystate = document.getElementById("searchbystate");
         let searchbyzip = document.getElementById("searchbyzip");
         const element = document.querySelector('#searchbyname');
         const stylename = getComputedStyle(element);
-        if(stylename.display == "none"){
-            searchbyname.style.display = "block";
-            searchbycity.style.display = "none";
-            searchbystate.style.display = "none";
-            searchbyzip.style.display = "none";
+        if (stylename.display == "none") {
+          searchbyname.style.display = "block";
+          searchbycity.style.display = "none";
+          searchbystate.style.display = "none";
+          searchbyzip.style.display = "none";
         }
-        else{
-            searchbyname.style.display = "none";
+        else {
+          searchbyname.style.display = "none";
         }
-    }
+      }
 
-    function city(){
+      function city() {
         let searchbyname = document.getElementById("searchbyname");
         let searchbycity = document.getElementById("searchbycity");
         let searchbystate = document.getElementById("searchbystate");
         let searchbyzip = document.getElementById("searchbyzip");
         const element = document.querySelector('#searchbycity');
         const stylename = getComputedStyle(element);
-        if(stylename.display == "none"){
-            searchbyname.style.display = "none";
-            searchbycity.style.display = "block";
-            searchbystate.style.display = "none";
-            searchbyzip.style.display = "none";
+        if (stylename.display == "none") {
+          searchbyname.style.display = "none";
+          searchbycity.style.display = "block";
+          searchbystate.style.display = "none";
+          searchbyzip.style.display = "none";
         }
-        else{
-            searchbyname.style.display = "none";
+        else {
+          searchbyname.style.display = "none";
         }
-    }
+      }
 
-    function state(){
+      function state() {
         let searchbyname = document.getElementById("searchbyname");
         let searchbycity = document.getElementById("searchbycity");
         let searchbystate = document.getElementById("searchbystate");
         let searchbyzip = document.getElementById("searchbyzip");
         const element = document.querySelector('#searchbystate');
         const stylename = getComputedStyle(element);
-        if(stylename.display == "none"){
-            searchbyname.style.display = "none";
-            searchbycity.style.display = "none";
-            searchbystate.style.display = "block";
-            searchbyzip.style.display = "none";
+        if (stylename.display == "none") {
+          searchbyname.style.display = "none";
+          searchbycity.style.display = "none";
+          searchbystate.style.display = "block";
+          searchbyzip.style.display = "none";
         }
-        else{
-            searchbyname.style.display = "none";
+        else {
+          searchbyname.style.display = "none";
         }
-    }
+      }
 
-    function zip(){
+      function zip() {
         let searchbyname = document.getElementById("searchbyname");
         let searchbycity = document.getElementById("searchbycity");
         let searchbystate = document.getElementById("searchbystate");
         let searchbyzip = document.getElementById("searchbyzip");
         const element = document.querySelector('#searchbyzip');
         const stylename = getComputedStyle(element);
-        if(stylename.display == "none"){
-            searchbyname.style.display = "none";
-            searchbycity.style.display = "none";
-            searchbystate.style.display = "none";
-            searchbyzip.style.display = "block";
+        if (stylename.display == "none") {
+          searchbyname.style.display = "none";
+          searchbycity.style.display = "none";
+          searchbystate.style.display = "none";
+          searchbyzip.style.display = "block";
         }
-        else{
-            searchbyname.style.display = "none";
+        else {
+          searchbyname.style.display = "none";
         }
-    }
-</script>
+      }
+    </script>
 </body>
+
 </html>

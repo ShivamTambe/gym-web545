@@ -490,6 +490,9 @@ svg path{
     text-align: center;
     width: 1000px;
 }
+#photo{
+    display: none;
+}
 /* .gyms img{
     object-fit: cover;
     height: 212px;

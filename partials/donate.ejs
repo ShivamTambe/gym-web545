@@ -1,18 +1,38 @@
-<div class="donate">
-    <div class="title">Give a Donation</div>
-    <div class="don">
-        <label>Amount: $</label>
-        <input type="number" name="donate" id="donateamt" value="10">
-        <div class="bar"></div>
-        <div id="uparrow" onclick="increase()"><img src="./img/arrow.png" alt="" srcset=""></div>
-        <div class="downarrow" onclick="decrease()"><img src="/img/arrow.png" alt="" srcset=""></div>
+<form action="/donatedvalue" method="post">
+    <input type="text" name="donateamt" id="donateamt">
+    <div class="dva">
+      <div class="value">
+        <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
+            <div class=" amt">$ <span class="amtvalue" id="amtv">10</span></div>
+        <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
+      </div>
     </div>
-    <div class="btns">
-        <a href="/donatepay"><div class="donatebtn">Donate</div></a>
+    <div class="donatee" onclick="donate()">
+      <div class="dbtn">
+        <div class="submit"><button type="submit" id="donatesubmit">Donate</button></div>
+      </div>
     </div>
-</div>
+  </form>
 
-<script>
+  <script>
+    function incerease() {
+      let value = document.getElementById("amtv").innerText;
+      console.log("HELLO");
+      document.getElementById("amtv").innerText++;
+    }
+
+    function decrease() {
+      let value = document.getElementById("amtv").innerText;
+      if (value > 1) {
+        document.getElementById("amtv").innerText--;
+      }
+    }
+
+    function submit() {
+      document.getElementById('subbtn').click();
+    }
+  </script>
+<!-- <script>
     function increase(){
         document.getElementById("donateamt").value++;
     }
@@ -21,4 +41,4 @@
             document.getElementById("donateamt").value--;
         }
     }
-</script>
+</script> -->
