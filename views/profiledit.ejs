@@ -20,7 +20,8 @@
 </head>
 
 <body>
-  <form action="/setting" method="post">
+  <%- include('../partials/loginedheader.ejs'); %>
+  <!-- <form action="/setting" method="post">
     <div class="lid">
       <input name="ida" type="text" value=<%=id %> >
     </div>
@@ -56,9 +57,9 @@
             <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
           </div>
           <div class="hidden sm:ml-6 sm:block">
-            <div class="flex space-x-4">
+            <div class="flex space-x-4"> -->
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/loginedhome" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red"
+              <!-- <a href="/loginedhome" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red"
                 aria-current="page">Home</a>
 
               <a href="/loginedgyms"
@@ -80,13 +81,13 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pt-2 pb-3">
+    <!-- <div class="sm:hidden" id="mobile-menu">
+      <div class="space-y-1 px-2 pt-2 pb-3"> -->
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns"
+        <!-- <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns"
           aria-current="page">Home</a>
 
         <a href="/gyms"
@@ -103,15 +104,19 @@
           class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
       </div>
     </div>
-  </nav>
+  </nav> -->
 
   <div class="userinfo">
     <div class="usertop">
       <!-- <div class="img"><img src="/imgs/image4.jpg" alt=""></div> -->
       <% items.forEach(function(image) { %>
         <div class="imgdetails">
-          <img src="data:image/<%=image.img.contentType%>;base64,
-                          <%=image.img.data.toString('base64')%>">
+          <% if(image.img.data){%>
+            <img src="data:image/<%=image.img.contentType%>;base64,
+            <%=image.img.data.toString('base64')%>" onclick="profile()">
+          <% }else{ %>
+            <img src="/imgs/profilelogo.jpeg" alt="" onclick="profile()">
+          <%}%>
         </div>
         <% }) %>
           <div class="name">
@@ -137,10 +142,10 @@
           <label for="">Last Name</label>
           <input type="text" name="last" placeholder="Enter Last Name" required>
         </div>
-        <div class="elabel">
+        <!-- <div class="elabel">
           <label for="">Email</label>
           <input type="text" name="email" placeholder="Enter Email Name" required>
-        </div>
+        </div> -->
         <div class="elabel">
           <label for="">Phone Number</label>
           <input type="text" placeholder="Enter Phone No" name="phoneno" required>
@@ -151,7 +156,7 @@
         </div>
         <div class="elabel">
           <label for="">Date of Birth</label>
-          <input type="date" placeholder="Enter Date of Birth" name="date" required>
+          <input type="date" placeholder="Enter Date of Birth" name="date">
         </div>
         <div class="elabel">
           <label for="">Gender</label>
@@ -163,7 +168,7 @@
         </div>
         <div class="elabel">
           <label for="">State</label>
-          <input type="text" placeholder="Enter State" name="city" required>
+          <input type="text" placeholder="Enter State" name="state" required>
         </div>
         <div class="elabel">
           <label for="">Zip Code</label>
@@ -219,19 +224,39 @@
 
 
 
+    <script>
+      function photo(){
+        console.log("clicked");
+        document.getElementById("photo").click();
+      }
+      function gyms(){
+        console.log("gym cliikced");
+        document.getElementById("gymbnt").click();
+      }
+      function massage(){
+        document.getElementById("massage").click();
+      }
+      function phycisal(){
+        document.getElementById("physical").click();
+      }
+      function account2(){
+        document.getElementById("private").checked = false;
+        document.getElementById("public").checked = false;
+
+      }
+      function account1(){
+        document.getElementById("private").checked = false;
+        document.getElementById("public").checked = false;
+
+      }
+  </script>
   <script>
 
-    function click1() {
-      document.getElementById("private").checked = true;
-      document.getElementById("public").checked = false;
-      document.getElementById("pros").value = "Private";
-    }
-    function click2() {
-      document.getElementById("private").checked = false;
-      document.getElementById("public").checked = true;
-      document.getElementById("pros").value = "Public";
-    }
 
+    function editt() {
+      console.log("clicked");
+      document.getElementById("dda").click();
+    }
     function setting() {
 
     }
@@ -244,6 +269,19 @@
       else {
         tap.style.display = "none";
       }
+    }
+  </script>
+  <script>
+
+    function click1() {
+      document.getElementById("private").checked = true;
+      document.getElementById("public").checked = false;
+      document.getElementById("pros").value = "Private";
+    }
+    function click2() {
+      document.getElementById("private").checked = false;
+      document.getElementById("public").checked = true;
+      document.getElementById("pros").value = "Public";
     }
   </script>
 

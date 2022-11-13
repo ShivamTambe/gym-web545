@@ -96,6 +96,7 @@
       <input type="text" id="num" name="no">
       <input type="text" name="names" value="<%= names %>">
       <input type="text" name="emails" value="<%= emails %>">
+      <input type="text" name="number" value="1">
     </div>
     <input type="text" name="email" value="<%= email %>" id="ema">
     <div class="pricingdis">
@@ -213,6 +214,54 @@
         document.getElementById("amtv").innerText++;
       }
     </script>
+    
+    <script>
+      function photo(){
+        console.log("clicked");
+        document.getElementById("photo").click();
+      }
+      function gyms(){
+        console.log("gym cliikced");
+        document.getElementById("gymbnt").click();
+      }
+      function massage(){
+        document.getElementById("massage").click();
+      }
+      function phycisal(){
+        document.getElementById("physical").click();
+      }
+      function account2(){
+        document.getElementById("private").checked = false;
+        document.getElementById("public").checked = false;
+
+      }
+      function account1(){
+        document.getElementById("private").checked = false;
+        document.getElementById("public").checked = false;
+
+      }
+  </script>
+  <script>
+
+
+    function editt() {
+      console.log("clicked");
+      document.getElementById("dda").click();
+    }
+    function setting() {
+
+    }
+    function profile() {
+      let tap = document.getElementById("pinfo");
+      console.log(tap.style.display);
+      if (tap.style.display == "none") {
+        tap.style.display = "block";
+      }
+      else {
+        tap.style.display = "none";
+      }
+    }
+  </script>
 </body>
 
 </html>

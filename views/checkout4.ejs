@@ -100,6 +100,7 @@
     <div class="lid">
         <input name="email" type="text" value=<%= email %> >
         <input type="text" name="no" id="no" value="<%=no%>">
+        <input type="text" name="number" value="<%= number %>">
     </div>
     <div class="pricingdis">
         <div class="pricingt">The Final Price Includeing Tax
@@ -123,6 +124,55 @@
 
         <%- include('../partials/fotter.ejs'); %>
 </body>
+
+
+<script>
+    function photo(){
+      console.log("clicked");
+      document.getElementById("photo").click();
+    }
+    function gyms(){
+      console.log("gym cliikced");
+      document.getElementById("gymbnt").click();
+    }
+    function massage(){
+      document.getElementById("massage").click();
+    }
+    function phycisal(){
+      document.getElementById("physical").click();
+    }
+    function account2(){
+      document.getElementById("private").checked = false;
+      document.getElementById("public").checked = false;
+
+    }
+    function account1(){
+      document.getElementById("private").checked = false;
+      document.getElementById("public").checked = false;
+
+    }
+</script>
+<script>
+
+
+  function editt() {
+    console.log("clicked");
+    document.getElementById("dda").click();
+  }
+  function setting() {
+
+  }
+  function profile() {
+    let tap = document.getElementById("pinfo");
+    console.log(tap.style.display);
+    if (tap.style.display == "none") {
+      tap.style.display = "block";
+    }
+    else {
+      tap.style.display = "none";
+    }
+  }
+</script>
 <script>
     document.getElementById("sub").click();
 </script>

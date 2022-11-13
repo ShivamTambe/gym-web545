@@ -41,3 +41,14 @@ form{
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
+.formmm{
+    display: none;
+}
+.profileimggg{
+    margin-bottom: 39px;
+
+}
+.setting a{
+    color: gray;
+    text-decoration: none;
+}

@@ -22,7 +22,8 @@
 </head>
 
 <body>
-    <form action="/setting" method="post">
+    <%- include('../partials/loginedheader.ejs'); %>
+    <!-- <form action="/setting" method="post">
         <div class="lid">
             <input name="ida" type="text" value=<%=id %> >
         </div>
@@ -49,8 +50,8 @@
                 <div class="setting" id="sett"><a href="/signup">Log Out</a></div>
             </div>
         </div>
-    </form>
-    <nav class="bg-gray-800">
+    </form> -->
+    <!-- <nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
@@ -61,7 +62,7 @@
 
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                             Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" 
                             <a href="/loginedhome"
                                 class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red"
                                 aria-current="page">Home</a>
@@ -85,13 +86,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
 
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="sm:hidden" id="mobile-menu">
+        <!-- <div class="sm:hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pt-2 pb-3">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns"
+                <!-- <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns"
                     aria-current="page">Home</a>
 
                 <a href="/gyms"
@@ -108,8 +109,8 @@
                     class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
             </div>
         </div>
-    </nav>
-
+    </nav>    -->
+    
     <form action="/editedsetting" method="post">
         <div class="lid">
             <input name="ida" type="text" value=<%=id %> >
@@ -118,8 +119,12 @@
             <div class="usertop">
                 <% userinfo.forEach(function(image) { %>
                     <div class="imgdetails">
-                        <img src="data:image/<%=image.img.contentType%>;base64,
-                <%=image.img.data.toString('base64')%>">
+                        <% if(image.img.data){%>
+                            <img src="data:image/<%=image.img.contentType%>;base64,
+                            <%=image.img.data.toString('base64')%>" onclick="profile()">
+                            <% }else{ %>
+                              <img src="/imgs/profilelogo.jpeg" alt="" onclick="profile()">
+                              <%}%>
                     </div>
                     <% }) %>
                         <div class="name">
@@ -139,14 +144,23 @@
             </div>
             <div class="par">Participated Gyms</div>
             <div>
-                <% selected = JSON.parse(selectedGyms) %>
-                <% selected.forEach(function(image) { %>
-                    <div class="settinggyms">
-                        <%= image %>
-                    </div>
-                    <% }) %>
+                <%if(selectedGyms[0] == "hey"){%>
+                    <div class="settinggyms">Your gyms will see here</div>
+                <%}else{%>
+                    <% selected = JSON.parse(selectedGyms) %>
+                    <% selected.forEach(function(image) { %>
+                        <div class="settinggyms">
+                            <%= image %>
+                        </div>
+                        <% }) %>   
+               <% }%>
             </div>
-            <button type="submit" class="btn btna" id="photoedit">Change</button>
+            <%if(selectedGyms[0] == "hey"){%>
+                <div class="sgt">Check Our Plans in Pricing Section</div>
+            <%}else{%>
+                <button type="submit" class="btn btna" id="photoedit">Change</button>  
+           <% }%>
+
         </form>
     </div>
 
@@ -160,26 +174,55 @@
             integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script>
+
+        
+      <script>
+        function photo(){
+          console.log("clicked");
+          document.getElementById("photo").click();
+        }
+        function gyms(){
+          console.log("gym cliikced");
+          document.getElementById("gymbnt").click();
+        }
+        function massage(){
+          document.getElementById("massage").click();
+        }
+        function phycisal(){
+          document.getElementById("physical").click();
+        }
+        function account2(){
+          document.getElementById("private").checked = false;
+          document.getElementById("public").checked = false;
+
+        }
+        function account1(){
+          document.getElementById("private").checked = false;
+          document.getElementById("public").checked = false;
+
+        }
+    </script>
+    <script>
 
 
-            function editt() {
-                console.log("clicked");
-                document.getElementById("dda").click();
-            }
-            function setting() {
+      function editt() {
+        console.log("clicked");
+        document.getElementById("dda").click();
+      }
+      function setting() {
 
-            }
-            function profile() {
-                let tap = document.getElementById("pinfo");
-                console.log(tap.style.display);
-                if (tap.style.display == "none") {
-                    tap.style.display = "block";
-                }
-                else {
-                    tap.style.display = "none";
-                }
-            }
-        </script>
+      }
+      function profile() {
+        let tap = document.getElementById("pinfo");
+        console.log(tap.style.display);
+        if (tap.style.display == "none") {
+          tap.style.display = "block";
+        }
+        else {
+          tap.style.display = "none";
+        }
+      }
+    </script>
+
 </body>
 </html>

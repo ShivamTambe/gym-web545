@@ -47,9 +47,9 @@
             <div class="message1">
               <span class="white">Schedule </span> <span class="green">1 Free Message </span><span class="white">Every 4 Month</span>
           </div>
-          <div class="message2">
+          <!-- <div class="message2">
               <span class="white">Schedule </span> <span class="green">1 Free Physical Therapy Session </span><span class="white">Every 4 Month</span>
-          </div>
+          </div> -->
           <div class="message3">
               <span class="white">Schedule </span> <span class="green">Free Personal Training Sessions</span><span class="white"></span>
           </div>
@@ -59,12 +59,13 @@
           </div>
           <div class="ssecond" id="sec" onclick="second()">
             <div class="st">$499.99</div>
+            <div class="stx">select up to 15 gyms to add to your cost</div>
             <div class="message1">
               <span class="white">Schedule </span> <span class="green">1 Free Message </span><span class="white">Every Month</span>
           </div>
-          <div class="message2">
+          <!-- <div class="message2">
               <span class="white">Schedule </span> <span class="green">1 Free Physical Therapy Session </span><span class="white">Every Month</span>
-          </div>
+          </div> -->
           <div class="message3">
               <span class="white">Schedule </span> <span class="green">Free Personal Training Sessions</span><span class="white"></span>
           </div>
@@ -79,13 +80,13 @@
             <option value="Premimum" id="pre">Premimum</option>
           </select>
         </div>
-        <div class="selecttitle">Select Gyms</div>
-        <div class="last" id="lastt">
+        <div class="selecttitle" id="selectt">Select Gyms</div>
+        <div class="last" id="lastt"> 
           <div class="ecogymss">
             <div class="ltitle">Economical</div>
             <div class="horizontal"></div>
             <% gyms.forEach(function(image) { %>
-              <div class="details" onclick="ecogyms()">
+              <div class="details">
                 <input type="checkbox" name="checkbox" id="" class="checkbox">
                 <div class="name">
                   <%= image.title1 %>
@@ -98,15 +99,15 @@
               <% }) %>
                 <div><input type="text" id="ecogyms" name="ecogyms"></div>
           </div>
-          <div class="ecogyms" onclick="pregyms()">
-            <div>
+          <div class="ecogyms">
+            <!-- <div >
               <div class="ltitle">Economical</div>
               <div class="horizontal"></div>
               <% gyms.forEach(function(image) { %>
                 <div class="details" >
                   <input type="checkbox" name="checkbox" id="" class="checkbox">
                   <div class="name">
-                    <%= image.title1 %>
+                      <%= image.title1 %>
                   </div>
                   <input type="text" class="gymname nonen" name="gymname" value="<%= image.title1 %>">
                   <input type="text" class="gymemail nonen" name="gymemail" value="<%= image.email %>">
@@ -114,21 +115,24 @@
                 </div>
                 <div class="horizontal"></div>
                 <% }) %>
-            </div>
-            <div>
-              <div class="ltitle">Premimum</div>
-              <div class="horizontal"></div>
+            </div> -->
+            <div onclick="pregyms()"  class="premimuss">
+              <!-- <div class="ltitle">Premimum</div> -->
+              <!-- <div class="horizontal"></div> -->
               <% gyms.forEach(function(image) { %>
                 <div class="details" >
-                  <input type="checkbox" name="checkbox" id="" class="checkbox">
-                  <div class="name">
-                    <%= image.title1 %>
+                  <div class="flexxx">
+                    <input type="checkbox" name="checkbox" id="" class="checkbox">
+                    <div class="name">
+                      <%= image.title1 %>
+                      <span class="det"><%= image.plan2 %></span>
+                    </div>
                   </div>
                   <input type="text" class="gymname nonen" name="gymname" value="<%= image.title1 %>">
                   <input type="text" class="gymemail nonen" name="gymemail" value="<%= image.email %>">
                   <input type="number" class="gymprice nonen" name="gymprice" value="<%= image.price %>">
                 </div>
-                <div class="horizontal"></div>
+                <!-- <div class="horizontal"></div> -->
                 <% }) %>
             </div>
 
@@ -146,6 +150,56 @@
 
 
 
+
+
+    
+    <script>
+      function photo(){
+        console.log("clicked");
+        document.getElementById("photo").click();
+      }
+      function gyms(){
+        console.log("gym cliikced");
+        document.getElementById("gymbnt").click();
+      }
+      function massage(){
+        document.getElementById("massage").click();
+      }
+      function phycisal(){
+        document.getElementById("physical").click();
+      }
+      function account2(){
+        document.getElementById("private").checked = false;
+        document.getElementById("public").checked = false;
+
+      }
+      function account1(){
+        document.getElementById("private").checked = false;
+        document.getElementById("public").checked = false;
+
+      }
+  </script>
+  <script>
+
+
+    function editt() {
+      console.log("clicked");
+      document.getElementById("dda").click();
+    }
+    function setting() {
+
+    }
+    function profile() {
+      let tap = document.getElementById("pinfo");
+      console.log(tap.style.display);
+      if (tap.style.display == "none") {
+        tap.style.display = "block";
+      }
+      else {
+        tap.style.display = "none";
+      }
+    }
+  </script>
       <script>
         let namearr = new Set();
         window.namearr = [];
@@ -197,42 +251,46 @@
           document.getElementById("emails").value = JSON.stringify(emails);
           document.getElementById("butto").click();
         }
-        function ecogyms() {
-          console.log("clicked");
-          for (var i = 0; i < 23; i++) {
-            let check = document.getElementsByClassName("checkbox")[i].checked;
-            if (check == true) {
-              let email = document.getElementsByClassName("gymemail")[i].value;
-              let name = document.getElementsByClassName("gymname")[i].value;
-              arr.add(email);
-              namearr.add(email);
-            }
-            else {
-              let emaill = document.getElementsByClassName("gymemail")[i].value;
-              let name = document.getElementsByClassName("gymname")[i].value;
-              arr.delete(emaill);
-              namearr.delete(emaill);
-            }
-            document.getElementById("ecogyms").value = "";
-            for (var i = 0; i < arr.length; i++) {
-              document.getElementById("ecogyms").value = arr[i] + document.getElementById("ecogyms").value;
-            }
-          }
-          console.log(arr);
-          console.log(namear);
-        }
+        // function ecogyms() {
+        //   console.log("clicked");
+        //   for (var i = 0; i < 23; i++) {
+        //     let check = document.getElementsByClassName("checkbox")[i].checked;
+        //     if (check == true) {
+        //       let email = document.getElementsByClassName("gymemail")[i].value;
+        //       let name = document.getElementsByClassName("gymname")[i].value;
+        //       arr.add(email);
+        //       namearr.add(email);
+        //     }
+        //     else {
+        //       let emaill = document.getElementsByClassName("gymemail")[i].value;
+        //       let name = document.getElementsByClassName("gymname")[i].value;
+        //       arr.delete(emaill);
+        //       namearr.delete(emaill);
+        //     }
+        //     document.getElementById("ecogyms").value = "";
+        //     for (var i = 0; i < arr.length; i++) {
+        //       document.getElementById("ecogyms").value = arr[i] + document.getElementById("ecogyms").value;
+        //     }
+        //   }
+        //   console.log(arr);
+        //   console.log(namear);
+        // }
         function pregyms() {
           let newarr = [];
           console.log(document.getElementsByClassName("checkbox"));
-          for (var i = 0; i < 25; i++) {
+          for (var i = 0; i < 44; i++){
+            console.log(document.getElementsByClassName("checkbox")[i].checked);
             let check = document.getElementsByClassName("checkbox")[i].checked;
-            if (check == true) {
+            if(check == true){
               let email = document.getElementsByClassName("gymemail")[i].value;
               let name = document.getElementsByClassName("gymname")[i].value;
+              console.log("true");
+              console.log(email);
+              console.log(name);
               arr.add(email);
               namearr.add(name);
             }
-            else {
+            else{
               let emaill = document.getElementsByClassName("gymemail")[i].value;
               let name = document.getElementsByClassName("gymname")[i].value;
               arr.delete(emaill);
@@ -256,6 +314,7 @@
           document.getElementById("lesscheck").required = true;
           document.getElementById("personalcheck").required = false;
           document.getElementById("largecheck").required = false;
+          document.getElementById("selectt").display = "block";
 
         }
         function second() {
@@ -270,6 +329,7 @@
           document.getElementById("largecheck").required = true;
           document.getElementById("personalcheck").required = false;
           document.getElementById("lesscheck").required = false;
+          document.getElementById("selectt").display = "block";
         }
         function personal() {
           document.getElementById("sec").style.border = "1px solid white";
@@ -282,6 +342,7 @@
           document.getElementById("personalcheck").required = true;
           document.getElementById("lesscheck").required = false;
           document.getElementById("largecheck").required = false;
+          document.getElementById("selectt").display = "none";
         }
       </script>
 

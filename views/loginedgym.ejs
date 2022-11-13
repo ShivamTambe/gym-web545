@@ -13,91 +13,11 @@
     <title>GYms</title>
 </head>
 <body>
-  <form action="setting" method="post">
-    <div class="lid">
-      <input name="ida" type="text" value= <%= id %> >
-    </div>
-    <div class="profileinfo" id="pinfo">
-      <div class="pemail">
-        <div class="ni">
-          <div class="ll"><img src="/imgs/image4.jpg" alt="" class="proimga"></div>
-          <div class="dd">
-            <h5 class="namee"><%= name %></h5>
-            <p class="emaill"><%= email %></p>
-          </div>
-        </div>
-        <div class="oinfo">
-            <div class="setting" id="sett"><button type="submit">Setting</button></div>
-</form>
-            <form action="/services" method="post">
-              <div class="lid">
-                <input name="idb" type="text" value= <%= id %> >
-              </div>
-              <div class="serv"><button type="submit">Services</button></div>
-            </form>
-        </div>
-      </div>
-    </div>
-  <div class="dva">
-    <div class="value">
-        <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
-        <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
-        <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
-    </div>
-  </div>
-<div class="donatee" onclick="donate()">
-    <div class="dbtn">
-      <div class="submit">Donate</div>
-    </div>
-</div>
-      <nav class="bg-gray-800">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div class="relative flex h-16 items-center justify-between">
-            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
-              <div class="flex flex-shrink-0 items-center logo">
-                <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
-              </div>
-              <div class="hidden sm:ml-6 sm:block">
-                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <div class="flex space-x-4">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="/loginedhome" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns" aria-current="page">Home</a>
-        
-                    <a href="/loginedgyms" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red">Gyms</a>
-        
-                    <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal Trainers</a>
-        
-                    <a href="/loginedpricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a>
-      
-                    <div class="profileimggg">
-                      <div class="name"><%= name %></div>
-                      <img src="/imgs/image4.jpg" alt="" onclick="profile()">
-                    </div>
-  </div>
-            </div>
-          </div>
-        </div>
-      
-        <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="sm:hidden" id="mobile-menu">
-          <div class="space-y-1 px-2 pt-2 pb-3">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/home" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns" aria-current="page">Home</a>
-      
-            <a href="/gyms" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium red navbtns">Gyms</a>
-      
-            <a href="/normaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal Trainers</a>
-      
-            <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
-    
-            <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
-          </div>
-        </div>
-      </nav>
-
+  
+    <%- include('../partials/loginedheader.ejs'); %>
     <div class="gymtitle">GYMS</div>
     <div class="allgyms">
-      <% item.forEach(function(image) { %>
+      <% gyms.forEach(function(image) { %>
             <div class="gyminfo">
                 <div class="profileimg">
                   <img src="data:image/<%=image.img.contentType%>;base64,
@@ -118,25 +38,47 @@
 
 
 
+      <script>
+        function photo(){
+          console.log("clicked");
+          document.getElementById("photo").click();
+        }
+    </script>
     <script>
-      function incerease(){
-         let value = document.getElementById("amtv").innerText;
-         console.log("HELLO");
-         document.getElementById("amtv").innerText++;
+      function donate(){
+        document.getElementById("donateamt").value = document.getElementById("amtv").innerHTML;
+        document.getElementById('donatesubmit').click();
+      }
+      function profile() {
+        let tap = document.getElementById("pinfo");
+        console.log(tap.style.display);
+        if (tap.style.display == "none") {
+          tap.style.display = "block";
+        }
+        else {
+          tap.style.display = "none";
+        }
+      }
+    </script>
+    <script>
+      function incerease() {
+        let value = document.getElementById("amtv").innerText;
+        console.log("HELLO");
+        document.getElementById("amtv").innerText++;
       }
 
-      function decrease(){
-         let value = document.getElementById("amtv").innerText;
-         if(value >1){
+      function decrease() {
+        let value = document.getElementById("amtv").innerText;
+        if (value > 1) {
           document.getElementById("amtv").innerText--;
-         }
+        }
       }
-  </script>
 
-<script>
-  function donate(){
-    window.location = "https://buy.stripe.com/test_fZe0000sBbOH0ZWdQY";  
-  }
-</script>
+      function submit() {
+        document.getElementById('subbtn').click();
+      }
+    </script>
+
+
 </body>
 </html>

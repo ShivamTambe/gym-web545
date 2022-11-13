@@ -20,114 +20,7 @@
 </head>
 
 <body>
-  <form action="/setting" method="post">
-    <div class="lid">
-      <input name="ida" type="text" value=<%=id %> >
-    </div>
-    <div class="profileinfo" id="pinfo">
-      <div class="pemail">
-        <div class="ni">
-          <div class="ll"><% userinfo.forEach(function(image) { %>
-            <div class="imgdetails">
-              <img src="data:image/<%=image.img.contentType%>;base64,
-                  <%=image.img.data.toString('base64')%>">
-            </div>
-            <% }) %></div>
-          <div class="dd">
-            <h5 class="namee">
-              <%= name %>
-            </h5>
-            <p class="emaill">
-              <%= email %>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="oinfo">
-        <div class="setting" id="sett"><button type="submit">Setting</button></div>
-        <div class="setting" id="gyms" onclick="gyms()">My Gyms</div>
-        <div class="setting" id="pho" onclick="photo()">Photo</div>
-        <div class="setting" id="sett">Book Massage</div>
-        <div class="setting" id="sett">Book Physical Therapy</div>
-        <div class="setting" id="sett"><a href="/signup">Log Out</a></div>
-      </div>
-    </div>
-  </form>
-  <form action="/photo" method="post">
-    <div class="lid">
-      <input name="ida" type="text" value=<%=id %> >
-    </div>
-    <button type="submit" id="photo">sub</button>
-  </form>
-  <form action="/settinggyms" method="post">
-    <div class="lid">
-      <input name="ida" type="text" value=<%=id %> >
-    </div>
-    <button type="submit" id="gymbnt">sub</button>
-  </form>
-  <nav class="bg-gray-800">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
-          <div class="flex flex-shrink-0 items-center logo">
-            <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
-          </div>
-
-          <div class="hidden sm:ml-6 sm:block">
-            <div class="flex space-x-4">
-              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/loginedhome" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red"
-                aria-current="page">Home</a>
-
-              <a href="/loginedgyms"
-                class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Gyms</a>
-
-              <a href="/personaltrainer"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal
-                Trainers</a>
-
-              <a href="/loginedpricing"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a>
-            </div>
-            <div class="profileimggg">
-              <div class="name">
-                <%= name %>
-              </div>
-              <% userinfo.forEach(function(image) { %>
-                <div class="imgdetails">
-                  <img src="data:image/<%=image.img.contentType%>;base64,
-                      <%=image.img.data.toString('base64')%>" onclick="profile()">
-                </div>
-                <% }) %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pt-2 pb-3">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns"
-          aria-current="page">Home</a>
-
-        <a href="/gyms"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Gyms</a>
-
-        <a href="/normaltrainer"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal
-          Trainers</a>
-
-        <a href="/pricing"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
-
-        <a href="/signup"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
-      </div>
-    </div>
-  </nav>
-
+  <%- include('../partials/loginedheader.ejs'); %>
   <form action="/editedsetting" method="post">
     <div class="lid">
       <input name="ida" type="text" value=<%=id %> >
@@ -136,8 +29,12 @@
       <div class="usertop">
         <% userinfo.forEach(function(image) { %>
           <div class="imgdetails">
-            <img src="data:image/<%=image.img.contentType%>;base64,
-                <%=image.img.data.toString('base64')%>">
+            <% if(image.img.data){%>
+              <img src="data:image/<%=image.img.contentType%>;base64,
+              <%=image.img.data.toString('base64')%>" onclick="profile()">
+            <% }else{ %>
+              <img src="/imgs/profilelogo.jpeg" alt="" onclick="profile()">
+            <%}%>
           </div>
           <% }) %>
             <div class="name">
@@ -246,6 +143,22 @@
         function gyms(){
           console.log("gym cliikced");
           document.getElementById("gymbnt").click();
+        }
+        function massage(){
+          document.getElementById("massage").click();
+        }
+        function phycisal(){
+          document.getElementById("physical").click();
+        }
+        function account2(){
+          document.getElementById("private").checked = false;
+          document.getElementById("public").checked = false;
+
+        }
+        function account1(){
+          document.getElementById("private").checked = false;
+          document.getElementById("public").checked = false;
+
         }
     </script>
     <script>

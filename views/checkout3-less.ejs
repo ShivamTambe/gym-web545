@@ -95,6 +95,7 @@
       <input type="text" id="num" name="no">
       <input type="text" name="names" value="<%= names %>">
       <input type="text" name="emails" value="<%= emails %>">
+      <input type="text" name="number" value="1">
     </div>
     <input type="text" name="email" value="<%= email %>" class="em">
     <div class="pricingdis">
@@ -106,7 +107,7 @@
           <div class="pricee" id="price1" onclick="option1()">
             <input type="checkbox" name="less" id="lesscheck" required class="che">
             <div class="signn">$</div>
-            <div class="valuee"><span id="monthval">600</span>.99</div>
+            <div class="valuee"><span id="monthval">599</span>.99</div>
             <div class="monthh"><span id="monthno">4</span> /months</div>
             <div class="arr">
               <div class="uparr"><img src="/imgs/right-arrow.png" onclick="incre()" alt=""></div>
@@ -116,7 +117,7 @@
           <div class="pricee" id="price2" onclick="option2()">
             <input type="checkbox" name="large" id="largecheck" required class="che">
             <div class="signn">$</div>
-            <div class="valuee"><span class="yearval">1,800.99</span></div>
+            <div class="valuee"><span class="yearval">1,799.99</span></div>
             <div class="monthh"><span id="no"></span> /Yearly</div>
           </div>
           <div class="taxtitle">8.25% sales tax</div>
@@ -207,6 +208,54 @@
         document.getElementById("amtv").innerText++;
       }
     </script>
+    
+    <script>
+      function photo(){
+        console.log("clicked");
+        document.getElementById("photo").click();
+      }
+      function gyms(){
+        console.log("gym cliikced");
+        document.getElementById("gymbnt").click();
+      }
+      function massage(){
+        document.getElementById("massage").click();
+      }
+      function phycisal(){
+        document.getElementById("physical").click();
+      }
+      function account2(){
+        document.getElementById("private").checked = false;
+        document.getElementById("public").checked = false;
+
+      }
+      function account1(){
+        document.getElementById("private").checked = false;
+        document.getElementById("public").checked = false;
+
+      }
+  </script>
+  <script>
+
+
+    function editt() {
+      console.log("clicked");
+      document.getElementById("dda").click();
+    }
+    function setting() {
+
+    }
+    function profile() {
+      let tap = document.getElementById("pinfo");
+      console.log(tap.style.display);
+      if (tap.style.display == "none") {
+        tap.style.display = "block";
+      }
+      else {
+        tap.style.display = "none";
+      }
+    }
+  </script>
 </body>
 
 </html>

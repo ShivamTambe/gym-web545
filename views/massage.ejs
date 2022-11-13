@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/slick.css">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/setting.css">
+    <link rel="stylesheet" href="/photo.css">
+    <link rel="stylesheet" href="/settinggyms.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage</title>
+</head>
+
+<body>
+    <%- include('../partials/loginedheader.ejs'); %>
+    <form action="/editedsetting" method="post">
+        <div class="lid">
+            <input name="ida" type="text" value=<%=id %> >
+        </div>
+        <div class="userinfo">
+            <div class="usertop">
+                <% userinfo.forEach(function(image) { %>
+                    <div class="imgdetails">
+                        <img src="data:image/<%=image.img.contentType%>;base64,
+                <%=image.img.data.toString('base64')%>">
+                    </div>
+                    <% }) %>
+                        <div class="name">
+                            <%= name %>
+                        </div>
+                        <div class="identity">
+                            <%= identity %>
+                        </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="editinfo">
+        <form action="/sendmassage" method="post">
+            <div class="lid">
+                <input name="ida" type="text" value=<%=id %> >
+                <input type="text" name="number" value="<%= number %>">
+            </div>
+            <div class="par">Send Massage Request</div>
+            <div>
+                <%if(selectedGyms[0]=="hey" ){%>
+                    <div class="settinggyms">Your Plan will be here</div>
+                    <%}else{%>
+                        <div class="settinggyms">
+                            Massage Remained : <%= number %>
+                        </div>
+                        <% }%>
+            </div>
+            <%if(selectedGyms[0]=="hey" ){%>
+                <div class="sgt">Check Our Plans in Pricing Section</div>
+                <%}else{%>
+                    <button type="submit" class="btn btna" id="photoedit">Send</button>
+                <% }%>
+
+        </form>
+    </div>
+    <%if(number > 0){%>
+        <div id="snackbar">Request Send Sucessfully</div>
+    <% }%>
+
+    <%- include('../partials/fotter.ejs'); %>
+
+        <script>
+            var button = document.getElementById("photoedit");
+
+            button.addEventListener("click", myFunction);
+
+            function myFunction() {
+                var x = document.getElementById("snackbar");
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            }
+        </script>
+
+        <script src="./slick.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+            integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        
+      <script>
+        function photo(){
+          console.log("clicked");
+          document.getElementById("photo").click();
+        }
+        function gyms(){
+          console.log("gym cliikced");
+          document.getElementById("gymbnt").click();
+        }
+        function massage(){
+          document.getElementById("massage").click();
+        }
+        function phycisal(){
+          document.getElementById("physical").click();
+        }
+        function account2(){
+          document.getElementById("private").checked = false;
+          document.getElementById("public").checked = false;
+
+        }
+        function account1(){
+          document.getElementById("private").checked = false;
+          document.getElementById("public").checked = false;
+
+        }
+    </script>
+    <script>
+
+
+      function editt() {
+        console.log("clicked");
+        document.getElementById("dda").click();
+      }
+      function setting() {
+
+      }
+      function profile() {
+        let tap = document.getElementById("pinfo");
+        console.log(tap.style.display);
+        if (tap.style.display == "none") {
+          tap.style.display = "block";
+        }
+        else {
+          tap.style.display = "none";
+        }
+      }
+    </script>
+</body>
+
+</html>

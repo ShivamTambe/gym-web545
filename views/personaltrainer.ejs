@@ -15,61 +15,7 @@
     <title>Personal Trainer</title>
 </head>
 <body>
-  <div class="dva">
-    <div class="value">
-        <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
-        <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
-        <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
-    </div>
-</div>
-<div class="donatee" onclick="donate()">
-    <div class="dbtn">
-      <div class="submit">Donate</div>
-    </div>
-</div>
-      <nav class="bg-gray-800">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div class="relative flex h-16 items-center justify-between">
-            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
-              <div class="flex flex-shrink-0 items-center logo">
-                <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
-              </div>
-              <div class="hidden sm:ml-6 sm:block">
-                <div class="flex space-x-4">
-                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="/loginedhome" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
-      
-                  <a href="/loginedgyms" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Gyms</a>
-      
-                  <a href="/personaltrainer" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium red">Personal Trainers</a>
-      
-                  <a href="/loginedpricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
-    
-                  <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login/Register</a>
-    
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-        <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="sm:hidden" id="mobile-menu">
-          <div class="space-y-1 px-2 pt-2 pb-3">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/loginedhome" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
-      
-            <a href="/loginedgyms" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Gyms</a>
-      
-            <a href="/personaltrainer" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium red">Personal Trainers</a>
-      
-            <a href="/pricing" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Pricing</a>
-    
-            <a href="/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Login/Register</a>
-          </div>
-        </div>
-      </nav>
-
+  <%- include('../partials/loginedheader.ejs'); %>
 
     <div class="gymtitle">
       <div class="gymt">Personal Trainers</div>
@@ -92,26 +38,26 @@
     <form action="/searchbyname" method="post" id="searchbyname">
       <div class="byname">
           <label for="">Enter Name : </label>
-          <input type="text" name="username">
+          <input type="text" name="username" class="len">
       </div>
       <button type="submit" class="btna">Submit</button>
   </form>
   <form action="/searchbycity" method="post" id="searchbycity">
       <div class="bycity">
           <label for="">Enter city : </label>
-          <input type="text" name="usercity">
+          <input type="text" name="usercity" class="len">
       </div>
       <button type="submit" class="btna">Submit</button>
   </form>
   <form action="/searchbystate" method="post" id="searchbystate">
       <div class="bystate">
           <label for="">Enter State : </label>
-          <input type="text" name="userstate">
+          <input type="text" name="userstate" class="len">
       </div>
       <button type="submit" class="btna">Submit</button>
   </form>
   <form action="/searchbyzip" method="post" id="searchbyzip">
-      <div class="byzip" name="userzip">
+      <div class="byzip" name="userzip"  class="len">
           <label for="">Enter Zip Code : </label>
           <input type="number">
       </div>
@@ -135,8 +81,8 @@
                 </div> -->
                 <div class="gymname"></div>
                 <div class="otherinfo">
-                    <div class="gymbio"><%= public[i].trainername %></div>
-                    <div class="city"><%= public[i].trainerbio %></div>
+                    <div class="gymbio"><%= personal[i].trainername %></div>
+                    <div class="city"><%= personal[i].trainerbio %></div>
                 </div>
             </div>
          <% } %>
@@ -167,29 +113,29 @@
               <div class="zip btna" onclick="zipp()">By Zip Code</div>
           </div>
         </div>
-        <form action="/searchbynamee" method="post" id="searchbynamee">
+        <form action="/searchbynamee" method="post" id="searchbynamee" class="nonen">
           <div class="byname">
               <label for="">Enter Name : </label>
-              <input type="text" name="username">
+              <input type="text" name="username" class="len">
           </div>
           <button type="submit" class="btna">Submit</button>
       </form>
-      <form action="/searchbycityy" method="post" id="searchbycityy">
+      <form action="/searchbycityy" method="post" id="searchbycityy" class="nonen">
           <div class="bycity">
               <label for="">Enter city : </label>
-              <input type="text" name="usercity">
+              <input type="text" name="usercity" class="len">
           </div>
           <button type="submit" class="btna">Submit</button>
       </form>
-      <form action="/searchbystatee" method="post" id="searchbystatee">
+      <form action="/searchbystatee" method="post" id="searchbystatee" class="nonen">
           <div class="bystate">
               <label for="">Enter State : </label>
-              <input type="text" name="userstate">
+              <input type="text" name="userstate" class="len">
           </div>
           <button type="submit" class="btna">Submit</button>
       </form>
-      <form action="/searchbyzipp" method="post" id="searchbyzipp">
-          <div class="byzip" name="userzip">
+      <form action="/searchbyzipp" method="post" id="searchbyzipp" class="nonen">
+          <div class="byzip" name="userzip" class="len">
               <label for="">Enter Zip Code : </label>
               <input type="number">
           </div>
@@ -228,20 +174,48 @@
             <div class="btn btn2">Show More</div>
         </div>
         <%- include('../partials/fotter.ejs'); %>
-    <script>
-      function incerease(){
-         let value = document.getElementById("amtv").innerText;
-         console.log("HELLO");
-         document.getElementById("amtv").innerText++;
-      }
-
-      function decrease(){
-         let value = document.getElementById("amtv").innerText;
-         if(value >1){
-          document.getElementById("amtv").innerText--;
-         }
-      }
-  </script>
+    
+        <script>
+          function photo(){
+            console.log("clicked");
+            document.getElementById("photo").click();
+          }
+      </script>
+      <script>
+        function donate(){
+          document.getElementById("donateamt").value = document.getElementById("amtv").innerHTML;
+          document.getElementById('donatesubmit').click();
+        }
+        function profile() {
+          let tap = document.getElementById("pinfo");
+          console.log(tap.style.display);
+          if (tap.style.display == "none") {
+            tap.style.display = "block";
+          }
+          else {
+            tap.style.display = "none";
+          }
+        }
+      </script>
+      <script>
+        function incerease() {
+          let value = document.getElementById("amtv").innerText;
+          console.log("HELLO");
+          document.getElementById("amtv").innerText++;
+        }
+  
+        function decrease() {
+          let value = document.getElementById("amtv").innerText;
+          if (value > 1) {
+            document.getElementById("amtv").innerText--;
+          }
+        }
+  
+        function submit() {
+          document.getElementById('subbtn').click();
+        }
+      </script>
+  
 
 
 <script>

@@ -24,7 +24,7 @@ body{
     border: 2px solid gray;
     border-radius: 15px;
     gap: 20px;
-    width: 300px;
+    width: 320px;
     padding: 15px;
 }
 .sfirst{
@@ -74,7 +74,7 @@ body{
 }
 .checkbox {
     width: 15px;
-    position: relative;
+    /* position: relative; */
     left: 140px;
 }
 .name{
@@ -132,4 +132,24 @@ form{
     font-size: 2rem;
     margin: 10px auto;
     margin-top: 20px;
+}
+.formmm{
+    display: none;
+}
+.premimuss{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 11px;
+}
+.flexxx{
+    display: flex;
+    gap: 10px;
+}
+.name{
+    display: flex;
+}
+.det{
+    font-size: 0.7rem;
+    color: gray;
+    margin-left: 5px;
 }

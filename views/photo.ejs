@@ -117,8 +117,12 @@
             <div class="usertop">
                 <% userinfo.forEach(function(image) { %>
                     <div class="imgdetails">
-                        <img src="data:image/<%=image.img.contentType%>;base64,
-                <%=image.img.data.toString('base64')%>">
+                        <% if(image.img.data){%>
+                            <img src="data:image/<%=image.img.contentType%>;base64,
+                            <%=image.img.data.toString('base64')%>" onclick="profile()">
+                          <% }else{ %>
+                            <img src="/imgs/profilelogo.jpeg" alt="" onclick="profile()">
+                          <%}%>
                     </div>
                     <% }) %>
                         <div class="name">

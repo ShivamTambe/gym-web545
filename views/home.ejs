@@ -96,8 +96,12 @@
   <div class="home">
     <% items.forEach(function(image) { %>
       <div class="slides slide1">
-        <img src="data:image/<%=image.img.contentType%>;base64,
-            <%=image.img.data.toString('base64')%>">
+        <% if(image.img.data){%>
+          <img src="data:image/<%=image.img.contentType%>;base64,
+          <%=image.img.data.toString('base64')%>">
+        <% }else{ %>
+          <img src="/imgs/image8.jpg" alt="">
+        <%}%>
         <% let color1='red' %>
           <div class="midsec">
             <div class="midtitle title1">
@@ -133,6 +137,7 @@
           <div class="gymbio line2 iddd">
             <input type="text" value='<%= image._id %>' name="idd">
           </div>
+          <input type="text" value="HELLO">
 
           <img src="data:image/<%=image.img.contentType%>;base64,
                   <%=image.img.data.toString('base64')%>" onclick="submit()" class="disss">

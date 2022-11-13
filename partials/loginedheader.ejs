@@ -1,93 +1,176 @@
-<form action="/donatedvalue" method="post">
-    <input type="text" name="donateamt" id="donateamt">
-    <div class="dva">
-      <div class="value">
-        <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
-            <div class=" amt">$ <span class="amtvalue" id="amtv">10</span></div>
-        <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
+<form action="/setting" method="post">
+  <div class="lid">
+    <input name="ida" type="text" value=<%=id %> >
+  </div>
+  <div class="profileinfo" id="pinfo">
+    <div class="pemail">
+      <div class="ni">
+        <div class="ll">
+          <% userinfo.forEach(function(image) { %>
+          <div class="imgdetails">
+            <% if(image.img.data){%>
+              <img src="data:image/<%=image.img.contentType%>;base64,
+              <%=image.img.data.toString('base64')%>" onclick="profile()">
+            <% }else{ %>
+              <img src="/imgs/profilelogo.jpeg" alt="" onclick="profile()">
+            <%}%>
+          </div>
+          <% }) %></div>
+        <div class="dd">
+          <h5 class="namee">
+            <%= name %>
+          </h5>
+          <p class="emaill">
+            <%= email %>
+          </p>
+        </div>
       </div>
     </div>
-    <div class="donatee" onclick="donate()">
+    <div class="oinfo">
+      <div class="setting" id="sett"><button type="submit">Setting</button></div>
+      <div class="setting" id="gyms" onclick="gyms()">My Gyms</div>
+      <!-- <div class="setting" id="pho" onclick="photo()">Photo</div> -->
+      <div class="setting" id="mass" onclick="massage()">Book Massage</div>
+      <div class="setting" id="phy" onclick="phycisal()">Book Physical Therapy</div>
+      <div class="setting" id="log"><a href="/signup">Log Out</a></div>
+    </div>
+  </div>
+</form>
+<form action="/photo" method="post" class="formm formmm">
+  <div class="lid">
+    <input name="ida" type="text" value="<%=id %>" >
+  </div>
+  <button type="submit" id="photo">sub</button>
+</form>
+<form action="/settinggyms" method="post" class="formm formmm">
+  <div class="lid">
+    <input name="ida" type="text" value="<%=id %>" >
+  </div>
+  <button type="submit" id="gymbnt">sub</button>
+</form>
+<form action="/massage" method="post" class="formm formmm">
+  <div class="lid">
+    <input name="ida" type="text" value="<%=id %>" >
+  </div>
+  <button type="submit" id="massage">sub</button>
+</form>
+<form action="/physical" method="post" class="formm formmm">
+  <div class="lid">
+    <input name="ida" type="text" value="<%=id %>" >
+  </div>
+  <button type="submit" id="physical">sub</button>
+</form>
+
+<!-- <form action="/services" method="post">
+  <div class="lid">
+    <input name="idb" type="text" value=<%=id %> >
+  </div>
+  <div class="serv"><button type="submit">Services</button></div>
+</form> -->
+</div>
+</div>
+</div>
+<form action="/donatedvalue" method="post" class="donatepricing">
+  <input type="text" name="donateamt" id="donateamt">
+  <div class="dva">
+    <div class="value">
+      <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
+          <div class=" amt">$ <span class="amtvalue" id="amtv">10</span></div>
+      <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
+    </div>
+  </div>
+  <div class="donatee" onclick="donate()">
     <div class="dbtn">
       <div class="submit"><button type="submit" id="donatesubmit">Donate</button></div>
     </div>
   </div>
 </form>
 <nav class="bg-gray-800">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
-          <div class="flex flex-shrink-0 items-center logo">
-            <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start navbar">
+        <div class="flex flex-shrink-0 items-center logo">
+          <a href="/loginedhome"><img class="block h-8 w-auto lg:hidden" src="/imgs/logo.png" alt="Your Company"></a>
+        </div>
+
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <form action="/loginedhome" method="post">
+              <div class="lid">
+                <input name="ida" type="text" value=<%=id %> >
+              </div>
+              <span class=" bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red"><button
+                  type="submit">Home</button></span>
+            </form>
+            <!-- <a href="/loginedhome" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red"
+              aria-current="page">Home</a> -->
+            <form action="/loginedgyms" method="post">
+              <div class="lid">
+                <input name="ida" type="text" value=<%=id %> >
+              </div>
+              <span
+                class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns"><button
+                  type="submit">Gyms</button></span>
+            </form>
+            <form action="/personaltrainer" method="post">
+              <div class="lid">
+                <input name="ida" type="text" value=<%=id %> >
+              </div>
+              <span
+                class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns"><button
+                  type="submit">Personal Trainers</button></span>
+            </form>
+            <form action="/loginedpricing" method="post">
+              <div class="lid">
+                <input name="ida" type="text" value=<%=id %> >
+              </div>
+              <span
+                class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns"><button
+                  type="submit">Pricing</button></span>
+            </form>
+
+            <!-- <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal Trainers</a> -->
+
+            <!-- <a href="/loginedpricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a> -->
           </div>
-
-          <div class="hidden sm:ml-6 sm:block">
-            <div class="flex space-x-4">
-              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <form action="/loginedhome" method="post">
-                <div class="lid">
-                  <input name="ida" type="text" value=<%=id %> >
-                </div>
-                <span
-                  class=" bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red"><button
-                    type="submit">Home</button></span>
-              </form>
-              <!-- <a href="/loginedhome" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium navbtns red"
-                aria-current="page">Home</a> -->
-              <form action="/loginedgyms" method="post">
-                <div class="lid">
-                  <input name="ida" type="text" value=<%=id %> >
-                </div>
-                <span
-                  class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns"><button
-                    type="submit">Gyms</button></span>
-              </form>
-              <form action="/personaltrainer" method="post">
-                <div class="lid">
-                  <input name="ida" type="text" value=<%=id %> >
-                </div>
-                <span
-                  class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns"><button
-                    type="submit">Personal Trainers</button></span>
-              </form>
-              <form action="/loginedpricing" method="post">
-                <div class="lid">
-                  <input name="ida" type="text" value=<%=id %> >
-                </div>
-                
-                <span
-                  class=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns"><button
-                    type="submit">Pricing</button></span>
-              </form>
-
-              <!-- <a href="/personaltrainer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Personal Trainers</a> -->
-
-              <!-- <a href="/loginedpricing" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium navbtns">Pricing</a> -->
+          <div class="profileimggg">
+            <div class="name">
+              <%= name %>
             </div>
+            <% userinfo.forEach(function(image) { %>
+              <% if(image.img.data){%>
+                <img src="data:image/<%=image.img.contentType%>;base64,
+                <%=image.img.data.toString('base64')%>" onclick="profile()">
+                <% }else{ %>
+                  <img src="/imgs/profilelogo.jpeg" alt="" onclick="profile()">
+                  <%}%>
+                    <% }) %>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pt-2 pb-3">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns"
-          aria-current="page">Home</a>
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div class="sm:hidden" id="mobile-menu">
+    <div class="space-y-1 px-2 pt-2 pb-3">
+      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+      <a href="/home" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium navbtns"
+        aria-current="page">Home</a>
 
-        <a href="/gyms"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Gyms</a>
+      <a href="/gyms"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Gyms</a>
 
-        <a href="/normaltrainer"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal
-          Trainers</a>
+      <a href="/normaltrainer"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Personal
+        Trainers</a>
 
-        <a href="/pricing"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
+      <a href="/pricing"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Pricing</a>
 
-        <a href="/signup"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
-      </div>
+      <a href="/signup"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium navbtns">Login/Register</a>
     </div>
-  </nav>
+  </div>
+</nav>

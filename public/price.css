@@ -428,6 +428,9 @@ form {
     height: 40px;
     border-radius: 50%;
 }
+.ll{
+    margin-right: 10px;
+}
 .dd {
     display: flex;
     flex-direction: column;
@@ -463,4 +466,7 @@ input {
     display: flex;
     justify-content: space-between;
     padding: 0 5vw;
+}
+.donatepricing{
+    display: none;
 }

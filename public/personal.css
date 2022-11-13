@@ -24,6 +24,7 @@
     margin-top: 20px;
     padding: 20px 22px;
     border-radius: 10px;
+    display: none;
 }
 .gyminfo{
     z-index: -1;
@@ -49,9 +50,6 @@ form input{
 .gymtitle{
     margin: 10px 0;
 }
-form{
-    display: none;
-}
 #optionss{
     display: none;
 }
@@ -75,4 +73,10 @@ form{
 }
 .nameeee{
     margin: 0;
+}
+.len{
+    width: 326px;
+}
+.nonen{
+    display: none;
 }
