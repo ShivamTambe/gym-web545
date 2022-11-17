@@ -135,9 +135,9 @@
       <% itemm.forEach(function(image) { %>
         <form action="/gymfullinfo" method="post" class="gyms">
           <div class="gymbio line2 iddd">
-            <input type="text" value='<%= image._id %>' name="idd">
+            <input type="text" value='<%= image._id %>' name="idd" class="nonne">
           </div>
-          <input type="text" value="HELLO">
+          <input type="text" value="HELLO" class="nonne">
 
           <img src="data:image/<%=image.img.contentType%>;base64,
                   <%=image.img.data.toString('base64')%>" onclick="submit()" class="disss">

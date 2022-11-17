@@ -24,3 +24,7 @@ button{
     background-size: cover;
     background-repeat: no-repeat;
 }
+#donatesubmit{
+    background-color: green;
+    border: 2px solid green;
+}

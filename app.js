@@ -22,6 +22,8 @@ app.set('view engine', 'ejs');
 
 mongoose.connect("mongodb+srv://shivam:Shivam123@cluster0.gcp5u27.mongodb.net/GYMlistDB?ssl=true", { useNewUrlParser: true });
 
+
+
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(express.json());
 
@@ -282,6 +284,38 @@ app.post('/paynow', function (req, res) {
 
 
 
+
+const Pricing1Schema = {
+    first:String,
+    second:String,
+    third:String,
+    forth:String,
+    fifth:String,
+    sixth:String,
+    seventh:String,
+    eight:String,
+    nineth:String,
+    tenth:String
+};
+const Pricing2Schema = {
+    first:String,
+    second:String,
+    third:String,
+    forth:String,
+    fifth:String,
+    sixth:String,
+    seventh:String,
+    eight:String,
+    nineth:String,
+    tenth:String
+};
+const adminSchema = {
+    username: String,
+    password: String,
+    id : String,
+    less : Number,
+    large:Number
+};
 const paySchema = {
     names: String,
     gymsemails: String,
@@ -478,7 +512,8 @@ var gymlogoSchema = new mongoose.Schema({
 });
 
 
-
+const PricingInfo1 = mongoose.model("PricingInfo1", Pricing1Schema);
+const PricingInfo2 = mongoose.model("PricingInfo2", Pricing2Schema);
 const payInfo = mongoose.model("payInfo", paySchema);
 const PaidInfo = mongoose.model("PaidInfo", paidSchema);
 const TaxInfo = mongoose.model("TaxInfo", taxSchema);
@@ -490,6 +525,7 @@ const OtherInfo = mongoose.model("OtherInfo", otherSchema);
 const FitnessInfo = mongoose.model("FitnessInfo", fitnessSchema);
 const AffilateInfo = mongoose.model("AffilateInfo", affilateSchema);
 
+const adminInfo = mongoose.model("adminInfo", adminSchema);
 const SocialInfo = mongoose.model("SocialInfo", socialSchema);
 const UserInfo = mongoose.model("UserInfo", userSchema);
 const PromoInfo = mongoose.model("PromoInfo", promoSchema);
@@ -1244,6 +1280,10 @@ app.post("/checkout2", function (req, res) {
     let value = req.body.value;
     let email = req.body.email;
     console.log("processing");
+    adminInfo.find().then(setmax => {
+        let less =parseInt(setmax[0].less);
+        let large = parseInt(setmax[0].large);
+
     if (plan == "personal") {
         console.log("true");
         SocialInfo.find().then(result => {
@@ -1271,7 +1311,8 @@ app.post("/checkout2", function (req, res) {
     }
     else {
         if (plan == "less") {
-            if (value < 450) {
+            
+            if (value < less) {
                 SocialInfo.find().then(result => {
                     let facebook = result[0].facebook;
                     let instagram = result[0].instagram;
@@ -1300,7 +1341,7 @@ app.post("/checkout2", function (req, res) {
             }
         }
         else {
-            if (value < 1200) {
+            if (value < large) {
                 SocialInfo.find().then(result => {
                     let facebook = result[0].facebook;
                     let instagram = result[0].instagram;
@@ -1350,6 +1391,7 @@ app.post("/checkout2", function (req, res) {
             }
         }
     }
+}).catch(err => console.log(err));
     // let newarr = [];
     // value=0;
     // for (var i = 0; i < 25; i++) {
@@ -1438,8 +1480,12 @@ app.post("/checkout", function (req, res) {
                                                     UserInfo.find({ _id: id }).then(userinfo => {
                                                         console.log(firstname);
                                                         let em = userinfo[0].email;
-                                                        res.render("checkout2", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, gyms: gyms, imagee: color, name: firstname, email: em, id: id, userinfo: userinfo })
+                                                        GymInfo.find({ plan: "less" }).then(lessplan => {
+                                                            GymInfo.find({ plan: "large" }).then(largeplan => {
+                                                                res.render("checkout2", { largeplan:largeplan,lessplan:lessplan,facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, gyms: gyms, imagee: color, name: firstname, email: em, id: id, userinfo: userinfo })
                                                     }).catch(err => console.log(err));
+                                                }).catch(err => console.log(err));
+                                                }).catch(err => console.log(err));
                                                 }).catch(err => console.log(err));
                                             }).catch(err => console.log(err));
                                         }).catch(err => console.log(err));
@@ -1775,7 +1821,7 @@ app.post("/personaltrainer", function (req, res) {
                                                     let top2 = result1[0].top2;
                                                     let top3 = result1[0].top3;
                                                     UserInfo.find({ _id: id }).then(userinfo => {
-                                                        PaidInfo.find({plan:"personal"}).then(personal => {
+                                                        UserInfo.find({plan:"personal"}).then(personal => {
                                                             UserInfo.find({ status: "Public" }).then(public => {
                                                                 let em = userinfo[0].email;
                                                                 res.render("personaltrainer", {personal: personal, public: public, facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, gyms: gyms, imagee: color, name : firstname, email: em, id: id, userinfo: userinfo })
@@ -2714,30 +2760,15 @@ app.get("/pricing", function (req, res) {
     //     top3:"https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642"
     // })
     // affi.save();
-    // let fit = new FitnessInfo({
-    //     why: "https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642",
-    //     training:"https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642",
-    //     tip: "https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642"
+    // let fit = new PricingInfo1({
+    //     first:"HELLO"
     // })
     // fit.save();
-    // let other = new OtherInfo({
-    //     app:"https://search.yahoo.com/search;_ylt=Awr98NsoKmZjciIHbMdXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Fydw--?type=E211US885G0&fr=mcafee&ei=UTF-8&p=affiliates&fr2=12642"
+    // let other = new PricingInfo2({
+    //     first:"WIRkd"
     // })
     // other.save();
-    // let newuser = new UserInfo({
-    //     firstname: "me",
-    //     email: "me@gmail.com"
-    // })
-    // newuser.save()
-    // GymInfo.updateMany({title1:"Anytime Fitness"},{
-    //     $set:
-    //     {
-    //         plan2: "Economical",
-    //         plan: "less"
-    //     }
-    // }).then(result => {
-    //     console.log(result);
-    // })
+    //
     SocialInfo.find().then(result => {
         let facebook = result[0].facebook;
         let instagram = result[0].instagram;
@@ -2753,8 +2784,12 @@ app.get("/pricing", function (req, res) {
                     let top1 = result1[0].top1;
                     let top2 = result1[0].top2;
                     let top3 = result1[0].top3;
-                    res.render("pricing", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3 })
+                    PricingInfo1.find().then(ecogyms => {
+                        PricingInfo2.find().then(pregyms => {
+                            res.render("pricing", {ecogyms:ecogyms[0],pregyms:pregyms[0], facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3 })
+                    }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
             }).catch(err => console.log(err));
         }).catch(err => console.log(err));
     }).catch(err => console.log(err));
@@ -3067,6 +3102,7 @@ app.post("/editedsetting", function (req, res) {
     let ename = req.body.ename;
     let eemail = req.body.eemail;
     let ephone = req.body.ephone;
+    let status = req.body.status;
     id = req.body.ida;
     console.log(id);
     UserInfo.find({ _id: `${id}` }).then(result => {
@@ -3085,7 +3121,8 @@ app.post("/editedsetting", function (req, res) {
                 eemail: eemail,
                 apt: apt,
                 state: state,
-                city: city
+                city: city,
+                status:status
             }
         }).then(resuhlt => {
             console.log(result);
@@ -3131,7 +3168,18 @@ app.post("/edited", upload.single('image'), (req, res, next) => {
     let id = req.body.ida;
     let sta = req.body.status;
     console.log(id);
-
+    
+        let phoneno = req.body.phoneno;
+        let date = req.body.date;
+        let gender = req.body.gender;
+        let city = req.body.city;
+        let state = req.body.state;
+        let address = req.body.address;
+        let zipcode = req.body.zipdcode;
+        let apt = req.body.apt;
+        let ename = req.body.ename;
+        let eemail = req.body.eemail;
+        let ephone = req.body.ephone;
     var obj = {
         first: req.body.first,
         last: req.body.last,
@@ -3143,13 +3191,27 @@ app.post("/edited", upload.single('image'), (req, res, next) => {
         }
     }
     UserInfo.updateOne({ _id: `${id}` }, {
+        
         $set: {
-            name: `${first}`,
+            firstname: first,
+                last: last,
+                phoneno: phoneno,
+                address: address,
+                date: date,
+                gender: gender,
+                zipcode: zipcode,
+                ename: ename,
+                ephone: ephone,
+                eemail: eemail,
+                apt: apt,
+                state: state,
+                city: city,
             img: {
                 data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
                 contentType: 'image/png'
             },
             status: sta
+            
         }
     }).then(resultt => {
         UserInfo.find({ _id: `${id}` }).then(result => {

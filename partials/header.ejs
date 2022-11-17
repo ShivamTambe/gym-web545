@@ -1,13 +1,18 @@
-<div class="donate">
-    <div class="dbtn">
-      <div class="value">
-        <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
-                <div class=" amt">$ <span class="amtvalue" id="amtv">10</span></div>
-        <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
-      </div>
-      <div class="submit">Donate</div>
+<form action="/donatedvalue" method="post" class="noneee">
+  <input type="text" name="donateamt" id="donateamt">
+  <div class="dva">
+    <div class="value">
+      <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
+          <div class=" amt">$ <span class="amtvalue" id="amtv">10</span></div>
+      <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
     </div>
   </div>
+  <div class="donatee" onclick="donate()">
+    <div class="dbtn">
+      <div class="submit"><button type="submit" id="donatesubmit">Donate</button></div>
+    </div>
+  </div>
+</form>
   <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">

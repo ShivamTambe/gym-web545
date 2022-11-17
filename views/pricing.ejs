@@ -18,18 +18,21 @@
 
 <body>
 
-    <div class="dva">
-        <div class="valuee">
+    <form action="/donatedvalue" method="post" class="dntform">
+        <input type="text" name="donateamt" id="donateamt">
+        <div class="dva">
+          <div class="value">
             <div class="leftarr"><img src="/imgs/right-arrow.png" alt="" onclick="decrease()""></div>
-            <div class="amt">$ <span class="amtvalue" id="amtv">10</span></div>
+                <div class=" amt">$ <span class="amtvalue" id="amtv">10</span></div>
             <div class="rightarr"><img src="/imgs/right-arrow.png" alt="" onclick="incerease()"></div>
+          </div>
         </div>
-    </div>
-    <div class="donatee" onclick="donate()">
-        <div class="dbtn">
-          <div class="submit">Donate</div>
+        <div class="donatee" onclick="donate()">
+          <div class="dbtn">
+            <div class="submit"><button type="submit" id="donatesubmit">Donate</button></div>
+          </div>
         </div>
-    </div>
+      </form>
       <nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div class="relative flex h-16 items-center justify-between">
@@ -159,24 +162,24 @@
             </div>
             <div class="container" style="text-align: left;">
                 <div class="row text">
-                    <div class="col">Gold's Gym</div>
-                    <div class="col">24 Hour Fitness</div>
+                    <div class="col"><%= ecogyms.first %></div>
+                    <div class="col"><%= ecogyms.second %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Crunch Fitness</div>
-                    <div class="col">Planet Fitness </div>
+                    <div class="col"><%= ecogyms.third %></div>
+                    <div class="col"><%= ecogyms.forth %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Fitness Connection</div>
-                    <div class="col">Snap Fitness</div>
+                    <div class="col"><%= ecogyms.fifth %></div>
+                    <div class="col"><%= ecogyms.sixth %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Glo </div>
-                    <div class="col">Academy of Self Defense </div>
+                    <div class="col"><%= ecogyms.seventh %> </div>
+                    <div class="col"><%= ecogyms.eightth %> </div>
                 </div>
                 <div class="row  text">
-                    <div class="col">BeyondFit Mom </div>
-                    <div class="col">PVolve</div>
+                    <div class="col"><%= ecogyms.nineth %> </div>
+                    <div class="col"><%= ecogyms.tenth %></div>
                 </div>
                 <div class="row  text">
                     <div class="col"></div>
@@ -228,24 +231,24 @@
             </div>
             <div class="container" style="text-align: left;">
                 <div class="row text">
-                    <div class="col">Gold's Gym</div>
-                    <div class="col">24 Hour Fitness</div>
+                    <div class="col"><%= pregyms.first %></div>
+                    <div class="col"><%= pregyms.second %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Crunch Fitness</div>
-                    <div class="col">Planet Fitness </div>
+                    <div class="col"><%= pregyms.third %></div>
+                    <div class="col"><%= pregyms.forth %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Fitness Connection</div>
-                    <div class="col">Snap Fitness</div>
+                    <div class="col"><%= pregyms.fifth %></div>
+                    <div class="col"><%= pregyms.sixth %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Glo </div>
-                    <div class="col">Academy of Self Defense </div>
+                    <div class="col"><%= pregyms.seventh %> </div>
+                    <div class="col"><%= pregyms.eightth %> </div>
                 </div>
                 <div class="row  text">
-                    <div class="col">BeyondFit Mom </div>
-                    <div class="col">PVolve</div>
+                    <div class="col"><%= pregyms.nineth %> </div>
+                    <div class="col"><%= pregyms.tenth %></div>
                 </div>
                 <div class="row  text">
                     <div class="col"></div>
@@ -281,10 +284,29 @@
 
 
     <script>
-        function donate(){
-        window.location = "https://buy.stripe.com/test_fZe0000sBbOH0ZWdQY";  
-      }
-    </script>
+        function donate() {
+          document.getElementById("donateamt").value = document.getElementById("amtv").innerHTML;
+          document.getElementById('donatesubmit').click();
+        }
+      </script>
+      <script>
+        function incerease() {
+          let value = document.getElementById("amtv").innerText;
+          console.log("HELLO");
+          document.getElementById("amtv").innerText++;
+        }
+  
+        function decrease() {
+          let value = document.getElementById("amtv").innerText;
+          if (value > 1) {
+            document.getElementById("amtv").innerText--;
+          }
+        }
+  
+        function submit() {
+          document.getElementById('subbtn').click();
+        }
+      </script>
 
     <script>
         function promo2(){
