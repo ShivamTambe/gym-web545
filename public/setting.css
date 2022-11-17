@@ -18,3 +18,9 @@
 .formm{
     display: none;
 }
+.elabel,.acc{
+    color: lightblue;
+}
+.elabel input{
+    color: white;
+}

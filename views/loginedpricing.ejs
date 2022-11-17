@@ -152,7 +152,12 @@
                 <span class="white">Schedule </span> <span class="green">Free Personal Training Sessions</span><span class="white"></span>
             </div>
             <div class="pricebtns">
-                <span><div class="pricebtn pay">Sign Up</div></span>
+                <form action="/forcheckout" method="post">
+                    <div class="lid">
+                        <input name="ida" type="text" value=<%=id %> >
+                      </div>
+                    <button><span><div class="pricebtn pay">Sign Up</div></span></button>
+                </form>
             </div>
             <!-- <div class="pricebtns" onclick="promo2()" id="promobtn">
                 <div class="pricebtn promocode">Use Promo Code</div>
@@ -221,7 +226,12 @@
                 <span class="white">Schedule </span> <span class="green">Free Personal Training Sessions</span><span class="white"></span>
             </div>
             <div class="pricebtns">
-                <span><div class="pricebtn pay">Sign Up</div></span>
+                <form action="/forcheckout" method="post">
+                    <div class="lid">
+                        <input name="ida" type="text" value=<%=id %> >
+                      </div>
+                    <button><span><div class="pricebtn pay">Sign Up</div></span></button>
+                </form>
             </div>
             <!-- <div class="pricebtns" onclick="promo2()" id="promobtn">
                 <div class="pricebtn promocode">Use Promo Code</div>

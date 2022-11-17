@@ -1312,7 +1312,7 @@ app.post("/checkout2", function (req, res) {
     else {
         if (plan == "less") {
             
-            if (value < less) {
+            if (value < 400) {
                 SocialInfo.find().then(result => {
                     let facebook = result[0].facebook;
                     let instagram = result[0].instagram;
@@ -1341,7 +1341,7 @@ app.post("/checkout2", function (req, res) {
             }
         }
         else {
-            if (value < large) {
+            if (value < 1000) {
                 SocialInfo.find().then(result => {
                     let facebook = result[0].facebook;
                     let instagram = result[0].instagram;
