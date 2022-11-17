@@ -99,7 +99,6 @@
                 </form>
             </div>
         </div>
-
         <div class="pricing pricing2">
             <div class="pricedis">
                 <div class="topt">Access up to 4 National Gyms</div>
@@ -119,43 +118,41 @@
             </div>
             <div class="container" style="text-align: left;">
                 <div class="row text">
-                    <div class="col">Gold's Gym</div>
-                    <div class="col">24 Hour Fitness</div>
+                    <div class="col"><%= ecogyms.first %></div>
+                    <div class="col"><%= ecogyms.second %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Crunch Fitness</div>
-                    <div class="col">Planet Fitness </div>
+                    <div class="col"><%= ecogyms.third %></div>
+                    <div class="col"><%= ecogyms.forth %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Fitness Connection</div>
-                    <div class="col">Snap Fitness</div>
+                    <div class="col"><%= ecogyms.fifth %></div>
+                    <div class="col"><%= ecogyms.sixth %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Glo </div>
-                    <div class="col">Academy of Self Defense </div>
+                    <div class="col"><%= ecogyms.seventh %> </div>
+                    <div class="col"><%= ecogyms.eightth %> </div>
                 </div>
                 <div class="row  text">
-                    <div class="col">BeyondFit Mom </div>
-                    <div class="col">PVolve</div>
+                    <div class="col"><%= ecogyms.nineth %> </div>
+                    <div class="col"><%= ecogyms.tenth %></div>
                 </div>
                 <div class="row  text">
                     <div class="col"></div>
                     <div class="col"></div>
                 </div>
             </div>
-            <!-- <div class="message1">
-                Schedule 1 Free Massage every 4 months
+            <div class="message1">
+                <span class="white">Schedule </span> <span class="green">1 Free Massage </span><span class="white">Every 4 Months</span>
             </div>
             <div class="message2">
-                Schedule 1 Free Physical Therapy session every 4 months
-            </div> -->
+                <span class="white">Schedule </span> <span class="green">1 Free Physical Therapy Session </span><span class="white">Every 4 Months</span>
+            </div>
+            <div class="message3">
+                <span class="white">Schedule </span> <span class="green">Free Personal Training Sessions</span><span class="white"></span>
+            </div>
             <div class="pricebtns">
-                <form action="/forcheckout" method="post">
-                    <div class="lid">
-                        <input name="ida" type="text" value=<%=id %> >
-                    </div>
-                    <button type="submit"><div class="pricebtn pay">Sign Up</div></button>
-                </form>
+                <a href="/signin"><div class="pricebtn pay">Sign Up</div></a>
             </div>
             <!-- <div class="pricebtns" onclick="promo2()" id="promobtn">
                 <div class="pricebtn promocode">Use Promo Code</div>
@@ -163,9 +160,6 @@
             <div class="promo" id="promoinput2">
                 <form action="/promo2" method="post">
                     <input type="text" placeholder="Enter Promo Code" name="promocode">
-                      <div class="lid">
-                        <input name="ida" type="text" value=<%=id %> >
-                      </div>
                     <button type="submit" class="btn btn-primary">Apply</button>
                 </form>
             </div>
@@ -193,43 +187,41 @@
             </div>
             <div class="container" style="text-align: left;">
                 <div class="row text">
-                    <div class="col">Gold's Gym</div>
-                    <div class="col">24 Hour Fitness</div>
+                    <div class="col"><%= pregyms.first %></div>
+                    <div class="col"><%= pregyms.second %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Crunch Fitness</div>
-                    <div class="col">Planet Fitness </div>
+                    <div class="col"><%= pregyms.third %></div>
+                    <div class="col"><%= pregyms.forth %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Fitness Connection</div>
-                    <div class="col">Snap Fitness</div>
+                    <div class="col"><%= pregyms.fifth %></div>
+                    <div class="col"><%= pregyms.sixth %></div>
                 </div>
                 <div class="row  text">
-                    <div class="col">Glo </div>
-                    <div class="col">Academy of Self Defense </div>
+                    <div class="col"><%= pregyms.seventh %> </div>
+                    <div class="col"><%= pregyms.eightth %> </div>
                 </div>
                 <div class="row  text">
-                    <div class="col">BeyondFit Mom </div>
-                    <div class="col">PVolve</div>
+                    <div class="col"><%= pregyms.nineth %> </div>
+                    <div class="col"><%= pregyms.tenth %></div>
                 </div>
                 <div class="row  text">
                     <div class="col"></div>
                     <div class="col"></div>
                 </div>
             </div>
-            <!-- <div class="message1">
-                Schedule 1 Free Massage every 4 months
+            <div class="message1">
+                <span class="white">Schedule </span> <span class="green">1 Free Message </span><span class="white">Every Month</span>
             </div>
             <div class="message2">
-                Schedule 1 Free Physical Therapy session every 4 months
-            </div> -->
+                <span class="white">Schedule </span> <span class="green">1 Free Physical Therapy Session </span><span class="white">Every Month</span>
+            </div>
+            <div class="message3">
+                <span class="white">Schedule </span> <span class="green">Free Personal Training Sessions</span><span class="white"></span>
+            </div>
             <div class="pricebtns">
-                <form action="/forcheckout" method="post">
-                    <div class="lid">
-                        <input name="ida" type="text" value=<%=id %> >
-                    </div>
-                    <button type="submit"><div class="pricebtn pay">Sign Up</div></button>
-                </form>
+                <a href="/signin"><div class="pricebtn pay">Sign Up</div></a>
             </div>
             <!-- <div class="pricebtns" onclick="promo2()" id="promobtn">
                 <div class="pricebtn promocode">Use Promo Code</div>
@@ -242,7 +234,7 @@
             </div>
         </div>
     </div>
-
+        
     <%- include('../partials/fotter.ejs'); %>
 
 

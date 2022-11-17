@@ -2645,8 +2645,12 @@ app.post("/loginedpricing", function (req, res) {
                                                     UserInfo.find({ _id: id }).then(userinfo => {
                                                         console.log(firstname);
                                                         let em = userinfo[0].email;
-                                                        res.render("loginedpricing", { facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, gyms: gyms, imagee: color, name: firstname, email: em, id: id, userinfo: userinfo })
+                                                        PricingInfo1.find().then(ecogyms => {
+                                                            PricingInfo2.find().then(pregyms => {
+                                                        res.render("loginedpricing", {ecogyms:ecogyms[0],pregyms:pregyms[0], facebook: facebook, instagram: instagram, twitter: twitter, pintrest: pintrest, app: app, why: why, training: training, tip: tip, top1: top1, top2: top2, top3: top3, item: result, items: items, gyms: gyms, imagee: color, name: firstname, email: em, id: id, userinfo: userinfo })
                                                     }).catch(err => console.log(err));
+                                                }).catch(err => console.log(err));
+                                            }).catch(err => console.log(err));
                                                 }).catch(err => console.log(err));
                                             }).catch(err => console.log(err));
                                         }).catch(err => console.log(err));
