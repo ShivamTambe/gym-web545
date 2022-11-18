@@ -293,7 +293,7 @@ const Pricing1Schema = {
     fifth:String,
     sixth:String,
     seventh:String,
-    eight:String,
+    eightth:String,
     nineth:String,
     tenth:String
 };
@@ -305,7 +305,7 @@ const Pricing2Schema = {
     fifth:String,
     sixth:String,
     seventh:String,
-    eight:String,
+    eightth:String,
     nineth:String,
     tenth:String
 };
