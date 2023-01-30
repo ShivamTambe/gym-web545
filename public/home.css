@@ -756,3 +756,12 @@ textarea{
 .nonne{
     display: none!important;
 }
+
+@media screen and (max-width: 480px) {
+    .space-x-4{
+        display: none;
+    }
+    .space-y-1{
+        width: 80vw;
+    }
+  }

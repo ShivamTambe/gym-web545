@@ -20,7 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 
-mongoose.connect("mongodb+srv://shivam:Shivam123@cluster0.gcp5u27.mongodb.net/GYMlistDB?ssl=true", { useNewUrlParser: true });
+mongoose.connect(process.env.MongoConnect, { useNewUrlParser: true });
+
 
 
 
@@ -33,8 +34,8 @@ var config = {
     "api": {
         "host": "api.sandbox.paypal.com",
         "port": "",
-        "client_id": "AWA4BcHiD4M0W4uwpxcVBCyRM5f_fGaZ_bNOgc_gkkXBfGYAa6q_uGxYWfokxCLvvvk_AIWTofJEbjP6",
-        "client_secret": "EDC0MB2tidwfBy7N2Wv7U8PiwAbXg-B-smYJRxyakdwts12Q9SqeC55FSrxF5BiMYhmbDNIjJ65In5go"
+        "client_id": process.env.ClientId,
+        "client_secret": process.env.ClinetSecerte
     }
 }
 
@@ -933,7 +934,6 @@ app.post("/checkout4", function (req, res) {
             }
         }
     });
-
 })
 app.post("/donatedvalue", function (req, res) {
     let donateamt = req.body.donateamt;
@@ -1311,8 +1311,8 @@ app.post("/checkout2", function (req, res) {
     }
     else {
         if (plan == "less") {
-            
-            if (value < 400) {
+            adminInfo.find().then(valuee => {
+            if (value < valuee[0].less) {
                 SocialInfo.find().then(result => {
                     let facebook = result[0].facebook;
                     let instagram = result[0].instagram;
@@ -1339,9 +1339,12 @@ app.post("/checkout2", function (req, res) {
             else {
                 res.render("wrong");
             }
+        }).catch(err => console.log(err));
+
         }
         else {
-            if (value < 1000) {
+            adminInfo.find().then(valuee => {
+            if (value < valuee[0].large) {
                 SocialInfo.find().then(result => {
                     let facebook = result[0].facebook;
                     let instagram = result[0].instagram;
@@ -1389,6 +1392,8 @@ app.post("/checkout2", function (req, res) {
                     }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
             }
+        }).catch(err => console.log(err));
+
         }
     }
 }).catch(err => console.log(err));

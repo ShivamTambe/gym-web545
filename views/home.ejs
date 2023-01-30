@@ -209,13 +209,13 @@
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
-        apiKey: "AIzaSyDd-DsQ38yY83aNzmqcYdGhMsvwSKhYHIA",
-        authDomain: "gymweb-5b70c.firebaseapp.com",
-        projectId: "gymweb-5b70c",
-        storageBucket: "gymweb-5b70c.appspot.com",
-        messagingSenderId: "359101237722",
-        appId: "1:359101237722:web:4cfd10850e4b1e6e2798e3",
-        measurementId: "G-JML252RCZJ"
+        apiKey: process.env.ApiKey,
+        authDomain: process.env.AuthDomain,
+        projectId: process.env.ProjectId,
+        storageBucket: process.env.StorageBucket,
+        messagingSenderId: process.env.MessagingSenderId,
+        appId: process.env.AppId,
+        measurementId: process.env.MeasurementId
       };
 
       // Initialize Firebase
@@ -249,6 +249,7 @@
 
     <script>
       $('.home').slick({
+        lazyLoad:'ondemand',
         dots: true,
         infinite: false,
         // prevArrow: 'rightarrow',
@@ -293,6 +294,7 @@
 
     <script>
       $('.moreinfos').slick({
+        lazyLoad:'ondemand',
         dots: false,
         infinite: false,
         autoplay: true,
@@ -336,6 +338,7 @@
 
     <script>
       $('.gyms').slick({
+        lazyLoad:'ondemand',
         dots: false,
         infinite: false,
         // autoplay: true,
