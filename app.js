@@ -15,7 +15,7 @@ var paypal = require('paypal-rest-sdk');
 
 dotenv.config();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
@@ -1533,6 +1533,7 @@ app.post("/checkout", function (req, res) {
     //     }).catch(err => console.log(err));
     // }).catch(err => console.log(err));
 })
+
 app.get("/checkout", function (req, res) {
     SocialInfo.find().then(result => {
         let facebook = result[0].facebook;
